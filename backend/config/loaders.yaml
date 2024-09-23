@@ -1,0 +1,9 @@
+file: {}
+web:
+  driver_arguments:
+    - --no-sandbox
+    - --disable-dev-shm-usage
+  urls:
+    - base_url: https://sagahalla.io
+      prefix: https://sagahalla.io
+      depth: 1
