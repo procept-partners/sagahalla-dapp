@@ -6,4 +6,4 @@ web:
   urls:
     - base_url: https://sagahalla.io
       prefix: https://sagahalla.io
-      depth: 1
+      depth: 2
