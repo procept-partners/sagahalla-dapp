@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Backend service
+  app:
+    build:
+      context: ./backend  # Backend Dockerfile location
+    volumes:
+      - ./backend:/backend  # Mounts the backend directory into the container
+    ports:
+      - "8000:8000"  # Expose port 8000 for the backend API
+    environment:
+      - PYTHONPATH=/backend
+      - CORS_ALLOWED_ORIGINS=http://frontend:3000  # Allow frontend to access the backend
+    command: ["python", "/backend/main.py"]
+    networks:
+      - app-network
+
+  # Frontend service
+  frontend:
+    build:
+      context: ./frontend  # Frontend Dockerfile location
+    volumes:
+      - ./frontend:/frontend  # Mounts the frontend directory into the container
+    ports:
+      - "3000:3000"  # Expose port 3000 for the frontend app
+    environment:
+      - REACT_APP_API_URL=http://app:8000  # The backend service name (app) is used as a hostname
+    command: ["npm", "run", "start"]
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge  # Default network driver
+

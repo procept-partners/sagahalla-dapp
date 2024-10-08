@@ -19,6 +19,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
+# mana-dapp imports
+from mana_algo.routes import router as mana_algo_router
+
 app = FastAPI()
 
 init_settings()
@@ -62,6 +65,9 @@ mount_static_files("output", "/api/files/output")
 app.include_router(chat_router, prefix="/api/chat")
 app.include_router(config_router, prefix="/api/chat/config")
 app.include_router(file_upload_router, prefix="/api/chat/upload")
+
+# Include the mana-algo app's router
+#app.include_router(mana_algo_router, prefix="/api/v1")
 
 
 if __name__ == "__main__":

@@ -1,25 +1,19 @@
-FROM python:3.11 as build
+FROM python:3.11
 
-WORKDIR /app
+WORKDIR /backend
 
-ENV PYTHONPATH=/app
+ENV PYTHONPATH=/backend
 
-# Install Poetry
 RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
     cd /usr/local/bin && \
     ln -s /opt/poetry/bin/poetry && \
     poetry config virtualenvs.create false
 
-# Install Chromium for web loader
-# Can disable this if you don't use the web loader to reduce the image size
 RUN apt update && apt install -y chromium chromium-driver
 
-# Install dependencies
-COPY ./pyproject.toml ./poetry.lock* /app/
-RUN poetry install --no-root --no-cache --only main
+COPY pyproject.toml poetry.lock* /backend/
 
-# ====================================
-FROM build as release
+RUN poetry install --no-root --no-cache --only main
 
 COPY . .
 
