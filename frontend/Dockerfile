@@ -1,7 +1,7 @@
 # Frontend Dockerfile
 
 # Stage 1: Build the application
-FROM node:20-alpine as build
+FROM node:20 as build  
 
 WORKDIR /frontend
 
@@ -11,10 +11,10 @@ RUN npm install
 
 # Copy the application source code and build the application
 COPY . .
-RUN npm run build  # This ensures the production build is created
+RUN npm run build  
 
 # Stage 2: Serve the application
-FROM node:20-alpine as release
+FROM node:20 as release  
 
 WORKDIR /frontend
 
@@ -22,4 +22,5 @@ WORKDIR /frontend
 COPY --from=build /frontend /frontend
 
 # Default command to start the frontend application
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]  
+

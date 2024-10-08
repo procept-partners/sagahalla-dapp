@@ -12,7 +12,7 @@ services:
     environment:
       - PYTHONPATH=/backend
       - CORS_ALLOWED_ORIGINS=http://frontend:3000  # Allow frontend to access the backend
-    command: ["python", "/backend/main.py"]
+    command: ["python", "/backend/main.py"]  # Start the backend application
     networks:
       - app-network
 
@@ -26,11 +26,10 @@ services:
       - "3000:3000"  # Expose port 3000 for the frontend app
     environment:
       - REACT_APP_API_URL=http://app:8000  # The backend service name (app) is used as a hostname
-    command: ["npm", "run", "start"]
+    command: ["npm", "run", "dev"]  # Use the development command for hot reloading
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge  # Default network driver
-
