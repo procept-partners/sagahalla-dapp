@@ -72,3 +72,8 @@ class Project(BaseModel):
                     role_hours[role] = hours
         return role_hours
 
+### placeholder not correct
+class ManaAlgoInput(BaseModel):
+    # Define your input fields here
+    role: str
+    mana_hours: float
