@@ -67,7 +67,7 @@ app.include_router(config_router, prefix="/api/chat/config")
 app.include_router(file_upload_router, prefix="/api/chat/upload")
 
 # Include the mana-algo app's router
-#app.include_router(mana_algo_router, prefix="/api/v1")
+app.include_router(mana_algo_router, prefix="/api/v1")
 
 
 if __name__ == "__main__":
