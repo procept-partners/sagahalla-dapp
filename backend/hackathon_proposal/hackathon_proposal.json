@@ -1,5 +1,5 @@
 {
-    "FYRE": {
+    "Token Contracts": {
         "FYRE": [
             {
                 "task_name": "Implement ERC-20 Token Contract for FYRE",
@@ -41,9 +41,7 @@
                 "role": "Blockchain Developer",
                 "mana_hours": 8
             }
-        ]
-    },
-    "SHLD": {
+        ],
         "SHLD": [
             {
                 "task_name": "Develop ERC-721 Contract for Non-Transferable SHLD",
@@ -90,9 +88,7 @@
                 "role": "Blockchain Developer",
                 "mana_hours": 8
             }
-        ]
-    },
-    "MANA": {
+        ],
         "MANA": [
             {
                 "task_name": "Implement ERC-20 Token Contract for MANA",
@@ -151,7 +147,7 @@
             }
         ]
     },
-    "mana effort hours": {
+    "Mana DApp": {
         "mana hour tracking": [
             {
                 "task_name": "Implement basic input fields",
@@ -223,9 +219,7 @@
                 "role": "Blockchain Developer",
                 "mana_hours": 4
             }
-        ]
-    },
-    "mana hours to mana": {
+        ],
         "mana algorithm": [
             {
                 "task_name": "Define total MANA allocation",
@@ -327,9 +321,7 @@
                 "role": "Blockchain Developer",
                 "mana_hours": 2
             }
-        ]
-    },
-    "MANA Governance": {
+        ],
         "MANA Governance": [
             {
                 "task_name": "Implement voting UI",
@@ -456,9 +448,7 @@
                 "role": "Blockchain Developer",
                 "mana_hours": 4
             }
-        ]
-    },
-    "VicTory Exchange": {
+        ],
         "VicTory Exchange": [
             {
                 "task_name": "Connect Wallet",
@@ -579,9 +569,7 @@
                 "role": "Project Manager",
                 "mana_hours": 10
             }
-        ]
-    },
-    "Server-PM": {
+        ],
         "Server": [
             {
                 "task_name": "Create backend template for MANA Dapp",
@@ -598,9 +586,7 @@
                 "role": "Project Manager",
                 "mana_hours": 40
             }
-        ]
-    },
-    "Content ": {
+        ],
         "Content": [
             {
                 "task_name": "Create website template",

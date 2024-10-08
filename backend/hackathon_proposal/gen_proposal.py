@@ -19,7 +19,7 @@ def read_excel_to_project(file_path: str) -> dict:
         
         # Iterate over the rows to collect tasks
         for _, row in data.iterrows():
-            subproject_name = sheet_name
+            subproject_name = row.get('Subproject')
             epic_name = row.get('Epic')
             task_name = row.get('Task')
             role_name = row.get('Role')
@@ -91,14 +91,6 @@ def main():
     except Exception as e:
         print(f"Error processing the Excel file: {e}")
         return
-
-    # Output the structured project dictionary for inspection
-    for sub_project, epics in project_dict.items():
-        print(f"Sub-Project: {sub_project}")
-        for epic, tasks in epics.items():
-            print(f"  Epic: {epic}")
-            for task in tasks:
-                print(f"    Task: {task['task_name']}, Role: {task['role']}, MANA Hours: {task['mana_hours']}")
 
     # Calculate and display total MANA hours and MANA hours per role
     total_mana_hours, role_mana_hours, subproject_totals = calculate_totals(project_dict)
