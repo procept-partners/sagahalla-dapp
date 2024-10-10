@@ -1,0 +1,78 @@
+{
+    "HACKATHON_EMMANUEL_MANA_HOURS": {
+        "Mana DApp": {
+            "MANA Governance": [
+                {
+                    "task_name": "Implement voting UI",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 4.0
+                },
+                {
+                    "task_name": "Develop backend logic",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 10.0
+                },
+                {
+                    "task_name": "Create proposal submission form",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Store/retrieve proposals",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 6.0
+                },
+                {
+                    "task_name": "Develop report generation",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 6.0
+                },
+                {
+                    "task_name": "Export report",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 4.0
+                },
+                {
+                    "task_name": "Create display for MANA allocations",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Fetch MANA allocation data",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 4.0
+                },
+                {
+                    "task_name": "Implement project governance UI",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Backend logic for project voting",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 6.0
+                },
+                {
+                    "task_name": "Implement conversion UI",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Backend logic for conversion",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 6.0
+                },
+                {
+                    "task_name": "Create results dashboard",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Fetch MANA results",
+                    "role": "Backend Developer",
+                    "budgeted_hours": 4.0
+                }
+            ]
+        }
+    }
+}

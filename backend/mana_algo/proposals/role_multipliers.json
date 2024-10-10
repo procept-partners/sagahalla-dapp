@@ -1,0 +1,20 @@
+{
+  "mana_founder_conversion": 0.33,
+  "weighted_global_average_rates": {
+    "Blockchain Developer": 42.75,
+    "Backend Developer": 36.03,
+    "Frontend Developer": 32.75,
+    "Project Manager": 40.92,
+    "Content Creator": 22.41
+  },
+  "role_multipliers": {
+    "Blockchain Developer": 1.21,
+    "Backend Developer": 0.85,
+    "Frontend Developer": 0.77,
+    "Project Manager": 0.96,
+    "Content Creator": 0.53
+  }
+}
+
+
+  

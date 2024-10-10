@@ -1,0 +1,66 @@
+{
+    "USA": {
+      "blockchain_developer": 65.00,
+      "backend_developer": 55.00,
+      "frontend_developer": 50.00,
+      "project_manager": 60.00,
+      "content_creator": 35.00
+    },
+    "India": {
+      "blockchain_developer": 25.00,
+      "backend_developer": 20.00,
+      "frontend_developer": 18.00,
+      "project_manager": 22.00,
+      "content_creator": 12.00
+    },
+    "Asia-Pacific": {
+      "blockchain_developer": 50.00,
+      "backend_developer": 40.00,
+      "frontend_developer": 35.00,
+      "project_manager": 45.00,
+      "content_creator": 25.00
+    },
+    "Japan": {
+      "blockchain_developer": 55.00,
+      "backend_developer": 45.00,
+      "frontend_developer": 40.00,
+      "project_manager": 50.00,
+      "content_creator": 30.00
+    },
+    "European_Union": {
+      "blockchain_developer": 60.00,
+      "backend_developer": 50.00,
+      "frontend_developer": 45.00,
+      "project_manager": 55.00,
+      "content_creator": 30.00
+    },
+    "Eastern_Europe": {
+      "blockchain_developer": 45.00,
+      "backend_developer": 35.00,
+      "frontend_developer": 30.00,
+      "project_manager": 40.00,
+      "content_creator": 20.00
+    },
+    "Latin_America": {
+      "blockchain_developer": 40.00,
+      "backend_developer": 30.00,
+      "frontend_developer": 28.00,
+      "project_manager": 35.00,
+      "content_creator": 18.00
+    },
+    "Canada": {
+      "blockchain_developer": 60.00,
+      "backend_developer": 50.00,
+      "frontend_developer": 45.00,
+      "project_manager": 55.00,
+      "content_creator": 30.00
+    },
+    "Middle_East": {
+      "blockchain_developer": 55.00,
+      "backend_developer": 45.00,
+      "frontend_developer": 40.00,
+      "project_manager": 50.00,
+      "content_creator": 30.00
+    }
+  }
+  
