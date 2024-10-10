@@ -29,6 +29,19 @@ Run the following command in the project directory to make all files and directo
 chmod -R g+w ./backend ./frontend
 ```
 
+If necessary, ensure your user is part of the `node` group:
+
+```bash
+sudo groupadd node  # Create the group if it doesn't exist
+sudo usermod -aG node $(whoami)  # Add your user to the group
+```
+
+Then change the ownership of the directories:
+
+```bash
+sudo chown -R :node ./frontend
+```
+
 ## 3. Build and Run the Project with Docker
 
 Build and run the containers for both the backend and frontend services using Docker Compose:
@@ -40,6 +53,7 @@ docker-compose up --build
 This command will:
 - Build the Docker images for both the backend and frontend.
 - Run the containers, with the backend available at `http://localhost:8000` and the frontend at `http://localhost:3000`.
+
 
 ### Useful Commands:
 
@@ -83,7 +97,7 @@ With this setup, all developers should be able to collaborate seamlessly. If you
 
 ## LlamaIndex
 
-This project was bootstrapped with the [LlamaIndex](https://www.llamaindex.ai/) with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama).  It is located in the app folder of the frontend and backend.
+This project was bootstrapped with the [LlamaIndex](https://www.llamaindex.ai/) with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama). It is located in the app folder of the frontend and backend.
 
 To learn more about LlamaIndex, take a look at the following resources:
 
