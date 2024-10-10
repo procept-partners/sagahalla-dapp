@@ -2,20 +2,25 @@ import os
 import pandas as pd
 import json
 from collections import defaultdict
+from models import Task, Epic, SubProject, Project  # Assuming these are defined in models.py
+
+# Define the base directory relative to the app
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROPOSALS_DIR = os.path.join(BASE_DIR, "mana_algo", "proposals")
 
 def clean_string(s):
     if isinstance(s, str):
         return s.lstrip('-').strip()
     return s
 
-def read_excel_to_project(file_path: str) -> dict:
+def read_excel_to_project(file_path: str) -> Project:
     sheets = pd.read_excel(file_path, sheet_name=None)
     
-    # Dictionary to store the structure with Subproject as key
-    project_dict = defaultdict(lambda: defaultdict(list))
+    sub_projects = []
     
     for sheet_name, data in sheets.items():
         data = data.applymap(clean_string)
+        epics_dict = defaultdict(list)  # This will collect tasks under each epic
         
         # Iterate over the rows to collect tasks
         for _, row in data.iterrows():
@@ -29,89 +34,66 @@ def read_excel_to_project(file_path: str) -> dict:
             if pd.isna(task_name):
                 continue
             
-            # Create task entry
-            task = {
-                'task_name': task_name,
-                'role': role_name,
-                'mana_hours': mana_hours
-            }
+            # Create a task (convert task format to match the Task model)
+            task = Task(
+                task_name=task_name,
+                roles_mana_hours={role_name: mana_hours}
+            )
             
-            # Add the task to the appropriate epic in the subproject
-            project_dict[subproject_name][epic_name].append(task)
-    
-    # Return the structured project dictionary
-    return project_dict
-
-def calculate_totals(project_dict):
-    total_mana_hours = 0
-    role_mana_hours = defaultdict(float)
-    subproject_totals = defaultdict(lambda: defaultdict(float))
-
-    # Iterate over the sub-projects and epics to sum the MANA hours
-    for sub_project, epics in project_dict.items():
-        subproject_mana_hours = 0
-        subproject_role_mana_hours = defaultdict(float)
+            # Append the task to the corresponding epic
+            epics_dict[epic_name].append(task)
         
-        for epic, tasks in epics.items():
-            for task in tasks:
-                task_hours = task.get('mana_hours', 0)
-                role = task.get('role', "Unknown")
-                
-                # Accumulate total MANA hours and hours by role
-                total_mana_hours += task_hours
-                role_mana_hours[role] += task_hours
-                
-                # Accumulate subproject-level totals
-                subproject_mana_hours += task_hours
-                subproject_role_mana_hours[role] += task_hours
+        # After collecting all tasks for the current sub-project, convert them into Epics
+        epics = [Epic(epic_name=epic_name, tasks=tasks) for epic_name, tasks in epics_dict.items()]
+        
+        # Create a sub-project
+        sub_project = SubProject(sub_project_name=subproject_name, epics=epics)
+        sub_projects.append(sub_project)
+    
+    # Return the Project instance
+    return Project(project_name="Saga Mana Project", sub_projects=sub_projects)
 
-        # Store totals for each subproject
-        subproject_totals[sub_project]['total_mana_hours'] = subproject_mana_hours
-        subproject_totals[sub_project]['role_mana_hours'] = subproject_role_mana_hours
+def calculate_totals(project: Project):
+    total_mana_hours = project.calculate_total_mana_hours()
+    role_mana_hours = project.total_mana_hours_per_role()
 
-    return total_mana_hours, role_mana_hours, subproject_totals
+    return total_mana_hours, role_mana_hours
 
-def save_project_to_json(project_dict, file_name='hackathon_proposal.json'):
+def save_project_to_json(project: Project, file_name='hackathon_mana_hours.json'):
+    file_path = os.path.join(PROPOSALS_DIR, file_name)
     try:
-        with open(file_name, 'w') as json_file:
-            json.dump(project_dict, json_file, indent=4)
-        print(f"Project data has been saved to {file_name}")
+        with open(file_path, 'w') as json_file:
+            json.dump(project.dict(), json_file, indent=4)
+        print(f"Project data has been saved to {file_path}")
     except Exception as e:
         print(f"Error saving project data to JSON: {e}")
 
 def main():
     file_name = "HACKATHON_PROPOSAL.xlsx"  # Replace with your actual file name
     json_file_name = "hackathon_proposal.json"  # JSON output file
-    if not os.path.exists(file_name):
-        print(f"Error: File '{file_name}' not found in the current directory.")
+    
+    excel_file_path = os.path.join(PROPOSALS_DIR, file_name)
+    
+    if not os.path.exists(excel_file_path):
+        print(f"Error: File '{file_name}' not found in the '{PROPOSALS_DIR}' directory.")
         return
 
     try:
-        project_dict = read_excel_to_project(file_name)
+        project = read_excel_to_project(excel_file_path)
     except Exception as e:
         print(f"Error processing the Excel file: {e}")
         return
 
     # Calculate and display total MANA hours and MANA hours per role
-    total_mana_hours, role_mana_hours, subproject_totals = calculate_totals(project_dict)
+    total_mana_hours, role_mana_hours = calculate_totals(project)
 
     print(f"\nTotal MANA Hours for the Project: {total_mana_hours}")
     print("\nTotal MANA Hours per Role:")
     for role, hours in role_mana_hours.items():
         print(f"  {role}: {hours}")
 
-    # Output the totals by subproject
-    print("\nTotal MANA Hours per Subproject:")
-    for sub_project, totals in subproject_totals.items():
-        print(f"\nSub-Project: {sub_project}")
-        print(f"  Total MANA Hours: {totals['total_mana_hours']}")
-        print(f"  MANA Hours per Role:")
-        for role, hours in totals['role_mana_hours'].items():
-            print(f"    {role}: {hours}")
-
     # Save the project to a JSON file
-    save_project_to_json(project_dict, json_file_name)
-
+    save_project_to_json(project, json_file_name)
 
 
 if __name__ == "__main__":
