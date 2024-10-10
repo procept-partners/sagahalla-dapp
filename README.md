@@ -1,4 +1,3 @@
-
 # Saga Mana Dapp - Setup Guide
 
 This guide will help you set up the **Saga Mana Dapp** project on your local machine.
@@ -21,25 +20,12 @@ cd saga-mana-dapp
 
 ## 2. Set File Permissions (Important for Multi-Dev Environment)
 
-Ensure proper file permissions for all developers working on the project. This step makes sure that all files are writable by the group on shared systems.
+Ensure proper file permissions for all developers working on the project. This step makes sure that all files are writable.
 
 Run the following command in the project directory to make all files and directories group-writable:
 
 ```bash
 chmod -R g+w ./backend ./frontend
-```
-
-If necessary, ensure your user is part of the `node` group:
-
-```bash
-sudo groupadd node  # Create the group if it doesn't exist
-sudo usermod -aG node $(whoami)  # Add your user to the group
-```
-
-Then change the ownership of the directories:
-
-```bash
-sudo chown -R :node ./frontend
 ```
 
 ## 3. Build and Run the Project with Docker
@@ -53,7 +39,6 @@ docker-compose up --build
 This command will:
 - Build the Docker images for both the backend and frontend.
 - Run the containers, with the backend available at `http://localhost:8000` and the frontend at `http://localhost:3000`.
-
 
 ### Useful Commands:
 

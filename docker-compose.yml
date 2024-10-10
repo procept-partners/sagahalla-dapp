@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   # Backend service
-  app:
+  backend:  # Changed from 'app' to 'backend'
     build:
-      context: ./backend  # Backend Dockerfile location
+      context: ./backend  # This context should contain the Dockerfile for the backend
     volumes:
       - ./backend:/backend  # Mounts the backend directory into the container
     ports:
@@ -20,13 +20,13 @@ services:
   # Frontend service
   frontend:
     build:
-      context: ./frontend  # Frontend Dockerfile location
+      context: ./frontend  # This context should contain the Dockerfile and all necessary frontend files
     volumes:
       - ./frontend:/frontend  # Mounts the frontend directory into the container
     ports:
       - "3000:3000"  # Expose port 3000 for the frontend app
     environment:
-      - REACT_APP_API_URL=http://app:8000  # The backend service name (app) is used as a hostname
+      - REACT_APP_API_URL=http://backend:8000  # Updated to use the new service name 'backend'
     command: ["npm", "run", "dev"]  # Use the development command for hot reloading
     user: "root"  # Run as root user
     networks:
@@ -35,4 +35,3 @@ services:
 networks:
   app-network:
     driver: bridge  # Default network driver
-
