@@ -1,0 +1,17 @@
+{
+    "weighted_global_average_rates": {
+      "blockchain_developer": 42.75,
+      "backend_developer": 36.03,
+      "frontend_developer": 32.75,
+      "project_manager": 40.92,
+      "content_creator": 22.41
+    },
+    "role_multipliers": {
+      "blockchain_developer": 1.21,
+      "backend_developer": 0.85,
+      "frontend_developer": 0.77,
+      "project_manager": 0.96,
+      "content_creator": 0.53
+    }
+  }
+  

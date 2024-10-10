@@ -91,8 +91,10 @@ def process_all_dev_reports(dev_reports_folder: str, output_folder: str):
 
     # Create the output folder if it doesn't exist
     if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
+        os.makedirs(output_folder, exist_ok=True)
 
+    combined_report = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
+    
     # Iterate over all Excel files in the dev_reports folder
     for file_name in os.listdir(dev_reports_folder):
         if file_name.endswith('.xlsx'):
@@ -106,18 +108,33 @@ def process_all_dev_reports(dev_reports_folder: str, output_folder: str):
                 print(f"Error processing file '{file_name}': {e}")
                 continue
 
-            # Output the developer's report as a JSON file
+            # Merge the developer's report into the combined report
+            for dev, subprojects in dev_report.items():
+                for subproject, epics in subprojects.items():
+                    for epic, tasks in epics.items():
+                        combined_report[dev][subproject][epic].extend(tasks)
+            
+            # Output the developer's individual report as a JSON file
             output_file = os.path.join(output_folder, f'{dev_name}_report.json')
             with open(output_file, 'w') as f:
                 json.dump(dev_report, f, indent=4)
-
             print(f"Developer report for '{dev_name}' saved to {output_file}")
+
+    return combined_report
+
+def save_combined_report(combined_report, output_path: str):
+    # Save the combined report as a JSON file
+    with open(output_path, 'w') as f:
+        json.dump(combined_report, f, indent=4)
+    print(f"Combined report saved to {output_path}")
 
 def main():
     dev_reports_folder = "backend/hackathon_proposals/dev_reports"  # Folder containing all the dev reports
-    output_folder = "backend/hackathon_proposals/output_reports"  # Folder to save the JSON reports
+    output_folder = "backend/hackathon_proposals/output_reports"  # Folder to save the individual and combined JSON reports
+    combined_report_file = os.path.join(output_folder, "combined_report.json")  # Path to save the combined report
 
-    process_all_dev_reports(dev_reports_folder, output_folder)
+    combined_report = process_all_dev_reports(dev_reports_folder, output_folder)
+    save_combined_report(combined_report, combined_report_file)
 
 if __name__ == "__main__":
     main()

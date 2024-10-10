@@ -75,6 +75,22 @@ class Project(BaseModel):
                     role_hours[role] = hours
         return role_hours
 
+    def calculate_project_budget(self, global_avg_rates: Dict[str, float]) -> float:
+        """Calculate total project budget in USD using global average hourly rates."""
+        total_budget = 0.0
+        # Get total MANA hours per role
+        role_hours = self.total_mana_hours_per_role()
+        
+        # Calculate cost per role using the global average rates
+        for role, hours in role_hours.items():
+            if role in global_avg_rates:
+                rate = global_avg_rates[role]
+                total_budget += hours * rate
+            else:
+                print(f"Warning: No rate available for role {role}")
+        
+        return total_budget
+
 
 # Placeholder for ManaAlgoInput (this part may need further integration)
 class ManaAlgoInput(BaseModel):

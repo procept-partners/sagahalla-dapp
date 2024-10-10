@@ -2,33 +2,32 @@ version: '3.8'
 
 services:
   # Backend service
-  backend:  # Changed from 'app' to 'backend'
+  backend:
     build:
-      context: ./backend  # This context should contain the Dockerfile for the backend
+      context: ./backend  # Dockerfile for the backend
     volumes:
-      - ./backend:/backend  # Mounts the backend directory into the container
+      - ./backend:/backend  # Bind mount the backend directory for live reloading
     ports:
       - "8000:8000"  # Expose port 8000 for the backend API
     environment:
       - PYTHONPATH=/backend
-      - CORS_ALLOWED_ORIGINS=http://frontend:3000  # Allow frontend to access the backend
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000  # Allow frontend to access the backend
     command: ["python", "/backend/main.py"]  # Start the backend application
-    user: "root"  # Run the container as root
     networks:
       - app-network
 
   # Frontend service
   frontend:
     build:
-      context: ./frontend  # This context should contain the Dockerfile and all necessary frontend files
+      context: ./frontend  # Dockerfile for the frontend
     volumes:
-      - ./frontend:/frontend  # Mounts the frontend directory into the container
+      - ./frontend:/frontend  # Bind mount the frontend directory for live reloading
+      - /frontend/node_modules  # Exclude node_modules from being bind mounted
     ports:
       - "3000:3000"  # Expose port 3000 for the frontend app
     environment:
-      - REACT_APP_API_URL=http://backend:8000  # Updated to use the new service name 'backend'
-    command: ["npm", "run", "dev"]  # Use the development command for hot reloading
-    user: "root"  # Run as root user
+      - REACT_APP_API_URL=http://backend:8000  # Use the backend service name
+    command: ["npm", "run", "dev"]  # Run in development mode with live reloading
     networks:
       - app-network
 
