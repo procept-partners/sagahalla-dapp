@@ -92,6 +92,7 @@ class Project(BaseModel):
         return total_budget
 
 
+
 # Placeholder for ManaAlgoInput (this part may need further integration)
 class ManaAlgoInput(BaseModel):
     role: str

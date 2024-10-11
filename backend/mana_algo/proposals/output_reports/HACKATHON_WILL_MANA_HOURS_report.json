@@ -1,75 +1,104 @@
 {
-    "HACKATHON_WILL_MANA_HOURS": {
-        "Token Contracts": {
-            "FYRE": [
+    "developer_name": "HACKATHON_WILL_MANA_HOURS",
+    "project_name": "Saga Mana Project",
+    "sub_projects": [
+        {
+            "sub_project_name": "Token Contracts",
+            "epics": [
                 {
-                    "task_name": "Implement ERC-20 Token Contract for FYRE",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 8
+                    "epic_name": "FYRE",
+                    "tasks": [
+                        {
+                            "task_name": "- Implement ERC-20 Token Contract for FYRE",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8
+                            }
+                        },
+                        {
+                            "task_name": "- Add Minting, Burning, and Transferring Functions",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6
+                            }
+                        },
+                        {
+                            "task_name": "- Test Standard Token Operations",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6
+                            }
+                        },
+                        {
+                            "task_name": "- Develop FYRE Conversion Functions for SHLD Purchase",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12
+                            }
+                        },
+                        {
+                            "task_name": "- Implement FYRE to MANA Conversion Mechanism",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10
+                            }
+                        },
+                        {
+                            "task_name": "- Define and Code Governance Rules for FYRE Usage",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8
+                            }
+                        },
+                        {
+                            "task_name": "- User Interface Development for Conversion Processes",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12
+                            }
+                        },
+                        {
+                            "task_name": "- Testing and Security Review",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8
+                            }
+                        }
+                    ]
                 },
                 {
-                    "task_name": "Add Minting, Burning, and Transferring Functions",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 6
-                },
-                {
-                    "task_name": "Test Standard Token Operations",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 6
-                },
-                {
-                    "task_name": "Develop FYRE Conversion Functions for SHLD Purchase",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 12
-                },
-                {
-                    "task_name": "Implement FYRE to MANA Conversion Mechanism",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 10
-                },
-                {
-                    "task_name": "Define and Code Governance Rules for FYRE Usage",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 8
-                },
-                {
-                    "task_name": "User Interface Development for Conversion Processes",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 12
-                },
-                {
-                    "task_name": "Testing and Security Review",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 8
-                }
-            ],
-            "MANA": [
-                {
-                    "task_name": "Implement ERC-20 Token Contract for MANA",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 8.0
-                },
-                {
-                    "task_name": "Develop Contribution Mechanism",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 10.0
-                },
-                {
-                    "task_name": "Transition from ERC-20 to ERC-1400 upon Contribution",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 12.0
-                },
-                {
-                    "task_name": "Test ERC-20 to ERC-1400 Transition Workflow",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 8.0
-                },
-                {
-                    "task_name": "Develop ERC-1400 Contract for MANA",
-                    "role": "Blockchain Developer",
-                    "budgeted_hours": 12.0
+                    "epic_name": "MANA",
+                    "tasks": [
+                        {
+                            "task_name": "- Implement ERC-20 Token Contract for MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "- Develop Contribution Mechanism",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "- Transition from ERC-20 to ERC-1400 upon Contribution",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "- Test ERC-20 to ERC-1400 Transition Workflow",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "- Develop ERC-1400 Contract for MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        }
+                    ]
                 }
             ]
         }
+    ],
+    "totals": {
+        "total_budgeted_hours": 120.0,
+        "total_budget_usd": 6207.299999999999,
+        "total_budget_mana": 18809.999999999996
     }
 }

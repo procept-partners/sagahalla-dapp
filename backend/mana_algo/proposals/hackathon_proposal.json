@@ -811,15 +811,15 @@
         }
     ],
     "budget": {
-        "total_budget_usd": 34336.5956,
-        "total_budget_mana": 104050.28969696969,
+        "total_budget_usd": 35761.8716,
+        "total_budget_mana": 108369.30787878786,
         "budget_window_usd": {
-            "lower_bound": 29186.10626,
-            "upper_bound": 39487.08494
+            "lower_bound": 30397.590859999997,
+            "upper_bound": 41126.15233999999
         },
         "budget_window_mana": {
-            "lower_bound": 88442.74624242423,
-            "upper_bound": 119657.83315151514
+            "lower_bound": 92113.91169696968,
+            "upper_bound": 124624.70406060603
         }
     }
 }
