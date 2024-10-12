@@ -10,57 +10,75 @@
                         "epic_name": "SHLD",
                         "tasks": [
                             {
-                                "task_name": "- Develop ERC-721 Contract for Non-Transferable SHLD",
+                                "task_name": "Develop ERC-721 Contract for Non-Transferable SHLD",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 10
+                                    "budgeted": 10,
+                                    "actual": 10
                                 }
                             },
                             {
-                                "task_name": "- On-Chain Metadata Storage",
+                                "task_name": "On-Chain Metadata Storage",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8
+                                    "budgeted": 8,
+                                    "actual": 8
                                 }
                             },
                             {
-                                "task_name": "- Testing Non-Transferable NFT Features",
+                                "task_name": "Testing Non-Transferable NFT Features",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 6
+                                    "budgeted": 6,
+                                    "actual": 6
                                 }
                             },
                             {
-                                "task_name": "- Develop Governance Voting Smart Contracts",
+                                "task_name": "Develop Governance Voting Smart Contracts",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 12
+                                    "budgeted": 12,
+                                    "actual": 12
                                 }
                             },
                             {
-                                "task_name": "- Integrate SHLD Voting into Governance",
+                                "task_name": "Integrate SHLD Voting into Governance",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 10
+                                    "budgeted": 10,
+                                    "actual": 10
                                 }
                             },
                             {
-                                "task_name": "- Testing Governance Voting Mechanism",
+                                "task_name": "Testing Governance Voting Mechanism",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8
+                                    "budgeted": 8,
+                                    "actual": 8
                                 }
                             },
                             {
-                                "task_name": "- Develop Project Contribution Voting Contracts",
+                                "task_name": "Develop Project Contribution Voting Contracts",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 12
+                                    "budgeted": 12,
+                                    "actual": 12
                                 }
                             },
                             {
-                                "task_name": "- Integrate Voting with Project Budgets",
+                                "task_name": "Integrate Voting with Project Budgets",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 10
+                                    "budgeted": 10,
+                                    "actual": 10
                                 }
                             },
                             {
-                                "task_name": "- Testing Project Voting and Budget Approval",
+                                "task_name": "Testing Project Voting and Budget Approval",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8
+                                    "budgeted": 8,
+                                    "actual": 8
                                 }
                             }
                         ]
@@ -75,44 +93,58 @@
                         "tasks": [
                             {
                                 "task_name": "Implement voting on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Record proposals on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Store report on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Record MANA allocations on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Record project voting on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Record conversion on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Log final project hours on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             }
                         ]
@@ -122,8 +154,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 114.0,
+            "total_actual_hours": 114.0,
             "total_budget_usd": 4873.5,
-            "total_budget_mana": 14768.181818181818
+            "total_actual_usd": 4873.5,
+            "total_budget_mana": 14768.181818181818,
+            "total_actual_mana": 14768.181818181818
         }
     },
     "HACKATHON_ZEAK_MANA_HOURS": {
@@ -138,8 +173,10 @@
                         "tasks": [
                             {
                                 "task_name": "Add UI/UX elements",
+                                "role": "Content Developer",
                                 "roles_mana_hours": {
-                                    "Content Developer": 40.0
+                                    "budgeted": 40.0,
+                                    "actual": 40.0
                                 }
                             }
                         ]
@@ -149,8 +186,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 40.0,
+            "total_actual_hours": 40.0,
             "total_budget_usd": 896.4,
-            "total_budget_mana": 2716.363636363636
+            "total_actual_usd": 896.4,
+            "total_budget_mana": 2716.363636363636,
+            "total_actual_mana": 2716.363636363636
         }
     },
     "HACKATHON_VARUN_MANA_HOURS": {
@@ -164,39 +204,51 @@
                         "epic_name": "MANA",
                         "tasks": [
                             {
-                                "task_name": "- Implement Divisibility and Partition Features",
+                                "task_name": "Implement Divisibility and Partition Features",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
-                                "task_name": "- Test ERC-1400 Token Functionality",
+                                "task_name": "Test ERC-1400 Token Functionality",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 14.0
+                                    "budgeted": 14.0,
+                                    "actual": 14.0
                                 }
                             },
                             {
-                                "task_name": "- Develop Voting Smart Contracts for MANA",
+                                "task_name": "Develop Voting Smart Contracts for MANA",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 16.0
+                                    "budgeted": 16.0,
+                                    "actual": 16.0
                                 }
                             },
                             {
-                                "task_name": "- Integrate MANA Voting into Cooperative Governance",
+                                "task_name": "Integrate MANA Voting into Cooperative Governance",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
-                                "task_name": "- Project Allocation Voting with MANA",
+                                "task_name": "Project Allocation Voting with MANA",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
-                                "task_name": "- Test Governance and Project Voting",
+                                "task_name": "Test Governance and Project Voting",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 12.0
+                                    "budgeted": 12.0,
+                                    "actual": 12.0
                                 }
                             }
                         ]
@@ -211,26 +263,34 @@
                         "tasks": [
                             {
                                 "task_name": "Record proof of work (hours logged) on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Log final MANA allocation on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Store final report on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Record final tracked hours on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             }
                         ]
@@ -240,62 +300,82 @@
                         "tasks": [
                             {
                                 "task_name": "Record final allocation on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Log final multiplier values on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Record logged hours on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Log MANA per hour on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Store peer voting results on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Record confidence intervals on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Log pay rate modifications on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Log stakeholder evaluations on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Store feedback on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Log final scaling on-chain",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             }
                         ]
@@ -305,8 +385,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 112.0,
+            "total_actual_hours": 112.0,
             "total_budget_usd": 4788.0,
-            "total_budget_mana": 14509.090909090908
+            "total_actual_usd": 4788.0,
+            "total_budget_mana": 14509.090909090908,
+            "total_actual_mana": 14509.090909090908
         }
     },
     "HACKATHON_VANESSA_DEV_MANA_HOURS": {
@@ -321,20 +404,26 @@
                         "tasks": [
                             {
                                 "task_name": "Implement basic input fields",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Implement dashboard",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Create front-end display",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             }
                         ]
@@ -344,38 +433,50 @@
                         "tasks": [
                             {
                                 "task_name": "Implement voting UI",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Create proposal submission form",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Create display for MANA allocations",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Implement project governance UI",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Implement conversion UI",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Create results dashboard",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             }
                         ]
@@ -385,62 +486,82 @@
                         "tasks": [
                             {
                                 "task_name": "Connect Wallet",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Create FYRE Purchase Interface",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 12.0
+                                    "budgeted": 12.0,
+                                    "actual": 12.0
                                 }
                             },
                             {
                                 "task_name": "Create SHLD Purchase Interface",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
                                 "task_name": "AI-Generated Customization for SHLD NFTs",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 12.0
+                                    "budgeted": 12.0,
+                                    "actual": 12.0
                                 }
                             },
                             {
                                 "task_name": "Create MANA Contribution Interface",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Create MANA-to-FYRE Conversion Interface",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Create Collateralization Interface for MANA",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Integrate Frontend Wallet and Purchase Logic",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Overall Integration Testing",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Test and Finalize Backend APIs",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             }
                         ]
@@ -450,8 +571,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 114.0,
+            "total_actual_hours": 114.0,
             "total_budget_usd": 3733.5,
-            "total_budget_mana": 11313.636363636364
+            "total_actual_usd": 3733.5,
+            "total_budget_mana": 11313.636363636364,
+            "total_actual_mana": 11313.636363636364
         }
     },
     "HACKATHON_SHAWN_MANA_HOURS": {
@@ -466,62 +590,82 @@
                         "tasks": [
                             {
                                 "task_name": "Define total MANA allocation",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Calculate the weighted average pay rate",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Set up hour tracking",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Calculate MANA per hour",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Set up peer voting system",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 12.0
+                                    "budgeted": 12.0,
+                                    "actual": 12.0
                                 }
                             },
                             {
                                 "task_name": "Set up confidence intervals",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Apply pay rate modifier",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Create stakeholder evaluation rubric",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
                                 "task_name": "Develop feedback system",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Apply final scaling",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             }
                         ]
@@ -531,26 +675,34 @@
                         "tasks": [
                             {
                                 "task_name": "Test voting mechanism",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Review submissions",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Finalize report",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Ensure accuracy of MANA allocations",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             }
                         ]
@@ -560,8 +712,10 @@
                         "tasks": [
                             {
                                 "task_name": "Overall Integration Testing",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             }
                         ]
@@ -576,26 +730,34 @@
                         "tasks": [
                             {
                                 "task_name": "Create plans for FYRE, SHLD, MANA",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 30
+                                    "budgeted": 30,
+                                    "actual": 30
                                 }
                             },
                             {
                                 "task_name": "Create plan for mana effort tracking and governance system",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 20
+                                    "budgeted": 20,
+                                    "actual": 20
                                 }
                             },
                             {
                                 "task_name": "Create Algorithm for mana hours to mana conversions",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 10
+                                    "budgeted": 10,
+                                    "actual": 10
                                 }
                             },
                             {
                                 "task_name": "Create plan for mana hours to mana conversion",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 10
+                                    "budgeted": 10,
+                                    "actual": 10
                                 }
                             }
                         ]
@@ -605,20 +767,26 @@
                         "tasks": [
                             {
                                 "task_name": "Create backend template for MANA Dapp",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 20
+                                    "budgeted": 20,
+                                    "actual": 20
                                 }
                             },
                             {
                                 "task_name": "Create backend template for Vicotry Dapp",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 20
+                                    "budgeted": 20,
+                                    "actual": 20
                                 }
                             },
                             {
                                 "task_name": "Deploy Taiga on Server",
+                                "role": "Project Manager",
                                 "roles_mana_hours": {
-                                    "Project Manager": 40
+                                    "budgeted": 40,
+                                    "actual": 40
                                 }
                             }
                         ]
@@ -628,20 +796,26 @@
                         "tasks": [
                             {
                                 "task_name": "Create website template",
+                                "role": "Content Developer",
                                 "roles_mana_hours": {
-                                    "Content Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
                                 "task_name": "Create Victory Dapp Templates",
+                                "role": "Content Developer",
                                 "roles_mana_hours": {
-                                    "Content Developer": 20.0
+                                    "budgeted": 20.0,
+                                    "actual": 20.0
                                 }
                             },
                             {
                                 "task_name": "Create Mana DApp Templates",
+                                "role": "Content Developer",
                                 "roles_mana_hours": {
-                                    "Content Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             }
                         ]
@@ -651,8 +825,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 276.0,
+            "total_actual_hours": 276.0,
             "total_budget_usd": 10221.0,
-            "total_budget_mana": 30972.727272727272
+            "total_actual_usd": 10221.0,
+            "total_budget_mana": 30972.727272727272,
+            "total_actual_mana": 30972.727272727272
         }
     },
     "HACKATHON_MICHAEL_MANA_HOURS": {
@@ -667,62 +844,82 @@
                         "tasks": [
                             {
                                 "task_name": "Implement basic input fields",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Store logged hours in a secure database",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Ensure logged hours exported",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Implement dashboard",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Fetch data from the project manager's MANA sheet",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Develop report generation feature",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Display discrepancies",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Export report as spreadsheet/PDF",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Create front-end display",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 2.0
+                                    "budgeted": 2.0,
+                                    "actual": 2.0
                                 }
                             },
                             {
                                 "task_name": "Compare tracked hours with allocated MANA",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             }
                         ]
@@ -732,50 +929,66 @@
                         "tasks": [
                             {
                                 "task_name": "Display Token Prices and Supply Stats",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Check FYRE Balance",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Setup MANA Contribution API",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Setup Conversion Logic and API",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
                                 "task_name": "Manage Collateralization Logic and API",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
                                 "task_name": "Test and Finalize Backend APIs",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Test and Finalize Backend APIs",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
                                 "task_name": "Overall Integration Testing",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             }
                         ]
@@ -785,8 +998,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 99.0,
+            "total_actual_hours": 99.0,
             "total_budget_usd": 3544.01,
-            "total_budget_mana": 10739.424242424242
+            "total_actual_usd": 3544.01,
+            "total_budget_mana": 10739.424242424242,
+            "total_actual_mana": 10739.424242424242
         }
     },
     "HACKATHON_DAVID_MANA_HOURS": {
@@ -801,8 +1017,10 @@
                         "tasks": [
                             {
                                 "task_name": "Create website content",
+                                "role": "Content Developer",
                                 "roles_mana_hours": {
-                                    "Content Developer": 40.0
+                                    "budgeted": 40.0,
+                                    "actual": 40.0
                                 }
                             }
                         ]
@@ -812,8 +1030,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 40.0,
+            "total_actual_hours": 40.0,
             "total_budget_usd": 896.4,
-            "total_budget_mana": 2716.363636363636
+            "total_actual_usd": 896.4,
+            "total_budget_mana": 2716.363636363636,
+            "total_actual_mana": 2716.363636363636
         }
     },
     "HACKATHON_WILL_MANA_HOURS": {
@@ -827,51 +1048,67 @@
                         "epic_name": "FYRE",
                         "tasks": [
                             {
-                                "task_name": "- Implement ERC-20 Token Contract for FYRE",
+                                "task_name": "Implement ERC-20 Token Contract for FYRE",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8
+                                    "budgeted": 8,
+                                    "actual": 8
                                 }
                             },
                             {
-                                "task_name": "- Add Minting, Burning, and Transferring Functions",
+                                "task_name": "Add Minting, Burning, and Transferring Functions",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 6
+                                    "budgeted": 6,
+                                    "actual": 6
                                 }
                             },
                             {
-                                "task_name": "- Test Standard Token Operations",
+                                "task_name": "Test Standard Token Operations",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 6
+                                    "budgeted": 6,
+                                    "actual": 6
                                 }
                             },
                             {
-                                "task_name": "- Develop FYRE Conversion Functions for SHLD Purchase",
+                                "task_name": "Develop FYRE Conversion Functions for SHLD Purchase",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 12
+                                    "budgeted": 12,
+                                    "actual": 12
                                 }
                             },
                             {
-                                "task_name": "- Implement FYRE to MANA Conversion Mechanism",
+                                "task_name": "Implement FYRE to MANA Conversion Mechanism",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 10
+                                    "budgeted": 10,
+                                    "actual": 10
                                 }
                             },
                             {
-                                "task_name": "- Define and Code Governance Rules for FYRE Usage",
+                                "task_name": "Define and Code Governance Rules for FYRE Usage",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8
+                                    "budgeted": 8,
+                                    "actual": 8
                                 }
                             },
                             {
-                                "task_name": "- User Interface Development for Conversion Processes",
+                                "task_name": "User Interface Development for Conversion Processes",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 12
+                                    "budgeted": 12,
+                                    "actual": 12
                                 }
                             },
                             {
-                                "task_name": "- Testing and Security Review",
+                                "task_name": "Testing and Security Review",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8
+                                    "budgeted": 8,
+                                    "actual": 8
                                 }
                             }
                         ]
@@ -880,33 +1117,43 @@
                         "epic_name": "MANA",
                         "tasks": [
                             {
-                                "task_name": "- Implement ERC-20 Token Contract for MANA",
+                                "task_name": "Implement ERC-20 Token Contract for MANA",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
-                                "task_name": "- Develop Contribution Mechanism",
+                                "task_name": "Develop Contribution Mechanism",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
-                                "task_name": "- Transition from ERC-20 to ERC-1400 upon Contribution",
+                                "task_name": "Transition from ERC-20 to ERC-1400 upon Contribution",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 12.0
+                                    "budgeted": 12.0,
+                                    "actual": 12.0
                                 }
                             },
                             {
-                                "task_name": "- Test ERC-20 to ERC-1400 Transition Workflow",
+                                "task_name": "Test ERC-20 to ERC-1400 Transition Workflow",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 8.0
+                                    "budgeted": 8.0,
+                                    "actual": 8.0
                                 }
                             },
                             {
-                                "task_name": "- Develop ERC-1400 Contract for MANA",
+                                "task_name": "Develop ERC-1400 Contract for MANA",
+                                "role": "Blockchain Developer",
                                 "roles_mana_hours": {
-                                    "Blockchain Developer": 12.0
+                                    "budgeted": 12.0,
+                                    "actual": 12.0
                                 }
                             }
                         ]
@@ -916,8 +1163,11 @@
         ],
         "totals": {
             "total_budgeted_hours": 120.0,
+            "total_actual_hours": 120.0,
             "total_budget_usd": 5130.0,
-            "total_budget_mana": 15545.454545454544
+            "total_actual_usd": 5130.0,
+            "total_budget_mana": 15545.454545454544,
+            "total_actual_mana": 15545.454545454544
         }
     },
     "HACKATHON_EMMANUEL_MANA_HOURS": {
@@ -932,86 +1182,114 @@
                         "tasks": [
                             {
                                 "task_name": "Implement voting UI",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Develop backend logic",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 10.0
+                                    "budgeted": 10.0,
+                                    "actual": 10.0
                                 }
                             },
                             {
                                 "task_name": "Create proposal submission form",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Store/retrieve proposals",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Develop report generation",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Export report",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Create display for MANA allocations",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Fetch MANA allocation data",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             },
                             {
                                 "task_name": "Implement project governance UI",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Backend logic for project voting",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Implement conversion UI",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Backend logic for conversion",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 6.0
+                                    "budgeted": 6.0,
+                                    "actual": 6.0
                                 }
                             },
                             {
                                 "task_name": "Create results dashboard",
+                                "role": "Frontend Developer",
                                 "roles_mana_hours": {
-                                    "Frontend Developer": 3.0
+                                    "budgeted": 3.0,
+                                    "actual": 3.0
                                 }
                             },
                             {
                                 "task_name": "Fetch MANA results",
+                                "role": "Backend Developer",
                                 "roles_mana_hours": {
-                                    "Backend Developer": 4.0
+                                    "budgeted": 4.0,
+                                    "actual": 4.0
                                 }
                             }
                         ]
@@ -1021,8 +1299,19 @@
         ],
         "totals": {
             "total_budgeted_hours": 65.0,
+            "total_actual_hours": 65.0,
             "total_budget_usd": 2279.63,
-            "total_budget_mana": 6907.969696969697
+            "total_actual_usd": 2279.63,
+            "total_budget_mana": 6907.969696969697,
+            "total_actual_mana": 6907.969696969697
         }
+    },
+    "totals": {
+        "total_combined_budgeted_hours": 980.0,
+        "total_combined_actual_hours": 980.0,
+        "total_combined_budget_usd": 36362.44,
+        "total_combined_actual_usd": 36362.44,
+        "total_combined_budget_mana": 110189.21212121213,
+        "total_combined_actual_mana": 110189.21212121213
     }
 }

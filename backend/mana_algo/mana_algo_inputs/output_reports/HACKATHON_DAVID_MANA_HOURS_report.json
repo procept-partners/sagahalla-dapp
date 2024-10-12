@@ -10,8 +10,10 @@
                     "tasks": [
                         {
                             "task_name": "Create website content",
+                            "role": "Content Developer",
                             "roles_mana_hours": {
-                                "Content Developer": 40.0
+                                "budgeted": 40.0,
+                                "actual": 40.0
                             }
                         }
                     ]
@@ -21,7 +23,10 @@
     ],
     "totals": {
         "total_budgeted_hours": 40.0,
+        "total_actual_hours": 40.0,
         "total_budget_usd": 896.4,
-        "total_budget_mana": 2716.363636363636
+        "total_actual_usd": 896.4,
+        "total_budget_mana": 2716.363636363636,
+        "total_actual_mana": 2716.363636363636
     }
 }

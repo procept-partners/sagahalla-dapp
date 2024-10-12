@@ -1,0 +1,114 @@
+{
+    "HACKATHON_AKASH_MANA_HOURS": {
+        "developer_name": "HACKATHON_AKASH_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 94080,
+            "SHLD": 1,
+            "MANA": 15000
+        },
+        "costs": {
+            "FYRE_cost": 37632.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 35700.0,
+            "FYRE Balance": 1797.0
+        }
+    },
+    "HACKATHON_VARUN_MANA_HOURS": {
+        "developer_name": "HACKATHON_VARUN_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 94080,
+            "SHLD": 1,
+            "MANA": 15000
+        },
+        "costs": {
+            "FYRE_cost": 37632.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 35700.0,
+            "FYRE Balance": 1797.0
+        }
+    },
+    "HACKATHON_VANESSA_DEV_MANA_HOURS": {
+        "developer_name": "HACKATHON_VANESSA_DEV_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 69090,
+            "SHLD": 1,
+            "MANA": 11000
+        },
+        "costs": {
+            "FYRE_cost": 27636.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 26180.0,
+            "FYRE Balance": 1321.0
+        }
+    },
+    "HACKATHON_SHAWN_MANA_HOURS": {
+        "developer_name": "HACKATHON_SHAWN_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 194040,
+            "SHLD": 1,
+            "MANA": 31000
+        },
+        "costs": {
+            "FYRE_cost": 77616.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 73780.0,
+            "FYRE Balance": 3701.0
+        }
+    },
+    "HACKATHON_MICHAEL_MANA_HOURS": {
+        "developer_name": "HACKATHON_MICHAEL_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 69090,
+            "SHLD": 1,
+            "MANA": 11000
+        },
+        "costs": {
+            "FYRE_cost": 27636.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 26180.0,
+            "FYRE Balance": 1321.0
+        }
+    },
+    "HACKATHON_DAVID_MANA_HOURS": {
+        "developer_name": "HACKATHON_DAVID_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 19110,
+            "SHLD": 1,
+            "MANA": 3000
+        },
+        "costs": {
+            "FYRE_cost": 7644.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 7140.0,
+            "FYRE Balance": 369.0
+        }
+    },
+    "HACKATHON_WILL_MANA_HOURS": {
+        "developer_name": "HACKATHON_WILL_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 100380,
+            "SHLD": 1,
+            "MANA": 16000
+        },
+        "costs": {
+            "FYRE_cost": 40152.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 38080.0,
+            "FYRE Balance": 1937.0
+        }
+    },
+    "HACKATHON_EMMANUEL_MANA_HOURS": {
+        "developer_name": "HACKATHON_EMMANUEL_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 44100,
+            "SHLD": 1,
+            "MANA": 7000
+        },
+        "costs": {
+            "FYRE_cost": 17640.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 16660.0,
+            "FYRE Balance": 845.0
+        }
+    }
+}

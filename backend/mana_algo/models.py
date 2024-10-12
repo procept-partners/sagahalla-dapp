@@ -74,7 +74,7 @@ class Project(BaseModel):
                     role_hours[role] = hours
         return role_hours
 
-    def calculate_project_budget(self, role_multipliers: Dict[str, float], global_avg_rates: Dict[str, float]) -> float:
+    def calculate_project_budget(self, global_avg_rates: Dict[str, float]) -> float:
         """Calculate total project budget in USD using global average hourly rates."""
         total_budget = 0.0
         # Get total MANA hours per role
@@ -84,8 +84,7 @@ class Project(BaseModel):
         for role, hours in role_hours.items():
             if role in global_avg_rates:
                 rate = global_avg_rates[role]
-                multiplier = role_multipliers.get(role, 1.0)  # Default multiplier is 1.0 if not found
-                total_budget += hours * rate * multiplier
+                total_budget += hours * rate
             else:
                 print(f"Warning: No rate available for role {role}")
         

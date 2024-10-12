@@ -1,5 +1,5 @@
 {
-    "developer_name": "HACKATHON_DAVID_MANA_HOURS",
+    "developer_name": "HACKATHON_ZEAK_MANA_HOURS",
     "project_name": "Saga Mana Project",
     "sub_projects": [
         {
@@ -9,9 +9,11 @@
                     "epic_name": "Content",
                     "tasks": [
                         {
-                            "task_name": "Create website content",
+                            "task_name": "Add UI/UX elements",
+                            "role": "Content Developer",
                             "roles_mana_hours": {
-                                "Content Developer": 40.0
+                                "budgeted": 40.0,
+                                "actual": 40.0
                             }
                         }
                     ]
@@ -21,7 +23,10 @@
     ],
     "totals": {
         "total_budgeted_hours": 40.0,
+        "total_actual_hours": 40.0,
         "total_budget_usd": 896.4,
-        "total_budget_mana": 2716.363636363636
+        "total_actual_usd": 896.4,
+        "total_budget_mana": 2716.363636363636,
+        "total_actual_mana": 2716.363636363636
     }
 }

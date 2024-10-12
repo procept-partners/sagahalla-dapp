@@ -10,86 +10,114 @@
                     "tasks": [
                         {
                             "task_name": "Implement voting UI",
+                            "role": "Frontend Developer",
                             "roles_mana_hours": {
-                                "Frontend Developer": 4.0
+                                "budgeted": 4.0,
+                                "actual": 4.0
                             }
                         },
                         {
                             "task_name": "Develop backend logic",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 10.0
+                                "budgeted": 10.0,
+                                "actual": 10.0
                             }
                         },
                         {
                             "task_name": "Create proposal submission form",
+                            "role": "Frontend Developer",
                             "roles_mana_hours": {
-                                "Frontend Developer": 3.0
+                                "budgeted": 3.0,
+                                "actual": 3.0
                             }
                         },
                         {
                             "task_name": "Store/retrieve proposals",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 6.0
+                                "budgeted": 6.0,
+                                "actual": 6.0
                             }
                         },
                         {
                             "task_name": "Develop report generation",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 6.0
+                                "budgeted": 6.0,
+                                "actual": 6.0
                             }
                         },
                         {
                             "task_name": "Export report",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 4.0
+                                "budgeted": 4.0,
+                                "actual": 4.0
                             }
                         },
                         {
                             "task_name": "Create display for MANA allocations",
+                            "role": "Frontend Developer",
                             "roles_mana_hours": {
-                                "Frontend Developer": 3.0
+                                "budgeted": 3.0,
+                                "actual": 3.0
                             }
                         },
                         {
                             "task_name": "Fetch MANA allocation data",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 4.0
+                                "budgeted": 4.0,
+                                "actual": 4.0
                             }
                         },
                         {
                             "task_name": "Implement project governance UI",
+                            "role": "Frontend Developer",
                             "roles_mana_hours": {
-                                "Frontend Developer": 3.0
+                                "budgeted": 3.0,
+                                "actual": 3.0
                             }
                         },
                         {
                             "task_name": "Backend logic for project voting",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 6.0
+                                "budgeted": 6.0,
+                                "actual": 6.0
                             }
                         },
                         {
                             "task_name": "Implement conversion UI",
+                            "role": "Frontend Developer",
                             "roles_mana_hours": {
-                                "Frontend Developer": 3.0
+                                "budgeted": 3.0,
+                                "actual": 3.0
                             }
                         },
                         {
                             "task_name": "Backend logic for conversion",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 6.0
+                                "budgeted": 6.0,
+                                "actual": 6.0
                             }
                         },
                         {
                             "task_name": "Create results dashboard",
+                            "role": "Frontend Developer",
                             "roles_mana_hours": {
-                                "Frontend Developer": 3.0
+                                "budgeted": 3.0,
+                                "actual": 3.0
                             }
                         },
                         {
                             "task_name": "Fetch MANA results",
+                            "role": "Backend Developer",
                             "roles_mana_hours": {
-                                "Backend Developer": 4.0
+                                "budgeted": 4.0,
+                                "actual": 4.0
                             }
                         }
                     ]
@@ -99,7 +127,10 @@
     ],
     "totals": {
         "total_budgeted_hours": 65.0,
+        "total_actual_hours": 65.0,
         "total_budget_usd": 2279.63,
-        "total_budget_mana": 6907.969696969697
+        "total_actual_usd": 2279.63,
+        "total_budget_mana": 6907.969696969697,
+        "total_actual_mana": 6907.969696969697
     }
 }

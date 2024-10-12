@@ -33,7 +33,6 @@ if not role_multiplier_data:
     raise FileNotFoundError(f"Role multipliers file not found or empty at {role_multipliers_path}")
 
 global_avg_rates = role_multiplier_data["weighted_global_average_rates"]
-role_multipliers = role_multiplier_data["role_multipliers"]
 
 # Load mana_founder_conversion from the JSON file
 mana_founder_conversion = role_multiplier_data.get("mana_founder_conversion", 1)
@@ -107,7 +106,7 @@ def read_excel_to_dev_report(file_path: str, developer_name: str, project_name: 
     return dev_report_dict
 
 # Function to calculate totals for each developer's report
-def calculate_dev_report_totals(dev_report: dict, role_multipliers: Dict[str, float], global_avg_rates: Dict[str, float], mana_founder_conversion: float) -> dict:
+def calculate_dev_report_totals(dev_report: dict, global_avg_rates: Dict[str, float], mana_founder_conversion: float) -> dict:
     total_budgeted_hours = 0
     total_budget_usd = 0
     
@@ -119,8 +118,7 @@ def calculate_dev_report_totals(dev_report: dict, role_multipliers: Dict[str, fl
                 for role, hours in roles_mana_hours.items():
                     total_budgeted_hours += hours
                     rate = global_avg_rates.get(role, 0)
-                    multiplier = role_multipliers.get(role, 1)
-                    total_budget_usd += hours * rate * multiplier
+                    total_budget_usd += hours * rate
 
     # Calculate total budget in MANA
     total_budget_mana = total_budget_usd / mana_founder_conversion
@@ -165,7 +163,7 @@ def process_all_dev_reports(dev_reports_folder: str, output_folder: str, project
             try:
                 dev_report = read_excel_to_dev_report(file_path, dev_name, project_name)
                 # Calculate totals and append to the report
-                dev_report_with_totals = calculate_dev_report_totals(dev_report, role_multipliers, global_avg_rates, mana_founder_conversion)
+                dev_report_with_totals = calculate_dev_report_totals(dev_report, global_avg_rates, mana_founder_conversion)
             except Exception as e:
                 print(f"Error processing file '{file_name}': {e}")
                 continue

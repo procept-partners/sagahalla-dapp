@@ -1,5 +1,5 @@
 {
-    "developer_name": "HACKATHON_DAVID_MANA_HOURS",
+    "developer_name": "HACKATHON_ZEAK_MANA_HOURS",
     "project_name": "Saga Mana Project",
     "sub_projects": [
         {
@@ -9,7 +9,7 @@
                     "epic_name": "Content",
                     "tasks": [
                         {
-                            "task_name": "Create website content",
+                            "task_name": "Add UI/UX elements",
                             "roles_mana_hours": {
                                 "Content Developer": 40.0
                             }
