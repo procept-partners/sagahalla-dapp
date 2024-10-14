@@ -13,6 +13,20 @@
             "FYRE Balance": 1797.0
         }
     },
+    "HACKATHON_ZEAK_MANA_HOURS": {
+        "developer_name": "HACKATHON_ZEAK_MANA_HOURS",
+        "required_tokens": {
+            "FYRE": 19110,
+            "SHLD": 1,
+            "MANA": 3000
+        },
+        "costs": {
+            "FYRE_cost": 7644.0,
+            "SHLD_cost": 135,
+            "MANA_cost": 7140.0,
+            "FYRE Balance": 369.0
+        }
+    },
     "HACKATHON_VARUN_MANA_HOURS": {
         "developer_name": "HACKATHON_VARUN_MANA_HOURS",
         "required_tokens": {

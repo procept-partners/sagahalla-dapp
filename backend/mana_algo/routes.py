@@ -4,10 +4,10 @@ from mana_algo.models import ManaAlgoInput
 
 router = APIRouter()
 
-#@router.post("/mana-algo/predict")
+##@router.post("/mana-algo/predict")
 #async def predict_mana_value_route(data: ManaAlgoInput):
 #    return predict_mana_value(data)
 
-@router.post("/mana-algo/peer_vote")
+#@router.post("/mana-algo/peer_vote")
 #async def hackaton_peer_vote(data: Peer_Vote):
 #    return hack(data)
