@@ -1,36 +1,36 @@
 version: '3.8'
 
 services:
-  # Backend service
-  backend:
+  # FastAPI Backend service for both app and mana_gov
+  backend_fastapi:
     build:
-      context: ./backend  # Dockerfile for the backend
+      context: ./backend  # Dockerfile for the FastAPI backend
     volumes:
-      - ./backend:/backend  # Bind mount the backend directory for live reloading
+      - ./backend:/backend  # Bind mount the backend directory
     ports:
-      - "8000:8000"  # Expose port 8000 for the backend API
+      - "8001:8000"  # Expose port 8001 for the FastAPI backend
     environment:
       - PYTHONPATH=/backend
-      - CORS_ALLOWED_ORIGINS=http://localhost:3000  # Allow frontend to access the backend
-    command: ["python", "/backend/main.py"]  # Start the backend application
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]  # Start FastAPI for app and mana_gov
     networks:
       - app-network
 
-  # Frontend service
-  frontend:
+  # Frontend Node.js service (Next.js and blockchain interactions)
+  frontend_nodejs:
     build:
-      context: ./frontend  # Dockerfile for the frontend
+      context: ./frontend  # Dockerfile for the frontend with blockchain interactions
     volumes:
-      - ./frontend:/frontend  # Bind mount the frontend directory for live reloading
-      - /frontend/node_modules  # Exclude node_modules from being bind mounted
+      - ./frontend:/frontend  # Bind mount the frontend directory
+      - /frontend/node_modules:/frontend/node_modules  # Exclude node_modules from being bind mounted
     ports:
       - "3000:3000"  # Expose port 3000 for the frontend app
     environment:
-      - REACT_APP_API_URL=http://backend:8000  # Use the backend service name
-    command: ["npm", "run", "dev"]  # Run in development mode with live reloading
+      - REACT_APP_API_URL_FASTAPI=http://backend_fastapi:8001  # FastAPI backend service
+    command: ["npm", "run", "dev"]  # Run Next.js frontend in development mode with live reloading
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge  # Default network driver
+

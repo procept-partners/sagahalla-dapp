@@ -1,5 +1,5 @@
 # Use the official Python image as a parent image
-FROM python:3.11
+FROM python:3.11-slim
 
 # Set the working directory
 WORKDIR /backend
@@ -22,5 +22,9 @@ COPY . /backend/
 # Set environment variables
 ENV PYTHONPATH=/backend
 
-# Run the application
-CMD ["python", "/backend/main.py"]
+# Expose port 8000 (for FastAPI app)
+EXPOSE 8000
+
+# Run the FastAPI application with Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+

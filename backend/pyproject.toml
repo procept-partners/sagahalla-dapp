@@ -1,9 +1,8 @@
-[tool]
 [tool.poetry]
 name = "app"
 version = "0.1.0"
 description = ""
-authors = [ "Marcus Schiesser <mail@marcusschiesser.de>" ]
+authors = [ "Shawn Knopp <admin@sagahalla.io>" ]
 readme = "README.md"
 
 [tool.poetry.scripts]
@@ -11,22 +10,24 @@ generate = "app.engine.generate:generate_datasource"
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
+
+# Updated dependencies
+fastapi = "^0.115.0"  # Upgraded FastAPI
+uvicorn = { extras = ["standard"], version = "^0.31.0" }  # Upgraded Uvicorn
+
+# Missing dependencies added
+databases = "^0.9.0"  # Asynchronous database management
+
+# Your existing dependencies
 llama-index-agent-openai = ">=0.3.0,<0.4.0"
 llama-index = "0.11.11"
-fastapi = "^0.112.2"
 python-dotenv = "^1.0.0"
 cachetools = "^5.3.3"
 aiostream = "^0.5.2"
 llama-index-readers-web = "^0.2.2"
 openpyxl = "^3.1.5"
 pandas = "^2.2.3"
-
-[tool.poetry.dependencies.uvicorn]
-extras = [ "standard" ]
-version = "^0.23.2"
-
-[tool.poetry.dependencies.docx2txt]
-version = "^0.8"
+docx2txt = "^0.8"
 
 [build-system]
 requires = [ "poetry-core" ]
