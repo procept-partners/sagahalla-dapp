@@ -1,0 +1,162 @@
+{
+    "developer_name": "HACKATHON_AKASH_MANA_HOURS",
+    "project_name": "Saga Mana Project",
+    "sub_projects": [
+        {
+            "sub_project_name": "Token Contracts",
+            "epics": [
+                {
+                    "epic_name": "SHLD",
+                    "tasks": [
+                        {
+                            "task_name": "Develop ERC-721 Contract for Non-Transferable SHLD",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10,
+                                "actual": 10
+                            }
+                        },
+                        {
+                            "task_name": "On-Chain Metadata Storage",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8,
+                                "actual": 8
+                            }
+                        },
+                        {
+                            "task_name": "Testing Non-Transferable NFT Features",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 6,
+                                "actual": 6
+                            }
+                        },
+                        {
+                            "task_name": "Develop Governance Voting Smart Contracts",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 12,
+                                "actual": 12
+                            }
+                        },
+                        {
+                            "task_name": "Integrate SHLD Voting into Governance",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10,
+                                "actual": 10
+                            }
+                        },
+                        {
+                            "task_name": "Testing Governance Voting Mechanism",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8,
+                                "actual": 8
+                            }
+                        },
+                        {
+                            "task_name": "Develop Project Contribution Voting Contracts",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 12,
+                                "actual": 12
+                            }
+                        },
+                        {
+                            "task_name": "Integrate Voting with Project Budgets",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10,
+                                "actual": 10
+                            }
+                        },
+                        {
+                            "task_name": "Testing Project Voting and Budget Approval",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8,
+                                "actual": 8
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "epic_name": "MANA Governance",
+                    "tasks": [
+                        {
+                            "task_name": "Implement voting on-chain",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 6.0,
+                                "actual": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Record proposals on-chain",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Store report on-chain",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Record MANA allocations on-chain",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Record project voting on-chain",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Record conversion on-chain",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Log final project hours on-chain",
+                            "role": "Blockchain Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "totals": {
+        "total_budgeted_hours": 114.0,
+        "total_actual_hours": 114.0,
+        "total_budget_usd": 4873.5,
+        "total_actual_usd": 4873.5,
+        "total_budget_mana": 14768.181818181818,
+        "total_actual_mana": 14768.181818181818
+    }
+}
