@@ -1,0 +1,173 @@
+{
+    "developer_name": "HACKATHON_MICHAEL_MANA_HOURS",
+    "project_name": "Saga Mana Project",
+    "sub_projects": [
+        {
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "epic_name": "mana hour tracking",
+                    "tasks": [
+                        {
+                            "task_name": "Implement basic input fields",
+                            "role": "Frontend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 2.0,
+                                "actual": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Store logged hours in a secure database",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Ensure logged hours exported",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 2.0,
+                                "actual": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Implement dashboard",
+                            "role": "Frontend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 3.0,
+                                "actual": 3.0
+                            }
+                        },
+                        {
+                            "task_name": "Fetch data from the project manager's MANA sheet",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop report generation feature",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 6.0,
+                                "actual": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Display discrepancies",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Export report as spreadsheet/PDF",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 2.0,
+                                "actual": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Create front-end display",
+                            "role": "Frontend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 2.0,
+                                "actual": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Compare tracked hours with allocated MANA",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "epic_name": "VicTory Exchange",
+                    "tasks": [
+                        {
+                            "task_name": "Display Token Prices and Supply Stats",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8.0,
+                                "actual": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Check FYRE Balance",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 6.0,
+                                "actual": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Setup MANA Contribution API",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8.0,
+                                "actual": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Setup Conversion Logic and API",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10.0,
+                                "actual": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Manage Collateralization Logic and API",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10.0,
+                                "actual": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Test and Finalize Backend APIs",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8.0,
+                                "actual": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Test and Finalize Backend APIs",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8.0,
+                                "actual": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Overall Integration Testing",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8.0,
+                                "actual": 8.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "totals": {
+        "total_budgeted_hours": 99.0,
+        "total_actual_hours": 99.0,
+        "total_budget_usd": 3544.01,
+        "total_actual_usd": 3544.01,
+        "total_budget_mana": 10739.424242424242,
+        "total_actual_mana": 10739.424242424242
+    }
+}

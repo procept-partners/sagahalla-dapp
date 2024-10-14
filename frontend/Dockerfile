@@ -1,26 +1,21 @@
 # Frontend Dockerfile
-
-# Stage 1: Build the application
-FROM node:20 as build  
+FROM node:20
 
 WORKDIR /frontend
 
-# Install dependencies
-COPY package.json package-lock.* ./
-RUN npm install
+# Install dependencies first
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Copy the application source code and build the application
+# Copy the rest of the application code
 COPY . .
-RUN npm run build  
 
-# Stage 2: Serve the application
-FROM node:20 as release  
+# Ensure the next.js binary is executable
+RUN chmod +x /frontend/node_modules/.bin/next
 
-WORKDIR /frontend
+# Expose port 3000 for Next.js development server
+EXPOSE 3000
 
-# Copy the built application from the build stage
-COPY --from=build /frontend /frontend
-
-# Default command to start the frontend application
-CMD ["npm", "run", "dev"]  
+# Run the development server with live reloading
+CMD ["npm", "run", "dev"]
 

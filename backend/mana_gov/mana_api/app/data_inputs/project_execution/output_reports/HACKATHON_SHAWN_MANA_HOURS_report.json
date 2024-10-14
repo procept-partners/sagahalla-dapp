@@ -1,0 +1,254 @@
+{
+    "developer_name": "HACKATHON_SHAWN_MANA_HOURS",
+    "project_name": "Saga Mana Project",
+    "sub_projects": [
+        {
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "epic_name": "mana algorithm",
+                    "tasks": [
+                        {
+                            "task_name": "Define total MANA allocation",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8.0,
+                                "actual": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Calculate the weighted average pay rate",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Set up hour tracking",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 6.0,
+                                "actual": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Calculate MANA per hour",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Set up peer voting system",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 12.0,
+                                "actual": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Set up confidence intervals",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 8.0,
+                                "actual": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Apply pay rate modifier",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 6.0,
+                                "actual": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Create stakeholder evaluation rubric",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10.0,
+                                "actual": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop feedback system",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 6.0,
+                                "actual": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Apply final scaling",
+                            "role": "Backend Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "epic_name": "MANA Governance",
+                    "tasks": [
+                        {
+                            "task_name": "Test voting mechanism",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Review submissions",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 4.0,
+                                "actual": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Finalize report",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 2.0,
+                                "actual": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Ensure accuracy of MANA allocations",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 2.0,
+                                "actual": 2.0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "epic_name": "VicTory Exchange",
+                    "tasks": [
+                        {
+                            "task_name": "Overall Integration Testing",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 6.0,
+                                "actual": 6.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Project Management",
+            "epics": [
+                {
+                    "epic_name": "Project Management",
+                    "tasks": [
+                        {
+                            "task_name": "Create plans for FYRE, SHLD, MANA",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 30,
+                                "actual": 30
+                            }
+                        },
+                        {
+                            "task_name": "Create plan for mana effort tracking and governance system",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 20,
+                                "actual": 20
+                            }
+                        },
+                        {
+                            "task_name": "Create Algorithm for mana hours to mana conversions",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 10,
+                                "actual": 10
+                            }
+                        },
+                        {
+                            "task_name": "Create plan for mana hours to mana conversion",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 10,
+                                "actual": 10
+                            }
+                        }
+                    ]
+                },
+                {
+                    "epic_name": "Server",
+                    "tasks": [
+                        {
+                            "task_name": "Create backend template for MANA Dapp",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 20,
+                                "actual": 20
+                            }
+                        },
+                        {
+                            "task_name": "Create backend template for Vicotry Dapp",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 20,
+                                "actual": 20
+                            }
+                        },
+                        {
+                            "task_name": "Deploy Taiga on Server",
+                            "role": "Project Manager",
+                            "roles_mana_hours": {
+                                "budgeted": 40,
+                                "actual": 40
+                            }
+                        }
+                    ]
+                },
+                {
+                    "epic_name": "Content",
+                    "tasks": [
+                        {
+                            "task_name": "Create website template",
+                            "role": "Content Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10.0,
+                                "actual": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Create Victory Dapp Templates",
+                            "role": "Content Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 20.0,
+                                "actual": 20.0
+                            }
+                        },
+                        {
+                            "task_name": "Create Mana DApp Templates",
+                            "role": "Content Developer",
+                            "roles_mana_hours": {
+                                "budgeted": 10.0,
+                                "actual": 10.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "totals": {
+        "total_budgeted_hours": 276.0,
+        "total_actual_hours": 276.0,
+        "total_budget_usd": 10221.0,
+        "total_actual_usd": 10221.0,
+        "total_budget_mana": 30972.727272727272,
+        "total_actual_mana": 30972.727272727272
+    }
+}

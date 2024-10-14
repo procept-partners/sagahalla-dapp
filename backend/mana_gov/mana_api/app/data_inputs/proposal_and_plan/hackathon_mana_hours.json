@@ -1,0 +1,813 @@
+{
+    "project_name": "Saga Mana Project",
+    "sub_projects": [
+        {
+            "sub_project_name": "Token Contracts",
+            "epics": [
+                {
+                    "epic_name": "FYRE",
+                    "tasks": [
+                        {
+                            "task_name": "Implement ERC-20 Token Contract for FYRE",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Add Minting, Burning, and Transferring Functions",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Test Standard Token Operations",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop FYRE Conversion Functions for SHLD Purchase",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Implement FYRE to MANA Conversion Mechanism",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Define and Code Governance Rules for FYRE Usage",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "User Interface Development for Conversion Processes",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Testing and Security Review",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Token Contracts",
+            "epics": [
+                {
+                    "epic_name": "SHLD",
+                    "tasks": [
+                        {
+                            "task_name": "Develop ERC-721 Contract for Non-Transferable SHLD",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "On-Chain Metadata Storage",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Testing Non-Transferable NFT Features",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop Governance Voting Smart Contracts",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Integrate SHLD Voting into Governance",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Testing Governance Voting Mechanism",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop Project Contribution Voting Contracts",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Integrate Voting with Project Budgets",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Testing Project Voting and Budget Approval",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Token Contracts",
+            "epics": [
+                {
+                    "epic_name": "MANA",
+                    "tasks": [
+                        {
+                            "task_name": "Implement ERC-20 Token Contract for MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop Contribution Mechanism",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Transition from ERC-20 to ERC-1400 upon Contribution",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Test ERC-20 to ERC-1400 Transition Workflow",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop ERC-1400 Contract for MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Implement Divisibility and Partition Features",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Test ERC-1400 Token Functionality",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 14.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop Voting Smart Contracts for MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 16.0
+                            }
+                        },
+                        {
+                            "task_name": "Integrate MANA Voting into Cooperative Governance",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Project Allocation Voting with MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Test Governance and Project Voting",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "epic_name": "mana hour tracking",
+                    "tasks": [
+                        {
+                            "task_name": "Implement basic input fields",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Store logged hours in a secure database",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Ensure logged hours exported",
+                            "roles_mana_hours": {
+                                "Backend Developer": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Record proof of work (hours logged) on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Implement dashboard",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Fetch data from the project manager's MANA sheet",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Log final MANA allocation on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop report generation feature",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Display discrepancies",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Export report as spreadsheet/PDF",
+                            "roles_mana_hours": {
+                                "Backend Developer": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Store final report on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Create front-end display",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Compare tracked hours with allocated MANA",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Record final tracked hours on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "epic_name": "mana algorithm",
+                    "tasks": [
+                        {
+                            "task_name": "Define total MANA allocation",
+                            "roles_mana_hours": {
+                                "Backend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Record final allocation on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Calculate the weighted average pay rate",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Log final multiplier values on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Set up hour tracking",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Record logged hours on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Calculate MANA per hour",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Log MANA per hour on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Set up peer voting system",
+                            "roles_mana_hours": {
+                                "Backend Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Store peer voting results on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Set up confidence intervals",
+                            "roles_mana_hours": {
+                                "Backend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Record confidence intervals on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Apply pay rate modifier",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Log pay rate modifications on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Create stakeholder evaluation rubric",
+                            "roles_mana_hours": {
+                                "Backend Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Log stakeholder evaluations on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop feedback system",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Store feedback on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Apply final scaling",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Log final scaling on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 2.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "epic_name": "MANA Governance",
+                    "tasks": [
+                        {
+                            "task_name": "Implement voting UI",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop backend logic",
+                            "roles_mana_hours": {
+                                "Backend Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Implement voting on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Test voting mechanism",
+                            "roles_mana_hours": {
+                                "Project Manager": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Create proposal submission form",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Store/retrieve proposals",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Record proposals on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Review submissions",
+                            "roles_mana_hours": {
+                                "Project Manager": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Develop report generation",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Export report",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Store report on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Finalize report",
+                            "roles_mana_hours": {
+                                "Project Manager": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Create display for MANA allocations",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Fetch MANA allocation data",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Record MANA allocations on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Ensure accuracy of MANA allocations",
+                            "roles_mana_hours": {
+                                "Project Manager": 2.0
+                            }
+                        },
+                        {
+                            "task_name": "Implement project governance UI",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Backend logic for project voting",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Record project voting on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Implement conversion UI",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Backend logic for conversion",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Record conversion on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Create results dashboard",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Fetch MANA results",
+                            "roles_mana_hours": {
+                                "Backend Developer": 4.0
+                            }
+                        },
+                        {
+                            "task_name": "Log final project hours on-chain",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 4.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "epic_name": "VicTory Exchange",
+                    "tasks": [
+                        {
+                            "task_name": "Connect Wallet",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Create FYRE Purchase Interface",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Display Token Prices and Supply Stats",
+                            "roles_mana_hours": {
+                                "Backend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Check FYRE Balance",
+                            "roles_mana_hours": {
+                                "Backend Developer": 6.0
+                            }
+                        },
+                        {
+                            "task_name": "Create SHLD Purchase Interface",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "AI-Generated Customization for SHLD NFTs",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "Create MANA Contribution Interface",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Setup MANA Contribution API",
+                            "roles_mana_hours": {
+                                "Backend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Create MANA-to-FYRE Conversion Interface",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Setup Conversion Logic and API",
+                            "roles_mana_hours": {
+                                "Backend Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Create Collateralization Interface for MANA",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Manage Collateralization Logic and API",
+                            "roles_mana_hours": {
+                                "Backend Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Integrate Frontend Wallet and Purchase Logic",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Test and Finalize Backend APIs",
+                            "roles_mana_hours": {
+                                "Backend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Overall Integration Testing",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Test and Finalize Backend APIs",
+                            "roles_mana_hours": {
+                                "Backend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Test and Finalize Backend APIs",
+                            "roles_mana_hours": {
+                                "Frontend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Overall Integration Testing",
+                            "roles_mana_hours": {
+                                "Backend Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "Overall Integration Testing",
+                            "roles_mana_hours": {
+                                "Project Manager": 6.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Project Management",
+            "epics": [
+                {
+                    "epic_name": "Project Management",
+                    "tasks": [
+                        {
+                            "task_name": "Create plans for FYRE, SHLD, MANA",
+                            "roles_mana_hours": {
+                                "Project Manager": 30.0
+                            }
+                        },
+                        {
+                            "task_name": "Create plan for mana effort tracking and governance system",
+                            "roles_mana_hours": {
+                                "Project Manager": 20.0
+                            }
+                        },
+                        {
+                            "task_name": "Create Algorithm for mana hours to mana conversions",
+                            "roles_mana_hours": {
+                                "Project Manager": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Create plan for mana hours to mana conversion",
+                            "roles_mana_hours": {
+                                "Project Manager": 10.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Project Management",
+            "epics": [
+                {
+                    "epic_name": "Server",
+                    "tasks": [
+                        {
+                            "task_name": "Create backend template for MANA Dapp",
+                            "roles_mana_hours": {
+                                "Project Manager": 20.0
+                            }
+                        },
+                        {
+                            "task_name": "Create backend template for Vicotry Dapp",
+                            "roles_mana_hours": {
+                                "Project Manager": 20.0
+                            }
+                        },
+                        {
+                            "task_name": "Deploy Taiga on Server",
+                            "roles_mana_hours": {
+                                "Project Manager": 40.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sub_project_name": "Project Management",
+            "epics": [
+                {
+                    "epic_name": "Content",
+                    "tasks": [
+                        {
+                            "task_name": "Create website template",
+                            "roles_mana_hours": {
+                                "Content Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Create Victory Dapp Templates",
+                            "roles_mana_hours": {
+                                "Content Developer": 20.0
+                            }
+                        },
+                        {
+                            "task_name": "Create Mana DApp Templates",
+                            "roles_mana_hours": {
+                                "Content Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "Create website content",
+                            "roles_mana_hours": {
+                                "Content Developer": 40.0
+                            }
+                        },
+                        {
+                            "task_name": "Add UI/UX elements",
+                            "roles_mana_hours": {
+                                "Content Developer": 40.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

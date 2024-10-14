@@ -1,0 +1,104 @@
+{
+    "developer_name": "HACKATHON_WILL_MANA_HOURS",
+    "project_name": "Saga Mana Project",
+    "sub_projects": [
+        {
+            "sub_project_name": "Token Contracts",
+            "epics": [
+                {
+                    "epic_name": "FYRE",
+                    "tasks": [
+                        {
+                            "task_name": "- Implement ERC-20 Token Contract for FYRE",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8
+                            }
+                        },
+                        {
+                            "task_name": "- Add Minting, Burning, and Transferring Functions",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6
+                            }
+                        },
+                        {
+                            "task_name": "- Test Standard Token Operations",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 6
+                            }
+                        },
+                        {
+                            "task_name": "- Develop FYRE Conversion Functions for SHLD Purchase",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12
+                            }
+                        },
+                        {
+                            "task_name": "- Implement FYRE to MANA Conversion Mechanism",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10
+                            }
+                        },
+                        {
+                            "task_name": "- Define and Code Governance Rules for FYRE Usage",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8
+                            }
+                        },
+                        {
+                            "task_name": "- User Interface Development for Conversion Processes",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12
+                            }
+                        },
+                        {
+                            "task_name": "- Testing and Security Review",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8
+                            }
+                        }
+                    ]
+                },
+                {
+                    "epic_name": "MANA",
+                    "tasks": [
+                        {
+                            "task_name": "- Implement ERC-20 Token Contract for MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "- Develop Contribution Mechanism",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 10.0
+                            }
+                        },
+                        {
+                            "task_name": "- Transition from ERC-20 to ERC-1400 upon Contribution",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        },
+                        {
+                            "task_name": "- Test ERC-20 to ERC-1400 Transition Workflow",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 8.0
+                            }
+                        },
+                        {
+                            "task_name": "- Develop ERC-1400 Contract for MANA",
+                            "roles_mana_hours": {
+                                "Blockchain Developer": 12.0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "totals": {
+        "total_budgeted_hours": 120.0,
+        "total_budget_usd": 5130.0,
+        "total_budget_mana": 15545.454545454544
+    }
+}
