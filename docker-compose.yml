@@ -21,7 +21,6 @@ services:
       context: ./frontend  # Dockerfile for the frontend with blockchain interactions
     volumes:
       - ./frontend:/frontend  # Bind mount the frontend directory
-      - /frontend/node_modules:/frontend/node_modules  # Exclude node_modules from being bind mounted
     ports:
       - "3000:3000"  # Expose port 3000 for the frontend app
     environment:
