@@ -33,7 +33,7 @@ export default function Navbar() {
                 </button>
                 <div className={`${show ? 'block' : 'hidden'} w-full md:block md:w-auto`} id="navbar-default">
                     <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900 rtl:space-x-reverse">
-                        {['Home', 'About', 'Services', 'Pricing', 'Contact'].map(
+                        {['About', 'Mana-Tracking', 'Contact'].map(
                             (item, index) => (
                                 <li key={index}>
                                     <a
@@ -47,7 +47,9 @@ export default function Navbar() {
                         )}
                     </ul>
                 </div>
-                <div></div>
+                <div>
+                    {/* Empty div to center the search bar */}
+                </div>
             </div>
         </nav>
     );
