@@ -1,51 +1,64 @@
-"use client";  // This enables Client Component behavior
+"use client"; // This is a client-side component
 
-import { useState } from 'react';
-import ProposalList from './proposalList';
-import ProposalForm from './proposalForm';
-import { Proposal } from './types';
-// Need to add login and logout with near wallet in here
+import Link from 'next/link';
+import './styles.css';
 
-export default function Home() {
-  const [proposals, setProposals] = useState<Proposal[]>([]);
-
-  const addProposal = (proposal: Omit<Proposal, 'id' | 'yesVotes' | 'noVotes' | 'totalTokensAllocated' | 'isEnded'>) => {
-    setProposals([
-      ...proposals,
-      {
-        ...proposal,
-        id: proposals.length + 1,
-        yesVotes: 0,
-        noVotes: 0,
-        totalTokensAllocated: 0,
-        isEnded: false,
-      },
-    ]);
-  };
-
+export default function ManaDashboard() {
   return (
-    <div className="min-h-screen flex flex-col items-center py-10">
-      <div className="w-full max-w-4xl px-4">
-        
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Governance Proposals</h1>
-          <p className="text-lg text-gray-600">Participate in the governance by adding and voting on proposals.</p>
-        </header>
+    <div>
+      {/* Header Section */}
+      <header>
+        <h1>Mana Effort Tracking App</h1>
+        <p>Welcome, [User Name]</p>
+      </header>
 
-        {/* Form */}
-        <section className="mb-16">
-          <ProposalForm addProposal={addProposal} />
+      {/* Navigation Links */}
+      <nav>
+        <Link href="#">Proposal Management</Link>
+        <Link href="#">Project Planning</Link>
+        <Link href="#">Task Tracking</Link>
+        <Link href="#">Voting</Link>
+        <Link href="#">Reports</Link>
+      </nav>
+
+      {/* Main Dashboard Section */}
+      <div className="dashboard">
+        
+        {/* Active Proposals */}
+        <section className="proposals">
+          <h2>Active Proposals</h2>
+          <ul>
+            <li>Proposal #1 - SagaHalla Token Minting (Voting in Progress)</li>
+            <li>Proposal #2 - SagaHalla Mana DApp (Under Review)</li>
+          </ul>
+          <Link href="#" className="button">Create New Proposal</Link>
         </section>
 
-        {/* Proposals List */}
-        <section>
-          {proposals.length > 0 ? (
-            <ProposalList proposals={proposals} />
-          ) : (
-            <p className="text-gray-600 text-center">No proposals yet. Add one to get started!</p>
-          )}
+        {/* Project Planning */}
+        <section className="projects">
+          <h2>Project Planning</h2>
+          <ul>
+            <li>SagaHalla Mana DApp - 1200 Total Mana Hours, 250 User Mana Hours, 20% Voting Power</li>
+          </ul>
+          <Link href="#" className="button">View All Projects</Link>
+        </section>
+
+        {/* Tasks Assigned */}
+        <section className="tasks">
+          <h2>Your Tasks</h2>
+          <ul>
+            <li>SagaHalla Mana DApp: Subproject1: Epic1: Task1</li>
+            <li>SagaHalla Mana DApp: Subproject1: Epic1: Task2</li>
+            <li>SagaHalla Mana DApp: Subproject2: Epic2: Task3</li>
+          </ul>
+          <Link href="#" className="button">View All Tasks</Link>
         </section>
       </div>
+
+      {/* Footer Section */}
+      <footer>
+        <p>&copy; 2024 Mana DApp. All Rights Reserved.</p>
+      </footer>
     </div>
   );
 }
