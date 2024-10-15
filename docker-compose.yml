@@ -8,7 +8,7 @@ services:
     volumes:
       - ./backend:/backend  # Bind mount the backend directory
     ports:
-      - "8001:8000"  # Expose port 8001 for the FastAPI backend
+      - "8000:8000"  # Expose port 8000 for the FastAPI backend on both container and host
     environment:
       - PYTHONPATH=/backend
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]  # Start FastAPI for app and mana_gov
@@ -24,7 +24,7 @@ services:
     ports:
       - "3000:3000"  # Expose port 3000 for the frontend app
     environment:
-      - REACT_APP_API_URL_FASTAPI=http://backend_fastapi:8001  # FastAPI backend service
+      - REACT_APP_API_URL_FASTAPI=http://backend_fastapi:8000  # Updated URL for the FastAPI backend service
     command: ["npm", "run", "dev"]  # Run Next.js frontend in development mode with live reloading
     networks:
       - app-network
@@ -32,4 +32,3 @@ services:
 networks:
   app-network:
     driver: bridge  # Default network driver
-

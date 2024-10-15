@@ -1,3 +1,5 @@
+"use client";  // This enables Client Component behavior
+
 import { useState } from 'react';
 import ProposalList from './proposalList';
 import ProposalForm from './proposalForm';

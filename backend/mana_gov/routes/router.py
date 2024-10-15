@@ -1,7 +1,7 @@
 from fastapi import APIRouter
-from .indexer import indexer_router  # Use a unique name for each router
-from .proposals import proposals_router  # Use a unique name for each router
-from .reports import reports_router  # Use a unique name for each router
+from .indexer import indexer_router
+from .proposals import proposals_router
+from .reports import reports_router
 
 router = APIRouter()
 
@@ -10,3 +10,8 @@ router.include_router(indexer_router, prefix="/indexer")
 router.include_router(proposals_router, prefix="/proposals")
 router.include_router(reports_router, prefix="/reports")
 
+
+# A sample route to check if everything is working fine
+@router.get("/")
+async def root():
+    return {"message": "MANA Governance API is running"}

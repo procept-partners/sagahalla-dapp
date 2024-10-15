@@ -1,10 +1,31 @@
 /** @type {import('next').NextConfig} */
-import fs from "fs";
 import withLlamaIndex from "llamaindex/next";
 import webpack from "./webpack.config.mjs";
 
-const nextConfig = JSON.parse(fs.readFileSync("./next.config.json", "utf-8"));
-nextConfig.webpack = webpack;
+// Base Next.js config options (move everything from the json file into this config)
+const nextConfig = {
+  experimental: {
+    outputFileTracingIncludes: {
+      "/*": [
+        "./cache/**/*"
+      ]
+    },
+    outputFileTracingExcludes: {
+      "/api/files/*": [
+        ".next/**/*",
+        "node_modules/**/*",
+        "public/**/*",
+        "app/**/*"
+      ]
+    }
+  },
+  output: 'export',       // Keep static export configuration
+  images: {
+    unoptimized: true     // Disable image optimization if needed
+  },
+  webpack,  // Custom webpack configuration
+};
 
-// use withLlamaIndex to add necessary modifications for llamaindex library
+// Apply withLlamaIndex to add necessary modifications
 export default withLlamaIndex(nextConfig);
+

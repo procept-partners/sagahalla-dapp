@@ -20,7 +20,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 # mana-dapp imports
-from mana_gov.routes import router as mana_gov_router
+from mana_gov.routes.router import router as mana_gov_router
 
 app = FastAPI()
 
