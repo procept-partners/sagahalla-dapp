@@ -1,7 +1,9 @@
 "use client"; // This is a client-side component
 
-import ProposalForm from '../../../components/proposalForm';
-import './styles.css';
+import ProposalForm from '../components/ProposalForm';
+
+import '../styles.css'; 
+
 
 export default function CreateProposalPage() {
   return (

@@ -5,6 +5,9 @@ import Link from 'next/link';
 import ProposalList from './components/ProposalList';
 import ProjectList from './components/ProjectList';
 import AssignedTasks from './components/AssignedTasks';
+import './styles.css'; // Import styles at the main level
+
+
 
 export default function ManaDashboard() {
   const [proposals, setProposals] = useState([]); // Initialize with empty array
