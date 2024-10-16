@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProposalDetailsModal from './proposalDetail';
-import { Proposal } from './types';
+import { Proposal } from '../types/types';
+
 // Need to add a time limit and the 'end button' can only be used by PM after he/she approved the hours and tokens earned
 
 interface Props {
@@ -10,9 +11,14 @@ interface Props {
 const ProposalList = ({ proposals }: Props) => {
   const [selectedProposal, setSelectedProposal] = useState<Proposal | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeProposals, setActiveProposals] = useState<Proposal[]>(proposals); 
+  const [activeProposals, setActiveProposals] = useState<Proposal[]>([]); 
   const [filter, setFilter] = useState<'all' | 'active' | 'ended'>('all'); 
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Update activeProposals state when proposals prop changes
+  useEffect(() => {
+    setActiveProposals(proposals);
+  }, [proposals]);
 
   const openModal = (proposal: Proposal) => {
     setSelectedProposal(proposal);
@@ -83,7 +89,7 @@ const ProposalList = ({ proposals }: Props) => {
         </thead>
         <tbody>
           {filteredProposals.map((proposal) => {
-            const totalTokens = 1000; // Change it to the real total tokens
+            const totalTokens = proposal.totalTokens || 1000; // Use a dynamic totalTokens value if available
             const percentageAllocated = (proposal.totalTokensAllocated / totalTokens) * 100;
 
             return (
@@ -124,7 +130,7 @@ const ProposalList = ({ proposals }: Props) => {
         </tbody>
       </table>
 
-      {/* Proposal details' button */}
+      {/* Proposal details' modal */}
       {isModalOpen && selectedProposal && (
         <ProposalDetailsModal proposal={selectedProposal} closeModal={closeModal} />
       )}
