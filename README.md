@@ -31,10 +31,10 @@ If you're new to Docker, here are a few terms you should know:
 
 First, clone the project to your local machine using Git:
 
-\`\`\`bash
+```bash
 git clone git@github.com:procept-partners/saga-mana-dapp.git
 cd saga-mana-dapp
-\`\`\`
+```
 
 This will download the project files to a folder called \`saga-mana-dapp\`.
 
@@ -44,15 +44,15 @@ In multi-developer projects, it's important to ensure file permissions are corre
 
 Run this command to set group-writable permissions:
 
-\`\`\`bash
+```bash
 chmod -R g+w ./backend ./frontend
-\`\`\`
+```
 
 If you encounter any permission errors later, make sure the files and folders have the correct ownership by running:
 
-\`\`\`bash
+```bash
 sudo chown -R \$(whoami) .
-\`\`\`
+```
 
 This ensures that you own the files on your machine.
 
@@ -60,9 +60,9 @@ This ensures that you own the files on your machine.
 
 Now, let’s build and run the project using Docker Compose. This command will create and start the necessary Docker containers for both the backend and frontend:
 
-\`\`\`bash
+```bash
 docker-compose up --build
-\`\`\`
+```
 
 Here’s what this command does:
 - **Builds the Docker images** based on the Dockerfiles for the backend and frontend.
@@ -74,21 +74,21 @@ Here’s what this command does:
 
 ### Common Docker Commands:
 - **Stop the containers**:
-  \`\`\`bash
+  ```bash
   docker-compose down
-  \`\`\`
+  ```
   This stops and removes the containers, networks, and volumes created by \`docker-compose up\`.
 
 - **Rebuild the containers** after making changes to the Dockerfiles:
-  \`\`\`bash
+  ```bash
   docker-compose up --build
-  \`\`\`
+  ```
   This ensures that any updates in your Dockerfiles are included in the build.
 
 - **Check container logs**:
-  \`\`\`bash
+  ```bash
   docker-compose logs
-  \`\`\`
+  ```
   This shows logs for both the backend and frontend containers, which can help troubleshoot any issues.
 
 ## 4. Common Issues and Troubleshooting
@@ -96,25 +96,25 @@ Here’s what this command does:
 ### 1. Permission Errors
 If you encounter any permission errors during file edits, commits, or when switching branches in Git, ensure the correct ownership of files by running:
 
-\`\`\`bash
+```bash
 sudo chown -R \$(whoami) .
-\`\`\`
+```
 
 This command changes ownership of all files in the current directory to your user.
 
 ### 2. Docker Cache
 Sometimes Docker may use cached images instead of rebuilding the containers from scratch. If you suspect this is causing issues, you can force Docker to rebuild the images without using the cache:
 
-\`\`\`bash
+```bash
 docker-compose build --no-cache
-\`\`\`
+```
 
 ### 3. Docker Compose Down Issues
 If you get stuck or can't stop the containers properly, you can try running:
 
-\`\`\`bash
+```bash
 docker-compose down --volumes
-\`\`\`
+```
 
 This also removes any Docker volumes created during the \`up\` process, resetting the data stored in the containers.
 
@@ -122,21 +122,21 @@ This also removes any Docker volumes created during the \`up\` process, resettin
 
 Always make sure your local repository is up-to-date before pushing changes to avoid conflicts:
 
-\`\`\`bash
+```bash
 git pull origin main
-\`\`\`
+```
 
 After making changes and resolving any conflicts, push your changes:
 
-\`\`\`bash
+```bash
 git push origin main
-\`\`\`
+```
 
 If you want to work on a new feature or fix a bug, it's a good idea to create a new branch:
 
-\`\`\`bash
+```bash
 git checkout -b feature/new-feature
-\`\`\`
+```
 
 When you're ready, push the branch and create a pull request for review.
 
@@ -150,9 +150,9 @@ If you want to edit the files inside the running Docker container using **Visual
 2. Open VS Code and open your local project folder.
 3. Attach to the running container by using the **Command Palette** (Ctrl+Shift+P) and typing:
 
-   \`\`\`
+   ```
    Remote-Containers: Attach to Running Container...
-   \`\`\`
+   ```
 
 4. Select the running container related to your project (you should see something like `saga-mana-dapp_frontend` or `saga-mana-dapp_backend`).
 5. Once connected, you can edit the files directly inside the container, and the changes will reflect on your local machine.
