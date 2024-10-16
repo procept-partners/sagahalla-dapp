@@ -1,78 +1,104 @@
-from models.project_plan import Task  # Assuming Task model is defined in project_plan.py
-from util.database import SessionLocal  # Assuming this provides the database session
+from models.task_plan import TaskPlan
+from models.task_execution import TaskExecution
+from models.task_feedback import TaskFeedback
+from util.database import SessionLocal
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 
 class TaskService:
-    def __init__(self):
-        self.db: Session = SessionLocal()
-
-    # Get all tasks
-    async def get_all_tasks(self):
+    @staticmethod
+    def get_db() -> Session:
+        db = SessionLocal()
         try:
-            tasks = self.db.query(Task).all()
-            return tasks
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+            yield db
+        finally:
+            db.close()
 
-    # Create a new task
-    async def create_task(self, task_data: Task):
-        try:
-            new_task = Task(
-                name=task_data.name,
-                description=task_data.description,
-                status=task_data.status,  # Assuming a status field (e.g., pending, completed)
-                assigned_to=task_data.assigned_to,  # Assuming the task is assigned to a user
-                project_id=task_data.project_id  # Assuming the task belongs to a project
+    @staticmethod
+    def create_task(task_data: dict) -> TaskPlan:
+        """
+        Creates a new task and assigns it to a project.
+        """
+        db = next(TaskService.get_db())
+        new_task = TaskPlan(**task_data)
+        
+        db.add(new_task)
+        db.commit()
+        db.refresh(new_task)
+        return new_task
+
+    @staticmethod
+    def assign_task_to_user(task_id: int, user_id: int) -> TaskPlan:
+        """
+        Assigns a task to a user.
+        """
+        db = next(TaskService.get_db())
+        task = db.query(TaskPlan).filter(TaskPlan.id == task_id).first()
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found.")
+        
+        task.assigned_user_id = user_id
+        db.commit()
+        db.refresh(task)
+        return task
+
+    @staticmethod
+    def track_task_execution(task_id: int, actual_hours: float) -> TaskExecution:
+        """
+        Tracks the execution of a task by recording actual hours worked.
+        """
+        db = next(TaskService.get_db())
+        task_execution = db.query(TaskExecution).filter(TaskExecution.task_plan_id == task_id).first()
+        
+        if not task_execution:
+            # If no task execution record exists, create a new one
+            task_execution = TaskExecution(
+                task_plan_id=task_id,
+                actual_hours=actual_hours
             )
-            self.db.add(new_task)
-            self.db.commit()
-            self.db.refresh(new_task)  # To return the newly created task with ID
-            return new_task
-        except Exception as e:
-            self.db.rollback()
-            raise HTTPException(status_code=500, detail=str(e))
+            db.add(task_execution)
+        else:
+            # Update the existing record with new hours
+            task_execution.actual_hours = actual_hours
+        
+        db.commit()
+        db.refresh(task_execution)
+        return task_execution
 
-    # Get a single task by ID
-    async def get_task_by_id(self, task_id: int):
-        try:
-            task = self.db.query(Task).filter(Task.id == task_id).first()
-            if not task:
-                raise HTTPException(status_code=404, detail="Task not found")
-            return task
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+    @staticmethod
+    def get_task(task_id: int) -> TaskPlan:
+        """
+        Retrieves a task by its ID.
+        """
+        db = next(TaskService.get_db())
+        task = db.query(TaskPlan).filter(TaskPlan.id == task_id).first()
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found.")
+        return task
 
-    # Update a task
-    async def update_task(self, task_id: int, updated_data: Task):
-        try:
-            task = self.db.query(Task).filter(Task.id == task_id).first()
-            if not task:
-                raise HTTPException(status_code=404, detail="Task not found")
+    @staticmethod
+    def submit_task_feedback(task_id: int, feedback_data: dict) -> TaskFeedback:
+        """
+        Submits feedback for a task.
+        """
+        db = next(TaskService.get_db())
+        task_execution = db.query(TaskExecution).filter(TaskExecution.task_plan_id == task_id).first()
+        if not task_execution:
+            raise HTTPException(status_code=404, detail="Task execution not found.")
 
-            # Update fields
-            task.name = updated_data.name
-            task.description = updated_data.description
-            task.status = updated_data.status
-            task.assigned_to = updated_data.assigned_to
+        # Create the feedback entry
+        task_feedback = TaskFeedback(**feedback_data, task_execution_id=task_execution.id)
+        
+        db.add(task_feedback)
+        db.commit()
+        db.refresh(task_feedback)
+        return task_feedback
 
-            self.db.commit()
-            self.db.refresh(task)
-            return task
-        except Exception as e:
-            self.db.rollback()
-            raise HTTPException(status_code=500, detail=str(e))
-
-    # Delete a task by ID
-    async def delete_task(self, task_id: int):
-        try:
-            task = self.db.query(Task).filter(Task.id == task_id).first()
-            if not task:
-                raise HTTPException(status_code=404, detail="Task not found")
-
-            self.db.delete(task)
-            self.db.commit()
-            return True
-        except Exception as e:
-            self.db.rollback()
-            raise HTTPException(status_code=500, detail=str(e))
+    @staticmethod
+    def list_tasks_by_project(project_id: int) -> list[TaskPlan]:
+        """
+        Lists all tasks assigned to a specific project.
+        """
+        db = next(TaskService.get_db())
+        tasks = db.query(TaskPlan).filter(TaskPlan.project_plan_id == project_id).all()
+        return tasks
