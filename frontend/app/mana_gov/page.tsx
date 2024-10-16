@@ -7,37 +7,24 @@ import ProjectList from './components/ProjectList';
 import AssignedTasks from './components/AssignedTasks';
 
 export default function ManaDashboard() {
-  const [proposals, setProposals] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [tasks, setTasks] = useState([]);
+  const [proposals, setProposals] = useState([]); // Initialize with empty array
+  const [projects, setProjects] = useState([]); // Initialize with empty array
+  const [tasks, setTasks] = useState([]); // Initialize with empty array
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null); // Ensure error type is handled correctly
   const userId = 123; // Example user ID, replace with actual logic
 
-  // Fetch data from the backend
   useEffect(() => {
-    // Example API calls to fetch data
-    Promise.all([
-      fetch('/api/proposals').then((res) => res.json()),
-      fetch('/api/projects').then((res) => res.json()),
-      fetch('/api/tasks').then((res) => res.json()),
-    ])
-      .then(([proposalsData, projectsData, tasksData]) => {
-        setProposals(proposalsData); // Set proposals data
-        setProjects(projectsData); // Set projects data
-        setTasks(tasksData); // Set tasks data
-        setLoading(false); // Stop loading
-      })
-      .catch((err) => {
-        setError('Error loading data');
-        setLoading(false);
-      });
+    // Simulate an empty data response by setting loading to false and no data
+    setLoading(false); // Just stop loading and use empty arrays
   }, []);
 
-  // Handle loading and error states
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  // Handle loading state
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
+  // If there's an error, display the template with empty data
   return (
     <div>
       {/* Header Section */}
@@ -51,8 +38,8 @@ export default function ManaDashboard() {
         <Link href="/proposal-management">Proposal Management</Link>
         <Link href="/project-planning">Project Planning</Link>
         <Link href="/task-tracking">Task Tracking</Link>
-        <Link href="/voting">Voting</Link> {/* Added Voting route */}
-        <Link href="/reports">Reports</Link> {/* Added Reports route */}
+        <Link href="/voting">Voting</Link>
+        <Link href="/reports">Reports</Link>
       </nav>
 
       {/* Main Dashboard Section */}
@@ -60,11 +47,35 @@ export default function ManaDashboard() {
         {/* Proposal List Section */}
         <section className="proposals">
           <h2>Proposals</h2>
-          <ProposalList proposals={proposals} /> {/* Passing proposals as props */}
+          <ProposalList proposals={proposals} /> {/* Passing empty array for proposals */}
           <Link href="/mana_gov/create-proposal" className="button">
             Create New Proposal
           </Link>
         </section>
 
         {/* Project List Section */}
-        <section classNa
+        <section className="projects">
+          <h2>Project Planning</h2>
+          <ProjectList projects={projects} /> {/* Passing empty array for projects */}
+          <Link href="#" className="button">
+            View All Projects
+          </Link>
+        </section>
+
+        {/* Assigned Tasks Section */}
+        <section className="tasks">
+          <h2>Your Tasks</h2>
+          <AssignedTasks tasks={tasks} userId={userId} /> {/* Passing empty array for tasks */}
+          <Link href="#" className="button">
+            View All Tasks
+          </Link>
+        </section>
+      </div>
+
+      {/* Footer Section */}
+      <footer>
+        <p>&copy; 2024 Mana DApp. All Rights Reserved.</p>
+      </footer>
+    </div>
+  );
+}

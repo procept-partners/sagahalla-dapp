@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import { Project } from '../types/types'; // Assuming Project type is defined with relevant fields
+import { Project } from '../types/types'; // Assuming you have a Project type defined
 
 interface Props {
   projects: Project[];
   userId: number; // Assuming the logged-in user's ID is passed
 }
 
-const AssignedTasks = ({ projects, userId }: Props) => {
+const AssignedTasks = ({ projects = [], userId }: Props) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Filter projects where the user has assigned mana hours
   const filteredProjects = projects.filter((project) =>
-    project.manaHours.some((mana) => mana.userId === userId)
+    project?.manaHours?.some((mana) => mana.userId === userId)
   );
 
   // Filter based on the search query

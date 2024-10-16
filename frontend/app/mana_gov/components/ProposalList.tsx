@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ProposalDetailsModal from './proposalDetail';
+import ProposalDetailsModal from './ProposalDetailsModal';
 import { Proposal } from '../types/types';
 
 // Need to add a time limit and the 'end button' can only be used by PM after he/she approved the hours and tokens earned
