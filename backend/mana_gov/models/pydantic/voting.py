@@ -18,7 +18,7 @@ class ProposalVote(BaseModel):
     user: Optional["User"]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class PeerVote(BaseModel):
@@ -34,4 +34,4 @@ class PeerVote(BaseModel):
     votee: Optional["User"]
 
     class Config:
-        orm_mode = True
+        from_attributes = True

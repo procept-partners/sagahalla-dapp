@@ -28,7 +28,7 @@ class Proposal(BaseModel):
     budget_items: Optional[List["ProposalBudget"]] = []  # List of ProposalBudgets
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class SubProject(BaseModel):
@@ -41,7 +41,7 @@ class SubProject(BaseModel):
     epics: Optional[List["Epic"]] = []  # List of Epics under the SubProject
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class Epic(BaseModel):
@@ -54,7 +54,7 @@ class Epic(BaseModel):
     tasks: Optional[List["Task"]] = []  # List of Tasks under the Epic
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class Task(BaseModel):
@@ -67,7 +67,7 @@ class Task(BaseModel):
     roles_mana_hours: Optional[List["RoleManaHours"]] = []  # List of RoleManaHours for the task
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class RoleManaHours(BaseModel):
@@ -80,7 +80,7 @@ class RoleManaHours(BaseModel):
     task: Optional[Task]  # Link back to the parent Task
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class ProposalBudget(BaseModel):
@@ -94,4 +94,4 @@ class ProposalBudget(BaseModel):
     proposal: Optional[Proposal]  # Link back to the parent Proposal
 
     class Config:
-        orm_mode = True
+        from_attributes = True
