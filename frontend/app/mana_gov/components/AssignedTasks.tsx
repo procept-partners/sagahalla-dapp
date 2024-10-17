@@ -20,19 +20,19 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
   );
 
   return (
-    <div>
-      <h2>Your Assigned Tasks</h2>
+    <div className="assigned-tasks">
+      <h2 className="text-orange-500">Assigned Tasks</h2>
 
       {/* Search Box */}
-      <div style={{ marginBottom: '20px' }}>
+      <div className="mb-4">
         <input
           type="text"
           placeholder="Search by project title"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="ml-4 px-3 py-2 border rounded-lg"
+          className="px-3 py-2 border border-orange-500 rounded-lg bg-purple-900 text-white"
         />
-        <button className="ml-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-600">
+        <button className="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
           Search
         </button>
       </div>
@@ -43,7 +43,7 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
           {filteredTasks.map((project) => (
             <div key={project.id} className="mb-6">
               {/* Project, Subproject, Epic */}
-              <h3 className="font-semibold">
+              <h3 className="font-semibold text-orange-500">
                 {project.title} > {project.subproject} > {project.epic}
               </h3>
 
@@ -52,7 +52,7 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
                 {project.tasks
                   .filter((task) => task.assignedTo === userId) // Only show tasks assigned to the user
                   .map((task) => (
-                    <li key={task.id} className="ml-4">
+                    <li key={task.id} className="ml-4 text-white">
                       {task.title}
                     </li>
                   ))}
@@ -61,7 +61,7 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
           ))}
         </div>
       ) : (
-        <p>No tasks assigned to you.</p>
+        <p className="text-white">No tasks assigned to you.</p>
       )}
     </div>
   );

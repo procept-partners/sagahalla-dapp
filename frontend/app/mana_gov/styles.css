@@ -1,3 +1,4 @@
+/* Body */
 body {
     background-color: #270927;
     color: white;
@@ -6,23 +7,124 @@ body {
     padding: 0;
 }
 
-header {
+/* Common Header Styles */
+header, .section-header, .header {
     background-color: #ce711e;
-    padding: 20px;
     text-align: center;
     width: 100%;
 }
 
-header h1 {
+header h1, .section-header h2 {
+    color: white;
+    margin: 0;
+}
+
+/* Header */
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Styling */
+.app-logo {
+    height: 75px;
+    width: auto;
+}
+
+/* Title Styling */
+.title {
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 1.5rem;
     margin: 0;
     color: white;
 }
 
-nav {
-    background-color: #ce711e;
+.title h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: white;
+}
+
+/* User Profile Menu */
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-btn {
+    display: flex;
+    flex-direction: column; /* Change layout to column */
+    align-items: center; /* Center align both the icon and text */
+    background-color: #ce711e; /* Button styling */
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.profile-btn:hover {
+    background-color: #8c450e;
+}
+
+.profile-icon {
+    border-radius: 50%;
+    height: 30px; /* Adjust size as needed */
+    width: 30px;
+    margin-bottom: 5px; /* Add space between icon and text */
+}
+
+.profile-btn span {
+    font-size: 1rem;
+}
+
+
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
+    margin-bottom: 10px;
+    background-color: #ce711e; /* Ensure background is consistent */
+    border-radius: 10px; /* Add rounded corners */
+}
+
+
+/* Common Button Styling */
+.button, .section-header .button, .table-button {
+    background-color: #ce711e;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.button:hover, .section-header .button:hover, .table-button:hover {
+    background-color: #8c450e;
+}
+
+/* Navigation */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #451546;
+    padding: 15px;
     text-align: center;
-    width: 100%;
 }
 
 nav a {
@@ -30,72 +132,115 @@ nav a {
     text-decoration: none;
     padding: 10px 20px;
     margin: 0 10px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
 }
 
 nav a:hover {
-    background-color: #8c450e;
-    border-radius: 5px;
+    background-color: #ce711e;
 }
 
-.dashboard {
-    width: 100%;
-    padding: 20px;
-    background-color: #270927;
-}
-
-.section {
-    margin-bottom: 30px;
-}
-
-.section h2 {
-    color: #ce711e;
-}
-
-.projects, .proposals, .tasks, .notifications {
+/* Panels */
+.proposals, .projects, .tasks, .notifications {
     margin: 20px 0;
     padding: 15px;
     background-color: #451546;
     border-radius: 10px;
 }
 
-.projects ul, .proposals ul, .tasks ul, .notifications ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.projects ul li, .proposals ul li, .tasks ul li, .notifications ul li {
-    padding: 8px;
-    margin-bottom: 8px;
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
     background-color: #451546;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.projects ul li:hover, .proposals ul li:hover, .tasks ul li:hover, .notifications ul li:hover {
-    background-color: #ce711e;
     color: white;
-}
-
-.button {
-    background-color: #ce711e;
-    color: white;
-    padding: 10px 20px;
     border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
 }
 
-.button:hover {
-    background-color: #8c450e;
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    color: #ce711e;
 }
 
+th {
+    border-bottom: 2px solid #ce711e;
+    background-color: #270927;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #451546;
+}
+
+tr:hover {
+    background-color: #ce711e;
+    color: white;
+}
+
+/* Footer */
 footer {
     background-color: #ce711e;
     text-align: center;
     padding: 10px;
     color: white;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
+}
+
+/* Common Input and Search Styling */
+input[type="text"], select {
+    padding: 10px;
+    border: 1px solid #ce711e;
+    border-radius: 8px;
+    background-color: #270927;
+    color: white;
+    font-size: 14px;
+    width: 200px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header h1, .section-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        display: block;
+        padding: 8px;
+        margin: 5px;
+    }
+
+    .dashboard {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1, .section-header h2 {
+        font-size: 1rem;
+    }
+
+    .dashboard {
+        padding: 5px;
+    }
+
+    .button {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    nav a {
+        padding: 5px;
+        font-size: 12px;
+    }
 }
