@@ -1,6 +1,9 @@
 from sqlalchemy import Column, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from util.database import Base
+from .project_plan import ProjectPlan, TaskPlan
+from .user import User
+from .voting import PeerVote
 
 # Project Execution Model (with voting relationship)
 class ProjectExecution(Base):
