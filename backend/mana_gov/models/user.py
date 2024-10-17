@@ -1,60 +1,40 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, DateTime
-from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
-from util.database import Base  # Assuming Base is the declarative base
 
-# User Model
-class User(Base):
-    __tablename__ = 'users'
+from pydantic import BaseModel
+from typing import List, Optional
+from datetime import datetime
 
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, nullable=False)
-    email = Column(String, unique=True, nullable=False)
-    near_wallet_address = Column(String, unique=True, nullable=False)  # NEAR Wallet Address
-    near_account_id = Column(String, unique=True, nullable=False)  # NEAR Account ID
+class User(BaseModel):
+    id: int
+    username: str
+    email: str
+    near_wallet_address: str
+    near_account_id: str
+    dao_role: str = "member"
+    nft_token_id: Optional[str]
+    hashed_password: Optional[str]
+    is_active: bool = True
+    is_admin: bool = False
+    created_at: datetime
+    updated_at: Optional[datetime]
+    role_assignments: Optional[List["UserRoleAssignment"]] = []
+    proposals: Optional[List["Proposal"]] = []
+    tasks: Optional[List["Task"]] = []
+    votes: Optional[List["Vote"]] = []
+    dao_votes: Optional[List["DaoVote"]] = []
+    proposal_votes: Optional[List["ProposalVote"]] = []
+    given_peer_votes: Optional[List["PeerVote"]] = []
+    received_peer_votes: Optional[List["PeerVote"]] = []
+    task_feedback: Optional[List["TaskFeedback"]] = []
+    class Config:
+        from_attributes = True
 
-    # Governance-specific fields
-    dao_role = Column(String, nullable=False, default="member")  # Role in Sputnik DAO (e.g., member, admin)
-    nft_token_id = Column(String, unique=True, nullable=True)  # Immutable NFT token for governance
-
-    # Authentication fields (optional for non-NEAR-based login)
-    hashed_password = Column(String, nullable=True)  # Optional for non-NEAR-based login
-    is_active = Column(Boolean, default=True)
-    is_admin = Column(Boolean, default=False)
-
-    # Automatically managed timestamps
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-
-    # Relationships
-    role_assignments = relationship("UserRoleAssignment", back_populates="user")
-    proposals = relationship("Proposal", back_populates="submitted_by")
-    tasks = relationship("Task", back_populates="assigned_to")
-    votes = relationship("Vote", back_populates="user")
-    dao_votes = relationship("DaoVote", back_populates="user")
-
-    # Relationships for Proposal Votes
-    proposal_votes = relationship("ProposalVote", back_populates="user")
-
-    # Relationships for Peer Votes
-    given_peer_votes = relationship("PeerVote", foreign_keys=[PeerVote.voter_id], back_populates="voter")
-    received_peer_votes = relationship("PeerVote", foreign_keys=[PeerVote.votee_id], back_populates="votee")
-
-    # Other relationships...
-    task_feedback = relationship("TaskFeedback", back_populates="user")
-
-
-# UserRoleAssignment Model
-class UserRoleAssignment(Base):
-    __tablename__ = 'user_role_assignments'
-
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    task_id = Column(Integer, ForeignKey('tasks.id'))
-    role_name = Column(String, nullable=False)  # e.g., Blockchain Developer, Frontend Developer, etc.
-    mana_hours = Column(Float, nullable=False)  # Number of mana hours allocated for this role
-
-    # Relationships
-    user = relationship("User", back_populates="role_assignments")
-    task = relationship("Task", back_populates="role_assignments")\
-
+class UserRoleAssignment(BaseModel):
+    id: int
+    user_id: int
+    task_id: int
+    role_name: str
+    mana_hours: float
+    user: Optional[User]
+    task: Optional["Task"]
+    class Config:
+        from_attributes = True

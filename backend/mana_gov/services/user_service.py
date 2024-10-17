@@ -1,5 +1,5 @@
-from models.user import User, UserRoleAssignment
-from util.database import SessionLocal
+from mana_gov.models.user import User, UserRoleAssignment
+from mana_gov.util.database import SessionLocal
 from sqlalchemy.orm import Session
 from typing import Optional
 from fastapi import HTTPException

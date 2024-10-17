@@ -1,5 +1,5 @@
-from models.proposal import Proposal  # Assuming this is the Proposal model
-from util.database import SessionLocal  # Assuming this provides the database session
+from mana_gov.models.proposal import Proposal  # Assuming this is the Proposal model
+from mana_gov.util.database import SessionLocal  # Assuming this provides the database session
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 

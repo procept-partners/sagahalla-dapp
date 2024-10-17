@@ -1,87 +1,97 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, DateTime
-from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
-from util.database import Base  # Assuming Base is your declarative base
+from pydantic import BaseModel
+from typing import List, Optional
+from datetime import datetime
 
-class Proposal(Base):
-    __tablename__ = 'proposals'
-
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, nullable=False)
-    description = Column(String, nullable=True)
+class Proposal(BaseModel):
+    id: int
+    title: str
+    description: Optional[str]
     
     # Voting fields
-    yes_votes = Column(Integer, default=0)
-    no_votes = Column(Integer, default=0)
-    total_tokens_allocated = Column(Float, nullable=False)
-    total_tokens = Column(Float, nullable=True)
+    yes_votes: Optional[int] = 0
+    no_votes: Optional[int] = 0
+    total_tokens_allocated: float
+    total_tokens: Optional[float]
 
-    is_ended = Column(Boolean, default=False)
-    submitted_by = Column(String, nullable=False)
-    hours_required = Column(Float, nullable=False)
-    token_per_hour = Column(Float, nullable=False)
-    end_time = Column(DateTime, nullable=True)
+    is_ended: Optional[bool] = False
+    submitted_by: str
+    hours_required: float
+    token_per_hour: float
+    end_time: Optional[datetime]
 
     # Automatically managed timestamps
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    created_at: datetime
+    updated_at: Optional[datetime]
 
     # Relationships
-    sub_projects = relationship("SubProject", back_populates="proposal")
-    budget_items = relationship("ProposalBudget", back_populates="proposal")
+    sub_projects: Optional[List["SubProject"]] = []  # List of SubProjects
+    budget_items: Optional[List["ProposalBudget"]] = []  # List of ProposalBudgets
+
+    class Config:
+        orm_mode = True
 
 
-class SubProject(Base):
-    __tablename__ = 'sub_projects'
+class SubProject(BaseModel):
+    id: int
+    proposal_id: int
+    sub_project_name: str
 
-    id = Column(Integer, primary_key=True, index=True)
-    proposal_id = Column(Integer, ForeignKey('proposals.id'))
-    sub_project_name = Column(String, nullable=False)
+    # Relationships
+    proposal: Optional[Proposal]  # Link back to the parent Proposal
+    epics: Optional[List["Epic"]] = []  # List of Epics under the SubProject
 
-    proposal = relationship("Proposal", back_populates="sub_projects")
-    epics = relationship("Epic", back_populates="sub_project")
-
-
-class Epic(Base):
-    __tablename__ = 'epics'
-
-    id = Column(Integer, primary_key=True, index=True)
-    sub_project_id = Column(Integer, ForeignKey('sub_projects.id'))
-    epic_name = Column(String, nullable=False)
-
-    sub_project = relationship("SubProject", back_populates="epics")
-    tasks = relationship("Task", back_populates="epic")
+    class Config:
+        orm_mode = True
 
 
-class Task(Base):
-    __tablename__ = 'tasks'
+class Epic(BaseModel):
+    id: int
+    sub_project_id: int
+    epic_name: str
 
-    id = Column(Integer, primary_key=True, index=True)
-    epic_id = Column(Integer, ForeignKey('epics.id'))
-    task_name = Column(String, nullable=False)
+    # Relationships
+    sub_project: Optional[SubProject]  # Link back to the parent SubProject
+    tasks: Optional[List["Task"]] = []  # List of Tasks under the Epic
 
-    epic = relationship("Epic", back_populates="tasks")
-    roles_mana_hours = relationship("RoleManaHours", back_populates="task")
-
-
-class RoleManaHours(Base):
-    __tablename__ = 'roles_mana_hours'
-
-    id = Column(Integer, primary_key=True, index=True)
-    task_id = Column(Integer, ForeignKey('tasks.id'))
-    role_name = Column(String, nullable=False)
-    mana_hours = Column(Float, nullable=False)
-
-    task = relationship("Task", back_populates="roles_mana_hours")
+    class Config:
+        orm_mode = True
 
 
-class ProposalBudget(Base):
-    __tablename__ = 'proposal_budgets'
+class Task(BaseModel):
+    id: int
+    epic_id: int
+    task_name: str
 
-    id = Column(Integer, primary_key=True, index=True)
-    proposal_id = Column(Integer, ForeignKey('proposals.id'))
-    role_name = Column(String, nullable=False)
-    budget_usd = Column(Float, nullable=False)
-    budget_mana = Column(Float, nullable=False)
+    # Relationships
+    epic: Optional[Epic]  # Link back to the parent Epic
+    roles_mana_hours: Optional[List["RoleManaHours"]] = []  # List of RoleManaHours for the task
 
-    proposal = relationship("Proposal", back_populates="budget_items")
+    class Config:
+        orm_mode = True
+
+
+class RoleManaHours(BaseModel):
+    id: int
+    task_id: int
+    role_name: str
+    mana_hours: float
+
+    # Relationships
+    task: Optional[Task]  # Link back to the parent Task
+
+    class Config:
+        orm_mode = True
+
+
+class ProposalBudget(BaseModel):
+    id: int
+    proposal_id: int
+    role_name: str
+    budget_usd: float
+    budget_mana: float
+
+    # Relationships
+    proposal: Optional[Proposal]  # Link back to the parent Proposal
+
+    class Config:
+        orm_mode = True
