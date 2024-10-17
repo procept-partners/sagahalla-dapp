@@ -1,46 +1,50 @@
-from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime
+from sqlalchemy import Column, Integer, Float, ForeignKey
+from sqlalchemy.orm import relationship
+from util.database import Base
 
-class ProjectExecution(BaseModel):
-    id: int
-    project_plan_id: int
-    actual_total_hours: float
+# Project Execution Model (with voting relationship)
+class ProjectExecution(Base):
+    __tablename__ = 'project_executions'
 
-    # Relationships
-    project_plan: Optional["ProjectPlan"]
-    peer_votes: Optional[List["PeerVote"]] = []
-    tasks: Optional[List["TaskExecution"]] = []
+    id = Column(Integer, primary_key=True, index=True)
+    project_plan_id = Column(Integer, ForeignKey('project_plans.id'))
 
-    class Config:
-        from_attributes = True
-
-
-class TaskExecution(BaseModel):
-    id: int
-    project_execution_id: int
-    task_plan_id: int
-    actual_hours: float
+    # Sum of all actual hours worked (across roles and users)
+    actual_total_hours = Column(Float, nullable=False)
 
     # Relationships
-    project_execution: Optional[ProjectExecution]
-    task_plan: Optional["TaskPlan"]
+    project_plan = relationship("ProjectPlan", back_populates="executions")
+    peer_votes = relationship("PeerVote", back_populates="project_execution")
+    tasks = relationship("TaskExecution", back_populates="project_execution")
+
+# TaskExecution Model (tracks the execution of individual tasks)
+class TaskExecution(Base):
+    __tablename__ = 'task_executions'
+
+    id = Column(Integer, primary_key=True, index=True)
+    project_execution_id = Column(Integer, ForeignKey('project_executions.id'))
+    task_plan_id = Column(Integer, ForeignKey('task_plans.id'))
+
+    # Actual hours worked, summed from all role assignments
+    actual_hours = Column(Float, nullable=False)
+
+    # Relationships
+    project_execution = relationship("ProjectExecution", back_populates="tasks")
+    task_plan = relationship("TaskPlan", back_populates="executions")
+
+# TaskFeedback Model (tracks feedback for tasks)
+class TaskFeedback(Base):
+    __tablename__ = 'task_feedback'
+
+    id = Column(Integer, primary_key=True, index=True)
+    task_execution_id = Column(Integer, ForeignKey('task_executions.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
     
-    class Config:
-        from_attributes = True
-
-
-class TaskFeedback(BaseModel):
-    id: int
-    task_execution_id: int
-    user_id: int
-    feedback: str  # Textual feedback
-    rating: int  # Rating scale (e.g., 1-5)
-    created_at: datetime
+    # Feedback details
+    feedback = Column(String, nullable=False)  # Textual feedback
+    rating = Column(Integer, nullable=False)  # Rating scale (e.g., 1-5)
+    created_at = Column(DateTime, server_default=func.now())
 
     # Relationships
-    task_execution: Optional[TaskExecution]
-    user: Optional["User"]
-
-    class Config:
-        from_attributes = True
+    task_execution = relationship("TaskExecution", back_populates="feedback")
+    user = relationship("User", back_populates="task_feedback")

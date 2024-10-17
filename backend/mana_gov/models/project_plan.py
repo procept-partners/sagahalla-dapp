@@ -1,72 +1,73 @@
-from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
+from util.database import Base  # Assuming Base is the declarative base
 
-class ProjectPlan(BaseModel):
-    id: int
-    proposal_id: int
-    project_name: str
-    total_mana_hours: float
-    voting_power: Optional[str]
-    created_at: datetime
-    updated_at: Optional[datetime]
-    
+class ProjectPlan(Base):
+    __tablename__ = 'project_plans'
+
+    id = Column(Integer, primary_key=True, index=True)
+    proposal_id = Column(Integer, ForeignKey('proposals.id'))
+    project_name = Column(String, nullable=False)
+
+    # Total Mana hours allocated to the project
+    total_mana_hours = Column(Float, nullable=False)
+
+    # Voting power associated with the project
+    voting_power = Column(String, nullable=True)
+
+    # Automatically managed timestamps
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+
     # Relationships
-    sub_projects: Optional[List["SubProjectPlan"]] = []
-    proposal: Optional["Proposal"]
-
-    class Config:
-        from_attributes = True
+    sub_projects = relationship("SubProjectPlan", back_populates="project_plan")
+    proposal = relationship("Proposal", back_populates="project_plans")
 
 
-class SubProjectPlan(BaseModel):
-    id: int
-    project_plan_id: int
-    sub_project_name: str
-    
-    # Relationships
-    project_plan: Optional[ProjectPlan]
-    epics: Optional[List["EpicPlan"]] = []
+class SubProjectPlan(Base):
+    __tablename__ = 'sub_project_plans'
 
-    class Config:
-        from_attributes = True
+    id = Column(Integer, primary_key=True, index=True)
+    project_plan_id = Column(Integer, ForeignKey('project_plans.id'))
+    sub_project_name = Column(String, nullable=False)
+
+    project_plan = relationship("ProjectPlan", back_populates="sub_projects")
+    epics = relationship("EpicPlan", back_populates="sub_project_plan")
 
 
-class EpicPlan(BaseModel):
-    id: int
-    sub_project_plan_id: int
-    epic_name: str
-    
-    # Relationships
-    sub_project_plan: Optional[SubProjectPlan]
-    tasks: Optional[List["TaskPlan"]] = []
+class EpicPlan(Base):
+    __tablename__ = 'epic_plans'
 
-    class Config:
-        from_attributes = True
+    id = Column(Integer, primary_key=True, index=True)
+    sub_project_plan_id = Column(Integer, ForeignKey('sub_project_plans.id'))
+    epic_name = Column(String, nullable=False)
+
+    sub_project_plan = relationship("SubProjectPlan", back_populates="epics")
+    tasks = relationship("TaskPlan", back_populates="epic_plan")
 
 
-class TaskPlan(BaseModel):
-    id: int
-    epic_plan_id: int
-    task_name: str
-    estimated_mana_hours: float
-    
-    # Relationships
-    epic_plan: Optional[EpicPlan]
-    roles_mana_hours: Optional[List["TaskRoleManaHours"]] = []
+class TaskPlan(Base):
+    __tablename__ = 'task_plans'
 
-    class Config:
-        from_attributes = True
+    id = Column(Integer, primary_key=True, index=True)
+    epic_plan_id = Column(Integer, ForeignKey('epic_plans.id'))
+    task_name = Column(String, nullable=False)
+
+    # Estimated (planned) mana hours
+    estimated_mana_hours = Column(Float, nullable=False)  # Planned hours for the task
+
+    epic_plan = relationship("EpicPlan", back_populates="tasks")
+    roles_mana_hours = relationship("TaskRoleManaHours", back_populates="task_plan")
 
 
-class TaskRoleManaHours(BaseModel):
-    id: int
-    task_plan_id: int
-    role_name: str
-    mana_hours: float
-    
-    # Relationships
-    task_plan: Optional[TaskPlan]
 
-    class Config:
-        from_attributes = True
+class TaskRoleManaHours(Base):
+    __tablename__ = 'task_role_mana_hours'
+
+    id = Column(Integer, primary_key=True, index=True)
+    task_plan_id = Column(Integer, ForeignKey('task_plans.id'))
+    role_name = Column(String, nullable=False)
+    mana_hours = Column(Float, nullable=False)
+
+    task_plan = relationship("TaskPlan", back_populates="roles_mana_hours")
