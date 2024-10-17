@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from util.database import Base  # Assuming Base is your declarative base
+from mana_gov.util.database import Base  # Assuming Base is your declarative base
 
 class Proposal(Base):
     __tablename__ = 'proposals'
