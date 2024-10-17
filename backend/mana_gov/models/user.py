@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from mana_gov.util.database import Base
 from pydantic import BaseModel
+from .proposal import Proposal, Task
 
 
 # User Model

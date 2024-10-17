@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, Date
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from util.database import Base  # Assuming Base is your declarative base
+from .user import User
 
 class Proposal(Base):
     __tablename__ = 'proposals'
@@ -60,6 +61,7 @@ class Task(Base):
     epic_id = Column(Integer, ForeignKey('epics.id'))
     task_name = Column(String, nullable=False)
 
+    assigned_to = relationship("User", back_populates="tasks")
     epic = relationship("Epic", back_populates="tasks")
     roles_mana_hours = relationship("RoleManaHours", back_populates="task")
 

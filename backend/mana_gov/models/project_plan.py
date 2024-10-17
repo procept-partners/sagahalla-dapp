@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from util.database import Base  # Assuming Base is the declarative base
+from .proposal import Proposal
 
 class ProjectPlan(Base):
     __tablename__ = 'project_plans'

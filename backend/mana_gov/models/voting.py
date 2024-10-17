@@ -1,6 +1,9 @@
 from sqlalchemy import Column, Integer, Float, ForeignKey, String, Boolean, Enum
 from sqlalchemy.orm import relationship
 from util.database import Base
+from .proposal import Proposal
+from .user import User
+from .project_execution import ProjectExecution
 import enum
 
 class VoteType(enum.Enum):
