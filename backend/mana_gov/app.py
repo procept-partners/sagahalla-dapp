@@ -1,6 +1,16 @@
 from fastapi import FastAPI
 from mana_gov.routes.router import router as mana_gov_router  # Import the mana_gov router
 from mana_gov.util.database import engine, Base
+from mana_gov.models.user import User, UserRoleAssignment
+from mana_gov.models.voting import ProposalVote, PeerVote
+from mana_gov.models.proposal import (
+    Proposal,
+    SubProject,
+    Epic,
+    Task,
+    RoleManaHours,
+    ProposalBudget
+)
 
 app = FastAPI()
 
