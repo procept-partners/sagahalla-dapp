@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from mana_gov.util.database import Base  # Assuming Base is the declarative base
-from .proposal import Proposal
 
 class ProjectPlan(Base):
     __tablename__ = 'project_plans'
@@ -12,7 +11,7 @@ class ProjectPlan(Base):
     project_name = Column(String, nullable=False)
 
     # Total Mana hours allocated to the project
-    total_mana_hours = Column(Float, nullable=False)
+    mana_hours_budgeted = Column(Float, nullable=False)
 
     # Voting power associated with the project
     voting_power = Column(String, nullable=True)

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
-from models.project import Project  # Assuming you have a Project model defined here
-from services.project_service import ProjectService  # Assuming this service handles the business logic
+from mana_gov.models.pydantic.project import Project  # Assuming you have a Project model defined here
+from mana_gov.services.project_service import ProjectService  # Assuming this service handles the business logic
 
 projects_router = APIRouter()
 

@@ -3,9 +3,6 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 from mana_gov.util.database import Base
-from .project_plan import ProjectPlan, TaskPlan
-# from .user import User
-# from .voting import PeerVote
 
 # Project Execution Model (with voting relationship)
 class ProjectExecution(Base):

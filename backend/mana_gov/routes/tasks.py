@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
-from models.project_plan import Task  # Assuming Task model is in project_plan.py
-from services.task_service import TaskService  # Assuming this service handles the business logic
+from mana_gov.models.pydantic.project_plan import Task  # Assuming Task model is in project_plan.py
+from mana_gov.services.task_service import TaskService  # Assuming this service handles the business logic
 
 tasks_router = APIRouter()
 

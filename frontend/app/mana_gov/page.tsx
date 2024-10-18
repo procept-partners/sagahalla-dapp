@@ -1,84 +1,75 @@
-"use client"; // This is a client-side component
+"use client"; // This enables the component to be a Client Component
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link from 'next/link'; // Ensure this import is correct
 import ProposalList from './components/ProposalList';
 import ProjectList from './components/ProjectList';
 import AssignedTasks from './components/AssignedTasks';
 import './styles.css'; // Import styles at the main level
 
-
-
 export default function ManaDashboard() {
-  const [proposals, setProposals] = useState([]); // Initialize with empty array
-  const [projects, setProjects] = useState([]); // Initialize with empty array
-  const [tasks, setTasks] = useState([]); // Initialize with empty array
+  const [proposals, setProposals] = useState([]); 
+  const [projects, setProjects] = useState([]); 
+  const [tasks, setTasks] = useState([]); 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // Ensure error type is handled correctly
-  const userId = 123; // Example user ID, replace with actual logic
+  const [error, setError] = useState<string | null>(null); 
+  const [loggedIn, setLoggedIn] = useState(false); 
 
   useEffect(() => {
-    // Simulate an empty data response by setting loading to false and no data
-    setLoading(false); // Just stop loading and use empty arrays
+    setTimeout(() => setLoading(false), 1500);
   }, []);
 
-  // Handle loading state
   if (loading) {
-    return <p>Loading...</p>;
+    return <div className="spinner"></div>;
   }
 
-  // If there's an error, display the template with empty data
+  if (error) {
+    return <p>Error loading data</p>;
+  }
+
   return (
-    <div>
-      {/* Header Section */}
-      <header>
-        <h1>Mana Effort Tracking App</h1>
-        <p>Welcome, [User Name]</p>
-      </header>
-
-      {/* Navigation Links */}
-      <nav>
-        <Link href="/proposal-management">Proposal Management</Link>
-        <Link href="/project-planning">Project Planning</Link>
-        <Link href="/task-tracking">Task Tracking</Link>
-        <Link href="/voting">Voting</Link>
-        <Link href="/reports">Reports</Link>
-      </nav>
-
-      {/* Main Dashboard Section */}
-      <div className="dashboard">
-        {/* Proposal List Section */}
-        <section className="proposals">
+    <div className="dashboard">
+      <section className="proposals">
+        <div className="section-header">
           <h2>Proposals</h2>
-          <ProposalList proposals={proposals} /> {/* Passing empty array for proposals */}
           <Link href="/mana_gov/create-proposal" className="button">
             Create New Proposal
           </Link>
-        </section>
+        </div>
+        {proposals.length === 0 ? (
+          <p>No proposals available. Create a new proposal to get started!</p>
+        ) : (
+          <ProposalList proposals={proposals} />
+        )}
+      </section>
 
-        {/* Project List Section */}
-        <section className="projects">
-          <h2>Project Planning</h2>
-          <ProjectList projects={projects} /> {/* Passing empty array for projects */}
-          <Link href="#" className="button">
-            View All Projects
+      <section className="projects">
+        <div className="section-header">
+          <h2>Projects</h2>
+          <Link href="/project-list" className="button">
+            Develop a Project Plan
           </Link>
-        </section>
+        </div>
+        {projects.length === 0 ? (
+          <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>
+        ) : (
+          <ProjectList projects={projects} />
+        )}
+      </section>
 
-        {/* Assigned Tasks Section */}
-        <section className="tasks">
-          <h2>Your Tasks</h2>
-          <AssignedTasks tasks={tasks} userId={userId} /> {/* Passing empty array for tasks */}
-          <Link href="#" className="button">
-            View All Tasks
+      <section className="tasks">
+        <div className="section-header">
+          <h2>Assigned Tasks</h2>
+          <Link href="/task-list" className="button">
+            Create a New Task
           </Link>
-        </section>
-      </div>
-
-      {/* Footer Section */}
-      <footer>
-        <p>&copy; 2024 Mana DApp. All Rights Reserved.</p>
-      </footer>
+        </div>
+        {tasks.length === 0 ? (
+          <p>No tasks assigned to you. Check back later for new tasks!</p>
+        ) : (
+          <AssignedTasks tasks={tasks} userId={123} />
+        )}
+      </section>
     </div>
   );
 }
