@@ -1,7 +1,7 @@
-from models.task_plan import TaskPlan
-from models.task_execution import TaskExecution
-from models.task_feedback import TaskFeedback
-from util.database import SessionLocal
+from mana_gov.models.task_plan import TaskPlan
+from mana_gov.models.task_execution import TaskExecution
+from mana_gov.models.task_feedback import TaskFeedback
+from mana_gov.util.database import SessionLocal
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 

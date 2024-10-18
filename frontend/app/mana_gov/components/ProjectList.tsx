@@ -4,10 +4,10 @@ import { Project } from '../types/types'; // Assuming you have a Project type de
 
 interface Props {
   projects: Project[];
-  userId: number; // Assuming you pass a logged-in user's ID
+  userId: number; // Assuming the logged-in user's ID is passed
 }
 
-const ProjectPlanningList = ({ projects, userId }: Props) => {
+const ProjectList = ({ projects, userId }: Props) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,31 +29,43 @@ const ProjectPlanningList = ({ projects, userId }: Props) => {
 
   return (
     <div>
-      <h2>Project Planning</h2>
+      <h2 className="text-orange-500">Projects</h2>
 
-      {/* Search Box */}
-      <div style={{ marginBottom: '20px' }}>
+      {/* Filter Section */}
+      <div className="mb-4">
+        <label htmlFor="search" className="text-orange-500 mr-4">Search by project title:</label>
         <input
           type="text"
+          id="search"
           placeholder="Search by project title"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="ml-4 px-3 py-2 border rounded-lg"
+          className="px-3 py-2 border border-orange-500 rounded-lg bg-purple-900 text-white"
         />
-        <button className="ml-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-600">
+        <button className="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
           Search
         </button>
       </div>
 
       {/* Project List */}
-      <table className="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
+      <table className="min-w-full bg-purple-900 rounded-lg">
         <thead>
           <tr>
-            <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Title</th>
-            <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Total Mana Hours</th>
-            <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Your Mana Hours</th>
-            <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Voting Power</th>
-            <th className="px-6 py-3 border-b border-gray-300 text-left text-sm font-medium text-gray-700">Actions</th>
+            <th className="px-6 py-3 border-b-2 border-orange-500 text-left text-sm font-medium text-orange-500">
+              Title
+            </th>
+            <th className="px-6 py-3 border-b-2 border-orange-500 text-left text-sm font-medium text-orange-500">
+              Total Mana Hours
+            </th>
+            <th className="px-6 py-3 border-b-2 border-orange-500 text-left text-sm font-medium text-orange-500">
+              Your Mana Hours
+            </th>
+            <th className="px-6 py-3 border-b-2 border-orange-500 text-left text-sm font-medium text-orange-500">
+              Voting Power
+            </th>
+            <th className="px-6 py-3 border-b-2 border-orange-500 text-left text-sm font-medium text-orange-500">
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -61,10 +73,10 @@ const ProjectPlanningList = ({ projects, userId }: Props) => {
             const userManaHours = project.manaHours.find((mana) => mana.userId === userId)?.hours || 0;
 
             return (
-              <tr key={project.id} className="border-b border-gray-200">
+              <tr key={project.id} className="border-b border-gray-200 hover:bg-orange-500 hover:text-white">
                 {/* Project Title */}
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <button onClick={() => openModal(project)} className="text-blue-500 hover:underline">
+                  <button onClick={() => openModal(project)} className="text-orange-500 hover:underline">
                     {project.title}
                   </button>
                 </td>
@@ -88,7 +100,7 @@ const ProjectPlanningList = ({ projects, userId }: Props) => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button
                     onClick={() => openModal(project)}
-                    className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-600"
+                    className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
                   >
                     View Details
                   </button>
@@ -107,4 +119,4 @@ const ProjectPlanningList = ({ projects, userId }: Props) => {
   );
 };
 
-export default ProjectPlanningList;
+export default ProjectList;

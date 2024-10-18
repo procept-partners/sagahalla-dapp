@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from util.database import Base  # Assuming Base is your declarative base
+from mana_gov.util.database import Base  # Assuming Base is your declarative base
 
 class Proposal(Base):
     __tablename__ = 'proposals'
@@ -13,14 +13,12 @@ class Proposal(Base):
     # Voting fields
     yes_votes = Column(Integer, default=0)
     no_votes = Column(Integer, default=0)
-    total_tokens_allocated = Column(Float, nullable=False)
-    total_tokens = Column(Float, nullable=True)
+    mana_tokens_allocated = Column(Float, nullable=False)
 
     is_ended = Column(Boolean, default=False)
     submitted_by = Column(String, nullable=False)
-    hours_required = Column(Float, nullable=False)
-    token_per_hour = Column(Float, nullable=False)
-    end_time = Column(DateTime, nullable=True)
+    mana_hours_budgeted = Column(Float, nullable=False)
+    target_date = Column(DateTime, nullable=True)
 
     # Automatically managed timestamps
     created_at = Column(DateTime(timezone=True), server_default=func.now())

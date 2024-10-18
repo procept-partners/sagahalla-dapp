@@ -1,7 +1,7 @@
-from models.project_plan import ProjectPlan
-from models.project_execution import ProjectExecution
-from models.task_plan import TaskPlan
-from util.database import SessionLocal
+from mana_gov.models.project_plan import ProjectPlan
+from mana_gov.models.project_execution import ProjectExecution
+from mana_gov.models.task_plan import TaskPlan
+from mana_gov.util.database import SessionLocal
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 

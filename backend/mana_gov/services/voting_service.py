@@ -1,8 +1,8 @@
-from models.proposal import Proposal
-from models.voting import ProposalVote, PeerVote
-from models.project_execution import ProjectExecution
-from models.task_plan import TaskPlan
-from util.database import SessionLocal
+from mana_gov.models.proposal import Proposal
+from mana_gov.models.voting import ProposalVote, PeerVote
+from mana_gov.models.project_execution import ProjectExecution
+from mana_gov.models.task_plan import TaskPlan
+from mana_gov.util.database import SessionLocal
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 
