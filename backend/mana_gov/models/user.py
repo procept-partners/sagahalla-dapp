@@ -56,5 +56,4 @@ class UserRoleAssignment(Base):
 
     # Relationships
     user = relationship("User", back_populates="role_assignments")
-    task = relationship("Task", back_populates="role_assignments")\
-
+    task = relationship("Task", back_populates="role_assignments")
