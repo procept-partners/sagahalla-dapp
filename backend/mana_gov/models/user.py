@@ -8,6 +8,8 @@ from .proposal import Proposal, Task
 
 # User Model
 class User(Base):
+    from .voting import PeerVote
+
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, index=True)

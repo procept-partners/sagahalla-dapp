@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
-from models.proposal import Proposal  # Assuming you have a Proposal model defined here
-from services.proposal_service import ProposalService  # Assuming this service handles the business logic
+from mana_gov.models.proposal import Proposal  # Assuming you have a Proposal model defined here
+from mana_gov.services.proposal_service import ProposalService  # Assuming this service handles the business logic
 
 proposals_router = APIRouter()
 
