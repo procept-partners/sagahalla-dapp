@@ -12,28 +12,75 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
   const [manaTokenAllocated, setManaTokenAllocated] = useState(0);
   const [targetApprovalDate, setTargetApprovalDate] = useState<string | undefined>(undefined);
   const [jsonFile, setJsonFile] = useState<File | null>(null); // File state
-  const [validationError, setValidationError] = useState<string | null>(null); // To store detailed validation errors
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  
+  // Move the submitProposal function inside the ProposalForm component
+  const submitProposal = async (proposal: any) => {
+    try {
+      const response = await fetch('/api/proposals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(proposal),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Failed to submit the proposal');
+      }
+
+      // If successful, show a success message and reset the form
+      setSuccessMessage('Proposal submitted successfully!');
+      resetForm();
+    } catch (error) {
+      setValidationError((error as Error).message || 'Error submitting the proposal');
+    }
+  };
+  
+  const resetForm = () => {
+    setTitle('');
+    setDescription('');
+    setManaHoursBudgeted(0);
+    setManaTokenAllocated(0);
+    setTargetApprovalDate(undefined);
+    setJsonFile(null);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
+    // Clear previous success/error messages
+    setValidationError(null);
+    setSuccessMessage(null);
+  
     // If JSON file is uploaded, parse it and submit it
     if (jsonFile) {
       try {
         const fileContent = await jsonFile.text();
-        const parsedJson = JSON.parse(fileContent);
-
+        let parsedJson;
+  
+        // Attempt to parse the JSON file with verbose error handling
+        try {
+          parsedJson = JSON.parse(fileContent);
+        } catch (err) {
+          setValidationError('Error parsing the JSON file: ' + (err as Error).message);
+          console.log('JSON Parse Error:', err); // Log error to console for debugging
+          return;
+        }
+  
         // Validate the JSON and output detailed errors if invalid
         const validationMessage = validateProposalJson(parsedJson);
         if (validationMessage) {
           setValidationError(validationMessage); // Set the validation error message
+          console.log('Validation Error:', validationMessage); // Log validation error
           return;
         }
-
-        addProposal(parsedJson);
+  
+        // Submit the valid JSON data to the backend
+        await submitProposal(parsedJson);
       } catch (err) {
-        console.error('Error parsing JSON file:', err);
-        alert('Invalid JSON file. Please ensure the file structure is correct.');
+        console.error('Error handling JSON file:', err);
+        setValidationError('Invalid JSON file. Please ensure the file structure is correct and properly formatted.');
       }
     } else {
       // Submit the form data with the logged-in user ID
@@ -45,16 +92,10 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
         targetApprovalDate: targetApprovalDate || '', // Optional
         submittedBy: loggedInUserId, // Automatically set the logged-in user
       };
-      addProposal(proposal);
-
-      // Reset form fields
-      setTitle('');
-      setDescription('');
-      setManaHoursBudgeted(0);
-      setManaTokenAllocated(0);
-      setTargetApprovalDate(undefined);
+      await submitProposal(proposal);
     }
   };
+  
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
@@ -63,40 +104,68 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
 
   // Helper function to validate the main Proposal object and nested structures
   const validateProposalJson = (json: any): string | null => {
+    console.log('Validating JSON:', json); // Log the JSON object to inspect its structure
+  
     // Validate top-level fields
-    if (typeof json.id !== 'number') return 'Invalid or missing "id" in proposal.';
-    if (typeof json.title !== 'string') return 'Invalid or missing "title" in proposal.';
-    if (typeof json.mana_tokens_allocated !== 'number') return 'Invalid or missing "mana_tokens_allocated" in proposal.';
-    if (typeof json.submitted_by !== 'string') return 'Invalid or missing "submitted_by" in proposal.';
-    if (typeof json.mana_hours_budgeted !== 'number') return 'Invalid or missing "mana_hours_budgeted" in proposal.';
-    if (json.target_date && isNaN(Date.parse(json.target_date))) return 'Invalid "target_date" in proposal.';
-
-    // Validate sub_projects if they exist
-    if (json.sub_projects && !validateSubProjects(json.sub_projects)) {
-      return 'SubProjects structure is invalid.';
+    if (typeof json.id !== 'number') {
+      console.log('Validation failed: Invalid or missing "id"');
+      return 'Invalid or missing "id" in proposal.';
     }
-
-    // Validate budget_items if they exist
-    if (json.budget_items && !validateProposalBudgets(json.budget_items)) {
-      return 'Proposal budget structure is invalid.';
+    if (typeof json.title !== 'string') {
+      console.log('Validation failed: Invalid or missing "title"');
+      return 'Invalid or missing "title" in proposal.';
     }
-
+    if (typeof json.manaTokenAllocated !== 'number') {
+      console.log('Validation failed: Invalid or missing "manaTokenAllocated"');
+      return 'Invalid or missing "manaTokenAllocated" in proposal.';
+    }
+    if (typeof json.submittedBy !== 'string') {
+      console.log('Validation failed: Invalid or missing "submittedBy"');
+      return 'Invalid or missing "submittedBy" in proposal.';
+    }
+    if (typeof json.manaHoursBudgeted !== 'number') {
+      console.log('Validation failed: Invalid or missing "manaHoursBudgeted"');
+      return 'Invalid or missing "manaHoursBudgeted" in proposal.';
+    }
+    
+    // Handling targetApprovalDate: Check if it's either null or a valid date
+    if (json.targetApprovalDate !== null && json.targetApprovalDate !== undefined && isNaN(Date.parse(json.targetApprovalDate))) {
+      console.log('Validation failed: Invalid "targetApprovalDate"');
+      return 'Invalid "targetApprovalDate" in proposal.';
+    }
+  
+    // Validate subProjects if they exist
+    if (json.subProjects && !validateSubProjects(json.subProjects)) {
+      return 'Invalid subProjects structure in proposal.';
+    }
+  
+    // Validate budgetItems if they exist
+    if (json.budgetItems && !validateProposalBudgets(json.budgetItems)) {
+      return 'Invalid budget structure in proposal.';
+    }
+  
     return null; // No validation errors
   };
+  
 
-  // Helper function to validate sub_projects
+  // Helper function to validate subProjects
   const validateSubProjects = (subProjects: any[]): boolean => {
+    console.log('Validating SubProjects:', subProjects); // Log subProjects for debugging
+
     for (const subProject of subProjects) {
       if (typeof subProject.id !== 'number') {
         setValidationError('Invalid or missing "id" in SubProject.');
+        console.log('Invalid or missing "id" in SubProject:', subProject);
         return false;
       }
-      if (typeof subProject.proposal_id !== 'number') {
-        setValidationError('Invalid or missing "proposal_id" in SubProject.');
+      if (typeof subProject.proposalId !== 'number') {
+        setValidationError('Invalid or missing "proposalId" in SubProject.');
+        console.log('Invalid or missing "proposalId" in SubProject:', subProject);
         return false;
       }
-      if (typeof subProject.sub_project_name !== 'string') {
-        setValidationError('Invalid or missing "sub_project_name" in SubProject.');
+      if (typeof subProject.subProjectName !== 'string') {
+        setValidationError('Invalid or missing "subProjectName" in SubProject.');
+        console.log('Invalid or missing "subProjectName" in SubProject:', subProject);
         return false;
       }
       if (subProject.epics && !validateEpics(subProject.epics)) {
@@ -108,21 +177,26 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
 
   // Helper function to validate epics
   const validateEpics = (epics: any[]): boolean => {
+    console.log('Validating Epics:', epics); // Log epics for debugging
+
     for (const epic of epics) {
       if (typeof epic.id !== 'number') {
         setValidationError('Invalid or missing "id" in Epic.');
+        console.log('Invalid or missing "id" in Epic:', epic);
         return false;
       }
-      if (typeof epic.sub_project_id !== 'number') {
-        setValidationError('Invalid or missing "sub_project_id" in Epic.');
+      if (typeof epic.subProjectId !== 'number') {
+        setValidationError('Invalid or missing "subProjectId" in Epic.');
+        console.log('Invalid or missing "subProjectId" in Epic:', epic);
         return false;
       }
-      if (typeof epic.epic_name !== 'string') {
-        setValidationError('Invalid or missing "epic_name" in Epic.');
+      if (typeof epic.epicName !== 'string') {
+        setValidationError('Invalid or missing "epicName" in Epic.');
+        console.log('Invalid or missing "epicName" in Epic:', epic);
         return false;
       }
       if (epic.tasks && !validateTasks(epic.tasks)) {
-        return false; // Task validation will set the error
+        return false;
       }
     }
     return true;
@@ -130,70 +204,88 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
 
   // Helper function to validate tasks
   const validateTasks = (tasks: any[]): boolean => {
+    console.log('Validating Tasks:', tasks); // Log tasks for debugging
+
     for (const task of tasks) {
       if (typeof task.id !== 'number') {
         setValidationError('Invalid or missing "id" in Task.');
+        console.log('Invalid or missing "id" in Task:', task);
         return false;
       }
-      if (typeof task.epic_id !== 'number') {
-        setValidationError('Invalid or missing "epic_id" in Task.');
+      if (typeof task.epicId !== 'number') {
+        setValidationError('Invalid or missing "epicId" in Task.');
+        console.log('Invalid or missing "epicId" in Task:', task);
         return false;
       }
-      if (typeof task.task_name !== 'string') {
-        setValidationError('Invalid or missing "task_name" in Task.');
+      if (typeof task.taskName !== 'string') {
+        setValidationError('Invalid or missing "taskName" in Task.');
+        console.log('Invalid or missing "taskName" in Task:', task);
         return false;
       }
-      if (task.roles_mana_hours && !validateRoleManaHours(task.roles_mana_hours)) {
-        return false; // RoleManaHours validation will set the error
+      if (task.rolesManaHours && !validateRoleManaHours(task.rolesManaHours)) {
+        return false;
       }
     }
     return true;
   };
 
-  // Helper function to validate roles_mana_hours
+  // Helper function to validate rolesManaHours
   const validateRoleManaHours = (rolesManaHours: any[]): boolean => {
+    console.log('Validating RoleManaHours:', rolesManaHours); // Log rolesManaHours for debugging
+
     for (const role of rolesManaHours) {
       if (typeof role.id !== 'number') {
         setValidationError('Invalid or missing "id" in RoleManaHours.');
+        console.log('Invalid or missing "id" in RoleManaHours:', role);
         return false;
       }
-      if (typeof role.task_id !== 'number') {
-        setValidationError('Invalid or missing "task_id" in RoleManaHours.');
+      if (typeof role.taskId !== 'number') {
+        setValidationError('Invalid or missing "taskId" in RoleManaHours.');
+        console.log('Invalid or missing "taskId" in RoleManaHours:', role);
         return false;
       }
-      if (typeof role.role_name !== 'string') {
-        setValidationError('Invalid or missing "role_name" in RoleManaHours.');
+      if (typeof role.roleName !== 'string') {
+        setValidationError('Invalid or missing "roleName" in RoleManaHours.');
+        console.log('Invalid or missing "roleName" in RoleManaHours:', role);
         return false;
       }
-      if (typeof role.mana_hours !== 'number') {
-        setValidationError('Invalid or missing "mana_hours" in RoleManaHours.');
+      if (typeof role.manaHours !== 'number') {
+        setValidationError('Invalid or missing "manaHours" in RoleManaHours.');
+        console.log('Invalid or missing "manaHours" in RoleManaHours:', role);
         return false;
       }
     }
     return true;
   };
 
-  // Helper function to validate proposal_budgets
+  // Helper function to validate proposalBudgets
   const validateProposalBudgets = (budgets: any[]): boolean => {
+    console.log('Validating ProposalBudgets:', budgets); // Log budgets for debugging
+
     for (const budget of budgets) {
       if (typeof budget.id !== 'number') {
         setValidationError('Invalid or missing "id" in ProposalBudget.');
+        console.log('Invalid or missing "id" in ProposalBudget:', budget);
         return false;
       }
-      if (typeof budget.proposal_id !== 'number') {
-        setValidationError('Invalid or missing "proposal_id" in ProposalBudget.');
+      if (typeof budget.proposalId !== 'number') {
+        setValidationError('Invalid or missing "proposalId" in ProposalBudget.');
+        console.log('Invalid or missing "proposalId" in ProposalBudget:', budget);
         return false;
       }
-      if (typeof budget.role_name !== 'string') {
-        setValidationError('Invalid or missing "role_name" in ProposalBudget.');
+      if (typeof budget.roleName !== 'string') {
+        setValidationError('Invalid or missing "roleName" in ProposalBudget.');
+        console.log('Invalid or missing "roleName" in ProposalBudget:', budget);
         return false;
       }
-      if (typeof budget.budget_usd !== 'number') {
-        setValidationError('Invalid or missing "budget_usd" in ProposalBudget.');
+      if (typeof budget.budgetUsd !== 'number') {
+        setValidationError('Invalid or missing "budgetUsd" in ProposalBudget.');
+        console.log('Invalid or missing "budgetUsd" in ProposalBudget:', budget);
         return false;
       }
-      if (typeof budget.budget_mana !== 'number') {
-        setValidationError('Invalid or missing "budget_mana" in ProposalBudget.');
+      if (typeof budget.budgetMana !== 'number') {
+        setValidationError('Invalid or missing "budgetMana" in ProposalBudget.');
+        console.log('Invalid or missing "budgetMana" in ProposalBudget:', budget);
         return false;
       }
     }
@@ -202,7 +294,6 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
 
   return (
     <form onSubmit={handleSubmit} className="mt-20 p-8 rounded-lg shadow-lg">
-      {/* Metadata Fields (only visible if no JSON file is uploaded) */}
       {!jsonFile && (
         <>
           <div className="mb-4">
@@ -263,7 +354,6 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
         </>
       )}
 
-      {/* JSON File Upload (Placed at the end of the form) */}
       <div className="mb-4">
         <label className="block text-orange-500 font-medium mb-2">Upload JSON File (Optional):</label>
         <input
@@ -281,7 +371,6 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
         </div>
       )}
 
-      {/* Automatically populate "submittedBy" with logged-in user */}
       <input type="hidden" value={loggedInUserId} />
 
       <button
@@ -293,5 +382,9 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
     </form>
   );
 };
+
+
+
+
 
 export default ProposalForm;

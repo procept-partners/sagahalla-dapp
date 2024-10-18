@@ -10,7 +10,6 @@ router.include_router(indexer_router, prefix="/indexer")
 router.include_router(proposals_router, prefix="/proposals")
 router.include_router(reports_router, prefix="/reports")
 
-
 # A sample route to check if everything is working fine
 @router.get("/")
 async def root():

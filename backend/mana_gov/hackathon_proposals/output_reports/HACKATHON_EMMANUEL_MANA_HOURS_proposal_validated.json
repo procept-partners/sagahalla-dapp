@@ -1,0 +1,168 @@
+{
+    "id": 1,
+    "title": "Proposal for HACKATHON_EMMANUEL_MANA_HOURS",
+    "description": "Development tasks for HACKATHON_EMMANUEL_MANA_HOURS",
+    "yes_votes": 0,
+    "no_votes": 0,
+    "mana_tokens_allocated": 1000,
+    "is_ended": false,
+    "submitted_by": "HACKATHON_EMMANUEL_MANA_HOURS",
+    "mana_hours_budgeted": 65.0,
+    "target_date": null,
+    "created_at": "2024-10-18 04:28:09.719595",
+    "updated_at": null,
+    "sub_projects": [
+        {
+            "id": 1,
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "id": 1,
+                    "epic_name": "MANA Governance",
+                    "tasks": [
+                        {
+                            "id": 0,
+                            "task_name": "Implement voting UI",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Frontend Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Develop backend logic",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 10.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Create proposal submission form",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Frontend Developer",
+                                    "mana_hours": 3.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Store/retrieve proposals",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 6.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Develop report generation",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 6.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Export report",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Create display for MANA allocations",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Frontend Developer",
+                                    "mana_hours": 3.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Fetch MANA allocation data",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Implement project governance UI",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Frontend Developer",
+                                    "mana_hours": 3.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Backend logic for project voting",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 6.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Implement conversion UI",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Frontend Developer",
+                                    "mana_hours": 3.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Backend logic for conversion",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 6.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Create results dashboard",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Frontend Developer",
+                                    "mana_hours": 3.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Fetch MANA results",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Backend Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

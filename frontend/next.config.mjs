@@ -24,8 +24,17 @@ const nextConfig = {
     unoptimized: true     // Disable image optimization if needed
   },
   webpack,  // Custom webpack configuration
+  
+  // Add rewrites to proxy API requests to FastAPI
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:8000/api/:path*', // Proxy to FastAPI running on port 8000
+      },
+    ]
+  },
 };
 
 // Apply withLlamaIndex to add necessary modifications
 export default withLlamaIndex(nextConfig);
-

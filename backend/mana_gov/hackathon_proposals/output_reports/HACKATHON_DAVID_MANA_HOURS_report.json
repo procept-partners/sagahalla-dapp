@@ -1,0 +1,13 @@
+{
+    "HACKATHON_DAVID_MANA_HOURS": {
+        "Project Management": {
+            "Content": [
+                {
+                    "task_name": "Create website content",
+                    "role": "Content Developer",
+                    "budgeted_hours": 40.0
+                }
+            ]
+        }
+    }
+}

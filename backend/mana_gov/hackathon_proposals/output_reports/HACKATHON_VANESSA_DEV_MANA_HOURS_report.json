@@ -1,0 +1,107 @@
+{
+    "HACKATHON_VANESSA_DEV_MANA_HOURS": {
+        "Mana DApp": {
+            "mana hour tracking": [
+                {
+                    "task_name": "Implement basic input fields",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 2.0
+                },
+                {
+                    "task_name": "Implement dashboard",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Create front-end display",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 2.0
+                }
+            ],
+            "MANA Governance": [
+                {
+                    "task_name": "Implement voting UI",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 4.0
+                },
+                {
+                    "task_name": "Create proposal submission form",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Create display for MANA allocations",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Implement project governance UI",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Implement conversion UI",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                },
+                {
+                    "task_name": "Create results dashboard",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 3.0
+                }
+            ],
+            "VicTory Exchange": [
+                {
+                    "task_name": "Connect Wallet",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 6.0
+                },
+                {
+                    "task_name": "Create FYRE Purchase Interface",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 12.0
+                },
+                {
+                    "task_name": "Create SHLD Purchase Interface",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 10.0
+                },
+                {
+                    "task_name": "AI-Generated Customization for SHLD NFTs",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 12.0
+                },
+                {
+                    "task_name": "Create MANA Contribution Interface",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 8.0
+                },
+                {
+                    "task_name": "Create MANA-to-FYRE Conversion Interface",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 8.0
+                },
+                {
+                    "task_name": "Create Collateralization Interface for MANA",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 8.0
+                },
+                {
+                    "task_name": "Integrate Frontend Wallet and Purchase Logic",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 8.0
+                },
+                {
+                    "task_name": "Overall Integration Testing",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 8.0
+                },
+                {
+                    "task_name": "Test and Finalize Backend APIs",
+                    "role": "Frontend Developer",
+                    "budgeted_hours": 8.0
+                }
+            ]
+        }
+    }
+}

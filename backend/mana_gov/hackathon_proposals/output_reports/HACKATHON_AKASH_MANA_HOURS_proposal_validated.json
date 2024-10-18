@@ -1,0 +1,200 @@
+{
+    "id": 1,
+    "title": "Proposal for HACKATHON_AKASH_MANA_HOURS",
+    "description": "Development tasks for HACKATHON_AKASH_MANA_HOURS",
+    "yes_votes": 0,
+    "no_votes": 0,
+    "mana_tokens_allocated": 1000,
+    "is_ended": false,
+    "submitted_by": "HACKATHON_AKASH_MANA_HOURS",
+    "mana_hours_budgeted": 114.0,
+    "target_date": null,
+    "created_at": "2024-10-18 04:28:09.001195",
+    "updated_at": null,
+    "sub_projects": [
+        {
+            "id": 1,
+            "sub_project_name": "Token Contracts",
+            "epics": [
+                {
+                    "id": 1,
+                    "epic_name": "SHLD",
+                    "tasks": [
+                        {
+                            "id": 0,
+                            "task_name": "Develop ERC-721 Contract for Non-Transferable SHLD",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 10
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "On-Chain Metadata Storage",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 8
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Testing Non-Transferable NFT Features",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 6
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Develop Governance Voting Smart Contracts",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 12
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Integrate SHLD Voting into Governance",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 10
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Testing Governance Voting Mechanism",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 8
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Develop Project Contribution Voting Contracts",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 12
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Integrate Voting with Project Budgets",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 10
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Testing Project Voting and Budget Approval",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 8
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "sub_project_name": "Mana DApp",
+            "epics": [
+                {
+                    "id": 1,
+                    "epic_name": "MANA Governance",
+                    "tasks": [
+                        {
+                            "id": 0,
+                            "task_name": "Implement voting on-chain",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 6.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Record proposals on-chain",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Store report on-chain",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Record MANA allocations on-chain",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Record project voting on-chain",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Record conversion on-chain",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        },
+                        {
+                            "id": 0,
+                            "task_name": "Log final project hours on-chain",
+                            "roles_mana_hours": [
+                                {
+                                    "role_name": "Blockchain Developer",
+                                    "mana_hours": 4.0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
