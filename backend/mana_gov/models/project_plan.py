@@ -11,7 +11,7 @@ class ProjectPlan(Base):
     project_name = Column(String, nullable=False)
 
     # Total Mana hours allocated to the project
-    total_mana_hours = Column(Float, nullable=False)
+    mana_hours_budgeted = Column(Float, nullable=False)
 
     # Voting power associated with the project
     voting_power = Column(String, nullable=True)

@@ -10,14 +10,12 @@ class Proposal(BaseModel):
     # Voting fields
     yes_votes: Optional[int] = 0
     no_votes: Optional[int] = 0
-    total_tokens_allocated: float
-    total_tokens: Optional[float]
+    mana_tokens_allocated: float
 
     is_ended: Optional[bool] = False
     submitted_by: str
-    hours_required: float
-    token_per_hour: float
-    end_time: Optional[datetime]
+    mana_hours_budgeted: float
+    target_date: Optional[datetime]
 
     # Automatically managed timestamps
     created_at: datetime

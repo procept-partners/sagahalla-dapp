@@ -11,7 +11,7 @@ const AboutPage = () => {
                 <li>Feature 3: Description</li>
             </ul>
             <p className="text-lg text-gray-700">
-                Contact us at: <a href="mailto:support@sagamana.com" className="text-blue-500 hover:underline">support@sagamana.com</a>
+                Contact us at: <a href="mailto:support@sagahalla.io" className="text-blue-500 hover:underline">support@sagamana.com</a>
             </p>
         </div>
     );

@@ -5,7 +5,7 @@ from datetime import datetime
 class ProjectExecution(BaseModel):
     id: int
     project_plan_id: int
-    actual_total_hours: float
+    actual_mana_hours: float
 
     # Relationships
     project_plan: Optional["ProjectPlan"]
@@ -20,7 +20,7 @@ class TaskExecution(BaseModel):
     id: int
     project_execution_id: int
     task_plan_id: int
-    actual_hours: float
+    actual_mana_hours: float
 
     # Relationships
     project_execution: Optional[ProjectExecution]

@@ -1,78 +1,138 @@
 import { useState } from 'react';
 
 interface Props {
-  addProposal: (proposal: { title: string; description: string; hoursRequired: number; tokenPerHour: number }) => void;
+  addProposal: (proposal: { title: string; description: string; manaHoursBudgeted: number; manaTokenAllocated: number; targetApprovalDate: string; submittedBy: string }) => void;
+  loggedInUserId: string; // Pass the logged-in user's ID as a prop
 }
 
-const ProposalForm = ({ addProposal }: Props) => {
+const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [hoursRequired, setHoursRequired] = useState(0);
-  const [tokenPerHour, setTokenPerHour] = useState(0);
+  const [manaHoursBudgeted, setManaHoursBudgeted] = useState(0);
+  const [manaTokenAllocated, setManaTokenAllocated] = useState(0);
+  const [targetApprovalDate, setTargetApprovalDate] = useState<string | undefined>(undefined);
+  const [jsonFile, setJsonFile] = useState<File | null>(null); // File state
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    addProposal({ title, description, hoursRequired, tokenPerHour });
-    setTitle('');
-    setDescription('');
-    setHoursRequired(0);
-    setTokenPerHour(0);
+
+    // If JSON file is uploaded, parse it and submit it
+    if (jsonFile) {
+      try {
+        const fileContent = await jsonFile.text();
+        const parsedJson = JSON.parse(fileContent);
+        addProposal(parsedJson);
+      } catch (err) {
+        console.error('Error parsing JSON file:', err);
+        alert('Invalid JSON file. Please ensure the file structure is correct.');
+      }
+    } else {
+      // Submit the form data with the logged-in user ID
+      const proposal = {
+        title,
+        description,
+        manaHoursBudgeted,
+        manaTokenAllocated,
+        targetApprovalDate: targetApprovalDate || '', // Optional
+        submittedBy: loggedInUserId, // Automatically set the logged-in user
+      };
+      addProposal(proposal);
+
+      // Reset form fields
+      setTitle('');
+      setDescription('');
+      setManaHoursBudgeted(0);
+      setManaTokenAllocated(0);
+      setTargetApprovalDate(undefined);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    setJsonFile(file);
   };
 
   return (
     <form onSubmit={handleSubmit} className="mt-20 p-8 rounded-lg shadow-lg">
-      <h1 className="text-2xl font-semibold mt-10 mb-6 text-center text-gray-800">Add Proposal</h1>
+      {/* Metadata Fields (only visible if no JSON file is uploaded) */}
+      {!jsonFile && (
+        <>
+          <div className="mb-4">
+            <label className="block text-orange-500 font-medium mb-2">Title:</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              placeholder="Enter proposal title"
+            />
+          </div>
 
+          <div className="mb-4">
+            <label className="block text-orange-500 font-medium mb-2">Description:</label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              placeholder="Describe the proposal"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-orange-500 font-medium mb-2">Mana Hours Budgeted:</label>
+            <input
+              type="number"
+              value={manaHoursBudgeted}
+              onChange={(e) => setManaHoursBudgeted(Number(e.target.value))}
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              placeholder="Enter mana hours budgeted"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-orange-500 font-medium mb-2">Mana Token Allocated:</label>
+            <input
+              type="number"
+              value={manaTokenAllocated}
+              onChange={(e) => setManaTokenAllocated(Number(e.target.value))}
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              placeholder="Enter mana token allocated"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-orange-500 font-medium mb-2">Target Date for Approval (Optional):</label>
+            <input
+              type="date"
+              value={targetApprovalDate || ''}
+              onChange={(e) => setTargetApprovalDate(e.target.value || undefined)}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            />
+          </div>
+        </>
+      )}
+
+      {/* JSON File Upload (Placed at the end of the form) */}
       <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Title:</label>
+        <label className="block text-orange-500 font-medium mb-2">Upload JSON File (Optional):</label>
         <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter proposal title"
+          type="file"
+          accept=".json"
+          onChange={handleFileChange}
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
+        {jsonFile && <p className="text-orange-500 mt-2">File selected: {jsonFile.name}</p>}
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Description:</label>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Describe the proposal"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Hours Required:</label>
-        <input
-          type="number"
-          value={hoursRequired}
-          onChange={(e) => setHoursRequired(Number(e.target.value))}
-          required
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter hours required"
-        />
-      </div>
-
-      <div className="mb-6">
-        <label className="block text-gray-700 font-medium mb-2">Token Per Hour:</label>
-        <input
-          type="number"
-          value={tokenPerHour}
-          onChange={(e) => setTokenPerHour(Number(e.target.value))}
-          required
-          className="mb-10 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter tokens per hour"
-        />
-      </div>
+      {/* Automatically populate "submittedBy" with logged-in user */}
+      <input type="hidden" value={loggedInUserId} />
 
       <button
         type="submit"
-        className="mt-10 w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+        className="bg-orange-500 text-white py-2 px-6 rounded-lg hover:bg-orange-600 transition duration-300 ease-in-out"
       >
         Submit Proposal
       </button>
@@ -81,3 +141,4 @@ const ProposalForm = ({ addProposal }: Props) => {
 };
 
 export default ProposalForm;
+
