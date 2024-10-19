@@ -15,16 +15,80 @@ export default function ManaDashboard() {
   const [error, setError] = useState<string | null>(null); 
   const [loggedIn, setLoggedIn] = useState(false); 
 
+  // Example user ID for testing, replace this with actual logged-in user data
+  const loggedInUserId = 123;
+
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1500);
+    async function fetchData() {
+      let errors: string[] = [];
+      try {
+        await fetchProposals();
+      } catch {
+        errors.push('Error fetching proposals');
+      }
+      try {
+        await fetchProjects();
+      } catch {
+        errors.push('Error fetching projects');
+      }
+      try {
+        await fetchTasks();
+      } catch {
+        errors.push('Error fetching tasks');
+      }
+
+      if (errors.length > 0) {
+        setError(errors.join(', '));
+      }
+
+      setLoading(false);
+    }
+
+    fetchData();
   }, []);
+
+  // Fetch Proposals
+  async function fetchProposals() {
+    try {
+      const res = await fetch('/api/proposals');
+      if (!res.ok) throw new Error('Failed to fetch proposals');
+      const data = await res.json();
+      setProposals(data);
+    } catch {
+      throw new Error('Error fetching proposals');
+    }
+  }
+
+  // Fetch Projects
+  async function fetchProjects() {
+    try {
+      const res = await fetch('/api/projects');
+      if (!res.ok) throw new Error('Failed to fetch projects');
+      const data = await res.json();
+      setProjects(data);
+    } catch {
+      throw new Error('Error fetching projects');
+    }
+  }
+
+  // Fetch Assigned Tasks
+  async function fetchTasks() {
+    try {
+      const res = await fetch('/api/tasks');
+      if (!res.ok) throw new Error('Failed to fetch tasks');
+      const data = await res.json();
+      setTasks(data);
+    } catch {
+      throw new Error('Error fetching tasks');
+    }
+  }
 
   if (loading) {
     return <div className="spinner"></div>;
   }
 
   if (error) {
-    return <p>Error loading data</p>;
+    return <p>{error}</p>;
   }
 
   return (
@@ -46,30 +110,32 @@ export default function ManaDashboard() {
       <section className="projects">
         <div className="section-header">
           <h2>Projects</h2>
-          <Link href="/project-list" className="button">
+          <Link href="/mana_gov/create-project-plan" className="button">
             Develop a Project Plan
           </Link>
         </div>
         {projects.length === 0 ? (
           <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>
         ) : (
-          <ProjectList projects={projects} />
+          // Pass the userId here
+          <ProjectList projects={projects} userId={loggedInUserId} />
         )}
       </section>
 
       <section className="tasks">
         <div className="section-header">
           <h2>Assigned Tasks</h2>
-          <Link href="/task-list" className="button">
-            Create a New Task
+          <Link href="/mana_gov/create-project-execution" className="button">
+            Execute Project Tasks
           </Link>
         </div>
         {tasks.length === 0 ? (
           <p>No tasks assigned to you. Check back later for new tasks!</p>
         ) : (
-          <AssignedTasks tasks={tasks} userId={123} />
+          <AssignedTasks projects={projects} userId={123} />
         )}
       </section>
     </div>
   );
 }
+

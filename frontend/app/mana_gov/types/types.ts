@@ -1,53 +1,143 @@
-// app/mana_gov/index.ts
+// app/mana_gov/types.ts
 
+// Main type for Proposal
 export interface Proposal {
-    id: number; // Unique identifier for the proposal
-    title: string; // Title of the proposal
-    description?: string; // Optional description of the proposal
-    yesVotes: number; // Number of yes votes
-    noVotes: number; // Number of no votes
-    totalTokensAllocated: number; // Total tokens allocated to the proposal
-    totalTokens?: number; // Optional total number of tokens for the proposal (for calculating percentages)
-    isEnded: boolean; // Whether the proposal has ended
-    createdAt: string; // Date and time the proposal was created
-    updatedAt?: string; // Optional date and time for the last update
-    submittedBy: string; // The user who submitted the proposal (could be a username or user ID)
-    hoursRequired: number; // Number of hours required for this proposal
-    tokenPerHour: number; // Number of tokens earned per hour
-    endTime?: string; // Optional time when the proposal is scheduled to end (if applicable)
-  }
-  
-  
-  export interface Project {
-    id: number; // Unique identifier for the project
-    title: string; // Project title
-    subproject?: string; // Optional subproject name
-    epic?: string; // Optional epic name
-    totalManaHours: number; // Total mana hours allocated to the project
-    manaHours: {
-      userId: number; // User ID of the person assigned mana hours
-      hours: number; // Number of mana hours assigned
-    }[]; // Array of assigned mana hours
-    votingPower: string; // Voting power associated with the project
-    description?: string; // Optional description of the project
-    teamMembers?: {
-      name: string; // Team member name
-    }[]; // Array of team members (optional)
-    tasks: {
-      id: number; // Task ID
-      title: string; // Task title
-      assignedTo: number; // User ID of the person the task is assigned to
-    }[]; // Array of tasks associated with the project
-  }
-  
-  
-  
-  export interface Task {
-    id: number;
-    title: string;
-    assignedTo: number;
-    projectId: number;
-  }
+  id: number;
+  title: string;
+  description?: string;
+  yesVotes: number;
+  noVotes: number;
+  manaTokensAllocated: number;
+  isEnded: boolean;
+  submittedBy: string;
+  manaHoursBudgeted: number;
+  targetDate?: string;
+  createdAt: string;
+  updatedAt?: string;
+  subProjects: SubProject[];
+  budgetItems: ProposalBudget[];
+}
+
+// Type for SubProject within a proposal
+export interface SubProject {
+  id: number;
+  proposalId: number;
+  subProjectName: string;
+  epics: Epic[];
+}
+
+// Type for Epic within a subproject
+export interface Epic {
+  id: number;
+  subProjectId: number;
+  epicName: string;
+  tasks: Task[];
+}
+
+// Type for Task within an epic
+export interface Task {
+  id: number;
+  epicId: number;
+  taskName: string;
+  rolesManaHours: TaskRoleManaHours[];
+}
+
+// Type for RoleManaHours within a task
+export interface TaskRoleManaHours {
+  id: number;
+  taskId: number;
+  roleName: string;
+  manaHours: number;
+}
+
+// Type for ProposalBudget within a proposal
+export interface ProposalBudget {
+  id: number;
+  proposalId: number;
+  roleName: string;
+  budgetUsd: number;
+  budgetMana: number;
+}
+
+// Main type for ProjectPlan
+export interface ProjectPlan {
+  id: number;
+  proposalId: number;
+  projectName: string;
+  totalManaHours: number;
+  votingPower?: string;
+  createdAt: string;
+  updatedAt?: string;
+  subProjects: SubProjectPlan[];
+  proposal?: Proposal;
+}
+
+// Type for SubProjectPlan within a project plan
+export interface SubProjectPlan {
+  id: number;
+  projectPlanId: number;
+  subProjectName: string;
+  epics: EpicPlan[];
+}
+
+// Type for EpicPlan within a subproject plan
+export interface EpicPlan {
+  id: number;
+  subProjectPlanId: number;
+  epicName: string;
+  tasks: TaskPlan[];
+}
+
+// Type for TaskPlan within an epic plan
+export interface TaskPlan {
+  id: number;
+  epicPlanId: number;
+  taskName: string;
+  estimatedManaHours: number;
+  rolesManaHours: TaskRoleManaHours[];
+}
+
+// Main type for ProjectExecution
+export interface ProjectExecution {
+  id: number;
+  projectPlanId: number;
+  actualManaHours: number;
+  tasks: TaskExecution[];
+  peerVotes: PeerVote[];
+}
+
+// Type for TaskExecution within a project execution
+export interface TaskExecution {
+  id: number;
+  projectExecutionId: number;
+  taskPlanId: number;
+  actualManaHours: number;
+}
+
+// Type for PeerVote within a project execution
+export interface PeerVote {
+  id: number;
+  projectExecutionId: number;
+  userId: number;
+  vote: boolean;
+  createdAt: string;
+}
+
+// Type for TaskFeedback within a task execution
+export interface TaskFeedback {
+  id: number;
+  taskExecutionId: number;
+  userId: number;
+  feedback: string;
+  rating: number;
+  createdAt: string;
+}
+
+// AssignedTasksProps for the AssignedTasks component
+export interface AssignedTasksProps {
+  tasks: Task[];
+  userId: number;
+}
 
   
 

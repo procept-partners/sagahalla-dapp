@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
-from mana_gov.models.pydantic.project import Project  # Assuming you have a Project model defined here
-from mana_gov.services.project_service import ProjectService  # Assuming this service handles the business logic
+from mana_gov.models.pydantic.project_plan import Project, ProjectCreate, ProjectUpdate
+from mana_gov.services.project_service import ProjectService
 
 projects_router = APIRouter()
 
@@ -19,7 +19,7 @@ async def list_projects():
 
 # POST /api/projects - Create a new project
 @projects_router.post("/projects", response_model=Project)
-async def create_project(project: Project):
+async def create_project(project: ProjectCreate):  # Use ProjectCreate for creating a new project
     try:
         new_project = await project_service.create_project(project)
         return new_project
@@ -39,7 +39,7 @@ async def get_project(id: int):
 
 # PUT /api/projects/{id} - Update a project by ID
 @projects_router.put("/projects/{id}", response_model=Project)
-async def update_project(id: int, updated_project: Project):
+async def update_project(id: int, updated_project: ProjectUpdate):  # Use ProjectUpdate for updating
     try:
         project = await project_service.update_project(id, updated_project)
         if not project:

@@ -9,11 +9,10 @@ interface Props {
 const ProposalList = ({ proposals }: Props) => {
   const [selectedProposal, setSelectedProposal] = useState<Proposal | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeProposals, setActiveProposals] = useState<Proposal[]>([]); 
-  const [filter, setFilter] = useState<'all' | 'active' | 'ended'>('all'); 
+  const [activeProposals, setActiveProposals] = useState<Proposal[]>([]);
+  const [filter, setFilter] = useState<'all' | 'active' | 'ended'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Update activeProposals state when proposals prop changes
   useEffect(() => {
     setActiveProposals(proposals);
   }, [proposals]);
@@ -35,14 +34,16 @@ const ProposalList = ({ proposals }: Props) => {
     setActiveProposals(updatedProposals);
   };
 
-  // Filter
+  // Filter proposals by active, ended, and search query
   const filteredProposals = activeProposals
     .filter((proposal) => {
       if (filter === 'active') return !proposal.isEnded;
       if (filter === 'ended') return proposal.isEnded;
       return true;
     })
-    .filter((proposal) => proposal.title.toLowerCase().includes(searchQuery.toLowerCase()));
+    .filter((proposal) =>
+      proposal.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   return (
     <div>
@@ -50,7 +51,9 @@ const ProposalList = ({ proposals }: Props) => {
 
       {/* Filter Section */}
       <div className="mb-4">
-        <label htmlFor="proposal-filter" className="text-orange-500 mr-4">Filter by:</label>
+        <label htmlFor="proposal-filter" className="text-orange-500 mr-4">
+          Filter by:
+        </label>
         <select
           id="proposal-filter"
           value={filter}
@@ -86,7 +89,7 @@ const ProposalList = ({ proposals }: Props) => {
               Voting Result
             </th>
             <th className="px-6 py-3 border-b-2 border-orange-500 text-left text-sm font-medium text-orange-500">
-              Token Allocation (%)
+              MANA Tokens Allocated
             </th>
             <th className="px-6 py-3 border-b-2 border-orange-500 text-left text-sm font-medium text-orange-500">
               Actions
@@ -94,45 +97,40 @@ const ProposalList = ({ proposals }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {filteredProposals.map((proposal) => {
-            const totalTokens = proposal.totalTokens || 1000;
-            const percentageAllocated = (proposal.totalTokensAllocated / totalTokens) * 100;
+          {filteredProposals.map((proposal) => (
+            <tr key={proposal.id} className="border-b border-gray-200 hover:bg-orange-500 hover:text-white">
+              <td className="px-6 py-4 whitespace-nowrap">
+                <button onClick={() => openModal(proposal)} className="text-orange-500 hover:underline">
+                  {proposal.title}
+                </button>
+              </td>
 
-            return (
-              <tr key={proposal.id} className="border-b border-gray-200 hover:bg-orange-500 hover:text-white">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <button onClick={() => openModal(proposal)} className="text-orange-500 hover:underline">
-                    {proposal.title}
+              <td className="px-6 py-4 whitespace-nowrap">
+                Yes: {proposal.yesVotes}, No: {proposal.noVotes}
+              </td>
+
+              <td className="px-6 py-4 whitespace-nowrap">
+                {proposal.manaTokensAllocated}
+              </td>
+
+              <td className="px-6 py-4 whitespace-nowrap">
+                {!proposal.isEnded ? (
+                  <button
+                    onClick={() => endProposal(proposal.id)}
+                    className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                  >
+                    End Proposal
                   </button>
-                </td>
-
-                <td className="px-6 py-4 whitespace-nowrap">
-                  Yes: {proposal.yesVotes}, No: {proposal.noVotes}
-                </td>
-
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {percentageAllocated.toFixed(2)}%
-                </td>
-
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {!proposal.isEnded ? (
-                    <button
-                      onClick={() => endProposal(proposal.id)}
-                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-                    >
-                      End Proposal
-                    </button>
-                  ) : (
-                    <p className="text-red-500 font-bold">Proposal Ended</p>
-                  )}
-                </td>
-              </tr>
-            );
-          })}
+                ) : (
+                  <p className="text-red-500 font-bold">Proposal Ended</p>
+                )}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
 
-      {/* Proposal details' modal */}
+      {/* Proposal details modal */}
       {isModalOpen && selectedProposal && (
         <ProposalDetailsModal proposal={selectedProposal} closeModal={closeModal} />
       )}

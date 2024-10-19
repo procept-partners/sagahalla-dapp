@@ -6,14 +6,14 @@ class ProjectPlan(BaseModel):
     id: int
     proposal_id: int
     project_name: str
-    total_mana_hours: float
+    total_mana_hours: float  # Developer allocation of hours at the project level
     voting_power: Optional[str]
     created_at: datetime
     updated_at: Optional[datetime]
     
     # Relationships
     sub_projects: Optional[List["SubProjectPlan"]] = []
-    proposal: Optional["Proposal"]
+    proposal: Optional["Proposal"]  # Link to the proposal
 
     class Config:
         from_attributes = True
@@ -49,8 +49,8 @@ class TaskPlan(BaseModel):
     id: int
     epic_plan_id: int
     task_name: str
-    estimated_mana_hours: float
-    
+    estimated_mana_hours: float  # Hours allocated to tasks
+
     # Relationships
     epic_plan: Optional[EpicPlan]
     roles_mana_hours: Optional[List["TaskRoleManaHours"]] = []
@@ -63,8 +63,8 @@ class TaskRoleManaHours(BaseModel):
     id: int
     task_plan_id: int
     role_name: str
-    mana_hours: float
-    
+    mana_hours: float  # Developer hours for each role
+
     # Relationships
     task_plan: Optional[TaskPlan]
 
