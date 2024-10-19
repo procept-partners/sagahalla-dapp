@@ -11,6 +11,10 @@
     "generate": "tsx app/api/chat/engine/generate.ts"
   },
   "dependencies": {
+    "wagmi": "^0.x.x",
+    "@rainbow-me/rainbowkit": "^0.x.x",
+    "@tanstack/react-query": "^4.x.x",
+    "ethers": "^5.x.x",
     "@apidevtools/swagger-parser": "^10.1.0",
     "@e2b/code-interpreter": "^0.0.5",
     "@llamaindex/pdf-viewer": "^1.1.3",

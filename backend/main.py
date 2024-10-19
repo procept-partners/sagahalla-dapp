@@ -20,7 +20,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 # mana-dapp imports
-from mana_gov.routes.router import router  # Adjust the import based on your structure
+from mana_gov.routes.router import router as mana_router  # Adjust the import based on your structure
 
 
 
@@ -69,14 +69,14 @@ app.include_router(config_router, prefix="/api/chat/config")
 app.include_router(file_upload_router, prefix="/api/chat/upload")
 
 # Include the mana-algo app's router
-app.include_router(mana_gov_router, prefix="/api/mana_gov")
+app.include_router(mana_router, prefix="/api/mana_gov")
 
 
 
 
 
 # Include the router from router.py
-app.include_router(router, prefix="/api")
+app.include_router(mana_router, prefix="/api")
 
 
 
