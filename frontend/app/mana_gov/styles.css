@@ -115,20 +115,36 @@ header h1, .section-header h2 {
     background-color: #8c450e;
 }
 
+/* Modal Button Styling for Consistency */
+.modal-button {
+    background-color: #ce711e;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+    background-color: #8c450e;
+}
+
 /* Navigation */
 nav {
     position: sticky;
     top: 0;
     z-index: 1000;
     background-color: #270927;
-    padding: 15px 0; /* Adjust to have equal padding top and bottom */
+    padding: 15px 0;
     text-align: center;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 10px 20px; /* Padding adjusted for spacing within the links */
+    padding: 10px 20px;
     margin: 0 10px;
     border-radius: 5px;
     display: inline-block;
@@ -138,7 +154,6 @@ nav a {
 nav a:hover {
     background-color: #ce711e;
 }
-
 
 /* Panels */
 .proposals, .projects, .tasks, .notifications {
@@ -236,69 +251,30 @@ label {
     margin-bottom: 16px;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    header h1, .section-header h2 {
-        font-size: 1.2rem;
-    }
-
-    .navigation {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav a {
-        display: block;
-        padding: 8px;
-        margin: 5px;
-    }
-
-    .dashboard {
-        padding: 10px;
-    }
+/* Modal Background and Button Styling */
+.bg-purple-custom {
+    background-color: #270927; /* Matches the purple background color in your page */
+    border: 2px solid #ce711e; /* Add an orange border to the modal */
+    border-radius: 12px; /* Make the modal rounded */
 }
 
-@media (max-width: 480px) {
-    header h1, .section-header h2 {
-        font-size: 1rem;
-    }
-
-    .dashboard {
-        padding: 5px;
-    }
-
-    .button {
-        padding: 8px;
-        font-size: 12px;
-    }
-
-    nav a {
-        padding: 5px;
-        font-size: 12px;
-    }
+.bg-orange-custom {
+    background-color: #ce711e; /* Matches the orange button color */
 }
 
-/* Remove margin and padding from header and h1 */
-header {
-    margin: 0;
-    padding: 0;
-  }
-  
-  header h1 {
-    margin: 0;
-    padding: 0;
-    color: #ce711e; /* Ensure color matches the design */
-    font-size: 2rem; /* Adjust size as needed */
-    text-align: center;
-  }
-  
-  /* Remove extra margin from section */
-  .proposal-form {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Ensure the form inside the proposal form section is aligned */
-  .proposal-form form {
-    margin-top: 16px; /* Add space between title and form */
-  }
+.bg-orange-hover {
+    background-color: #8c450e; /* Matches the hover color */
+}
+
+.text-white {
+    color: white;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.p-6 {
+    padding: 1.5rem;
+}
+

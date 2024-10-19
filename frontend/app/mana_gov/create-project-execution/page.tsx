@@ -7,7 +7,6 @@ import '../styles.css';
 export default function CreateProjectExecutionPage() {
   const [projectPlans, setProjectPlans] = useState<{ id: number; projectName: string }[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   // Fetch list of project plans
   useEffect(() => {
@@ -18,10 +17,11 @@ export default function CreateProjectExecutionPage() {
           throw new Error('Failed to fetch project plans');
         }
         const data = await response.json();
-        setProjectPlans(data);  // Assuming data is in the format [{ id, projectName }]
-        setLoading(false);
+        setProjectPlans(data);  // Populate project plans
       } catch (err) {
-        setError('Error fetching project plans. Please try again later.');
+        console.error('Error fetching project plans:', err);
+        setProjectPlans([]);  // Set an empty array if an error occurs
+      } finally {
         setLoading(false);
       }
     }
@@ -32,9 +32,15 @@ export default function CreateProjectExecutionPage() {
   // Define the addProjectExecution function
   const addProjectExecution = (projectExecution: { projectPlanId: number; actualManaHours: any }) => {
     console.log('Project execution submitted:', projectExecution);
-    // You can handle the project execution here (e.g., save to a database or send to an API)
+    // Handle project execution submission (e.g., save to a database or send to an API)
   };
 
+  // Show a loading indicator while fetching data
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // Render the page with the Project Execution Form
   return (
     <div className="create-project-execution-page">
       <header className="text-white text-xl font-bold">
@@ -44,14 +50,7 @@ export default function CreateProjectExecutionPage() {
       </header>
 
       <section className="project-execution-form">
-        {loading ? (
-          <p>Loading project plans...</p>
-        ) : error ? (
-          <p className="text-red-500">{error}</p>
-        ) : (
-          // Pass the list of project plans to the ProjectExecutionForm
-          <ProjectExecutionForm addProjectExecution={addProjectExecution} projectPlans={projectPlans} />
-        )}
+        <ProjectExecutionForm addProjectExecution={addProjectExecution} projectPlans={projectPlans} />
       </section>
     </div>
   );

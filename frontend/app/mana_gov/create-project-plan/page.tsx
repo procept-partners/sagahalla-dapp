@@ -7,7 +7,6 @@ import '../styles.css';
 export default function CreateProjectPlanPage() {
   const [proposals, setProposals] = useState<{ id: number; title: string }[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   // Fetch list of approved and active proposals
   useEffect(() => {
@@ -18,10 +17,11 @@ export default function CreateProjectPlanPage() {
           throw new Error('Failed to fetch proposals');
         }
         const data = await response.json();
-        setProposals(data);  // Assuming data is in the format [{ id, title }]
-        setLoading(false);
+        setProposals(data);  // Populate proposals
       } catch (err) {
-        setError('Error fetching proposals. Please try again later.');
+        console.error('Error fetching proposals:', err);
+        setProposals([]);  // Set empty array if an error occurs
+      } finally {
         setLoading(false);
       }
     }
@@ -32,9 +32,15 @@ export default function CreateProjectPlanPage() {
   // Define the addProjectPlan function
   const addProjectPlan = (projectPlan: { proposalId: number; projectName: string; developerHoursAllocated: any }) => {
     console.log('Project plan submitted:', projectPlan);
-    // You can handle the project plan here (e.g., save to a database or send to an API)
+    // Handle project plan submission (e.g., save to a database or send to an API)
   };
 
+  // Show a loading indicator while fetching data
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  // Render the page with the Project Plan Form
   return (
     <div className="create-project-plan-page">
       <header className="text-white text-xl font-bold">
@@ -44,14 +50,7 @@ export default function CreateProjectPlanPage() {
       </header>
 
       <section className="project-plan-form">
-        {loading ? (
-          <p>Loading proposals...</p>
-        ) : error ? (
-          <p className="text-red-500">{error}</p>
-        ) : (
-          // Pass the list of proposals to the ProjectPlanForm
-          <ProjectPlanForm addProjectPlan={addProjectPlan} proposals={proposals} />
-        )}
+        <ProjectPlanForm addProjectPlan={addProjectPlan} proposals={proposals} />
       </section>
     </div>
   );

@@ -1,11 +1,13 @@
-"use client"; // This enables the component to be a Client Component
+"use client"; // Mark this as a client-side component
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link'; // Ensure this import is correct
+import { useRouter } from 'next/navigation';  // Use Next.js's navigation hook
+import Link from 'next/link'; 
 import ProposalList from './components/ProposalList';
 import ProjectList from './components/ProjectList';
 import AssignedTasks from './components/AssignedTasks';
-import './styles.css'; // Import styles at the main level
+import Modal from './components/Modal'; 
+import './styles.css'; 
 
 export default function ManaDashboard() {
   const [proposals, setProposals] = useState([]); 
@@ -13,9 +15,10 @@ export default function ManaDashboard() {
   const [tasks, setTasks] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); 
-  const [loggedIn, setLoggedIn] = useState(false); 
+  const [isProjectPlanModalOpen, setIsProjectPlanModalOpen] = useState(false);
+  const [isProjectExecutionModalOpen, setIsProjectExecutionModalOpen] = useState(false);
+  const router = useRouter();  // Use Next.js's `useRouter` for navigation
 
-  // Example user ID for testing, replace this with actual logged-in user data
   const loggedInUserId = 123;
 
   useEffect(() => {
@@ -23,22 +26,26 @@ export default function ManaDashboard() {
       let errors: string[] = [];
       try {
         await fetchProposals();
-      } catch {
+      } catch (err) {
         errors.push('Error fetching proposals');
+        setProposals([]);  
       }
       try {
         await fetchProjects();
-      } catch {
+      } catch (err) {
         errors.push('Error fetching projects');
+        setProjects([]);  
       }
       try {
         await fetchTasks();
-      } catch {
+      } catch (err) {
         errors.push('Error fetching tasks');
+        setTasks([]);  
       }
 
       if (errors.length > 0) {
-        setError(errors.join(', '));
+        console.error(errors.join(', ')); 
+        setError('Failed to load some data.');  
       }
 
       setLoading(false);
@@ -49,46 +56,61 @@ export default function ManaDashboard() {
 
   // Fetch Proposals
   async function fetchProposals() {
-    try {
-      const res = await fetch('/api/proposals');
-      if (!res.ok) throw new Error('Failed to fetch proposals');
-      const data = await res.json();
-      setProposals(data);
-    } catch {
-      throw new Error('Error fetching proposals');
-    }
+    const res = await fetch('/api/proposals');
+    if (!res.ok) throw new Error('Failed to fetch proposals');
+    const data = await res.json();
+    setProposals(data);
   }
 
   // Fetch Projects
   async function fetchProjects() {
-    try {
-      const res = await fetch('/api/projects');
-      if (!res.ok) throw new Error('Failed to fetch projects');
-      const data = await res.json();
-      setProjects(data);
-    } catch {
-      throw new Error('Error fetching projects');
-    }
+    const res = await fetch('/api/projects');
+    if (!res.ok) throw new Error('Failed to fetch projects');
+    const data = await res.json();
+    setProjects(data);
   }
 
   // Fetch Assigned Tasks
   async function fetchTasks() {
-    try {
-      const res = await fetch('/api/tasks');
-      if (!res.ok) throw new Error('Failed to fetch tasks');
-      const data = await res.json();
-      setTasks(data);
-    } catch {
-      throw new Error('Error fetching tasks');
-    }
+    const res = await fetch('/api/tasks');
+    if (!res.ok) throw new Error('Failed to fetch tasks');
+    const data = await res.json();
+    setTasks(data);
   }
 
+  // Handle Create Project Plan button click
+  const handleCreateProjectPlanClick = () => {
+    if (proposals.length === 0) {
+      setIsProjectPlanModalOpen(true); 
+    } else {
+      router.push('/mana_gov/create-project-plan'); // Use new router
+    }
+  };
+
+  // Handle Create Project Execution button click
+  const handleCreateProjectExecutionClick = () => {
+    if (projects.length === 0) {
+      setIsProjectExecutionModalOpen(true); 
+    } else {
+      router.push('/mana_gov/create-project-execution'); // Use new router
+    }
+  };
+
+  // Close the modals
+  const closeProjectPlanModal = () => {
+    setIsProjectPlanModalOpen(false);
+  };
+
+  const closeProjectExecutionModal = () => {
+    setIsProjectExecutionModalOpen(false);
+  };
+
   if (loading) {
-    return <div className="spinner"></div>;
+    return <div className="spinner">Loading...</div>;
   }
 
   if (error) {
-    return <p>{error}</p>;
+    console.warn(error); 
   }
 
   return (
@@ -110,14 +132,16 @@ export default function ManaDashboard() {
       <section className="projects">
         <div className="section-header">
           <h2>Projects</h2>
-          <Link href="/mana_gov/create-project-plan" className="button">
+          <button 
+            className="button" 
+            onClick={handleCreateProjectPlanClick} 
+          >
             Develop a Project Plan
-          </Link>
+          </button>
         </div>
         {projects.length === 0 ? (
           <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>
         ) : (
-          // Pass the userId here
           <ProjectList projects={projects} userId={loggedInUserId} />
         )}
       </section>
@@ -125,16 +149,39 @@ export default function ManaDashboard() {
       <section className="tasks">
         <div className="section-header">
           <h2>Assigned Tasks</h2>
-          <Link href="/mana_gov/create-project-execution" className="button">
+          <button 
+            className="button" 
+            onClick={handleCreateProjectExecutionClick} 
+          >
             Execute Project Tasks
-          </Link>
+          </button>
         </div>
         {tasks.length === 0 ? (
           <p>No tasks assigned to you. Check back later for new tasks!</p>
         ) : (
-          <AssignedTasks projects={projects} userId={123} />
+          <AssignedTasks projects={projects} userId={loggedInUserId} />
         )}
       </section>
+
+      {/* Modal for project plan creation */}
+      {isProjectPlanModalOpen && (
+        <Modal closeModal={closeProjectPlanModal}>
+          <div className="p-4 text-center">
+            <p className="text-yellow-500">No approved and active proposals available.</p>
+            <p>You cannot create a project plan without an approved proposal.</p>
+          </div>
+        </Modal>
+      )}
+
+      {/* Modal for project execution */}
+      {isProjectExecutionModalOpen && (
+        <Modal closeModal={closeProjectExecutionModal}>
+          <div className="p-4 text-center">
+            <p className="text-yellow-500">No project plans available.</p>
+            <p>You cannot create a project execution without an active project plan.</p>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
