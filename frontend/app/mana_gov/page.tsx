@@ -1,23 +1,23 @@
 "use client"; // Mark this as a client-side component
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';  // Use Next.js's navigation hook
-import Link from 'next/link'; 
+import { useRouter } from 'next/navigation'; // Use Next.js's navigation hook
+import Link from 'next/link';
 import ProposalList from './components/ProposalList';
 import ProjectList from './components/ProjectList';
 import AssignedTasks from './components/AssignedTasks';
-import Modal from './components/Modal'; 
-import './styles.css'; 
+import Modal from './components/Modal';
+import './styles.css';
 
 export default function ManaDashboard() {
-  const [proposals, setProposals] = useState([]); 
-  const [projects, setProjects] = useState([]); 
-  const [tasks, setTasks] = useState([]); 
+  const [proposals, setProposals] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); 
+  const [error, setError] = useState<string | null>(null);
   const [isProjectPlanModalOpen, setIsProjectPlanModalOpen] = useState(false);
   const [isProjectExecutionModalOpen, setIsProjectExecutionModalOpen] = useState(false);
-  const router = useRouter();  // Use Next.js's `useRouter` for navigation
+  const router = useRouter(); // Use Next.js's `useRouter` for navigation
 
   const loggedInUserId = 123;
 
@@ -28,24 +28,24 @@ export default function ManaDashboard() {
         await fetchProposals();
       } catch (err) {
         errors.push('Error fetching proposals');
-        setProposals([]);  
+        setProposals([]);
       }
       try {
         await fetchProjects();
       } catch (err) {
         errors.push('Error fetching projects');
-        setProjects([]);  
+        setProjects([]);
       }
       try {
         await fetchTasks();
       } catch (err) {
         errors.push('Error fetching tasks');
-        setTasks([]);  
+        setTasks([]);
       }
 
       if (errors.length > 0) {
-        console.error(errors.join(', ')); 
-        setError('Failed to load some data.');  
+        console.error(errors.join(', '));
+        setError('Failed to load some data.');
       }
 
       setLoading(false);
@@ -54,7 +54,6 @@ export default function ManaDashboard() {
     fetchData();
   }, []);
 
-  // Fetch Proposals
   async function fetchProposals() {
     const res = await fetch('/api/proposals');
     if (!res.ok) throw new Error('Failed to fetch proposals');
@@ -62,7 +61,6 @@ export default function ManaDashboard() {
     setProposals(data);
   }
 
-  // Fetch Projects
   async function fetchProjects() {
     const res = await fetch('/api/projects');
     if (!res.ok) throw new Error('Failed to fetch projects');
@@ -70,7 +68,6 @@ export default function ManaDashboard() {
     setProjects(data);
   }
 
-  // Fetch Assigned Tasks
   async function fetchTasks() {
     const res = await fetch('/api/tasks');
     if (!res.ok) throw new Error('Failed to fetch tasks');
@@ -81,18 +78,28 @@ export default function ManaDashboard() {
   // Handle Create Project Plan button click
   const handleCreateProjectPlanClick = () => {
     if (proposals.length === 0) {
-      setIsProjectPlanModalOpen(true); 
+      setIsProjectPlanModalOpen(true);
+
+      // Close the modal after 2 seconds
+      setTimeout(() => {
+        setIsProjectPlanModalOpen(false);
+      }, 2000);
     } else {
-      router.push('/mana_gov/create-project-plan'); // Use new router
+      router.push('/mana_gov/create-project-plan');
     }
   };
 
   // Handle Create Project Execution button click
   const handleCreateProjectExecutionClick = () => {
     if (projects.length === 0) {
-      setIsProjectExecutionModalOpen(true); 
+      setIsProjectExecutionModalOpen(true);
+
+      // Close the modal after 2 seconds
+      setTimeout(() => {
+        setIsProjectExecutionModalOpen(false);
+      }, 2000);
     } else {
-      router.push('/mana_gov/create-project-execution'); // Use new router
+      router.push('/mana_gov/create-project-execution');
     }
   };
 
@@ -110,7 +117,7 @@ export default function ManaDashboard() {
   }
 
   if (error) {
-    console.warn(error); 
+    console.warn(error);
   }
 
   return (
@@ -132,10 +139,7 @@ export default function ManaDashboard() {
       <section className="projects">
         <div className="section-header">
           <h2>Projects</h2>
-          <button 
-            className="button" 
-            onClick={handleCreateProjectPlanClick} 
-          >
+          <button className="button" onClick={handleCreateProjectPlanClick}>
             Develop a Project Plan
           </button>
         </div>
@@ -149,40 +153,26 @@ export default function ManaDashboard() {
       <section className="tasks">
         <div className="section-header">
           <h2>Assigned Tasks</h2>
-          <button 
-            className="button" 
-            onClick={handleCreateProjectExecutionClick} 
-          >
+          <button className="button" onClick={handleCreateProjectExecutionClick}>
             Execute Project Tasks
           </button>
         </div>
         {tasks.length === 0 ? (
           <p>No tasks assigned to you. Check back later for new tasks!</p>
         ) : (
-          <AssignedTasks projects={projects} userId={loggedInUserId} />
+          <AssignedTasks tasks={tasks} userId={loggedInUserId} />
         )}
       </section>
 
       {/* Modal for project plan creation */}
       {isProjectPlanModalOpen && (
-        <Modal closeModal={closeProjectPlanModal}>
-          <div className="p-4 text-center">
-            <p className="text-yellow-500">No approved and active proposals available.</p>
-            <p>You cannot create a project plan without an approved proposal.</p>
-          </div>
-        </Modal>
+        <Modal closeModal={closeProjectPlanModal} message="No approved and active proposals available. You cannot create a project plan without an approved proposal." />
       )}
 
       {/* Modal for project execution */}
       {isProjectExecutionModalOpen && (
-        <Modal closeModal={closeProjectExecutionModal}>
-          <div className="p-4 text-center">
-            <p className="text-yellow-500">No project plans available.</p>
-            <p>You cannot create a project execution without an active project plan.</p>
-          </div>
-        </Modal>
+        <Modal closeModal={closeProjectExecutionModal} message="No project plans available. You cannot create a project execution without an active project plan." />
       )}
     </div>
   );
 }
-

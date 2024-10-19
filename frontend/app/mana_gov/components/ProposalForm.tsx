@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Modal from './Modal'; // Import the modal component
 
 interface Props {
   addProposal: (proposal: { title: string; description: string; manaHoursBudgeted: number; targetApprovalDate: string; submittedBy: string }) => void;
@@ -12,6 +13,8 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
   const [targetApprovalDate, setTargetApprovalDate] = useState<string | undefined>(undefined);
   const [jsonFile, setJsonFile] = useState<File | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const [modalMessage, setModalMessage] = useState(''); // Message to show in modal
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
@@ -46,6 +49,9 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
           setValidationError(validationMessage);
           return;
         }
+        // Show modal when validation passes
+        setModalMessage('Validation passed! Submitting your proposal...');
+        setShowModal(true);
         addProposal(parsedJson);
       } catch (err) {
         setValidationError('Invalid JSON file.');
@@ -58,12 +64,22 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
         targetApprovalDate: targetApprovalDate || '',
         submittedBy: loggedInUserId,
       };
+      // Show modal when validation passes
+      setModalMessage('Validation passed! Submitting your proposal...');
+      setShowModal(true);
       addProposal(proposal);
     }
+
+    // Hide modal after 2 seconds
+    setTimeout(() => {
+      setShowModal(false);
+    }, 2000);
   };
 
   return (
     <form onSubmit={handleSubmit} className="mt-10 p-6 rounded-lg shadow-lg">
+      {showModal && <Modal message={modalMessage} closeModal={() => setShowModal(false)} />} {/* Render modal if visible */}
+
       {!jsonFile && (
         <>
           <div className="mb-4">
