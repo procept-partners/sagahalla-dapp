@@ -1,16 +1,18 @@
 {
     "id": 1,
-    "title": "Proposal for DeveloperName",
-    "description": "Project based on the Excel data",
+    "title": "SagaHalla MANA DApp",
+    "description": "The MANA DApp is a decentralized application designed to track effort contributions, facilitate governance, and manage token rewards within the SagaHalla cooperative. It enables members to log their work, validate contributions through a secure voting mechanism, and convert efforts into MANA tokens. The DApp integrates a contribution-weighted governance system, allowing cooperative members to vote on project proposals and milestones. With features like project management, effort validation, and multichain support, the MANA DApp ensures transparency and efficiency in managing cooperative contributions and decision-making processes.",
     "yesVotes": 0,
     "noVotes": 0,
-    "manaTokenAllocated": 1000,
+    "manaTokenAllocated": 110189.21212121211,
     "isEnded": false,
-    "submittedBy": "DeveloperName",
+    "submittedBy": "Shandor",
     "manaHoursBudgeted": 980,
     "targetApprovalDate": null,
-    "createdAt": "2024-10-18 05:58:15.407782",
+    "createdAt": "2024-10-19 11:43:33.153769",
     "updatedAt": null,
+    "budgetWindowLow": 93660.83,
+    "budgetWindowHigh": 126717.59,
     "subProjects": [
         {
             "id": 1,
@@ -33,7 +35,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         },
                         {
                             "id": 2,
@@ -46,7 +49,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 777.2727272727273
                         },
                         {
                             "id": 3,
@@ -59,7 +63,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 777.2727272727273
                         },
                         {
                             "id": 4,
@@ -72,7 +77,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1554.5454545454545
                         },
                         {
                             "id": 5,
@@ -85,7 +91,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1295.4545454545455
                         },
                         {
                             "id": 6,
@@ -98,7 +105,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         },
                         {
                             "id": 7,
@@ -111,7 +119,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1554.5454545454545
                         },
                         {
                             "id": 8,
@@ -124,7 +133,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         }
                     ]
                 },
@@ -144,7 +154,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1295.4545454545455
                         },
                         {
                             "id": 10,
@@ -157,7 +168,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         },
                         {
                             "id": 11,
@@ -170,7 +182,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 777.2727272727273
                         },
                         {
                             "id": 12,
@@ -183,7 +196,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1554.5454545454545
                         },
                         {
                             "id": 13,
@@ -196,7 +210,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1295.4545454545455
                         },
                         {
                             "id": 14,
@@ -209,7 +224,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         },
                         {
                             "id": 15,
@@ -222,7 +238,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1554.5454545454545
                         },
                         {
                             "id": 16,
@@ -235,7 +252,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1295.4545454545455
                         },
                         {
                             "id": 17,
@@ -248,7 +266,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         }
                     ]
                 },
@@ -268,7 +287,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         },
                         {
                             "id": 19,
@@ -281,7 +301,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1295.4545454545455
                         },
                         {
                             "id": 20,
@@ -294,7 +315,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1554.5454545454545
                         },
                         {
                             "id": 21,
@@ -307,7 +329,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1036.3636363636363
                         },
                         {
                             "id": 22,
@@ -320,7 +343,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1554.5454545454545
                         },
                         {
                             "id": 23,
@@ -333,7 +357,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1295.4545454545455
                         },
                         {
                             "id": 24,
@@ -346,7 +371,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 14
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1813.6363636363635
                         },
                         {
                             "id": 25,
@@ -359,7 +385,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 16
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 2072.7272727272725
                         },
                         {
                             "id": 26,
@@ -372,7 +399,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1295.4545454545455
                         },
                         {
                             "id": 27,
@@ -385,7 +413,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 28,
@@ -398,7 +427,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1554.5454545454545
                         }
                     ]
                 }
@@ -425,7 +455,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 396.96969696969694
                         },
                         {
                             "id": 30,
@@ -438,7 +469,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 31,
@@ -451,7 +483,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 218.36363636363637
                         },
                         {
                             "id": 32,
@@ -464,7 +497,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 777.2727272727273
                         },
                         {
                             "id": 33,
@@ -477,7 +511,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 595.4545454545454
                         },
                         {
                             "id": 34,
@@ -490,7 +525,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 35,
@@ -503,7 +539,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 36,
@@ -516,7 +553,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 37,
@@ -529,7 +567,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 38,
@@ -542,7 +581,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 218.36363636363637
                         },
                         {
                             "id": 39,
@@ -555,7 +595,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 40,
@@ -568,7 +609,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 396.96969696969694
                         },
                         {
                             "id": 41,
@@ -581,7 +623,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 42,
@@ -594,7 +637,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         }
                     ]
                 },
@@ -614,7 +658,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 873.4545454545455
                         },
                         {
                             "id": 44,
@@ -627,7 +672,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 45,
@@ -640,7 +686,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 46,
@@ -653,7 +700,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 259.09090909090907
                         },
                         {
                             "id": 47,
@@ -666,7 +714,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 48,
@@ -679,7 +728,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 49,
@@ -692,7 +742,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 50,
@@ -705,7 +756,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 259.09090909090907
                         },
                         {
                             "id": 51,
@@ -718,7 +770,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1310.1818181818182
                         },
                         {
                             "id": 52,
@@ -731,7 +784,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 53,
@@ -744,7 +798,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 873.4545454545455
                         },
                         {
                             "id": 54,
@@ -757,7 +812,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 55,
@@ -770,7 +826,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 56,
@@ -783,7 +840,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 259.09090909090907
                         },
                         {
                             "id": 57,
@@ -796,7 +854,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1091.8181818181818
                         },
                         {
                             "id": 58,
@@ -809,7 +868,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 259.09090909090907
                         },
                         {
                             "id": 59,
@@ -822,7 +882,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 60,
@@ -835,7 +896,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 259.09090909090907
                         },
                         {
                             "id": 61,
@@ -848,7 +910,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 62,
@@ -861,7 +924,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 259.09090909090907
                         }
                     ]
                 },
@@ -881,7 +945,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 793.9393939393939
                         },
                         {
                             "id": 64,
@@ -894,7 +959,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1091.8181818181818
                         },
                         {
                             "id": 65,
@@ -907,7 +973,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 777.2727272727273
                         },
                         {
                             "id": 66,
@@ -920,7 +987,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 496.0
                         },
                         {
                             "id": 67,
@@ -933,7 +1001,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 595.4545454545454
                         },
                         {
                             "id": 68,
@@ -946,7 +1015,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 69,
@@ -959,7 +1029,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 70,
@@ -972,7 +1043,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 496.0
                         },
                         {
                             "id": 71,
@@ -985,7 +1057,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 72,
@@ -998,7 +1071,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 73,
@@ -1011,7 +1085,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 74,
@@ -1024,7 +1099,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 248.0
                         },
                         {
                             "id": 75,
@@ -1037,7 +1113,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 595.4545454545454
                         },
                         {
                             "id": 76,
@@ -1050,7 +1127,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 77,
@@ -1063,7 +1141,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 78,
@@ -1076,7 +1155,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 2
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 248.0
                         },
                         {
                             "id": 79,
@@ -1089,7 +1169,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 595.4545454545454
                         },
                         {
                             "id": 80,
@@ -1102,7 +1183,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 81,
@@ -1115,7 +1197,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 82,
@@ -1128,7 +1211,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 595.4545454545454
                         },
                         {
                             "id": 83,
@@ -1141,7 +1225,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 84,
@@ -1154,7 +1239,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         },
                         {
                             "id": 85,
@@ -1167,7 +1253,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 595.4545454545454
                         },
                         {
                             "id": 86,
@@ -1180,7 +1267,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 436.72727272727275
                         },
                         {
                             "id": 87,
@@ -1193,7 +1281,8 @@
                                     "roleName": "Blockchain Developer",
                                     "manaHours": 4
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 518.1818181818181
                         }
                     ]
                 },
@@ -1213,7 +1302,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 595.4545454545454
                         },
                         {
                             "id": 89,
@@ -1226,7 +1316,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1190.9090909090908
                         },
                         {
                             "id": 90,
@@ -1239,7 +1330,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 873.4545454545455
                         },
                         {
                             "id": 91,
@@ -1252,7 +1344,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 655.0909090909091
                         },
                         {
                             "id": 92,
@@ -1265,7 +1358,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 992.4242424242424
                         },
                         {
                             "id": 93,
@@ -1278,7 +1372,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 12
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1190.9090909090908
                         },
                         {
                             "id": 94,
@@ -1291,7 +1386,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 793.9393939393939
                         },
                         {
                             "id": 95,
@@ -1304,7 +1400,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 873.4545454545455
                         },
                         {
                             "id": 96,
@@ -1317,7 +1414,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 793.9393939393939
                         },
                         {
                             "id": 97,
@@ -1330,7 +1428,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1091.8181818181818
                         },
                         {
                             "id": 98,
@@ -1343,7 +1442,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 793.9393939393939
                         },
                         {
                             "id": 99,
@@ -1356,7 +1456,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1091.8181818181818
                         },
                         {
                             "id": 100,
@@ -1369,7 +1470,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 793.9393939393939
                         },
                         {
                             "id": 101,
@@ -1382,7 +1484,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 873.4545454545455
                         },
                         {
                             "id": 102,
@@ -1395,7 +1498,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 793.9393939393939
                         },
                         {
                             "id": 103,
@@ -1408,7 +1512,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 873.4545454545455
                         },
                         {
                             "id": 104,
@@ -1421,7 +1526,8 @@
                                     "roleName": "Frontend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 793.9393939393939
                         },
                         {
                             "id": 105,
@@ -1434,7 +1540,8 @@
                                     "roleName": "Backend Developer",
                                     "manaHours": 8
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 873.4545454545455
                         },
                         {
                             "id": 106,
@@ -1447,7 +1554,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 6
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 744.0
                         }
                     ]
                 }
@@ -1474,7 +1582,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 30
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 3720.0000000000005
                         },
                         {
                             "id": 108,
@@ -1487,7 +1596,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 20
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 2480.0
                         },
                         {
                             "id": 109,
@@ -1500,7 +1610,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1240.0
                         },
                         {
                             "id": 110,
@@ -1513,7 +1624,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1240.0
                         }
                     ]
                 },
@@ -1533,7 +1645,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 20
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 2480.0
                         },
                         {
                             "id": 112,
@@ -1546,7 +1659,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 20
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 2480.0
                         },
                         {
                             "id": 113,
@@ -1559,7 +1673,8 @@
                                     "roleName": "Project Manager",
                                     "manaHours": 40
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 4960.0
                         }
                     ]
                 },
@@ -1579,7 +1694,8 @@
                                     "roleName": "Content Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 679.090909090909
                         },
                         {
                             "id": 115,
@@ -1592,7 +1708,8 @@
                                     "roleName": "Content Developer",
                                     "manaHours": 20
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 1358.181818181818
                         },
                         {
                             "id": 116,
@@ -1605,7 +1722,8 @@
                                     "roleName": "Content Developer",
                                     "manaHours": 10
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 679.090909090909
                         },
                         {
                             "id": 117,
@@ -1618,7 +1736,8 @@
                                     "roleName": "Content Developer",
                                     "manaHours": 40
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 2716.363636363636
                         },
                         {
                             "id": 118,
@@ -1631,7 +1750,8 @@
                                     "roleName": "Content Developer",
                                     "manaHours": 40
                                 }
-                            ]
+                            ],
+                            "manaTokenAllocated": 2716.363636363636
                         }
                     ]
                 }

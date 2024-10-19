@@ -1,15 +1,43 @@
 import { useState } from 'react';
 
-// Define the type for developerHoursAllocated (this can be adjusted as per the actual structure)
 interface DeveloperHoursAllocated {
+  developerName: string;
+  totalEstimatedManaHours: number;
+  totalAllocatedMana: number;
+  subProjects: SubProjectPlan[];
+}
+
+interface SubProjectPlan {
   id: number;
+  subProjectName: string;
+  epics: EpicPlan[];
+}
+
+interface EpicPlan {
+  id: number;
+  subProjectId: number;
+  epicName: string;
+  tasks: TaskPlan[];
+}
+
+interface TaskPlan {
+  id: number;
+  epicId: number;
   taskName: string;
+  rolesManaHours: TaskRoleManaHours[];
+}
+
+interface TaskRoleManaHours {
   roleName: string;
   manaHours: number;
 }
 
 interface Props {
-  addProjectPlan: (projectPlan: { proposalId: number; projectName: string; developerHoursAllocated: DeveloperHoursAllocated[] }) => void;
+  addProjectPlan: (projectPlan: {
+    proposalId: number;
+    projectName: string;
+    developers: DeveloperHoursAllocated[];
+  }) => void;
   proposals: { id: number; title: string }[];
 }
 
@@ -26,22 +54,37 @@ const ProjectPlanForm = ({ addProjectPlan, proposals }: Props) => {
 
   // Function to validate the structure and data types of the project plan JSON
   const validateProjectPlanJson = (json: any): string | null => {
-    if (!Array.isArray(json)) {
-      return 'Invalid project plan format. Expected an array of developer hours.';
+    if (!json || typeof json !== 'object' || !json.developers) {
+      return 'Invalid project plan format. Expected a JSON object with developer data.';
     }
-    
-    for (const task of json) {
-      if (typeof task.id !== 'number') {
-        return 'Invalid or missing "id" for task.';
+
+    if (!Array.isArray(json.developers)) {
+      return 'Invalid format for developers. Expected an array of developers.';
+    }
+
+    for (const developer of json.developers) {
+      if (typeof developer.developerName !== 'string') {
+        return 'Invalid or missing "developerName" for developer.';
       }
-      if (typeof task.taskName !== 'string') {
-        return 'Invalid or missing "taskName" for task.';
+      if (typeof developer.totalEstimatedManaHours !== 'number') {
+        return `Invalid or missing "totalEstimatedManaHours" for ${developer.developerName}.`;
       }
-      if (typeof task.roleName !== 'string') {
-        return 'Invalid or missing "roleName" for task.';
+      if (typeof developer.totalAllocatedMana !== 'number') {
+        return `Invalid or missing "totalAllocatedMana" for ${developer.developerName}.`;
       }
-      if (typeof task.manaHours !== 'number') {
-        return 'Invalid or missing "manaHours" for task.';
+      if (!Array.isArray(developer.subProjects)) {
+        return `Invalid or missing "subProjects" for ${developer.developerName}.`;
+      }
+      for (const subProject of developer.subProjects) {
+        if (typeof subProject.id !== 'number') {
+          return `Invalid or missing "id" for subproject of ${developer.developerName}.`;
+        }
+        if (typeof subProject.subProjectName !== 'string') {
+          return `Invalid or missing "subProjectName" for subproject of ${developer.developerName}.`;
+        }
+        if (!Array.isArray(subProject.epics)) {
+          return `Invalid or missing "epics" for subproject of ${developer.developerName}.`;
+        }
       }
     }
     return null; // No validation errors
@@ -80,7 +123,7 @@ const ProjectPlanForm = ({ addProjectPlan, proposals }: Props) => {
     const projectPlan = {
       proposalId: selectedProposalId,
       projectName,
-      developerHoursAllocated: parsedJson as DeveloperHoursAllocated[],  // Assuming developer hours are in the JSON file
+      developers: parsedJson.developers as DeveloperHoursAllocated[], // Assuming developers data in the JSON file
     };
 
     addProjectPlan(projectPlan);

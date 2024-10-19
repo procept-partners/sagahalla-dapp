@@ -1,0 +1,810 @@
+{
+    "SHAWN": [
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Test voting mechanism",
+            "roleName": "Project Manager",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Review submissions",
+            "roleName": "Project Manager",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Finalize report",
+            "roleName": "Project Manager",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Ensure accuracy of MANA allocations",
+            "roleName": "Project Manager",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Overall Integration Testing",
+            "roleName": "Project Manager",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Project Management",
+            "taskName": "Create plans for FYRE, SHLD, MANA",
+            "roleName": "Project Manager",
+            "budgetedHours": 30,
+            "actualHours": 30
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Project Management",
+            "taskName": "Create plan for mana effort tracking and governance system",
+            "roleName": "Project Manager",
+            "budgetedHours": 20,
+            "actualHours": 20
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Project Management",
+            "taskName": "Create Algorithm for mana hours to mana conversions",
+            "roleName": "Project Manager",
+            "budgetedHours": 10,
+            "actualHours": 10
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Project Management",
+            "taskName": "Create plan for mana hours to mana conversion",
+            "roleName": "Project Manager",
+            "budgetedHours": 10,
+            "actualHours": 10
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Server",
+            "taskName": "Create backend template for MANA Dapp",
+            "roleName": "Project Manager",
+            "budgetedHours": 20,
+            "actualHours": 20
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Server",
+            "taskName": "Create backend template for Vicotry Dapp",
+            "roleName": "Project Manager",
+            "budgetedHours": 20,
+            "actualHours": 20
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Server",
+            "taskName": "Deploy Taiga on Server",
+            "roleName": "Project Manager",
+            "budgetedHours": 40,
+            "actualHours": 40
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Content",
+            "taskName": "Create website template",
+            "roleName": "Content Developer",
+            "budgetedHours": 10.0,
+            "actualHours": 10.0
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Content",
+            "taskName": "Create Victory Dapp Templates",
+            "roleName": "Content Developer",
+            "budgetedHours": 20.0,
+            "actualHours": 20.0
+        },
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Content",
+            "taskName": "Create Mana DApp Templates",
+            "roleName": "Content Developer",
+            "budgetedHours": 10.0,
+            "actualHours": 10.0
+        }
+    ],
+    "VANESSA": [
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana hour tracking",
+            "taskName": "Implement basic input fields",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana hour tracking",
+            "taskName": "Implement dashboard",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana hour tracking",
+            "taskName": "Create front-end display",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Implement voting UI",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Create proposal submission form",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Create display for MANA allocations",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Implement project governance UI",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Implement conversion UI",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Create results dashboard",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Connect Wallet",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Create FYRE Purchase Interface",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 12.0,
+            "actualHours": 12.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Create SHLD Purchase Interface",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 10.0,
+            "actualHours": 10.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "AI-Generated Customization for SHLD NFTs",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 12.0,
+            "actualHours": 12.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Create MANA Contribution Interface",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Create MANA-to-FYRE Conversion Interface",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Create Collateralization Interface for MANA",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Integrate Frontend Wallet and Purchase Logic",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Overall Integration Testing",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "VicTory Exchange",
+            "taskName": "Test and Finalize Backend APIs",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        }
+    ],
+    "WILL": [
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "Implement ERC-20 Token Contract for FYRE",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8,
+            "actualHours": 8
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "Add Minting, Burning, and Transferring Functions",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 6,
+            "actualHours": 6
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "Test Standard Token Operations",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 6,
+            "actualHours": 6
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "Develop FYRE Conversion Functions for SHLD Purchase",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 12,
+            "actualHours": 12
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "Implement FYRE to MANA Conversion Mechanism",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 10,
+            "actualHours": 10
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "Define and Code Governance Rules for FYRE Usage",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8,
+            "actualHours": 8
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "User Interface Development for Conversion Processes",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 12,
+            "actualHours": 12
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "FYRE",
+            "taskName": "Testing and Security Review",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8,
+            "actualHours": 8
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Implement ERC-20 Token Contract for MANA",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Develop Contribution Mechanism",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 10.0,
+            "actualHours": 10.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Transition from ERC-20 to ERC-1400 upon Contribution",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 12.0,
+            "actualHours": 12.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Test ERC-20 to ERC-1400 Transition Workflow",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8.0,
+            "actualHours": 8.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Develop ERC-1400 Contract for MANA",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 12.0,
+            "actualHours": 12.0
+        }
+    ],
+    "ZEAK": [
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Content",
+            "taskName": "Add UI/UX elements",
+            "roleName": "Content Developer",
+            "budgetedHours": 40.0,
+            "actualHours": 40.0
+        }
+    ],
+    "AKASH": [
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Develop ERC-721 Contract for Non-Transferable SHLD",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 10,
+            "actualHours": 10
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "On-Chain Metadata Storage",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8,
+            "actualHours": 8
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Testing Non-Transferable NFT Features",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 6,
+            "actualHours": 6
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Develop Governance Voting Smart Contracts",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 12,
+            "actualHours": 12
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Integrate SHLD Voting into Governance",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 10,
+            "actualHours": 10
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Testing Governance Voting Mechanism",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8,
+            "actualHours": 8
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Develop Project Contribution Voting Contracts",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 12,
+            "actualHours": 12
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Integrate Voting with Project Budgets",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 10,
+            "actualHours": 10
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "SHLD",
+            "taskName": "Testing Project Voting and Budget Approval",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 8,
+            "actualHours": 8
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Implement voting on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Record proposals on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Store report on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Record MANA allocations on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Record project voting on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Record conversion on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Log final project hours on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        }
+    ],
+    "EMMANUEL": [
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Implement voting UI",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Develop backend logic",
+            "roleName": "Backend Developer",
+            "budgetedHours": 10.0,
+            "actualHours": 10.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Create proposal submission form",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Store/retrieve proposals",
+            "roleName": "Backend Developer",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Develop report generation",
+            "roleName": "Backend Developer",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Export report",
+            "roleName": "Backend Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Create display for MANA allocations",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Fetch MANA allocation data",
+            "roleName": "Backend Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Implement project governance UI",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Backend logic for project voting",
+            "roleName": "Backend Developer",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Implement conversion UI",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Backend logic for conversion",
+            "roleName": "Backend Developer",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Create results dashboard",
+            "roleName": "Frontend Developer",
+            "budgetedHours": 3.0,
+            "actualHours": 3.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "MANA Governance",
+            "taskName": "Fetch MANA results",
+            "roleName": "Backend Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        }
+    ],
+    "DAVID": [
+        {
+            "subProjectName": "Project Management",
+            "epicName": "Content",
+            "taskName": "Create website content",
+            "roleName": "Content Developer",
+            "budgetedHours": 40.0,
+            "actualHours": 40.0
+        }
+    ],
+    "VARUN": [
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Implement Divisibility and Partition Features",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 10.0,
+            "actualHours": 10.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Test ERC-1400 Token Functionality",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 14.0,
+            "actualHours": 14.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Develop Voting Smart Contracts for MANA",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 16.0,
+            "actualHours": 16.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Integrate MANA Voting into Cooperative Governance",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 10.0,
+            "actualHours": 10.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Project Allocation Voting with MANA",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Token Contracts",
+            "epicName": "MANA",
+            "taskName": "Test Governance and Project Voting",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 12.0,
+            "actualHours": 12.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana hour tracking",
+            "taskName": "Record proof of work (hours logged) on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 6.0,
+            "actualHours": 6.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana hour tracking",
+            "taskName": "Log final MANA allocation on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana hour tracking",
+            "taskName": "Store final report on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana hour tracking",
+            "taskName": "Record final tracked hours on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Record final allocation on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Log final multiplier values on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Record logged hours on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Log MANA per hour on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Store peer voting results on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Record confidence intervals on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 4.0,
+            "actualHours": 4.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Log pay rate modifications on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Log stakeholder evaluations on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Store feedback on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        },
+        {
+            "subProjectName": "Mana DApp",
+            "epicName": "mana algorithm",
+            "taskName": "Log final scaling on-chain",
+            "roleName": "Blockchain Developer",
+            "budgetedHours": 2.0,
+            "actualHours": 2.0
+        }
+    ]
+}

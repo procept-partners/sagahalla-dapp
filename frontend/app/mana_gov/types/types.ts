@@ -1,5 +1,3 @@
-// app/mana_gov/types.ts
-
 // Main type for Proposal
 export interface Proposal {
   id: number;
@@ -68,8 +66,16 @@ export interface ProjectPlan {
   votingPower?: string;
   createdAt: string;
   updatedAt?: string;
-  subProjects: SubProjectPlan[];
+  developers: Record<string, DeveloperProjectPlan>; // Developer-specific data by name
   proposal?: Proposal;
+}
+
+// New type for Developer-specific project plan
+export interface DeveloperProjectPlan {
+  developerName: string;
+  manaHoursBudgeted: number; // Adjusted to include 'manaHoursBudgeted'
+  manaTokenAllocated: number; // Adjusted to include 'manaTokenAllocated'
+  subProjects: SubProjectPlan[];
 }
 
 // Type for SubProjectPlan within a project plan
@@ -139,5 +145,4 @@ export interface AssignedTasksProps {
   userId: number;
 }
 
-  
 

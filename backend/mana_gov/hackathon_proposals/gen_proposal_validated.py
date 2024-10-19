@@ -9,16 +9,27 @@ def cleanString(s):
         return s.lstrip('-').strip()
     return s
 
-def readExcelToProject(filePath: str, ids: dict) -> dict:
+def readRoleMultipliers(filePath: str) -> dict:
+    try:
+        with open(filePath, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Error: {filePath} not found.")
+        return {}
+
+def calculateManaAllocated(roleName, manaHours, roleMultipliers):
+    # Use the weighted global average rates and conversion
+    rate = roleMultipliers.get('weighted_global_average_rates', {}).get(roleName, 0)
+    conversion = roleMultipliers.get('mana_founder_conversion', 1)
+    return manaHours * rate / conversion  # Convert mana hours to MANA allocated
+
+def readExcelToProject(filePath: str, ids: dict, roleMultipliers: dict) -> dict:
     sheets = pd.read_excel(filePath, sheet_name=None)
-    
-    # Dictionary to store the structure with subProject as key
     projectDict = defaultdict(lambda: defaultdict(list))
     
     for sheetName, data in sheets.items():
         data = data.applymap(cleanString)
         
-        # Iterate over the rows to collect tasks
         for _, row in data.iterrows():
             subProjectName = row.get('Subproject')
             epicName = row.get('Epic')
@@ -26,86 +37,86 @@ def readExcelToProject(filePath: str, ids: dict) -> dict:
             roleName = row.get('Role')
             manaHours = row.get('Estimated Hours', 0)
             
-            # Skip rows without task names
             if pd.isna(taskName):
                 continue
             
-            # Create task entry with necessary fields
+            # Calculate manaTokenAllocated using role multipliers
+            manaTokenAllocated = calculateManaAllocated(roleName, manaHours, roleMultipliers)
+            
             task = {
                 'id': ids['task'],
-                'epicId': ids['epic'],  # Add epicId to link with Epic
+                'epicId': ids['epic'],
                 'taskName': taskName,
-                'rolesManaHours': [  # Updated to match frontend expectation
-                    {
-                        'id': ids['roleManaHours'],  # RoleManaHours ID
-                        'taskId': ids['task'],  # Link RoleManaHours to Task
-                        'roleName': roleName,
-                        'manaHours': manaHours
-                    }
-                ]
+                'rolesManaHours': [{
+                    'id': ids['roleManaHours'],
+                    'taskId': ids['task'],
+                    'roleName': roleName,
+                    'manaHours': manaHours
+                }],
+                'manaTokenAllocated': manaTokenAllocated  # Include MANA allocation
             }
             ids['task'] += 1
             ids['roleManaHours'] += 1
             
-            # Add the task to the appropriate epic in the subProject
             projectDict[subProjectName][epicName].append(task)
-    
-    # Remove empty subProjects and epics (those without budgeted tasks)
-    projectDict = {
-        subProject: {
-            epic: tasks for epic, tasks in epics.items() if tasks
-        } for subProject, epics in projectDict.items() if any(epics.values())
-    }
     
     return projectDict
 
-def calculateTotals(projectDict):
+def calculateTotalManaHours(projectDict):
     totalManaHours = 0
+    for subProject, epics in projectDict.items():
+        for epic, tasks in epics.items():
+            for task in tasks:
+                for role in task['rolesManaHours']:
+                    totalManaHours += role['manaHours']
+    return totalManaHours
+
+def calculateTotals(projectDict, budgetWindow=0.15):
+    totalManaHours = 0
+    totalManaAllocated = 0
     roleManaHours = defaultdict(float)
     subProjectTotals = defaultdict(lambda: defaultdict(float))
 
-    # Iterate over the subProjects and epics to sum the MANA hours
     for subProject, epics in projectDict.items():
         subProjectManaHours = 0
+        subProjectManaAllocated = 0
         subProjectRoleManaHours = defaultdict(float)
         
         for epic, tasks in epics.items():
             for task in tasks:
                 taskHours = sum([role['manaHours'] for role in task['rolesManaHours']])
-                role = task['rolesManaHours'][0]['roleName']  # Assuming only one role per task
+                role = task['rolesManaHours'][0]['roleName']
                 
-                # Accumulate total MANA hours and hours by role
                 totalManaHours += taskHours
+                totalManaAllocated += task.get('manaTokenAllocated', 0)
                 roleManaHours[role] += taskHours
-                
-                # Accumulate subProject-level totals
                 subProjectManaHours += taskHours
+                subProjectManaAllocated += task.get('manaTokenAllocated', 0)
                 subProjectRoleManaHours[role] += taskHours
 
-        # Store totals for each subProject
         subProjectTotals[subProject]['totalManaHours'] = subProjectManaHours
         subProjectTotals[subProject]['roleManaHours'] = subProjectRoleManaHours
+        subProjectTotals[subProject]['manaAllocated'] = subProjectManaAllocated
 
-    return totalManaHours, roleManaHours, subProjectTotals
+    return totalManaHours, totalManaAllocated, roleManaHours, subProjectTotals
 
-def generateProjectJson(projectDict, ids, developerName):
-    """
-    Generate a compliant JSON output with IDs for subProjects, epics, and tasks.
-    """
+def generateProjectJson(projectDict, ids, developerName, totalManaAllocated, budgetWindow=0.15):
     projectJson = {
         'id': ids['project'],
-        'title': f'Proposal for {developerName}',
-        'description': 'Project based on the Excel data',
-        'yesVotes': 0,  # Updated to match frontend
-        'noVotes': 0,   # Updated to match frontend
-        'manaTokenAllocated': 1000,  # Updated to match frontend
-        'isEnded': False,  # Updated to match frontend
-        'submittedBy': developerName,  # Updated to match frontend
-        'manaHoursBudgeted': calculateTotalManaHours(projectDict),  # Updated to match frontend
-        'targetApprovalDate': None,  # Updated to match frontend
-        'createdAt': str(datetime.now()),  # Updated to match frontend
-        'updatedAt': None,  # Updated to match frontend
-        'subProjects': []  # Updated to match frontend
+        'title': f'SagaHalla MANA DApp',
+        'description': 'The MANA DApp is a decentralized application designed to track effort contributions, facilitate governance, and manage token rewards within the SagaHalla cooperative. It enables members to log their work, validate contributions through a secure voting mechanism, and convert efforts into MANA tokens. The DApp integrates a contribution-weighted governance system, allowing cooperative members to vote on project proposals and milestones. With features like project management, effort validation, and multichain support, the MANA DApp ensures transparency and efficiency in managing cooperative contributions and decision-making processes.',
+        'yesVotes': 0,
+        'noVotes': 0,
+        'manaTokenAllocated': totalManaAllocated,
+        'isEnded': False,
+        'submittedBy': developerName,
+        'manaHoursBudgeted': calculateTotalManaHours(projectDict),
+        'targetApprovalDate': None,
+        'createdAt': str(datetime.now()),
+        'updatedAt': None,
+        'budgetWindowLow': round(totalManaAllocated * (1 - budgetWindow), 2),
+        'budgetWindowHigh': round(totalManaAllocated * (1 + budgetWindow), 2),
+        'subProjects': []
     }
     ids['project'] += 1
 
@@ -115,8 +126,8 @@ def generateProjectJson(projectDict, ids, developerName):
         
         subProject = {
             'id': subProjectId,
-            'proposalId': ids['project'] - 1,  # Link subProject to proposal, updated to match frontend
-            'subProjectName': subProjectName,  # Updated to match frontend
+            'proposalId': ids['project'] - 1,
+            'subProjectName': subProjectName,
             'epics': []
         }
 
@@ -126,13 +137,13 @@ def generateProjectJson(projectDict, ids, developerName):
             
             epic = {
                 'id': epicId,
-                'subProjectId': subProjectId,  # Link epic to subProject, updated to match frontend
-                'epicName': epicName,  # Updated to match frontend
+                'subProjectId': subProjectId,
+                'epicName': epicName,
                 'tasks': []
             }
 
             for task in tasks:
-                task['epicId'] = epicId  # Updated to match camelCase
+                task['epicId'] = epicId
                 epic['tasks'].append(task)
 
             subProject['epics'].append(epic)
@@ -140,14 +151,6 @@ def generateProjectJson(projectDict, ids, developerName):
         projectJson['subProjects'].append(subProject)
     
     return projectJson
-
-def calculateTotalManaHours(projectDict):
-    totalManaHours = 0
-    for subProject, epics in projectDict.items():
-        for epic, tasks in epics.items():
-            for task in tasks:
-                totalManaHours += sum(role['manaHours'] for role in task['rolesManaHours'])
-    return totalManaHours
 
 def saveProjectToJson(projectJson, fileName='hackathon_proposal_validated.json'):
     try:
@@ -158,14 +161,19 @@ def saveProjectToJson(projectJson, fileName='hackathon_proposal_validated.json')
         print(f"Error saving project data to JSON: {e}")
 
 def main():
-    fileName = "mana_gov/hackathon_proposals/HACKATHON_PROPOSAL.xlsx"  # Replace with your actual file name
-    jsonFileName = "mana_gov/hackathon_proposals/hackathon_proposal.json"  # JSON output file
-    developerName = "DeveloperName"  # Placeholder for developer name
+    fileName = "mana_gov/hackathon_proposals/HACKATHON_PROPOSAL.xlsx"
+    jsonFileName = "mana_gov/hackathon_proposals/hackathon_proposal.json"
+    developerName = "Shandor"
+    
     if not os.path.exists(fileName):
-        print(f"Error: File '{fileName}' not found in the current directory.")
+        print(f"Error: File '{fileName}' not found.")
         return
 
-    # Initialize the ID counters
+    roleMultipliersPath = "mana_gov/hackathon_proposals/role_multipliers.json"
+    roleMultipliers = readRoleMultipliers(roleMultipliersPath)
+    if not roleMultipliers:
+        return
+
     ids = {
         'project': 1,
         'subProject': 1,
@@ -175,25 +183,25 @@ def main():
     }
 
     try:
-        projectDict = readExcelToProject(fileName, ids)
+        projectDict = readExcelToProject(fileName, ids, roleMultipliers)
     except Exception as e:
         print(f"Error processing the Excel file: {e}")
         return
 
-    # Calculate and display total MANA hours and MANA hours per role
-    budgetedManaHours, roleManaHours, subProjectTotals = calculateTotals(projectDict)
+    totalManaHours, totalManaAllocated, roleManaHours, subProjectTotals = calculateTotals(projectDict)
 
-    print(f"\nTotal MANA Hours for the Project: {budgetedManaHours}")
+    print(f"\nTotal MANA Hours for the Project: {totalManaHours}")
+    print(f"\nTotal MANA Allocated: {totalManaAllocated}")
     print("\nTotal MANA Hours per Role:")
     for role, hours in roleManaHours.items():
         print(f"  {role}: {hours}")
 
-    # Generate compliant project JSON
-    projectJson = generateProjectJson(projectDict, ids, developerName)
+    projectJson = generateProjectJson(projectDict, ids, developerName, totalManaAllocated)
 
-    # Save the project to a JSON file
     saveProjectToJson(projectJson, jsonFileName)
 
 if __name__ == "__main__":
+
+
     main()
 

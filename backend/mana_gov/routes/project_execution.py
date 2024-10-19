@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
 from mana_gov.models.pydantic.project_execution import ProjectExecution, ProjectExecutionCreate, ProjectExecutionUpdate
+from mana_gov.models.pydantic.project_execution import TaskExecution, TaskExecutionCreate, TaskExecutionUpdate  # Added necessary imports for task execution models
 from mana_gov.services.project_service import ProjectService
 
 project_execution_router = APIRouter()

@@ -2,7 +2,14 @@ import { useState } from 'react';
 import Modal from './Modal'; // Import the modal component
 
 interface Props {
-  addProposal: (proposal: { title: string; description: string; manaHoursBudgeted: number; targetApprovalDate: string; submittedBy: string }) => void;
+  addProposal: (proposal: {
+    title: string;
+    description: string;
+    manaHoursBudgeted: number;
+    targetApprovalDate: string;
+    submittedBy: string;
+    developers?: any; // Allow for nested developer data
+  }) => void;
   loggedInUserId: string; // Pass the logged-in user's ID as a prop
 }
 
@@ -21,6 +28,7 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
     setJsonFile(file);
   };
 
+  // Modified validation to handle nested developer and project structures
   const validateProposalJson = (json: any): string | null => {
     if (typeof json.title !== 'string') {
       return 'Invalid or missing "title" in proposal.';
@@ -34,6 +42,12 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
     if (json.targetApprovalDate && isNaN(Date.parse(json.targetApprovalDate))) {
       return 'Invalid "targetApprovalDate" in proposal.';
     }
+
+    // Validate developers structure
+    if (json.developers && typeof json.developers !== 'object') {
+      return 'Invalid "developers" structure in proposal.';
+    }
+
     return null;
   };
 

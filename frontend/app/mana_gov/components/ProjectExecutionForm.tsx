@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { ProjectExecution, TaskExecution } from './types'; // Make sure to import the types
 
 interface Props {
-  addProjectExecution: (projectExecution: { projectPlanId: number; actualManaHours: any }) => void;
+  addProjectExecution: (projectExecution: ProjectExecution) => void;
   projectPlans: { id: number; projectName: string }[];
 }
 
@@ -17,11 +18,19 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
 
   // Function to validate the structure and data types of the project execution JSON
   const validateProjectExecutionJson = (json: any): string | null => {
-    if (!Array.isArray(json)) {
-      return 'Invalid project execution format. Expected an array of tasks with actual mana hours.';
+    if (typeof json !== 'object' || json === null) {
+      return 'Invalid project execution format. Expected an object.';
     }
 
-    for (const task of json) {
+    if (typeof json.projectPlanId !== 'number') {
+      return 'Invalid or missing "projectPlanId".';
+    }
+
+    if (!Array.isArray(json.tasks)) {
+      return 'Invalid project execution format. Expected an array of tasks.';
+    }
+
+    for (const task of json.tasks) {
       if (typeof task.id !== 'number') {
         return 'Invalid or missing "id" for task.';
       }
@@ -32,6 +41,23 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
         return 'Invalid or missing "actualManaHours" for task.';
       }
     }
+
+    if (!Array.isArray(json.peerVotes)) {
+      return 'Invalid project execution format. Expected an array of peer votes.';
+    }
+
+    for (const vote of json.peerVotes) {
+      if (typeof vote.id !== 'number') {
+        return 'Invalid or missing "id" for peer vote.';
+      }
+      if (typeof vote.userId !== 'number') {
+        return 'Invalid or missing "userId" for peer vote.';
+      }
+      if (typeof vote.vote !== 'boolean') {
+        return 'Invalid or missing "vote" for peer vote.';
+      }
+    }
+
     return null; // No validation errors
   };
 
@@ -65,9 +91,12 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
       return;
     }
 
-    const projectExecution = {
+    const projectExecution: ProjectExecution = {
       projectPlanId: selectedProjectPlanId,
-      actualManaHours: parsedJson,  // Assuming the actual mana hours are provided in the JSON file
+      actualManaHours: parsedJson.actualManaHours,
+      tasks: parsedJson.tasks as TaskExecution[], // Assuming tasks are structured like TaskExecution
+      peerVotes: parsedJson.peerVotes, // Assuming peerVotes are already structured correctly
+      id: parsedJson.id || 0, // Default ID if not provided
     };
 
     addProjectExecution(projectExecution);
