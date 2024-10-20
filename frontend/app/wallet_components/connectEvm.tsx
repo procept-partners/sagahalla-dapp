@@ -30,7 +30,7 @@ export const ConnectBtn = () => {
         }}
         type="button"  disabled={isConnecting}
       >
-        { isConnecting ? 'Connecting...' : 'CONNECT TO EVM' }
+        { isConnecting ? 'Connecting...' : 'EVM' }
       </button>
     );
   }

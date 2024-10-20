@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import Wallet from "../wallet_components/nearwallet";
-import { ConnectBtn } from "../wallet_components/connectEvm";
-import Profile from "../wallet_components/evmWalletProfile";
 import { mintNFT, initNear, nearConfig } from "./shldContractInteractions";
 
 const TokenBody = () => {
@@ -18,15 +15,15 @@ const TokenBody = () => {
     try {
       setLoading(true);
       const { walletConnection } = await initNear();
-      
+
       if (!walletConnection.isSignedIn()) {
         throw new Error("You need to be logged in to view purchase history.");
       }
 
       const accountId = walletConnection.getAccountId();
-      //const history = await walletConnection.account().viewFunction(nearConfig.contractName, "getPurchaseHistory", { account_id: accountId });
-      
-      console.log("Purchase history:", history);
+      // Fetch purchase history logic
+
+      console.log("Purchase history for account:", accountId);
     } catch (error) {
       console.error("Error fetching purchase history:", error);
       setError("Failed to fetch purchase history. Please try again.");
@@ -59,10 +56,10 @@ const TokenBody = () => {
 
       await mintNFT(accountId, purchaseAmount, metadata);
 
-      console.log("Tokens purchased successfully!");
-      fetchPurchaseHistory(); 
+      console.log("NFT minted successfully!");
+      fetchPurchaseHistory();
     } catch (error) {
-      console.error("Error purchasing tokens:", error);
+      console.error("Error minting SHLD NFT:", error);
       setError("There was an issue with the transaction. Please try again.");
     } finally {
       setLoading(false);
@@ -71,50 +68,39 @@ const TokenBody = () => {
 
   return (
     <div className="bg-[#270927] min-h-screen text-white p-8">
-      <header className="text-center mb-13">
-        <h1 className="text-[#ce711e] text-4xl font-bold mt-10 mb-5">
-          SHLD Landing Page
-        </h1>
-        <h2 className="text-[#ce711e] text-5xl font-bold mb-8">
-          SHLD Token Landing Page
-        </h2>
-        <div className="flex justify-center space-x-4">
-          <button className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-            <Wallet />
-          </button>
-          <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-            <ConnectBtn />
-            <Profile />
+      {/* SHLD Token Main Content */}
+      <main className="flex justify-center mt-10">
+        <div className="bg-[#3a0f3a] p-5 rounded-lg shadow-md w-full max-w-md">
+          <h3 className="text-[#ce711e] text-3xl font-bold mb-4 text-center">Purchase SHLD NFTs</h3>
+          <label className="mb-4 block text-center">Starting Price: {'{SHLD_STARTING_PRICE}'} BTC per NFT</label>
+
+          <div className="mb-4">
+            <input
+              type="number"
+              id="price"
+              className="w-full p-2 rounded text-black"
+              placeholder="Input SHLD Amount"
+              value={purchaseAmount}
+              onChange={(e) => setPurchaseAmount(e.target.value)}
+            />
           </div>
-        </div>
-      </header>
-
-      <main>
-        <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Purchase SHLD NFTs</h3>
-        <label className="mb-4">Starting Price: {'{SHLD_STARTING_PRICE}'} BTC per NFT</label>
-
-        <div className="mb-4">
-          <input
-            type="number"
-            id="price"
-            className="w-full p-2 rounded text-black"
-            placeholder="Input SHLD Amount"
-            value={purchaseAmount}
-            onChange={(e) => setPurchaseAmount(e.target.value)}
-          />
-        </div>
-        <button
+          <button
             onClick={handlePurchaseTokens}
             disabled={loading}
             className={`bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded w-full mt-4 ${loading ? 'cursor-not-allowed' : ''}`}
           >
             {loading ? "Purchasing..." : "PURCHASE SHLD"}
           </button>
+        </div>
 
+        {error && <p className="text-red-500 mt-4">{error}</p>}
+      </main>
+
+      {/* SHLD NFT Creation Section */}
+      <main>
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4">SHLD NFT Collections</h3>
+        <label className="mb-4">Create your custom SHLD NFT:</label>
 
-        <label className="mb-4">Choose based on these criteria:</label>
-        
         <div className="mb-4">
           <label>Title:</label>
           <input
@@ -126,7 +112,7 @@ const TokenBody = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        
+
         <div className="mb-4">
           <label>Description:</label>
           <input
@@ -140,13 +126,13 @@ const TokenBody = () => {
         </div>
 
         <div className="mb-4">
-          <label>Job:</label>
+          <label>Governance Role:</label>
           <select
             className="w-full p-2 rounded text-black"
             value={governanceRole}
             onChange={(e) => setGovernanceRole(e.target.value)}
           >
-            <option value="">Governance Role</option>
+            <option value="">Choose Governance Role</option>
             <option value="creator">Creator</option>
             <option value="patron">Patron</option>
             <option value="content">Content</option>
@@ -158,22 +144,16 @@ const TokenBody = () => {
           onClick={handlePurchaseTokens}
           className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded"
         >
-          PURCHASE SHLD NFTS
+          CREATE SHLD NFT
         </button>
       </main>
 
+      {/* Utility & Use Case Section */}
       <main>
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4 mt-5">Utility & Use Case</h3>
         <p>SHLD NFTs serve as **Sovereign IDs** and **authentication tokens** in the SagaHalla ecosystem. They also provide links to **MANA rights** with **Sovereign ID** for governance within the cooperative.</p>
-        <p>SHLD NFTs come with an **immutable badge**. The image can only be transferred upon burning the token, while maintaining **MANA and authentication rights**</p>
+        <p>SHLD NFTs come with an **immutable badge**. The image can only be transferred upon burning the token, while maintaining **MANA and authentication rights**.</p>
       </main>
-
-      <footer>
-        <div className="flex justify-center space-x-4">
-          <p>SagaHalla © 2024</p>
-          <p>Sign Up</p>
-        </div>
-      </footer>
     </div>
   );
 };

@@ -71,7 +71,7 @@ const WalletSelectorComponent = () => {
   return (
     <div>
       <div className="wallet" onClick={walletAddress ? handleSignOut : handleConnectWallet}>
-        {walletAddress ? `Connected to: ${walletAddress}` : "CONNECT TO NEAR"}
+        {walletAddress ? `Connected to: ${walletAddress}` : "NEAR"}
       </div>
     </div>
   );

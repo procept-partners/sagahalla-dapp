@@ -1,27 +1,50 @@
-import Image from "next/image";
+"use client";
 
-export default function Header() {
+import { useState } from 'react'; 
+import Link from 'next/link';
+import Wallet from '../wallet_components/nearwallet';
+import { useConnectModal } from '@rainbow-me/rainbowkit'; // Import the connect modal
+import Profile from '../wallet_components/evmWalletProfile';
+
+export default function Header({ appName }: { appName: string }) {
+  const [loggedIn, setLoggedIn] = useState(false); // Manage login state for Near login
+
+  const handleLogin = () => {
+    setLoggedIn(!loggedIn); // Toggle Near login state
+  };
+
+  const { openConnectModal } = useConnectModal(); // Get the modal handler
+
   return (
-    <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-      <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-        Get started by editing&nbsp;
-        <code className="font-mono font-bold">app/page.tsx</code>
-      </p>
-      <div className="fixed bottom-0 left-0 mb-4 flex h-auto w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:w-auto lg:bg-none lg:mb-0">
-        <a
-          href="https://www.llamaindex.ai/"
-          className="flex items-center justify-center font-nunito text-lg font-bold gap-2"
-        >
-          <span>Built by LlamaIndex</span>
-          <Image
-            className="rounded-xl"
-            src="/llama.png"
-            alt="Llama Logo"
-            width={40}
-            height={40}
-            priority
-          />
-        </a>
+    <div className="header flex justify-between items-center p-4 bg-orange-500">
+      {/* App Logo */}
+      <div className="logo">
+        <Link href="/">
+          <img src="/sagahalla.png" alt="SagaHalla Logo" className="app-logo" />
+        </Link>
+      </div>
+
+      {/* Dynamic App Title */}
+      <div className="title flex-grow text-center">
+        <h1 className="text-white text-xl font-bold">{appName}</h1>
+      </div>
+
+      {/* User Profile / Wallet Connect Area */}
+      <div className="user-profile flex items-center space-x-4">
+        <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
+          <Wallet />
+        </div>
+        <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
+          <button onClick={openConnectModal}>
+            Connect EVM
+          </button>
+        </div>
+        <div className="user-profile">
+          <button className="profile-btn flex items-center space-x-2" onClick={handleLogin}>
+            <img src="/tiwaz.png" alt="Profile Icon" className="profile-icon w-8 h-8 rounded-full" />
+            <span className="text-white">{loggedIn ? "Logout" : "Login"}</span>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,18 +1,21 @@
-import { configureChains, createClient } from 'wagmi';
-import { mainnet, polygon } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+import { Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http, createStorage, cookieStorage } from 'wagmi';
 
-// Configure chains and providers
-const { chains, provider, webSocketProvider } = configureChains(
-  [mainnet, polygon],
-  [publicProvider()]
-);
+import {
+  aurora,
+  auroraTestnet,
+} from 'wagmi/chains';
 
-// Create the wagmi client
-export const client = createClient({
-  autoConnect: true,
-  provider,
-  webSocketProvider,
+const supportedChains: Chain[] = [aurora, auroraTestnet];
+
+export const config = getDefaultConfig({
+  appName: 'RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: supportedChains as any,
+  ssr: true,
+  storage: createStorage({
+    storage: cookieStorage,
+   }),
+  transports: supportedChains.reduce((obj, chain) => ({ ...obj, [chain.id]: http() }), {})
+ 
 });
-
-export { chains };  // Export chains to be used in RainbowKitProvider

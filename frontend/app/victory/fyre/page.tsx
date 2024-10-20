@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import Wallet from "../wallet_components/nearwallet";
-import { ConnectBtn } from "../wallet_components/connectEvm";
-import Profile from "../wallet_components/evmWalletProfile";
-import { ethers } from "ethers";
+import { ethers } from 'ethers';
 import fyreData from "../abi/FyreToken.json";
 
 interface PurchaseHistory {
@@ -47,25 +44,9 @@ const TokenBody: React.FC = () => {
     }
   }, [fyreAddress, fyreAbi]);
 
-  //const fetchTokenStats = useCallback(async () => {
-    //try {
-      //const provider = new ethers.providers.Web3Provider(window.ethereum);
-      //const contract = new ethers.Contract(fyreAddress, fyreAbi, provider);
-
-      //const circSupply = await contract.circulatingSupply();
-      //const maxSupply = await contract.maximumSupply();
-
-      //setCirculatingSupply(ethers.utils.formatUnits(circSupply, "ether"));
-      //setMaximumSupply(ethers.utils.formatUnits(maxSupply, "ether"));
-    //} catch (error) {
-      //console.error("Error fetching token statistics:", error);
-    //}
-  //}, [fyreAddress, fyreAbi]);
-
   useEffect(() => {
     fetchPurchaseHistory();
-    //fetchTokenStats();
-  }, [fetchPurchaseHistory]); //add fetchTokenStats later
+  }, [fetchPurchaseHistory]); 
 
   const handlePurchaseTokens = async () => { 
     try {
@@ -91,24 +72,16 @@ const TokenBody: React.FC = () => {
       setLoading(false);
     }
   };
-  
 
   return (
     <div className="bg-[#270927] min-h-screen text-white p-8">
+      {/* Header Section */}
       <header className="text-center mb-13">
         <h1 className="text-[#ce711e] text-4xl font-bold mt-10 mb-5">VICTORY EXCHANGE</h1>
         <h2 className="text-[#ce711e] text-5xl font-bold mb-8">FYRE Token</h2>
-        <div className="flex justify-center space-x-4">
-          <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-            <Wallet />
-          </div>
-          <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-            <ConnectBtn />
-            <Profile />
-          </div>
-        </div>
       </header>
 
+      {/* Token Purchase Section */}
       <main className="flex justify-center mt-10">
         <div className="bg-[#3a0f3a] p-5 rounded-lg shadow-md w-full max-w-md">
           <h3 className="text-[#ce711e] text-3xl font-bold mb-4 text-center">Purchase FYRE Tokens</h3>
@@ -132,7 +105,8 @@ const TokenBody: React.FC = () => {
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </main>
-      
+
+      {/* Purchase History Section */}
       <main>
         <div className="mt-10">
           <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Purchase History</h3>
@@ -165,6 +139,7 @@ const TokenBody: React.FC = () => {
         </div>
       </main>
 
+      {/* Minting Stats Section */}
       <main>
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4">FYRE Token Minting Stats</h3>
         <div className="bg-[#ce711e] rounded overflow-hidden">
@@ -183,6 +158,7 @@ const TokenBody: React.FC = () => {
         </div>
       </main>
 
+      {/* Real-Time Prices Section */}
       <main className="bg-[#3a0f3a] p-6 rounded-lg shadow-md">
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Real-Time FYRE Prices</h3>
         <div className="bg-[#ce711e] rounded overflow-hidden">
@@ -195,10 +171,11 @@ const TokenBody: React.FC = () => {
         </div>
       </main>
 
+      {/* Utility & Use Case Section */}
       <main>
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Utility & Use Case</h3>
         <p>FYRE tokens can be used to purchase SHLD tokens and contribute MANA to projects within SagaHalla.</p>
-        <p>Convert your FYRE tokens to MANA tokens. This action represents long term staking in the SagaHalla community, representing a contribution to the SagaHalla cooperative and a decision to join a real cooperative entity in the real world.</p>
+        <p>Convert your FYRE tokens to MANA tokens. This action represents long-term staking in the SagaHalla community, contributing to the cooperative.</p>
         <p>Governance Rights: FYRE tokens are community tokens and do not provide governance rights.</p>
 
         <div className="flex justify-center space-x-4">
@@ -210,13 +187,6 @@ const TokenBody: React.FC = () => {
           </button>
         </div>
       </main>
-
-      <footer>
-        <div className="flex justify-center space-x-4">
-          <p>SagaHalla © 2024</p>
-          <p>Sign Up</p>
-        </div>
-      </footer>
     </div>
   );
 };

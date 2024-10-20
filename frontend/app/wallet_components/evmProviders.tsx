@@ -1,10 +1,10 @@
 "use client";
 
-import { WagmiConfig } from "wagmi";
+import { WagmiProvider, cookieToInitialState } from "wagmi";
 import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { client, chains } from "../../wagmi";  // Import chains along with client
+import { config } from "../wagmi";
 
 const queryClient = new QueryClient();
 
@@ -19,16 +19,17 @@ const customTheme = darkTheme({
   borderRadius: "small",
   fontStack: "system",
   overlayBlur: "small",
-});
+})
 
-export default function Providers({ children }: Props) {
+export default function Providers({ children, cookie }: Props) {
+    const initialState = cookieToInitialState(config, cookie);
   return (
-    <WagmiConfig client={client}>  {/* Use client */}
+    <WagmiProvider config={config} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider chains={chains} theme={customTheme}>  {/* Pass chains to RainbowKitProvider */}
+        <RainbowKitProvider theme={customTheme}>
           {children}
         </RainbowKitProvider>
       </QueryClientProvider>
-    </WagmiConfig>
+    </WagmiProvider>
   );
 }

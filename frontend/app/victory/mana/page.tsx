@@ -1,14 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import Wallet from "../wallet_components/nearwallet";
-import { ConnectBtn } from "../wallet_components/connectEvm";
-import Profile from "../wallet_components/evmWalletProfile";
-import { ethers } from "ethers";
 import { connect, keyStores, WalletConnection } from "near-api-js";
-//import { SHLD_CONTRACT } from "../shld/shldContractInteractions"; //according to shld_contract file
-//import manaData from "../abi/ManaToken.json";
-//import fyreData from "../abi/FyreToken.json";
 
 interface StakingHistory {
   staker: string;
@@ -18,7 +11,6 @@ interface StakingHistory {
   manaToReceive: string;
 }
 
-// Have not add tokenContribution, circulating supply, max supply
 const TokenBody: React.FC = () => {
   const [purchaseAmount, setPurchaseAmount] = useState<string>("");
   const [stakingHistory, setStakingHistory] = useState<StakingHistory[]>([]);
@@ -26,12 +18,6 @@ const TokenBody: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [circulatingSupply, setCirculatingSupply] = useState<string>("");
   const [maximumSupply, setMaximumSupply] = useState<string>("");
-
-  //const manaAddress = manaData.manaAddress;
-  //const manaAbi = manaData.abi;
-
-  //const fyreAddress = fyreData.manaAddress;
-  //const fyreAbi = fyreData.abi;
 
   const initNearConnection = async () => {
     const nearConfig = {
@@ -47,35 +33,11 @@ const TokenBody: React.FC = () => {
     const wallet = new WalletConnection(near, "");
     return wallet;
   };
-  
-  // Function to check SHLD NFT ownership
-  const checkShldNftOwnership = async () => {
-    try {
-      const wallet = await initNearConnection();
-  
-      if (!wallet.isSignedIn()) {
-        throw new Error("Please connect your NEAR wallet.");
-      }
-  
-      const accountId = wallet.getAccountId();
-  
-      //const contract = new wallet.account().viewFunction(CONTRACT_NAME, "nft_tokens_for_owner", { account_id: accountId });
-  
-      // Please change to a specific SHLD token id
-      //const ownsShldNft = contract.some((nft: any) => nft.token_id === "shld_nft_id");
-  
-      //return ownsShldNft;
-    } catch (error) {
-      console.error("Error checking SHLD NFT ownership:", error);
-      throw new Error("Unable to check SHLD NFT ownership. Please try again.");
-    }
-  };
 
   const fetchStakingHistory = async () => {
     try {
       setLoading(true);
-
-      //setStakingHistory(history);
+      // Fetch staking history logic
     } catch (error) {
       console.error("Error fetching staking history:", error);
       setError("Unable to fetch staking history. Please try again.");
@@ -87,44 +49,14 @@ const TokenBody: React.FC = () => {
   const handleReturnToken = async () => {
     try {
       setLoading(true);
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send("eth_requestAccounts", []);
-      const signer = provider.getSigner();
-      const account = await signer.getAddress();
-
-      const ownsShldNft = await checkShldNftOwnership();
-
-      //if (!ownsShldNft) {
-        //setError("You must own the SHLD NFT to retrieve tokens.");
-        //return;
-      //}
-  
-      //const fyreContract = new ethers.Contract(fyreAddress, fyreAbi, signer);
-      //const stakingContract = new ethers.Contract(stakingContractAddress, stakingAbi, signer);
-  
-      //const fyreBalance = await fyreContract.balanceOf(account);
-      //const formattedFyreBalance = ethers.utils.formatUnits(fyreBalance, 18); 
-  
-      //const stakedAmount = await stakingContract.stakedAmount(account);
-      //const stakingStartTime = await stakingContract.stakingStartTime(account);
-  
-      //const formattedStakedAmount = ethers.utils.formatUnits(stakedAmount, 18);
-      
-      // Calculate total hours staked
-      const currentTime = Math.floor(Date.now() / 1000);
-      //const stakingDurationInSeconds = currentTime - stakingStartTime;
-      //const stakingDurationInHours = Math.floor(stakingDurationInSeconds / 3600);
-
-      //const manaToAward = ethers.utils.parseUnits(stakingDurationInHours.toString(), 18);
-      //if (stakingDurationInHours > 0) {
-      //  const manaTx = await manaContract.mint(account, manaToAward); // Assumes minting is allowed by the contract
-      //  await manaTx.wait();
-      //}
-  
-      //console.log(`FYRE balance: ${formattedFyreBalance}`);
-      //console.log(`Staked amount: ${formattedStakedAmount}`);
-      //console.log(`Staked for: ${stakingDurationInHours} hours`);
-  
+      const wallet = await initNearConnection();
+      if (!wallet.isSignedIn()) {
+        setError("Please connect your NEAR wallet.");
+        return;
+      }
+      const accountId = wallet.getAccountId();
+      console.log(`Connected NEAR account: ${accountId}`);
+      // Logic for retrieving FYRE tokens
     } catch (error) {
       console.error("Error retrieving tokens and staking information:", error);
       setError("There was an issue retrieving the staking information. Please try again.");
@@ -136,33 +68,14 @@ const TokenBody: React.FC = () => {
   const handleSwapTokens = async () => {
     try {
       setLoading(true);
-  
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send("eth_requestAccounts", []);
-      const signer = provider.getSigner();
-      const account = await signer.getAddress();
-
-      const ownsShldNft = await checkShldNftOwnership();
-
-      //if (!ownsShldNft) {
-        //setError("You must own the SHLD NFT to stake tokens.");
-        //return;
-      //}
-  
-      //const fyreContract = new ethers.Contract(fyreAddress, fyreAbi, signer);
-  
-      //const stakingContract = new ethers.Contract(stakingContractAddress, stakingAbi, signer);
-  
-      //const amountToStake = ethers.utils.parseUnits(purchaseAmount, 18);
-  
-      //const approvalTx = await fyreContract.approve(stakingContract.address, amountToStake);
-      //await approvalTx.wait(); // Wait for approval transaction to complete
-  
-      // Stake the tokens by interacting with the staking contract
-      //const stakeTx = await stakingContract.stakeTokens(amountToStake);
-      //await stakeTx.wait(); // Wait for the staking transaction to complete
-  
-      console.log("Tokens staked successfully!");
+      const wallet = await initNearConnection();
+      if (!wallet.isSignedIn()) {
+        setError("Please connect your NEAR wallet.");
+        return;
+      }
+      const accountId = wallet.getAccountId();
+      console.log(`Connected NEAR account: ${accountId}`);
+      // Logic for swapping FYRE to MANA
     } catch (error) {
       console.error("Error staking tokens:", error);
       setError("There was an issue with the staking transaction. Please try again.");
@@ -177,20 +90,7 @@ const TokenBody: React.FC = () => {
 
   return (
     <div className="bg-[#270927] min-h-screen text-white p-8">
-      <header className="text-center mb-13">
-        <h1 className="text-[#ce711e] text-4xl font-bold mt-10 mb-5">VICTORY EXCHANGE</h1>
-        <h2 className="text-[#ce711e] text-5xl font-bold mb-8">MANA Token</h2>
-        <div className="flex justify-center space-x-4">
-          <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-            <Wallet />
-          </div>
-          <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-            <ConnectBtn />
-            <Profile />
-          </div>
-        </div>
-      </header>
-
+      {/* MANA Token Section */}
       <main className="flex justify-center mt-10">
         <div className="bg-[#3a0f3a] p-5 rounded-lg shadow-md w-full max-w-md">
           <h3 className="text-[#ce711e] text-3xl font-bold mb-4 text-center">Contribute MANA Tokens</h3>
@@ -222,6 +122,7 @@ const TokenBody: React.FC = () => {
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </main>
       
+      {/* Staking History Section */}
       <main>
         <div className="mt-10">
           <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Staking History</h3>
@@ -258,6 +159,7 @@ const TokenBody: React.FC = () => {
         </div>
       </main>
 
+      {/* Minting Stats Section */}
       <main>
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4">MANA Token Minting Stats</h3>
         <div className="bg-[#ce711e] rounded overflow-hidden">
@@ -276,6 +178,7 @@ const TokenBody: React.FC = () => {
         </div>
       </main>
 
+      {/* Real-Time Prices Section */}
       <main className="bg-[#3a0f3a] p-6 rounded-lg shadow-md">
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Real-Time MANA Prices</h3>
         <div className="bg-[#ce711e] rounded overflow-hidden">
@@ -288,10 +191,11 @@ const TokenBody: React.FC = () => {
         </div>
       </main>
 
+      {/* Utility & Use Case Section */}
       <main>
         <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Utility & Use Case</h3>
         <p>MANA tokens can be used to contribute to projects within the SagaHalla ecosystem. These contributions represent real-world involvement in cooperative initiatives.</p>
-        <p>Convert your FYRE tokens to MANA tokens. This action represents long term staking in the SagaHalla community, representing a contribution to the SagaHalla cooperative and a decision to join a real cooperative entity in the real world.</p>
+        <p>Convert your FYRE tokens to MANA tokens. This action represents long-term staking in the SagaHalla community.</p>
         <p>Governance Rights: MANA tokens represent contributions and do not provide governance rights within SagaHalla.</p>
 
         <div className="flex justify-center space-x-4">
@@ -300,13 +204,6 @@ const TokenBody: React.FC = () => {
           </button>
         </div>
       </main>
-
-      <footer>
-        <div className="flex justify-center space-x-4">
-          <p>SagaHalla © 2024</p>
-          <p>Sign Up</p>
-        </div>
-      </footer>
     </div>
   );
 };

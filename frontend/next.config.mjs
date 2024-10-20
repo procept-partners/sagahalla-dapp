@@ -19,7 +19,7 @@ const nextConfig = {
       ]
     }
   },
-  output: 'export',       // Keep static export configuration
+  // output: 'export',       // Keep static export configuration
   images: {
     unoptimized: true     // Disable image optimization if needed
   },
