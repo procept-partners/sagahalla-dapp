@@ -121,58 +121,61 @@ export default function ManaDashboard() {
   }
 
   return (
-    <div className="dashboard">
-      <section className="proposals">
-        <div className="section-header">
-          <h2>Proposals</h2>
-          <Link href="/mana_gov/create-proposal" className="button">
-            Create New Proposal
-          </Link>
-        </div>
-        {proposals.length === 0 ? (
-          <p>No proposals available. Create a new proposal to get started!</p>
-        ) : (
-          <ProposalList proposals={proposals} />
+    <>
+      <section className="min-h-screen bg-[#270927] py-20 text-white">
+        <section className="container mx-auto px-4" id='proposals'>
+          <div className="mb-8 flex flex-row items-center justify-between">
+            <h2 className="text-3xl font-bold text-yellow-500">Proposals</h2>
+            <Link href="/mana_gov/create-proposal" className="rounded-md bg-yellow-600 px-4 py-2 font-bold text-white hover:bg-yellow-800">
+              Create New Proposal
+            </Link>
+          </div>
+          {proposals.length === 0 ? (
+            <p>No proposals available. Create a new proposal to get started!</p>
+          ) : (
+            <ProposalList proposals={proposals} />
+          )}
+        </section>
+
+        <section className="container mx-auto my-16 px-4" id='projects'>
+          <div className="mb-8 flex flex-row items-center justify-between">
+            <h2 className="text-3xl font-bold text-yellow-500">Projects</h2>
+            <button className="rounded-md bg-yellow-600 px-4 py-2 font-bold text-white hover:bg-yellow-800" onClick={handleCreateProjectPlanClick}>
+              Develop a Project Plan
+            </button>
+          </div>
+          {projects.length === 0 ? (
+            <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>
+          ) : (
+            <ProjectList projects={projects} userId={loggedInUserId} />
+          )}
+        </section>
+
+        <section className="tasks container mx-auto px-4" id='tasks'>
+          <div className="mb-8 flex flex-row items-center justify-between">
+            <h2 className="text-3xl font-bold text-yellow-500">Assigned Tasks</h2>
+            <button className="rounded-md bg-yellow-600 px-4 py-2 font-bold text-white hover:bg-yellow-800" onClick={handleCreateProjectExecutionClick}>
+              Execute Project Tasks
+            </button>
+          </div>
+          {tasks.length === 0 ? (
+            <p>No tasks assigned to you. Check back later for new tasks!</p>
+          ) : (
+            <AssignedTasks tasks={tasks} userId={loggedInUserId} />
+          )}
+        </section>
+
+        {/* Modal for project plan creation */}
+        {isProjectPlanModalOpen && (
+          <Modal closeModal={closeProjectPlanModal} message="No approved and active proposals available. You cannot create a project plan without an approved proposal." />
+        )}
+
+        {/* Modal for project execution */}
+        {isProjectExecutionModalOpen && (
+          <Modal closeModal={closeProjectExecutionModal} message="No project plans available. You cannot create a project execution without an active project plan." />
         )}
       </section>
+    </>
 
-      <section className="projects">
-        <div className="section-header">
-          <h2>Projects</h2>
-          <button className="button" onClick={handleCreateProjectPlanClick}>
-            Develop a Project Plan
-          </button>
-        </div>
-        {projects.length === 0 ? (
-          <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>
-        ) : (
-          <ProjectList projects={projects} userId={loggedInUserId} />
-        )}
-      </section>
-
-      <section className="tasks">
-        <div className="section-header">
-          <h2>Assigned Tasks</h2>
-          <button className="button" onClick={handleCreateProjectExecutionClick}>
-            Execute Project Tasks
-          </button>
-        </div>
-        {tasks.length === 0 ? (
-          <p>No tasks assigned to you. Check back later for new tasks!</p>
-        ) : (
-          <AssignedTasks tasks={tasks} userId={loggedInUserId} />
-        )}
-      </section>
-
-      {/* Modal for project plan creation */}
-      {isProjectPlanModalOpen && (
-        <Modal closeModal={closeProjectPlanModal} message="No approved and active proposals available. You cannot create a project plan without an approved proposal." />
-      )}
-
-      {/* Modal for project execution */}
-      {isProjectExecutionModalOpen && (
-        <Modal closeModal={closeProjectExecutionModal} message="No project plans available. You cannot create a project execution without an active project plan." />
-      )}
-    </div>
   );
 }
