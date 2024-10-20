@@ -2,7 +2,8 @@
 
 import { useState } from 'react'; // Import useState from React
 import Link from 'next/link';
-import './styles.css'; // Import global styles here
+// import './styles.css'; // Import global styles here
+import './globals.css';
 
 export default function ManaGovLayout({ children }: { children: React.ReactNode }) {
   const [loggedIn, setLoggedIn] = useState(false); // Now useState is defined
@@ -12,21 +13,26 @@ export default function ManaGovLayout({ children }: { children: React.ReactNode 
   };
 
   return (
-    <div className="flex flex-col min-h-screen"> {/* Flex container with full height */}
+    <div className="flex min-h-screen flex-col"> {/* Flex container with full height */}
 
       {/* Navigation Links */}
       <nav className="navigation">
-        <Link href="/proposal-management" className="text-white px-4">Proposal Management</Link>
-        <Link href="/project-planning" className="text-white px-4">Project Planning</Link>
-        <Link href="/task-tracking" className="text-white px-4">Task Tracking</Link>
-        <Link href="/voting" className="text-white px-4">Voting</Link>
-        <Link href="/reports" className="text-white px-4">Reports</Link>
+        <Link href="/proposal-management" className="px-4 text-white">Proposal Management</Link>
+        <Link href="/project-planning" className="px-4 text-white">Project Planning</Link>
+        <Link href="/task-tracking" className="px-4 text-white">Task Tracking</Link>
+        <Link href="/voting" className="px-4 text-white">Voting</Link>
+        <Link href="/reports" className="px-4 text-white">Reports</Link>
       </nav>
+
+
+
 
       {/* Main Content */}
       <main className="flex-grow"> {/* Flex-grow to push footer down */}
         {children}
       </main>
+
+      <h3 className='text-center underline'>Some text</h3>
 
     </div>
   );

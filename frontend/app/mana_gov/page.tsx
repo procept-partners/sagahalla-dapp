@@ -7,7 +7,7 @@ import ProposalList from './components/ProposalList';
 import ProjectList from './components/ProjectList';
 import AssignedTasks from './components/AssignedTasks';
 import Modal from './components/Modal';
-import './styles.css';
+// import './styles.css';
 
 export default function ManaDashboard() {
   const [proposals, setProposals] = useState([]);
