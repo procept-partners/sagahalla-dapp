@@ -44,15 +44,15 @@ export default function Navbar() {
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
             src="https://www.sagahalla.io/content/images/2024/09/sagahalla_airbrushed.png"
-            className="h-12"
+            className="h-10"
             alt="SagaHalla Logo"
           />
-          <span className="self-center whitespace-nowrap text-3xl font-semibold text-white">
+          <span className="self-center whitespace-nowrap text-2xl font-semibold text-white">
             SagaHalla
           </span>
         </a>
         {/* Connect Wallet Buttons & Menu Button */}
-        <div className="order-2 flex flex-row space-x-2 md:order-none">
+        <div className="order-2 flex flex-row space-x-2 sm:order-none lg:order-last">
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -96,10 +96,10 @@ export default function Navbar() {
           </Button>
         </div>
         <div
-          className={`${show ? "block order-last md:order-none" : "hidden"}  w-full md:block md:w-auto`}
+          className={`${show ? "block order-last " : "hidden"}  w-full md:block sm:order-last lg:order-none md:w-auto`}
           id="navbar-default"
         >
-          <ul className="mt-4 flex flex-col flex-wrap items-center space-y-4 border p-4 font-medium md:mt-0 md:flex-row md:space-x-6 md:space-y-0 md:border-0 md:p-0 rtl:space-x-reverse">
+          <ul className="my-2 flex flex-col flex-wrap items-center space-y-4 border p-4 font-medium md:my-0 md:flex-row md:space-x-4 md:space-y-0 md:border-0 md:p-0 rtl:space-x-reverse">
             {navigationLinks.map((link) => (
               <li key={link.label}>
                 <Link
