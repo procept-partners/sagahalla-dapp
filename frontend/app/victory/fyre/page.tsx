@@ -46,9 +46,9 @@ const TokenBody: React.FC = () => {
 
   useEffect(() => {
     fetchPurchaseHistory();
-  }, [fetchPurchaseHistory]); 
+  }, [fetchPurchaseHistory]);
 
-  const handlePurchaseTokens = async () => { 
+  const handlePurchaseTokens = async () => {
     try {
       setLoading(true);
   
@@ -75,12 +75,6 @@ const TokenBody: React.FC = () => {
 
   return (
     <div className="bg-[#270927] min-h-screen text-white p-8">
-      {/* Header Section */}
-      <header className="text-center mb-13">
-        <h1 className="text-[#ce711e] text-4xl font-bold mt-10 mb-5">VICTORY EXCHANGE</h1>
-        <h2 className="text-[#ce711e] text-5xl font-bold mb-8">FYRE Token</h2>
-      </header>
-
       {/* Token Purchase Section */}
       <main className="flex justify-center mt-10">
         <div className="bg-[#3a0f3a] p-5 rounded-lg shadow-md w-full max-w-md">
