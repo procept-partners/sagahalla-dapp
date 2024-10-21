@@ -11,6 +11,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // Import RainbowKit essentials
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
+import './globals.css';
 import Navbar from "@/components/blocks/navbar";
 
 // Initialize Inter font
