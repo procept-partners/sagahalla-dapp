@@ -9,34 +9,6 @@ export default function ManaGovLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [loggedIn, setLoggedIn] = useState(false); // Now useState is defined
-
-  const handleLogin = () => {
-    setLoggedIn(!loggedIn); // Toggle login state
-  };
-
-  const navigationLinks = [
-    {
-      label: "Proposal Management",
-      href: "/proposal-management",
-    },
-    {
-      label: "Project Planning",
-      href: "/project-planning",
-    },
-    {
-      label: "Task Tracking",
-      href: "/task-tracking",
-    },
-    {
-      label: "Voting",
-      href: "/voting",
-    },
-    {
-      label: "Reports",
-      href: "/reports",
-    },
-  ];
 
   return (
     <>

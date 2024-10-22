@@ -8,10 +8,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { LogIn, Menu } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import Login from "./login";
 
 export default function Navbar() {
   const [show, setShow] = React.useState(false);
@@ -65,7 +67,7 @@ export default function Navbar() {
             <Menu />
           </button>
 
-          {/* TODO: Add API calls here */}
+          {/* TODO: Add API calls here for wallets */}
           <DropdownMenu>
             <DropdownMenuTrigger className="rounded-md bg-yellow-700 px-3 py-2 font-bold capitalize text-white hover:bg-yellow-800">
               Wallets
@@ -89,11 +91,8 @@ export default function Navbar() {
           </DropdownMenu>
 
           {/* TODO: Add API call to login user */}
+          <Login />
 
-          <Button className="bg-yellow-700 px-3 py-2 font-bold capitalize text-white hover:bg-yellow-800">
-            Login
-            <LogIn className="ml-2 h-5 w-5" />
-          </Button>
         </div>
         <div
           className={`${show ? "block order-last " : "hidden"}  w-full md:block sm:order-last lg:order-none md:w-auto`}
