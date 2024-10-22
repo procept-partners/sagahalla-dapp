@@ -5,6 +5,10 @@ WORKDIR /frontend
 
 # Install dependencies first
 COPY package.json package-lock.json ./
+
+# Add this before RUN npm ci
+ENV SHARP_IGNORE_GLOBAL_LIBVIPS=1
+
 RUN npm ci
 
 # Copy the rest of the application code
