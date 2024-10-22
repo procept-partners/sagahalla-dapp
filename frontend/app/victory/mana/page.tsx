@@ -168,25 +168,16 @@ const TokenBody: React.FC = () => {
             <div className="p-3 bg-[#270927] text-white">{circulatingSupply} MANA</div>
             <div className="p-3 text-white font-semibold">MAXIMUM SUPPLY</div>
             <div className="p-3 bg-[#270927] text-white">{maximumSupply} MANA</div>
-            <div className="p-3 text-white font-semibold">MANA MINTING SCHEDULE</div>
-            <div className="p-3 bg-[#270927] text-white">
-              <a href="https://sagahalla.org/approved-projects" className="underline">
-                2025 - 2046 [21 Year Schedule]
-              </a>
-            </div>
           </div>
         </div>
       </main>
 
       {/* Real-Time Prices Section */}
       <main className="bg-[#3a0f3a] p-6 rounded-lg shadow-md">
-        <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Real-Time MANA Prices</h3>
+        <h3 className="text-[#ce711e] text-3xl font-bold mb-4">MANA Price</h3>
         <div className="bg-[#ce711e] rounded overflow-hidden">
           <div className="grid grid-cols-2">
-            <div className="p-3 text-white font-semibold">MARKET PRICE</div>
-            <div className="p-3 bg-[#270927] text-white"> BTC</div>
-            <div className="p-3 text-white font-semibold">FLOOR PRICE</div>
-            <div className="p-3 bg-[#270927] text-white"> BTC</div>
+            <div className="p-3 text-white font-semibold">manaPrice USD/MANA</div>
           </div>
         </div>
       </main>

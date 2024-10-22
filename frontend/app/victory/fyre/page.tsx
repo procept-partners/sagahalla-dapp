@@ -135,32 +135,23 @@ const TokenBody: React.FC = () => {
 
       {/* Minting Stats Section */}
       <main>
-        <h3 className="text-[#ce711e] text-3xl font-bold mb-4">FYRE Token Minting Stats</h3>
+        <h3 className="text-[#ce711e] text-3xl font-bold mb-4">FYRE Token Supply</h3>
         <div className="bg-[#ce711e] rounded overflow-hidden">
           <div className="grid grid-cols-2">
             <div className="p-3 text-white font-semibold">CIRCULATING SUPPLY</div>
             <div className="p-3 bg-[#270927] text-white">{circulatingSupply} FYRE</div>
             <div className="p-3 text-white font-semibold">MAXIMUM SUPPLY</div>
             <div className="p-3 bg-[#270927] text-white">{maximumSupply} FYRE</div>
-            <div className="p-3 text-white font-semibold">FYRE MINTING SCHEDULE</div>
-            <div className="p-3 bg-[#270927] text-white">
-              <a href="https://sagahalla.org/approved-projects" className="underline">
-                2025 - 2046 [21 Year Schedule]
-              </a>
-            </div>
           </div>
         </div>
       </main>
 
       {/* Real-Time Prices Section */}
       <main className="bg-[#3a0f3a] p-6 rounded-lg shadow-md">
-        <h3 className="text-[#ce711e] text-3xl font-bold mb-4">Real-Time FYRE Prices</h3>
+        <h3 className="text-[#ce711e] text-3xl font-bold mb-4">FYRE Price</h3>
         <div className="bg-[#ce711e] rounded overflow-hidden">
           <div className="grid grid-cols-2">
-            <div className="p-3 text-white font-semibold">MARKET PRICE</div>
-            <div className="p-3 bg-[#270927] text-white"> BTC</div>
-            <div className="p-3 text-white font-semibold">FLOOR PRICE</div>
-            <div className="p-3 bg-[#270927] text-white"> BTC</div>
+            <div className="p-3 text-white font-semibold">fyrePrice USD/FYRE</div>
           </div>
         </div>
       </main>
