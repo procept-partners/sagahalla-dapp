@@ -19,8 +19,8 @@ const CreateProposalPage = () => {
   };
 
   return (
-    <div className="create-proposal-page">
-      <header className="text-white text-xl font-bold">
+    <div className="bg-[#270927] py-20 text-black">
+      <header className="px-5 text-2xl font-bold text-white">
         <h1>Create New Proposal</h1>
       </header>
 

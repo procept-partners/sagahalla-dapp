@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Modal from './Modal'; // Import the modal component
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 interface Props {
   addProposal: (proposal: {
@@ -91,77 +93,83 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-10 p-6 rounded-lg shadow-lg">
+    <form onSubmit={handleSubmit} className="mt-10 rounded-lg p-6 shadow-lg">
       {showModal && <Modal message={modalMessage} closeModal={() => setShowModal(false)} />} {/* Render modal if visible */}
 
       {!jsonFile && (
         <>
           <div className="mb-4">
-            <label className="block text-orange-500 font-medium mb-2">Title:</label>
+            <Label htmlFor='title' className="mb-2 block font-medium text-orange-500">Title:</Label>
             <input
               type="text"
+              id='title'
+              name='title'
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Enter proposal title"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-orange-500 font-medium mb-2">Description:</label>
+            <label htmlFor="description" className="mb-2 block font-medium text-orange-500">Description:</label>
             <textarea
               value={description}
+              id='description'
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full rounded-md border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Describe the proposal"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-orange-500 font-medium mb-2">Mana Hours Budgeted:</label>
+            <label htmlFor='manaHoursBudgeted' className="mb-2 block font-medium text-orange-500">Mana Hours Budgeted:</label>
             <input
               type="number"
+              id='manaHoursBudgeted'
               value={manaHoursBudgeted}
               onChange={(e) => setManaHoursBudgeted(Number(e.target.value))}
               required
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Enter mana hours budgeted"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-orange-500 font-medium mb-2">Target Date for Approval (Optional):</label>
+            <label htmlFor='targetApprovalDate' className="mb-2 block font-medium text-orange-500">Target Date for Approval (Optional):</label>
             <input
               type="date"
+              id='targetApprovalDate'
               value={targetApprovalDate || ''}
               onChange={(e) => setTargetApprovalDate(e.target.value || undefined)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
         </>
       )}
 
       <div className="mb-4">
-        <label className="block text-orange-500 font-medium mb-2">Upload JSON File (Optional):</label>
+        <label htmlFor='jsonFile' className="mb-2 block font-medium text-orange-500">Upload JSON File (Optional):</label>
         <input
           type="file"
+          id='jsonFile'
           accept=".json"
           onChange={handleFileChange}
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
-        {jsonFile && <p className="text-orange-500 mt-2">File selected: {jsonFile.name}</p>}
+        {jsonFile && <p className="mt-2 text-orange-500">File selected: {jsonFile.name}</p>}
       </div>
 
       {validationError && (
-        <div className="text-red-500 font-medium mb-4">
+        <div className="mb-4 font-medium text-red-500">
           {validationError}
         </div>
       )}
 
       <button
         type="submit"
-        className="bg-orange-500 text-white py-2 px-6 rounded-lg hover:bg-orange-600 transition duration-300 ease-in-out"
+        className="rounded-lg bg-orange-500 px-6 py-2 text-white transition duration-300 ease-in-out hover:bg-orange-600"
       >
         Submit Proposal
       </button>

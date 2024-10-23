@@ -11,6 +11,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // Import RainbowKit essentials
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
+import './globals.css';
+import Navbar from "@/components/blocks/navbar";
 
 // Initialize Inter font
 const inter = Inter({ subsets: ["latin"] });
@@ -33,11 +35,11 @@ export default function RootLayout({
             {/* RainbowKitProvider */}
             <RainbowKitProvider>
               {/* Generalized Header with Wallet Components */}
-              <Header appName="SagaHalla" />
+              <Navbar />
 
               {/* Main Content */}
               <Providers>
-                <main className="flex-1 p-4">
+                <main>
                   {children} {/* Render the children (main content) here */}
                 </main>
               </Providers>
@@ -46,7 +48,7 @@ export default function RootLayout({
         </QueryClientProvider>
 
         {/* Footer */}
-        <footer className="bg-orange-500 text-white text-center py-4">
+        <footer className="bg-orange-500 py-4 text-center text-white">
           <p>&copy; 2024 SagaHalla. All Rights Reserved.</p>
         </footer>
       </body>

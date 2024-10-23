@@ -8,6 +8,8 @@
 /.pnp
 .pnp.js
 
+bun.lockb
+
 # testing
 /coverage
 
@@ -29,6 +31,8 @@ yarn-error.log*
 
 # local env files
 .env*.local
+
+!.env.example
 
 # vercel
 .vercel
