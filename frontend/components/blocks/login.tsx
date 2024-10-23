@@ -137,11 +137,11 @@ export default function Login() {
 
                                             <div className="space-y-1">
                                                 <Label htmlFor="username" className="capitalize">username</Label>
-                                                <Input name="username" id="username" placeholder="pedro" />
+                                                <Input name="username" id="username" placeholder="pedro" required />
                                             </div>
                                             <div className="space-y-1">
                                                 <Label htmlFor="password" className="capitalize">Password</Label>
-                                                <Input name="password" id="password" type="password" placeholder="123456" />
+                                                <Input name="password" id="password" type="password" placeholder="123456" required />
                                             </div>
                                             {/* TODO: Improve coloring of error message */}
                                             <h3 className='my-3 text-black'>
@@ -170,12 +170,13 @@ export default function Login() {
                                             </div>
                                             <div className="space-y-1">
                                                 <Label htmlFor="username" className="">Username</Label>
-                                                <Input name="username" id="username" placeholder="pedro" />
+                                                <Input name="username" id="username" placeholder="pedro" required />
                                             </div>
                                             <div className="space-y-1">
                                                 <Label htmlFor="password" className="">Password</Label>
                                                 <Input name="password"
                                                     value={password}
+                                                    required
                                                     onChange={handlePasswordChange}
                                                     id="password" type="password" />
                                             </div>
@@ -184,7 +185,12 @@ export default function Login() {
                                                 <Input name="confirm-password" id="confirm-password"
                                                     value={confirmPassword}
                                                     onChange={handleConfirmPasswordChange}
-                                                    type="password" />
+                                                    type="password" required />
+                                            </div>
+                                            {/* Add input for nearId */}
+                                            <div className="space-y-1">
+                                                <Label htmlFor="nearId" className="">Near ID</Label>
+                                                <Input required name="nearId" id="nearId" placeholder="near_id" />
                                             </div>
                                             {/* TODO: Improve coloring of error message */}
                                             <h3 className='my-3 text-black'>
