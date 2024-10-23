@@ -2,23 +2,33 @@
 
 import prisma from "@/lib/db";
 import { Prisma } from "@prisma/client";
+import bcrypt from 'bcryptjs';
 import { revalidatePath } from "next/cache";
+import { cookies } from 'next/headers';
+import { stringify } from "querystring";
 
-export let signUp = async (formData: FormData) => {
+
+export const signUp = async (formData: FormData) => {
+const username = formData.get("username") as string
+const email = formData.get("email") as string
+const password = formData.get("password") as string
+
+let passwordHash = await bcrypt.hash(password, 10);
+
   try {
     await prisma.user.create({
       data: {
-        username: formData.get("username") as string,
-        email: formData.get("email") as string,
-        password: formData.get("password") as string,
+        username: username,
+        email: email,
+        password: passwordHash as string,
       },
     });
-    revalidatePath("/");
+    console.info("User created successfully");
     return { success: true };
   } catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === "P2002") {
-        console.log("Username or email already exists");
+        console.error("Username or email already exists");
         return { success: false, message: "Username or email already exists" };
       }
     }
@@ -26,11 +36,13 @@ export let signUp = async (formData: FormData) => {
   }
 };
 
-export let login = async (formData: FormData) => {
+export const logIn = async (formData: FormData) => {
+  const username = formData.get("username") as string;
+  const password = formData.get("password") as string;
   try {
-    await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
-        email: formData.get("email") as string,
+        username: username,
       },
       select: {
         username: true,
@@ -38,18 +50,71 @@ export let login = async (formData: FormData) => {
         password: true,
       },
     });
-    revalidatePath("/");
+
+    // Check if the user has a password hash
+	if (user?.password) {
+		// Compare the provided password with the user's password hash
+		const userPassword = bcrypt.compareSync(password, user.password);
+		// Check if the password is incorrect
+		if (!userPassword) {
+			//ADD: Return a 400 error with the username and credentials message
+      console.error("Invalid email or password");
+			 return { success: false, message: "Invalid email or password" };
+		}
+	} else {
+		//ADD: Return a 400 error with the username and credentials message
+    console.error("Invalid email or password");
+		 return { success: false, message: "Invalid email or password" };
+	}
+
+    const authenticatedUser = await prisma.user.update({
+      where: { username: formData.get("username") as string },
+      data: { authToken: crypto.randomUUID() }
+    });
+
+    if (user) {
+      cookies().set('session', authenticatedUser.authToken ?? '',  {
+        httpOnly: true, // Prevent JavaScript access for security
+        secure: process.env.NODE_ENV === 'production', // HTTPS in production
+        maxAge: 60 * 60 * 24 * 7, // Example: 1 week expiry
+        path: '/', // Accessible on entire site
+      });
+
+
+      return { success: true, user };
+    } else {
+      return { success: false, message: "Invalid email or password" };
+    }
   } catch (error) {
     console.error(error);
-    return "error";
+    return { success: false, message: "Unknown error" };
   }
 };
 
-export let logout = async (formData: FormData) => {
+export const logOut = async () => {
   try {
-    await prisma.user.delete({
+   //remove session cookie
+   cookies().set('session', '',  {
+      httpOnly: true, // Prevent JavaScript access for security
+      secure: process.env.NODE_ENV === 'production', // HTTPS in production
+      maxAge: 60, // Example: 1 min expiry
+      path: '/', // Accessible on entire site
+    });
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    return { success: false, message: "Unknown error" };
+  }
+};
+
+
+export const authenticate = async () => {
+  const cookie = cookies().get('session');
+
+  try {
+    const user = await prisma.user.findUnique({
       where: {
-        email: formData.get("email") as string,
+        authToken: cookie?.value,
       },
       select: {
         username: true,
@@ -57,9 +122,13 @@ export let logout = async (formData: FormData) => {
         password: true,
       },
     });
-    revalidatePath("/");
+    if (user) {
+      return { success: true, user };
+    } else {
+      return { success: false, message: "Invalid email or password" };
+    }
   } catch (error) {
     console.error(error);
-    return "error";
+    return { success: false, message: "Unknown error" };
   }
 };

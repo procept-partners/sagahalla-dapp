@@ -9,11 +9,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+
 import { LogIn, Menu } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
-import Login from "./login";
+
+import { Auth } from "./auth";
 
 export default function Navbar() {
   const [show, setShow] = React.useState(false);
@@ -39,6 +41,10 @@ export default function Navbar() {
       href: "/reports",
     },
   ];
+
+
+
+
 
   return (
     <nav className="border-gray-200 bg-[#ce711e]">
@@ -89,9 +95,14 @@ export default function Navbar() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          {/* Auth */}
+          <div>
 
-          {/* TODO: Add API call to login user */}
-          <Login />
+
+
+            <Auth />
+
+          </div>
 
         </div>
         <div
