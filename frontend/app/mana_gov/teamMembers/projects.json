@@ -1,0 +1,27 @@
+{
+    "projects": [
+      {
+        "project_id": "001",
+        "project_name": "Project Example",
+        "project_description": "This project is to check whether the path is working.",
+        "members": [
+          {
+            "id": "1",
+            "name": "Gary",
+            "voting_power": 10
+          },
+          {
+            "id": "2",
+            "name": "Ross",
+            "voting_power": 20
+          },
+          {
+            "id": "3",
+            "name": "Jill",
+            "voting_power": 30
+          }
+        ]
+      }
+    ]
+  }
+  

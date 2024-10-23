@@ -1,7 +1,7 @@
 // app/mana_gov/types.ts
 
 export interface Proposal {
-  id: number;
+  projectId: number;
   title: string;
   description: string;
   hoursRequired: number;

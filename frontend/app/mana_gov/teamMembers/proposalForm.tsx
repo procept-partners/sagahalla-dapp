@@ -1,7 +1,16 @@
 import { useState } from 'react';
+import useProjects from './useProjects'; 
+
+interface Proposal {
+  projectId: number; 
+  title: string;
+  description: string;
+  hoursRequired: number;
+  tokenPerHour: number;
+}
 
 interface Props {
-  addProposal: (proposal: { title: string; description: string; hoursRequired: number; tokenPerHour: number }) => void;
+  addProposal: (proposal: Omit<Proposal, 'yesVotes' | 'noVotes' | 'totalTokensAllocated' | 'isEnded'>) => void;
 }
 
 const ProposalForm = ({ addProposal }: Props) => {
@@ -9,19 +18,52 @@ const ProposalForm = ({ addProposal }: Props) => {
   const [description, setDescription] = useState('');
   const [hoursRequired, setHoursRequired] = useState(0);
   const [tokenPerHour, setTokenPerHour] = useState(0);
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null); 
+  const projects = useProjects(); 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addProposal({ title, description, hoursRequired, tokenPerHour });
+    if (selectedProjectId === null) {
+      alert("Please select a project");
+      return;
+    }
+    
+    addProposal({ 
+      projectId: selectedProjectId,
+      title, 
+      description, 
+      hoursRequired, 
+      tokenPerHour, 
+    });
+    
     setTitle('');
     setDescription('');
     setHoursRequired(0);
     setTokenPerHour(0);
+    setSelectedProjectId(null);
   };
 
   return (
     <form onSubmit={handleSubmit} className="mt-20 p-8 rounded-lg shadow-lg">
       <h1 className="text-2xl font-semibold mt-10 mb-6 text-center text-gray-800">Add Proposal</h1>
+
+      {/* Project Selection */}
+      <div className="mb-4">
+        <label className="block text-gray-700 font-medium mb-2">Select Project:</label>
+        <select 
+          value={selectedProjectId || ''} 
+          onChange={(e) => setSelectedProjectId(Number(e.target.value))}
+          className="w-full px-4 py-2 border rounded-lg"
+          required
+        >
+          <option value="" disabled>Select a project</option>
+          {projects.map((project) => (
+            <option key={project.project_id} value={project.project_id}>
+              {project.project_name}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className="mb-4">
         <label className="block text-gray-700 font-medium mb-2">Title:</label>
