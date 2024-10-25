@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { connect, keyStores, WalletConnection } from "near-api-js";
 
 interface StakingHistory {
   staker: string;
   stakedAmount: string;
   stakingDuration: string;
-  status: string; 
+  status: string;
   manaToReceive: string;
 }
 
@@ -18,21 +18,33 @@ const TokenBody: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [circulatingSupply, setCirculatingSupply] = useState<string>("");
   const [maximumSupply, setMaximumSupply] = useState<string>("");
+  const [wallet, setWallet] = useState<WalletConnection | null>(null);
+  const [accountId, setAccountId] = useState<string | null>(null);
 
-  const initNearConnection = async () => {
-    const nearConfig = {
-      networkId: "default",
-      keyStore: new keyStores.BrowserLocalStorageKeyStore(),
-      nodeUrl: "https://rpc.mainnet.near.org",
-      walletUrl: "https://wallet.near.org",
-      helperUrl: "https://helper.mainnet.near.org",
-      explorerUrl: "https://explorer.near.org",
+  useEffect(() => {
+    const initNearConnection = async () => {
+      const nearConfig = {
+        networkId: "testnet",
+        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+        nodeUrl: "https://rpc.testnet.near.org",
+        walletUrl: "https://wallet.testnet.near.org",
+        helperUrl: "https://helper.testnet.near.org",
+        explorerUrl: "https://explorer.testnet.near.org",
+      };
+
+      const near = await connect(nearConfig);
+      const wallet = new WalletConnection(near, "");
+      setWallet(wallet);
+
+      if (wallet.isSignedIn()) {
+        setAccountId(wallet.getAccountId());
+      } else {
+        setError("Please connect your NEAR wallet.");
+      }
     };
-  
-    const near = await connect(nearConfig);
-    const wallet = new WalletConnection(near, "");
-    return wallet;
-  };
+
+    initNearConnection();
+  }, []);
 
   const fetchStakingHistory = async () => {
     try {
@@ -48,12 +60,16 @@ const TokenBody: React.FC = () => {
 
   const handleReturnToken = async () => {
     try {
+      if (!wallet) {
+        setError("Wallet is not initialized.");
+        return;
+      }
       setLoading(true);
-      const wallet = await initNearConnection();
       if (!wallet.isSignedIn()) {
         setError("Please connect your NEAR wallet.");
         return;
       }
+
       const accountId = wallet.getAccountId();
       console.log(`Connected NEAR account: ${accountId}`);
       // Logic for retrieving FYRE tokens
@@ -64,15 +80,19 @@ const TokenBody: React.FC = () => {
       setLoading(false);
     }
   };
-  
+
   const handleSwapTokens = async () => {
     try {
+      if (!wallet) {
+        setError("Wallet is not initialized.");
+        return;
+      }
       setLoading(true);
-      const wallet = await initNearConnection();
       if (!wallet.isSignedIn()) {
         setError("Please connect your NEAR wallet.");
         return;
       }
+
       const accountId = wallet.getAccountId();
       console.log(`Connected NEAR account: ${accountId}`);
       // Logic for swapping FYRE to MANA
@@ -82,7 +102,7 @@ const TokenBody: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };  
+  };
 
   useEffect(() => {
     fetchStakingHistory();
@@ -121,7 +141,7 @@ const TokenBody: React.FC = () => {
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </main>
-      
+
       {/* Staking History Section */}
       <main>
         <div className="mt-10">
