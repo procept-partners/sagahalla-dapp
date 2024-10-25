@@ -9,10 +9,9 @@ import { config } from './wagmi';  // Keep your wagmi config
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // Import RainbowKit essentials
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import './globals.css';
-import Navbar from "@/components/blocks/navbar";
 
 // Initialize Inter font
 const inter = Inter({ subsets: ["latin"] });
@@ -35,7 +34,7 @@ export default function RootLayout({
             {/* RainbowKitProvider */}
             <RainbowKitProvider>
               {/* Generalized Header with Wallet Components */}
-              <Navbar />
+              <Header />
 
               {/* Main Content */}
               <Providers>
@@ -48,7 +47,7 @@ export default function RootLayout({
         </QueryClientProvider>
 
         {/* Footer */}
-        <footer className="bg-orange-500 py-4 text-center text-white">
+        <footer className="bg-[#ce711e] py-4 text-center text-white">
           <p>&copy; 2024 SagaHalla. All Rights Reserved.</p>
         </footer>
       </body>

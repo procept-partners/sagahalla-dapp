@@ -1,49 +1,68 @@
-"use client";
-
-import { useState } from 'react'; 
-import Link from 'next/link';
-import Wallet from '../wallet_components/nearwallet';
 import { useConnectModal } from '@rainbow-me/rainbowkit'; // Import the connect modal
-import Profile from '../wallet_components/evmWalletProfile';
+import Wallet from '../wallet_components/nearwallet';
+import Link from 'next/link';
+import Navbar from "@/app/components/navbar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Auth } from "@/components/blocks/auth";
 
-export default function Header({ appName }: { appName: string }) {
-  const [loggedIn, setLoggedIn] = useState(false); // Manage login state for Near login
-
-  const handleLogin = () => {
-    setLoggedIn(!loggedIn); // Toggle Near login state
-  };
+export default function Header({ appName = "SagaHalla" }: { appName?: string }) {
 
   const { openConnectModal } = useConnectModal(); // Get the modal handler
 
   return (
-    <div className="header flex justify-between items-center p-4 bg-orange-500">
-      {/* App Logo */}
-      <div className="logo">
+    <div className="header flex justify-between items-center bg-[#ce711e] text-white"> {/* Removed padding to minimize overall header space */}
+      {/* App Logo and Site Name */}
+      <div className="logo flex items-center space-x-2 p-2"> {/* Added padding only to the logo section */}
         <Link href="/">
-          <img src="/sagahalla.png" alt="SagaHalla Logo" className="app-logo" />
+          <img src="/sagahalla.png" alt="SagaHalla Logo" className="h-10" />
         </Link>
+        <span className="text-xl font-bold text-white">{appName}</span> {/* Site name with consistent white text */}
       </div>
 
-      {/* Dynamic App Title */}
-      <div className="title flex-grow text-center">
-        <h1 className="text-white text-xl font-bold">{appName}</h1>
-      </div>
+      {/* Nav Bar */}
+      <Navbar />
 
-      {/* User Profile / Wallet Connect Area */}
-      <div className="user-profile flex items-center space-x-4">
-        <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-          <Wallet />
-        </div>
-        <div className="bg-[#ce711e] hover:bg-[#a85a18] text-white font-bold py-2 px-4 rounded">
-          <button onClick={openConnectModal}>
-            Connect EVM
-          </button>
-        </div>
-        <div className="user-profile">
-          <button className="profile-btn flex items-center space-x-2" onClick={handleLogin}>
-            <img src="/tiwaz.png" alt="Profile Icon" className="profile-icon w-8 h-8 rounded-full" />
-            <span className="text-white">{loggedIn ? "Logout" : "Login"}</span>
-          </button>
+      {/* Wallets and Login Section */}
+      <div className="flex items-center space-x-2 p-2"> {/* Added padding only to the wallet and login section */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="rounded-md bg-[#a85a18] px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-[#8f4914]">
+              Wallets
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-fit rounded-md bg-popover shadow-lg focus:outline-none">
+            <DropdownMenuLabel>Connect to a wallet</DropdownMenuLabel>
+            <DropdownMenuSeparator className="bg-border" />
+
+            {/* NEAR Wallet */}
+            <DropdownMenuItem asChild>
+              <div className="bg-[#a85a18] px-2 py-1 font-bold uppercase text-white cursor-pointer hover:bg-[#8f4914]">
+                <Wallet /> {/* NEAR wallet connect logic */}
+              </div>
+            </DropdownMenuItem>
+
+            {/* EVM Wallet Connect */}
+            <DropdownMenuItem asChild>
+              <div
+                onClick={openConnectModal}  // Opens EVM wallet modal
+                className="bg-[#a85a18] px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-[#8f4914]"
+              >
+                Connect EVM
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {/* Auth (Login/Logout) */}
+        <div className="bg-[#a85a18] hover:bg-[#8f4914] text-white font-bold py-1 px-2 rounded cursor-pointer">
+          <Auth /> {/* Handles authentication logic */}
         </div>
       </div>
     </div>

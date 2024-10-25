@@ -2,6 +2,7 @@
 
 import { useState } from "react"; // Import useState from React
 // import './styles.css'; // Import global styles here
+import Navbar from "@/app/mana_gov/components/navbar"; // Import the Navbar component
 import "./globals.css";
 
 export default function ManaGovLayout({
@@ -12,8 +13,9 @@ export default function ManaGovLayout({
 
   return (
     <>
-      {/* Flex container with full height */}
-      {/* No need for Navbar here, since we have a Navbar in the layout */}
+      {/* Navbar */}
+      <Navbar />
+
       {/* Main Content */}
       <main>
         {children}

@@ -28,13 +28,9 @@ import {
 
 import { LogIn } from "lucide-react";
 
-
 import { signUp, logIn } from "@/lib/actions";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'; // Import useRouter
-
-
-
 
 export default function Login() {
     const [errorMessage, setErrorMessage] = useState("");
@@ -58,18 +54,14 @@ export default function Login() {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const result = await logIn(formData);
-        // TODO: Remove this console.log
-        console.log(result);
 
         if (result.success) {
-            //ADD: Redirect to login page or show a success message
             setPassword("");
             setErrorMessage("Logged in successfully! Holding on...");
             setTimeout(() => {
                 setErrorMessage("...refreshing!");
                 window.location.reload(); // Force a full page reload
             }, 3000);
-
         } else if (result.message) {
             setErrorMessage(result.message);
             setTimeout(() => {
@@ -77,7 +69,6 @@ export default function Login() {
             }, 8000);
         }
     };
-
 
     const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -88,18 +79,14 @@ export default function Login() {
 
         const formData = new FormData(event.currentTarget);
         const result = await signUp(formData);
-        // TODO: Remove this console.log
-        console.log(result);
 
         if (result.success) {
-            // Redirect to login page or show a success message
             setConfirmPassword("");
             setPassword("");
             setErrorMessage("User registered successfully!");
             setTimeout(() => {
                 setErrorMessage("");
             }, 3000);
-
         } else if (result.message) {
             setErrorMessage(result.message);
             setTimeout(() => {
@@ -107,10 +94,12 @@ export default function Login() {
             }, 8000);
         }
     };
+
     return (
         <Dialog>
             <DialogTrigger>
-                <Button className="bg-[#270927] px-3 py-2 font-bold capitalize text-white hover:bg-[#440f44]">
+                {/* Adjusted the Login button for consistency */}
+                <Button className="bg-[#ce711e] text-white px-4 py-2 font-bold hover:bg-[#a85a18] flex items-center">
                     Login
                     <LogIn className="ml-2 h-5 w-5" />
                 </Button>
@@ -121,35 +110,35 @@ export default function Login() {
                     <DialogDescription>
                         <Tabs defaultValue="login" className="w-[400px]">
                             <TabsList className="grid w-full grid-cols-2">
-                                <TabsTrigger value="login" className="">Login</TabsTrigger>
-                                <TabsTrigger value="register" className="">Register</TabsTrigger>
+                                <TabsTrigger value="login">Login</TabsTrigger>
+                                <TabsTrigger value="register">Register</TabsTrigger>
                             </TabsList>
                             <TabsContent value="login">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="">Login</CardTitle>
-                                        <CardDescription className="">
+                                        <CardTitle>Login</CardTitle>
+                                        <CardDescription>
                                             Login to your account here.
                                         </CardDescription>
                                     </CardHeader>
                                     <form onSubmit={handleLogin}>
                                         <CardContent className="space-y-2">
-
                                             <div className="space-y-1">
-                                                <Label htmlFor="username" className="capitalize">username</Label>
-                                                <Input name="username" id="username" placeholder="pedro" required />
+                                                <Label htmlFor="username">Username</Label>
+                                                <Input name="username" id="username" placeholder="Username" required />
                                             </div>
                                             <div className="space-y-1">
-                                                <Label htmlFor="password" className="capitalize">Password</Label>
-                                                <Input name="password" id="password" type="password" placeholder="123456" required />
+                                                <Label htmlFor="password">Password</Label>
+                                                <Input name="password" id="password" type="password" placeholder="Password" required />
                                             </div>
-                                            {/* TODO: Improve coloring of error message */}
-                                            <h3 className='my-3 text-black'>
+                                            <h3 className='my-3 text-yellow-400'>
                                                 {errorMessage}
                                             </h3>
                                         </CardContent>
                                         <CardFooter>
-                                            <Button className="bg-[#270927] text-white hover:bg-[#440f44]">Login</Button>
+                                            <Button className="bg-[#ce711e] text-white hover:bg-[#a85a18]">
+                                                Login
+                                            </Button>
                                         </CardFooter>
                                     </form>
                                 </Card>
@@ -157,53 +146,41 @@ export default function Login() {
                             <TabsContent value="register">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="">Register</CardTitle>
-                                        <CardDescription className="">
+                                        <CardTitle>Register</CardTitle>
+                                        <CardDescription>
                                             Register your account here. After saving, you can log in on the other tab.
                                         </CardDescription>
                                     </CardHeader>
                                     <form onSubmit={handleRegister}>
                                         <CardContent className="space-y-2">
                                             <div className="space-y-1">
-                                                <Label htmlFor="email" className="">Email</Label>
-                                                <Input name="email" id="email" placeholder="pedro@example.com" />
+                                                <Label htmlFor="email">Email</Label>
+                                                <Input name="email" id="email" placeholder="Email" />
                                             </div>
                                             <div className="space-y-1">
-                                                <Label htmlFor="username" className="">Username</Label>
-                                                <Input name="username" id="username" placeholder="pedro" required />
+                                                <Label htmlFor="username">Username</Label>
+                                                <Input name="username" id="username" placeholder="Username" required />
                                             </div>
                                             <div className="space-y-1">
-                                                <Label htmlFor="password" className="">Password</Label>
-                                                <Input name="password"
-                                                    value={password}
-                                                    required
-                                                    onChange={handlePasswordChange}
-                                                    id="password" type="password" />
+                                                <Label htmlFor="password">Password</Label>
+                                                <Input name="password" value={password} required onChange={handlePasswordChange} id="password" type="password" />
                                             </div>
                                             <div className="space-y-1">
-                                                <Label htmlFor="confirm-password" className="">Confirm Password</Label>
-                                                <Input name="confirm-password" id="confirm-password"
-                                                    value={confirmPassword}
-                                                    onChange={handleConfirmPasswordChange}
-                                                    type="password" required />
+                                                <Label htmlFor="confirm-password">Confirm Password</Label>
+                                                <Input name="confirm-password" id="confirm-password" value={confirmPassword} onChange={handleConfirmPasswordChange} type="password" required />
                                             </div>
-                                            {/* Add input for nearId */}
-                                            <div className="space-y-1">
-                                                <Label htmlFor="nearId" className="">Near ID</Label>
-                                                <Input required name="nearId" id="nearId" placeholder="near_id" />
-                                            </div>
-                                            {/* TODO: Improve coloring of error message */}
-                                            <h3 className='my-3 text-black'>
+                                            <h3 className='my-3 text-yellow-400'>
                                                 {errorMessage}
                                             </h3>
                                         </CardContent>
                                         <CardFooter>
-                                            <Button type="submit" className="bg-[#270927] text-white hover:bg-[#440f44]" disabled={!validatePasswords()}>Register</Button>
+                                            <Button type="submit" className="bg-[#ce711e] text-white hover:bg-[#a85a18]" disabled={!validatePasswords()}>
+                                                Register
+                                            </Button>
                                         </CardFooter>
                                     </form>
                                 </Card>
                             </TabsContent>
-
                         </Tabs>
                     </DialogDescription>
                 </DialogHeader>

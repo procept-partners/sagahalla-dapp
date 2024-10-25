@@ -17,35 +17,35 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "hsl(var(--background))",  // Background color (dark purple)
+        foreground: "hsl(var(--foreground))",  // Foreground color (light text)
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "hsl(var(--primary))",  // Primary orange
+          foreground: "hsl(var(--primary-foreground))",  // Text on primary elements
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "hsl(var(--secondary))",  // Lighter orange for secondary actions
+          foreground: "hsl(var(--secondary-foreground))",  // Text on secondary elements
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "hsl(var(--destructive))",  // Red for destructive actions
+          foreground: "hsl(var(--destructive-foreground))",  // Text for destructive actions
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "hsl(var(--muted))",  // Muted color (lighter orange)
+          foreground: "hsl(var(--muted-foreground))",  // Text on muted elements
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "hsl(var(--accent))",  // Accent color
+          foreground: "hsl(var(--accent-foreground))",  // Text on accent elements
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "hsl(var(--popover))",  // Popover background
+          foreground: "hsl(var(--popover-foreground))",  // Popover text
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "hsl(var(--card))",  // Card background color (light orange)
+          foreground: "hsl(var(--card-foreground))",  // Card text color
         },
         chart: {
           "1": "hsl(var(--chart-1))",
@@ -56,7 +56,7 @@ const config: Config = {
         },
       },
       borderRadius: {
-        xl: "`calc(var(--radius) + 4px)`",
+        xl: "calc(var(--radius) + 4px)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
@@ -66,20 +66,12 @@ const config: Config = {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {

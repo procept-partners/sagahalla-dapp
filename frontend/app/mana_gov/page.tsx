@@ -8,7 +8,6 @@ import ProjectList from './components/ProjectList';
 import AssignedTasks from './components/AssignedTasks';
 import Modal from './components/Modal';
 import './globals.css'
-// import './styles.css';
 
 export default function ManaDashboard() {
   const [proposals, setProposals] = useState([]);
@@ -126,8 +125,8 @@ export default function ManaDashboard() {
       <section className="min-h-screen bg-[#270927] py-20 text-white">
         <section className="container mx-auto px-4" id='proposals'>
           <div className="mb-8 flex flex-row items-center justify-between">
-            <h2 className="text-3xl font-bold text-yellow-500">Proposals</h2>
-            <Link href="/mana_gov/create-proposal" className="rounded-md bg-yellow-600 px-4 py-2 font-bold text-white hover:bg-yellow-800">
+            <h2 className="text-3xl font-bold text-[#ce711e]">Proposals</h2>
+            <Link href="/mana_gov/create-proposal" className="rounded-md bg-[#ce711e] px-4 py-2 font-bold text-white hover:bg-[#a85a18]">
               Create New Proposal
             </Link>
           </div>
@@ -140,8 +139,8 @@ export default function ManaDashboard() {
 
         <section className="container mx-auto my-16 px-4" id='projects'>
           <div className="mb-8 flex flex-row items-center justify-between">
-            <h2 className="text-3xl font-bold text-yellow-500">Projects</h2>
-            <button className="rounded-md bg-yellow-600 px-4 py-2 font-bold text-white hover:bg-yellow-800" onClick={handleCreateProjectPlanClick}>
+            <h2 className="text-3xl font-bold text-[#ce711e]">Projects</h2>
+            <button className="rounded-md bg-[#ce711e] px-4 py-2 font-bold text-white hover:bg-[#a85a18]" onClick={handleCreateProjectPlanClick}>
               Develop a Project Plan
             </button>
           </div>
@@ -154,8 +153,8 @@ export default function ManaDashboard() {
 
         <section className="tasks container mx-auto px-4" id='tasks'>
           <div className="mb-8 flex flex-row items-center justify-between">
-            <h2 className="text-3xl font-bold text-yellow-500">Assigned Tasks</h2>
-            <button className="rounded-md bg-yellow-600 px-4 py-2 font-bold text-white hover:bg-yellow-800" onClick={handleCreateProjectExecutionClick}>
+            <h2 className="text-3xl font-bold text-[#ce711e]">Assigned Tasks</h2>
+            <button className="rounded-md bg-[#ce711e] px-4 py-2 font-bold text-white hover:bg-[#a85a18]" onClick={handleCreateProjectExecutionClick}>
               Execute Project Tasks
             </button>
           </div>
@@ -177,6 +176,5 @@ export default function ManaDashboard() {
         )}
       </section>
     </>
-
   );
 }
