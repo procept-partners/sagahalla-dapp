@@ -1,3 +1,12 @@
+// Enum for tracking the lifecycle of a task from planning through execution
+export enum TaskStatus {
+  Planned = "Planned",        // Task is planned but not yet started
+  NotStarted = "NotStarted",  // Task is ready but hasn't begun
+  InProgress = "InProgress",  // Task is currently being worked on
+  Completed = "Completed",    // Task has been completed
+  Rejected = "Rejected",      // Task was rejected or canceled
+}
+
 // Main type for Proposal
 export interface Proposal {
   id: number;
@@ -12,6 +21,7 @@ export interface Proposal {
   targetDate?: string;
   createdAt: string;
   updatedAt?: string;
+  parentId?: number;
   subProjects: SubProject[];
   budgetItems: ProposalBudget[];
 }
@@ -19,7 +29,7 @@ export interface Proposal {
 // Type for SubProject within a proposal
 export interface SubProject {
   id: number;
-  proposalId: number;
+  proposalId?: number; // Optional to support nested subprojects linked to a parent proposal
   subProjectName: string;
   epics: Epic[];
 }
@@ -27,17 +37,18 @@ export interface SubProject {
 // Type for Epic within a subproject
 export interface Epic {
   id: number;
-  subProjectId: number;
+  subProjectId?: number;
   epicName: string;
   tasks: Task[];
 }
 
-// Type for Task within an epic
+// Type for Task within an epic with a unified status field
 export interface Task {
   id: number;
-  epicId: number;
+  epicId?: number;
   taskName: string;
   rolesManaHours: TaskRoleManaHours[];
+  status: TaskStatus; // Unified status field for both planning and execution phases
 }
 
 // Type for RoleManaHours within a task
@@ -60,21 +71,22 @@ export interface ProposalBudget {
 // Main type for ProjectPlan
 export interface ProjectPlan {
   id: number;
-  proposalId: number;
+  proposalId?: number; // Optional to support standalone project plans
   projectName: string;
   totalManaHours: number;
-  votingPower?: string;
+  votingPowerPercentage?: number; // Voting power as a decimal percentage (e.g., 0.75 for 75%)
   createdAt: string;
   updatedAt?: string;
-  developers: Record<string, DeveloperProjectPlan>; // Developer-specific data by name
+  developers: Record<string, DeveloperProjectPlan>;
   proposal?: Proposal;
 }
 
-// New type for Developer-specific project plan
+// Developer-specific project plan details
 export interface DeveloperProjectPlan {
   developerName: string;
-  manaHoursBudgeted: number; // Adjusted to include 'manaHoursBudgeted'
-  manaTokenAllocated: number; // Adjusted to include 'manaTokenAllocated'
+  manaHoursBudgeted: number;
+  manaTokenAllocated: number;
+  votingPowerPercentage?: number; // Voting power as a decimal percentage (e.g., 0.75 for 75%)
   subProjects: SubProjectPlan[];
 }
 
@@ -94,30 +106,32 @@ export interface EpicPlan {
   tasks: TaskPlan[];
 }
 
-// Type for TaskPlan within an epic plan
+// Type for TaskPlan within an epic plan, now with unified status tracking
 export interface TaskPlan {
   id: number;
   epicPlanId: number;
   taskName: string;
   estimatedManaHours: number;
   rolesManaHours: TaskRoleManaHours[];
+  status: TaskStatus; // Unified status field for the task's lifecycle
 }
 
-// Main type for ProjectExecution
+// Main type for ProjectExecution, linked to ProjectPlan by projectPlanId
 export interface ProjectExecution {
   id: number;
-  projectPlanId: number;
+  projectPlanId: number; // Link to parent ProjectPlan
   actualManaHours: number;
-  tasks: TaskExecution[];
+  tasks: TaskExecution[]; // Tracks task execution status based on ProjectPlan tasks
   peerVotes: PeerVote[];
 }
 
-// Type for TaskExecution within a project execution
+// Type for TaskExecution within a project execution, linked to TaskPlan
 export interface TaskExecution {
   id: number;
   projectExecutionId: number;
-  taskPlanId: number;
+  taskPlanId: number; // Link to specific TaskPlan in ProjectPlan
   actualManaHours: number;
+  status: TaskStatus; // Unified status for tracking task execution progress
 }
 
 // Type for PeerVote within a project execution
@@ -138,11 +152,3 @@ export interface TaskFeedback {
   rating: number;
   createdAt: string;
 }
-
-// AssignedTasksProps for the AssignedTasks component
-export interface AssignedTasksProps {
-  tasks: Task[];
-  userId: number;
-}
-
-

@@ -30,6 +30,7 @@ const TokenBody: React.FC = () => {
         walletUrl: "https://wallet.testnet.near.org",
         helperUrl: "https://helper.testnet.near.org",
         explorerUrl: "https://explorer.testnet.near.org",
+        
       };
 
       const near = await connect(nearConfig);
