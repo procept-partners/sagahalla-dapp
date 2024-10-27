@@ -10,7 +10,7 @@ interface Props {
     manaHoursBudgeted: number;
     targetApprovalDate: string;
     submittedBy: string;
-    developers?: any; // Allow for nested developer data
+    developers?: Record<string, unknown>; // Use a specific type if possible
   }) => void;
   loggedInUserId: string; // Pass the logged-in user's ID as a prop
 }
@@ -65,7 +65,6 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
           setValidationError(validationMessage);
           return;
         }
-        // Show modal when validation passes
         setModalMessage('Validation passed! Submitting your proposal...');
         setShowModal(true);
         addProposal(parsedJson);
@@ -79,14 +78,13 @@ const ProposalForm = ({ addProposal, loggedInUserId }: Props) => {
         manaHoursBudgeted,
         targetApprovalDate: targetApprovalDate || '',
         submittedBy: loggedInUserId,
+        developers: {}, // Initialize as empty object for consistency
       };
-      // Show modal when validation passes
       setModalMessage('Validation passed! Submitting your proposal...');
       setShowModal(true);
       addProposal(proposal);
     }
 
-    // Hide modal after 2 seconds
     setTimeout(() => {
       setShowModal(false);
     }, 2000);

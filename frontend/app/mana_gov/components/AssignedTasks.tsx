@@ -10,13 +10,23 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Filter projects where the user has assigned mana hours
-  const filteredProjects = projects.filter((project) =>
+  const userProjects = projects.filter((project) =>
     project.manaHours?.some((mana) => mana.userId === userId)
   );
 
-  // Filter projects based on the search query for project titles
-  const filteredTasks = filteredProjects.filter((project) =>
-    project.projectName.toLowerCase().includes(searchQuery.toLowerCase())
+  // Filter projects and tasks based on search query and user assignment
+  const filteredProjects = userProjects.filter((project) =>
+    project.projectName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    project.subProjects?.some(subProject =>
+      subProject.subProjectName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      subProject.epics?.some(epic =>
+        epic.epicName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        epic.tasks.some(task =>
+          task.taskName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          task.assignedTo === userId
+        )
+      )
+    )
   );
 
   return (
@@ -27,7 +37,7 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
       <div className="mb-4">
         <input
           type="text"
-          placeholder="Search by project title"
+          placeholder="Search by project, subproject, epic, or task title"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="px-3 py-2 border border-orange-500 rounded-lg bg-purple-900 text-white"
@@ -35,22 +45,22 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
       </div>
 
       {/* Project List with Tasks */}
-      {filteredTasks.length > 0 ? (
+      {filteredProjects.length > 0 ? (
         <div>
-          {filteredTasks.map((project) => (
+          {filteredProjects.map((project) => (
             <div key={project.id} className="mb-6">
               {/* Project Details */}
               <h3 className="font-semibold text-orange-500">
                 {project.projectName}
               </h3>
 
-              {/* SubProject, Epic (add these fields to Project if needed) */}
-              {project.subProjects && project.subProjects.map((subProject) => (
+              {/* SubProjects and Epics */}
+              {project.subProjects?.map((subProject) => (
                 <div key={subProject.id}>
                   <h4 className="text-orange-300">
                     {subProject.subProjectName}
                   </h4>
-                  {subProject.epics && subProject.epics.map((epic) => (
+                  {subProject.epics?.map((epic) => (
                     <div key={epic.id}>
                       <h5 className="text-orange-200">{epic.epicName}</h5>
 

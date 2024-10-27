@@ -26,6 +26,10 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
       return 'Invalid or missing "projectPlanId".';
     }
 
+    if (typeof json.actualManaHours !== 'number') {
+      return 'Invalid or missing "actualManaHours".';
+    }
+
     if (!Array.isArray(json.tasks)) {
       return 'Invalid project execution format. Expected an array of tasks.';
     }
@@ -90,6 +94,7 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
       setValidationError(validationMessage);
       return;
     }
+    setValidationError(null); // Reset validation error if validation passes
 
     const projectExecution: ProjectExecution = {
       projectPlanId: selectedProjectPlanId,

@@ -11,12 +11,27 @@ const CreateProposalPage = () => {
     title: string;
     description: string;
     manaHoursBudgeted: number;
-    targetApprovalDate: string;
+    targetApprovalDate: string | null; // Ensure consistency with `Proposal` type
     submittedBy: string;
   }) => {
-    console.log('Proposal submitted:', proposal);
+    // Build the full proposal object with default values for required fields
+    const fullProposal = {
+      ...proposal,
+      id: Date.now(), // Replace with a generated ID as needed
+      yesVotes: 0,
+      noVotes: 0,
+      manaTokenAllocated: 0,
+      isEnded: false,
+      createdAt: new Date().toISOString(),
+      updatedAt: null,
+      subProjects: [],
+      budgetItems: [],
+    };
+  
+    console.log('Proposal submitted:', fullProposal);
     // Here you can handle the submitted proposal, such as sending it to an API
   };
+  
 
   return (
     <div className="bg-[#270927] py-20 text-black">
