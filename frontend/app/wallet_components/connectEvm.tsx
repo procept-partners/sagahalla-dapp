@@ -21,7 +21,7 @@ export const ConnectBtn = () => {
 
   if (!isConnected) {
     return (
-      <button onClick={async () => {
+      <div onClick={async () => {
           // Disconnecting wallet first because sometimes when is connected but the user is not connected
           if (isConnected) {
             disconnect();
@@ -31,7 +31,7 @@ export const ConnectBtn = () => {
         type="button"  disabled={isConnecting}
       >
         { isConnecting ? 'Connecting...' : 'EVM' }
-      </button>
+      </div>
     );
   }
 
