@@ -51,7 +51,7 @@ chmod -R g+w ./backend ./frontend
 If you encounter any permission errors later, make sure the files and folders have the correct ownership by running:
 
 ```bash
-sudo chown -R \$(whoami) .
+sudo chown -R $(whoami) .
 ```
 
 This ensures that you own the files on your machine.
