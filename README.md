@@ -97,7 +97,7 @@ Here’s what this command does:
 If you encounter any permission errors during file edits, commits, or when switching branches in Git, ensure the correct ownership of files by running:
 
 ```bash
-sudo chown -R \$(whoami) .
+sudo chown -R $(whoami) .
 ```
 
 This command changes ownership of all files in the current directory to your user.
