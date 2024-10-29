@@ -23,3 +23,54 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Proposal {
+  id                 Int          @id @default(autoincrement())
+  title              String
+  description        String
+  yesVotes           Int          @default(0)
+  noVotes            Int          @default(0)
+  manaTokenAllocated Float
+  isEnded            Boolean      @default(false)
+  submittedBy        String
+  manaHoursBudgeted  Int
+  targetApprovalDate DateTime?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime?    @updatedAt
+  budgetWindowLow    Float
+  budgetWindowHigh   Float
+  subProjects        SubProject[]
+}
+
+model SubProject {
+  id             Int      @id @default(autoincrement())
+  proposalId     Int
+  subProjectName String
+  proposal       Proposal @relation(fields: [proposalId], references: [id])
+  epics          Epic[]
+}
+
+model Epic {
+  id           Int        @id @default(autoincrement())
+  subProjectId Int
+  epicName     String
+  subProject   SubProject @relation(fields: [subProjectId], references: [id])
+  tasks        Task[]
+}
+
+model Task {
+  id                 Int             @id @default(autoincrement())
+  epicId             Int
+  taskName           String
+  manaTokenAllocated Float
+  epic               Epic            @relation(fields: [epicId], references: [id])
+  rolesManaHours     RolesManaHour[]
+}
+
+model RolesManaHour {
+  id        Int    @id @default(autoincrement())
+  taskId    Int
+  roleName  String
+  manaHours Int
+  task      Task   @relation(fields: [taskId], references: [id])
+}
