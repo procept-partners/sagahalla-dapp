@@ -80,10 +80,6 @@ export default function RenaissancePage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="footer py-4">
-        <p>&copy; 2023 SagaHalla Cooperative. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
