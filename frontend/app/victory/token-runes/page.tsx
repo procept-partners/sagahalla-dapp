@@ -1,17 +1,15 @@
-// app/victory/token-rune-significance/page.tsx
-
 "use client";
 
 export default function TokenRuneSignificancePage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-purple-custom text-white">
 
       {/* Main Content Area */}
-      <main className="flex-grow bg-[#270927] p-8 text-white">
+      <main className="flex-grow p-8">
         <div>
-          <h1>Token Rune Significance</h1>
+          <h1 className="section-header">Token Rune Significance</h1>
           
-          <h2>Overview of the SagaHalla Token Economy and the Significance of Ancient Norse Runes</h2>
+          <h2 className="section-header">Overview of the SagaHalla Token Economy and the Significance of Ancient Norse Runes</h2>
           <p>
             SagaHalla’s token economy is designed with both function and culture in mind, using each token to serve a distinct 
             role while embedding each with the symbolism of Norse mythology. This fusion of purpose and meaning allows each token 
@@ -59,6 +57,11 @@ export default function TokenRuneSignificancePage() {
           </ul>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>&copy; 2023 SagaHalla Cooperative. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
