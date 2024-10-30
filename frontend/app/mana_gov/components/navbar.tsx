@@ -59,7 +59,7 @@ export default function Navbar() {
 
         {/* Centered Navigation Links */}
         <div
-          className={`${show ? "block order-last " : "hidden"} w-full md:block sm:order-last lg:order-none md:w-auto`}
+          className={`${show ? " order-last " : "hidden"} w-full md:block sm:order-last lg:order-none md:w-auto`}
           id="navbar-default"
         >
           <ul className="my-0 flex flex-col items-center font-medium md:flex-row md:space-x-8 md:border-0 rtl:space-x-reverse">
