@@ -1,5 +1,5 @@
 
-# Saga Mana Dapp - Setup Guide
+# SagaHalla Dapp - Setup Guide
 
 This guide will help you set up the **Saga Mana Dapp** project on your local machine. Whether you're a seasoned developer or new to Docker, this guide covers all the necessary steps to get you up and running.
 
