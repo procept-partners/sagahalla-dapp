@@ -1,22 +1,32 @@
 import { useState } from 'react';
-import { Project } from '../types/types'; // Assuming you have a Project type defined
+import { Project, Task } from '../types/types'; // Import Project and Task types
 
 interface Props {
   projects: Project[];
-  userId: number; // Assuming the logged-in user's ID is passed
+  userId: number; // The logged-in user's ID
 }
 
 const AssignedTasks = ({ projects = [], userId }: Props) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Filter projects where the user has assigned mana hours
-  const filteredProjects = projects.filter((project) =>
-    project?.manaHours?.some((mana) => mana.userId === userId)
+  const userProjects = projects.filter((project) =>
+    project.manaHours?.some((mana) => mana.userId === userId)
   );
 
-  // Filter based on the search query
-  const filteredTasks = filteredProjects.filter((project) =>
-    project.title.toLowerCase().includes(searchQuery.toLowerCase())
+  // Filter projects and tasks based on search query and user assignment
+  const filteredProjects = userProjects.filter((project) =>
+    project.projectName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    project.subProjects?.some(subProject =>
+      subProject.subProjectName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      subProject.epics?.some(epic =>
+        epic.epicName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        epic.tasks.some(task =>
+          task.taskName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          task.assignedTo === userId
+        )
+      )
+    )
   );
 
   return (
@@ -27,36 +37,47 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
       <div className="mb-4">
         <input
           type="text"
-          placeholder="Search by project title"
+          placeholder="Search by project, subproject, epic, or task title"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="px-3 py-2 border border-orange-500 rounded-lg bg-purple-900 text-white"
         />
-        <button className="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
-          Search
-        </button>
       </div>
 
       {/* Project List with Tasks */}
-      {filteredTasks.length > 0 ? (
+      {filteredProjects.length > 0 ? (
         <div>
-          {filteredTasks.map((project) => (
+          {filteredProjects.map((project) => (
             <div key={project.id} className="mb-6">
-              {/* Project, Subproject, Epic */}
+              {/* Project Details */}
               <h3 className="font-semibold text-orange-500">
-                {project.title} > {project.subproject} > {project.epic}
+                {project.projectName}
               </h3>
 
-              {/* Task List */}
-              <ul className="list-disc list-inside">
-                {project.tasks
-                  .filter((task) => task.assignedTo === userId) // Only show tasks assigned to the user
-                  .map((task) => (
-                    <li key={task.id} className="ml-4 text-white">
-                      {task.title}
-                    </li>
+              {/* SubProjects and Epics */}
+              {project.subProjects?.map((subProject) => (
+                <div key={subProject.id}>
+                  <h4 className="text-orange-300">
+                    {subProject.subProjectName}
+                  </h4>
+                  {subProject.epics?.map((epic) => (
+                    <div key={epic.id}>
+                      <h5 className="text-orange-200">{epic.epicName}</h5>
+
+                      {/* Task List */}
+                      <ul className="list-disc list-inside">
+                        {epic.tasks
+                          .filter((task: Task) => task.assignedTo === userId) // Only show tasks assigned to the user
+                          .map((task: Task) => (
+                            <li key={task.id} className="ml-4 text-white">
+                              {task.taskName}
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
                   ))}
-              </ul>
+                </div>
+              ))}
             </div>
           ))}
         </div>
@@ -68,4 +89,3 @@ const AssignedTasks = ({ projects = [], userId }: Props) => {
 };
 
 export default AssignedTasks;
-

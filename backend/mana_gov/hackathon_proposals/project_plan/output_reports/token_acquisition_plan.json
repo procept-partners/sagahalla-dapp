@@ -1,0 +1,77 @@
+{
+    "SHAWN": {
+        "MANA_acquired": 31000,
+        "MANA_value_usd": 22630.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 62604,
+        "FYRE_value_usd": 25041.5
+    },
+    "VANESSA": {
+        "MANA_acquired": 11000,
+        "MANA_value_usd": 8030.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 22454,
+        "FYRE_value_usd": 8981.5
+    },
+    "WILL": {
+        "MANA_acquired": 16000,
+        "MANA_value_usd": 11680.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 32492,
+        "FYRE_value_usd": 12996.5
+    },
+    "ZEAK": {
+        "MANA_acquired": 3000,
+        "MANA_value_usd": 2190.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 6394,
+        "FYRE_value_usd": 2557.5
+    },
+    "AKASH": {
+        "MANA_acquired": 15000,
+        "MANA_value_usd": 10950.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 30484,
+        "FYRE_value_usd": 12193.5
+    },
+    "EMMANUEL": {
+        "MANA_acquired": 7000,
+        "MANA_value_usd": 5110.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 14424,
+        "FYRE_value_usd": 5769.5
+    },
+    "DAVID": {
+        "MANA_acquired": 3000,
+        "MANA_value_usd": 2190.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 6394,
+        "FYRE_value_usd": 2557.5
+    },
+    "MICHAEL": {
+        "MANA_acquired": 11000,
+        "MANA_value_usd": 8030.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 22454,
+        "FYRE_value_usd": 8981.5
+    },
+    "VARUN": {
+        "MANA_acquired": 15000,
+        "MANA_value_usd": 10950.0,
+        "SHLD_acquired": 1,
+        "SHLD_value_usd": 135,
+        "FYRE_acquired": 30484,
+        "FYRE_value_usd": 12193.5
+    },
+    "FYRE_conversion_factor": {
+        "testnet_to_FYRE": 22818.12
+    }
+}

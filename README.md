@@ -1,5 +1,5 @@
 
-# Saga Mana Dapp - Setup Guide
+# SagaHalla Dapp - Setup Guide
 
 This guide will help you set up the **Saga Mana Dapp** project on your local machine. Whether you're a seasoned developer or new to Docker, this guide covers all the necessary steps to get you up and running.
 
@@ -51,7 +51,7 @@ chmod -R g+w ./backend ./frontend
 If you encounter any permission errors later, make sure the files and folders have the correct ownership by running:
 
 ```bash
-sudo chown -R \$(whoami) .
+sudo chown -R $(whoami) .
 ```
 
 This ensures that you own the files on your machine.
@@ -97,7 +97,7 @@ Here’s what this command does:
 If you encounter any permission errors during file edits, commits, or when switching branches in Git, ensure the correct ownership of files by running:
 
 ```bash
-sudo chown -R \$(whoami) .
+sudo chown -R $(whoami) .
 ```
 
 This command changes ownership of all files in the current directory to your user.

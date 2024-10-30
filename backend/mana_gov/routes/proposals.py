@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
-from mana_gov.models.pydantic.proposal import Proposal
-from mana_gov.services.proposal_service import ProposalService  # Assuming this service handles the business logic
+from mana_gov.models.pydantic.proposal import Proposal, ProposalCreate, ProposalUpdate
+from mana_gov.services.proposal_service import ProposalService
 
 proposals_router = APIRouter()
 
@@ -19,7 +19,7 @@ async def list_proposals():
 
 # POST /api/proposals - Create a new proposal
 @proposals_router.post("/proposals", response_model=Proposal)
-async def create_proposal(proposal: Proposal):
+async def create_proposal(proposal: ProposalCreate):
     try:
         new_proposal = await proposal_service.create_proposal(proposal)
         return new_proposal
@@ -39,7 +39,7 @@ async def get_proposal(id: int):
 
 # PUT /api/proposals/{id} - Update a proposal by ID
 @proposals_router.put("/proposals/{id}", response_model=Proposal)
-async def update_proposal(id: int, updated_proposal: Proposal):
+async def update_proposal(id: int, updated_proposal: ProposalUpdate):
     try:
         proposal = await proposal_service.update_proposal(id, updated_proposal)
         if not proposal:

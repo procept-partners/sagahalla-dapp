@@ -3,9 +3,16 @@ FROM node:20
 
 WORKDIR /frontend
 
+# Install dependencies for sharp (libvips)
+RUN apt-get update && apt-get install -y libvips-dev
+
 # Install dependencies first
 COPY package.json package-lock.json ./
-RUN npm ci
+
+# Set environment variable for sharp
+ENV SHARP_IGNORE_GLOBAL_LIBVIPS=1
+
+RUN npm ci --legacy-peer-deps
 
 # Copy the rest of the application code
 COPY . .
@@ -18,4 +25,3 @@ EXPOSE 3000
 
 # Run the development server with live reloading
 CMD ["npm", "run", "dev"]
-

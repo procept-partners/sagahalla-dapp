@@ -25,16 +25,10 @@ const ProposalDetailsModal = ({ proposal, closeModal }: Props) => {
         {/* Proposal Details */}
         <div className="mb-4">
           <p><strong>Description:</strong> {proposal.description || 'No description available.'}</p>
-          <p><strong>Total Tokens Allocated:</strong> {proposal.totalTokensAllocated}</p>
+          <p><strong>Total Tokens Allocated:</strong> {proposal.manaTokensAllocated ?? 'N/A'}</p>
           <p><strong>Yes Votes:</strong> {proposal.yesVotes}</p>
           <p><strong>No Votes:</strong> {proposal.noVotes}</p>
           <p><strong>Status:</strong> {proposal.isEnded ? 'Ended' : 'Active'}</p>
-        </div>
-
-        {/* Additional Proposal Information */}
-        <div className="mb-4">
-          <h3 className="font-semibold">More Info</h3>
-          <p>{proposal.moreInfo || 'No additional information.'}</p>
         </div>
 
         {/* Actions */}
@@ -52,3 +46,4 @@ const ProposalDetailsModal = ({ proposal, closeModal }: Props) => {
 };
 
 export default ProposalDetailsModal;
+

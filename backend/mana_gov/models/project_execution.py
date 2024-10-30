@@ -1,6 +1,7 @@
 from sqlalchemy import (
     Column, Integer, Float, String, ForeignKey, DateTime, func
 )
+
 from sqlalchemy.orm import relationship
 from mana_gov.util.database import Base
 
@@ -16,8 +17,9 @@ class ProjectExecution(Base):
 
     # Relationships
     project_plan = relationship("ProjectPlan", back_populates="executions")
-    peer_votes = relationship("PeerVote", back_populates="project_execution")
-    tasks = relationship("TaskExecution", back_populates="project_execution")
+    peer_votes = relationship("PeerVote", back_populates="project_execution", cascade="all, delete-orphan")
+    tasks = relationship("TaskExecution", back_populates="project_execution", cascade="all, delete-orphan")
+
 
 # TaskExecution Model (tracks the execution of individual tasks)
 class TaskExecution(Base):
@@ -33,6 +35,8 @@ class TaskExecution(Base):
     # Relationships
     project_execution = relationship("ProjectExecution", back_populates="tasks")
     task_plan = relationship("TaskPlan", back_populates="executions")
+    feedback = relationship("TaskFeedback", back_populates="task_execution", cascade="all, delete-orphan")
+
 
 # TaskFeedback Model (tracks feedback for tasks)
 class TaskFeedback(Base):
@@ -50,3 +54,54 @@ class TaskFeedback(Base):
     # Relationships
     task_execution = relationship("TaskExecution", back_populates="feedback")
     user = relationship("User", back_populates="task_feedback")
+
+
+# Add relationship in TaskPlan to link to TaskExecution
+class TaskPlan(Base):
+    __tablename__ = 'task_plans'
+
+    id = Column(Integer, primary_key=True, index=True)
+    # Other fields...
+
+    # Relationships
+    executions = relationship("TaskExecution", back_populates="task_plan")
+
+
+# Add relationship in ProjectPlan to link to ProjectExecution
+class ProjectPlan(Base):
+    __tablename__ = 'project_plans'
+
+    id = Column(Integer, primary_key=True, index=True)
+    # Other fields...
+
+    # Relationships
+    executions = relationship("ProjectExecution", back_populates="project_plan")
+
+
+# Add PeerVote model (as an assumption since peer voting was referenced)
+class PeerVote(Base):
+    __tablename__ = 'peer_votes'
+
+    id = Column(Integer, primary_key=True, index=True)
+    project_execution_id = Column(Integer, ForeignKey('project_executions.id'))
+    voter_id = Column(Integer, ForeignKey('users.id'))
+    votee_id = Column(Integer, ForeignKey('users.id'))
+    allocation = Column(Integer, nullable=False)  # Allocation percentage (0-100)
+
+    # Relationships
+    project_execution = relationship("ProjectExecution", back_populates="peer_votes")
+    voter = relationship("User", foreign_keys=[voter_id])
+    votee = relationship("User", foreign_keys=[votee_id])
+
+
+# Add User model relationship to track feedback and peer voting
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True, index=True)
+    # Other fields...
+
+    # Relationships
+    task_feedback = relationship("TaskFeedback", back_populates="user", cascade="all, delete-orphan")
+    peer_votes_given = relationship("PeerVote", foreign_keys="[PeerVote.voter_id]", back_populates="voter")
+    peer_votes_received = relationship("PeerVote", foreign_keys="[PeerVote.votee_id]", back_populates="votee")

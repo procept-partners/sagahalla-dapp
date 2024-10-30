@@ -1,27 +1,69 @@
-import Image from "next/image";
+import { useConnectModal } from '@rainbow-me/rainbowkit'; // Import the connect modal
+import Wallet from '../wallet_components/nearwallet';
+import Link from 'next/link';
+import Navbar from "@/app/components/navbar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Auth } from "@/components/blocks/auth";
 
-export default function Header() {
+export default function Header({ appName = "SagaHalla" }: { appName?: string }) {
+
+  const { openConnectModal } = useConnectModal(); // Get the modal handler
+
   return (
-    <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-      <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-        Get started by editing&nbsp;
-        <code className="font-mono font-bold">app/page.tsx</code>
-      </p>
-      <div className="fixed bottom-0 left-0 mb-4 flex h-auto w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:w-auto lg:bg-none lg:mb-0">
-        <a
-          href="https://www.llamaindex.ai/"
-          className="flex items-center justify-center font-nunito text-lg font-bold gap-2"
-        >
-          <span>Built by LlamaIndex</span>
-          <Image
-            className="rounded-xl"
-            src="/llama.png"
-            alt="Llama Logo"
-            width={40}
-            height={40}
-            priority
-          />
-        </a>
+    <div className="header flex justify-between items-center bg-[#ce711e] text-white"> {/* Removed padding to minimize overall header space */}
+      {/* App Logo and Site Name */}
+      <div className="logo flex items-center space-x-2 p-2"> {/* Added padding only to the logo section */}
+        <Link href="/">
+          <img src="/sagahalla.png" alt="SagaHalla Logo" className="h-10" />
+        </Link>
+        <span className="text-xl font-bold text-white">{appName}</span> {/* Site name with consistent white text */}
+      </div>
+
+      {/* Nav Bar */}
+      <Navbar />
+
+      {/* Wallets and Login Section */}
+      <div className="flex items-center space-x-2 p-2"> {/* Added padding only to the wallet and login section */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="rounded-md bg-[#a85a18] px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-[#8f4914]">
+              Wallets
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-fit rounded-md bg-popover shadow-lg focus:outline-none">
+            <DropdownMenuLabel>Connect to a wallet</DropdownMenuLabel>
+            <DropdownMenuSeparator className="bg-border" />
+
+            {/* NEAR Wallet */}
+            <DropdownMenuItem asChild>
+              <div className="bg-[#a85a18] px-2 py-1 font-bold uppercase text-white cursor-pointer hover:bg-[#8f4914]">
+                <Wallet /> {/* NEAR wallet connect logic */}
+              </div>
+            </DropdownMenuItem>
+
+            {/* EVM Wallet Connect */}
+            <DropdownMenuItem asChild>
+              <div
+                onClick={openConnectModal}  // Opens EVM wallet modal
+                className="bg-[#a85a18] px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-[#8f4914]"
+              >
+                Connect EVM
+              </div>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {/* Auth (Login/Logout) */}
+        <div className="bg-[#a85a18] hover:bg-[#8f4914] text-white font-bold py-1 px-2 rounded cursor-pointer">
+          <Auth /> {/* Handles authentication logic */}
+        </div>
       </div>
     </div>
   );

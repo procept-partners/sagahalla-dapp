@@ -42,9 +42,6 @@ const ProjectList = ({ projects, userId }: Props) => {
           onChange={(e) => setSearchQuery(e.target.value)}
           className="px-3 py-2 border border-orange-500 rounded-lg bg-purple-900 text-white"
         />
-        <button className="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
-          Search
-        </button>
       </div>
 
       {/* Project List */}
@@ -70,7 +67,7 @@ const ProjectList = ({ projects, userId }: Props) => {
         </thead>
         <tbody>
           {filteredProjects.map((project) => {
-            const userManaHours = project.manaHours.find((mana) => mana.userId === userId)?.hours || 0;
+            const userManaHours = project.manaHours?.find((mana) => mana.userId === userId)?.hours || 0;
 
             return (
               <tr key={project.id} className="border-b border-gray-200 hover:bg-orange-500 hover:text-white">
@@ -120,3 +117,4 @@ const ProjectList = ({ projects, userId }: Props) => {
 };
 
 export default ProjectList;
+
