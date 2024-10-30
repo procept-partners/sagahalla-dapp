@@ -19,7 +19,7 @@ export default function Navbar() {
     },
     {
       label: "Voting",
-      href: "/voting",
+      href: "/mana_gov/voting",
     },
     {
       label: "Reports",
@@ -31,7 +31,7 @@ export default function Navbar() {
     <nav className="border-gray-200 bg-[#ce711e]">
       <div className="mx-auto flex w-full flex-wrap items-center justify-center space-y-0 p-2 md:px-12">
         {/* Reduced padding and space-y */}
-        
+
         {/* Burger Menu Button for small screens */}
         <button
           data-collapse-toggle="navbar-default"
@@ -59,7 +59,7 @@ export default function Navbar() {
 
         {/* Centered Navigation Links */}
         <div
-          className={`${show ? "block order-last " : "hidden"} w-full md:block sm:order-last lg:order-none md:w-auto`}
+          className={`${show ? " order-last " : "hidden"} w-full md:block sm:order-last lg:order-none md:w-auto`}
           id="navbar-default"
         >
           <ul className="my-0 flex flex-col items-center font-medium md:flex-row md:space-x-8 md:border-0 rtl:space-x-reverse">

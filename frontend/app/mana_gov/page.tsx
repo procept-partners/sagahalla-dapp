@@ -140,9 +140,9 @@ export default function ManaDashboard() {
         <section className="container mx-auto my-16 px-4" id='projects'>
           <div className="mb-8 flex flex-row items-center justify-between">
             <h2 className="text-3xl font-bold text-[#ce711e]">Projects</h2>
-            <button className="rounded-md bg-[#ce711e] px-4 py-2 font-bold text-white hover:bg-[#a85a18]" onClick={handleCreateProjectPlanClick}>
+            <Link href="/mana_gov/create-project" className="rounded-md bg-[#ce711e] px-4 py-2 font-bold text-white hover:bg-[#a85a18]">
               Develop a Project Plan
-            </button>
+            </Link>
           </div>
           {projects.length === 0 ? (
             <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>

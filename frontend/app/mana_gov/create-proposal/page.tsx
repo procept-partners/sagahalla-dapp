@@ -1,48 +1,83 @@
-"use client"; // This enables the component to be a Client Component
+'use client';
+import React, { useState, useEffect } from 'react';
+import CreateSubProjectForm from './proposal-form';
+import { authenticate, fetchUserProposals } from '@/lib/actions';
 
-import { useState } from 'react';
-import ProposalForm from '../components/ProposalForm'; // Make sure this path is correct
+interface Proposal {
+  id: number;
+  title: string;
+}
 
-const CreateProposalPage = () => {
-  const loggedInUserId = '123'; // Replace with actual user ID from authentication if needed
+export default function CreateSubProject() {
+  const [proposals, setProposals] = useState<Proposal[]>([]);
+  const [selectedProposalId, setSelectedProposalId] = useState<number | null>(null);
+  const [session, setSession] = useState(false);
+  const [username, setUsername] = useState('');
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState<string | undefined>('');
 
-  // Define the `addProposal` function here
-  const addProposal = (proposal: {
-    title: string;
-    description: string;
-    manaHoursBudgeted: number;
-    targetApprovalDate: string | null; // Ensure consistency with `Proposal` type
-    submittedBy: string;
-  }) => {
-    // Build the full proposal object with default values for required fields
-    const fullProposal = {
-      ...proposal,
-      id: Date.now(), // Replace with a generated ID as needed
-      yesVotes: 0,
-      noVotes: 0,
-      manaTokenAllocated: 0,
-      isEnded: false,
-      createdAt: new Date().toISOString(),
-      updatedAt: null,
-      subProjects: [],
-      budgetItems: [],
+  useEffect(() => {
+    const fetchData = async () => {
+      const authResult = await authenticate();
+      setSession(authResult.success);
+      setUsername(authResult.user?.username || '');
+
+      if (authResult.success && authResult.user?.username) {
+        const projectResult = await fetchUserProposals(authResult.user.username);
+        if (projectResult.success === false) {
+          setError(true);
+          setMessage(projectResult.message);
+        } else {
+          setError(false);
+          setMessage(projectResult.message || '');
+          if (projectResult.proposals) {
+            setProposals(projectResult.proposals.map(p => ({ id: p.id, title: p.title })));
+          }
+        }
+      }
     };
-  
-    console.log('Proposal submitted:', fullProposal);
-    // Here you can handle the submitted proposal, such as sending it to an API
+
+    fetchData();
+  }, []);
+
+
+
+  const [selectedProject, setSelectedProject] = useState('');
+
+  const handleProposalChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedProject(event.target.value);
   };
-  
-
   return (
-    <div className="bg-[#270927] py-20 text-black">
-      <header className="px-5 text-2xl font-bold text-white">
-        <h1>Create New Proposal</h1>
-      </header>
+    <div className="flex min-h-screen flex-col justify-center gap-5 bg-[#270927] p-4">
+      {session ? (
+        <>
+          <div className="mx-auto">
+            <h4 className="text-center text-2xl font-bold capitalize text-white">Choose a Project</h4>
+            <select
+              name="project"
+              id="project"
+              className="block w-[300px] rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-amber-900 focus:border-amber-500 focus:ring-amber-500"
+              onChange={handleProposalChange}
+              value={selectedProject}
+            >
+              <option value="" disabled>Select a proposal</option>
+              {proposals.map((proposal) => (
+                <option key={proposal.id} value={proposal.id}>
+                  {proposal.title}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      {/* Pass `addProposal` and `loggedInUserId` to ProposalForm */}
-      <ProposalForm addProposal={addProposal} loggedInUserId={loggedInUserId} />
+          <div>
+            {selectedProject && <CreateSubProjectForm proposalId={selectedProject} />}
+          </div>
+        </>
+      ) : (<div className="min-h-screen px-4 py-8 text-black">
+        <h2 className="mb-6 text-2xl font-bold text-white">Create New Proposal</h2>
+        <p className="text-white">Please sign in to create a new proposal</p>
+      </div>)
+      }
     </div>
   );
-};
-
-export default CreateProposalPage;
+}

@@ -129,3 +129,165 @@ export const authenticate = async () => {
     return { success: false, message: "Unknown error" };
   }
 };
+
+
+export const createProject = async (formData: FormData) => {
+  const title = formData.get("title") as string;
+  const description = formData.get("description") as string;
+  const manaTokenAllocated = parseFloat(formData.get("manaTokenAllocated") as string) || 0; // Provide a default value or handle potential parsing errors
+  const manaHoursBudgeted = parseInt(formData.get("manaHoursBudgeted") as string, 10) || 0; // Provide a default value or handle potential parsing errors
+  const submittedBy = formData.get("submittedBy") as string; // Assuming you want to store who submitted the project
+  const targetApprovalDate = formData.get("targetApprovalDate") ? new Date(formData.get("targetApprovalDate") as string) : null; // Optional field
+  const budgetWindowLow = parseFloat(formData.get("budgetWindowLow") as string) || 0; // Optional field
+  const budgetWindowHigh = parseFloat(formData.get("budgetWindowHigh") as string) || 0; // Optional field
+
+  try {
+    await prisma.proposal.create({
+      data: {
+        title: title,
+        description: description,
+        manaTokenAllocated: manaTokenAllocated,
+        manaHoursBudgeted: manaHoursBudgeted,
+        submittedBy: submittedBy, // Adding submittedBy
+        targetApprovalDate: targetApprovalDate, // Adding targetApprovalDate
+        budgetWindowLow: budgetWindowLow, // Adding budgetWindowLow
+        budgetWindowHigh: budgetWindowHigh, // Adding budgetWindowHigh
+      },
+    });
+    console.info("Project created successfully");
+    return { success: true, message: "Project created successfully!" };
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === "P2002") {
+        console.error("Project already exists");
+        return { success: false, message: "Project already exists" };
+      }
+    }
+    console.error(error); // Log the error for debugging
+    return { success: false, message: "Unknown error" };
+  }
+};
+
+
+export const fetchUserProposals = async (username: string) => {
+  const requesterName = username as string;
+
+  try {
+    const userProposals = await prisma.proposal.findMany({
+      where: {
+        submittedBy: requesterName,
+      },
+    });
+
+    if (userProposals.length === 0) {
+      return { success: true, message: "No proposals found for this user", proposals: [] };
+    }
+
+    return { success: true, proposals: userProposals };
+  } catch (error) {
+    console.error("Error fetching user proposals:", error);
+    return { success: false, message: "Unknown error" };
+  }
+};
+
+export const createSubProject = async (formData: {
+  proposalId: string;
+  subProjectName: string;
+  epics: {
+    epicName: string;
+    tasks: {
+      taskName: string;
+      manaTokenAllocated: number;
+      rolesManaHours: { roleName: string; manaHours: number }[];
+    }[];
+  }[];
+}) => {
+  try {
+    const result = await prisma.subProject.create({
+      data: {
+        proposal: { connect: { id: parseInt(formData.proposalId) } },
+        subProjectName: formData.subProjectName,
+        epics: {
+          create: formData.epics.map(epic => ({
+            epicName: epic.epicName,
+            tasks: {
+              create: epic.tasks.map(task => ({
+                taskName: task.taskName,
+                manaTokenAllocated: task.manaTokenAllocated,
+                rolesManaHours: {
+                  create: task.rolesManaHours.map(role => ({
+                    roleName: role.roleName,
+                    manaHours: role.manaHours,
+                  })),
+                },
+              })),
+            },
+          })),
+        },
+      },
+      include: {
+        epics: {
+          include: {
+            tasks: {
+              include: {
+                rolesManaHours: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    console.info("Sub-Project created successfully");
+    return { success: true, message: "Sub-Project created successfully!", data: result };
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === "P2002") {
+        console.error("Sub-Project already exists");
+        return { success: false, message: "Sub-Project already exists" };
+      }
+    }
+    console.error(error); // Log the error for debugging
+    return { success: false, message: "Unknown error" };
+  }
+};
+
+
+
+export const fetchUserProposalsWithDetails = async (username: string) => {
+  try {
+    const userProposals = await prisma.proposal.findMany({
+      where: {
+        submittedBy: username,
+      },
+      include: {
+        subProjects: {
+          include: {
+            epics: {
+              include: {
+                tasks: {
+                  include: {
+                    rolesManaHours: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    if (userProposals.length === 0) {
+      return {
+        success: true,
+        message: 'No proposals found for this user',
+        proposals: [],
+      };
+    }
+
+    return { success: true, proposals: userProposals };
+  } catch (error) {
+    console.error('Error fetching user proposals with details:', error);
+    return { success: false, message: 'Unknown error' };
+  }
+};

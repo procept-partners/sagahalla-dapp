@@ -26,10 +26,6 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
       return 'Invalid or missing "projectPlanId".';
     }
 
-    if (typeof json.actualManaHours !== 'number') {
-      return 'Invalid or missing "actualManaHours".';
-    }
-
     if (!Array.isArray(json.tasks)) {
       return 'Invalid project execution format. Expected an array of tasks.';
     }
@@ -94,7 +90,6 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
       setValidationError(validationMessage);
       return;
     }
-    setValidationError(null); // Reset validation error if validation passes
 
     const projectExecution: ProjectExecution = {
       projectPlanId: selectedProjectPlanId,
@@ -108,14 +103,14 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-10 p-6 rounded-lg shadow-lg">
+    <form onSubmit={handleSubmit} className="mt-10 rounded-lg p-6 shadow-lg">
       <div className="mb-4">
-        <label className="block text-orange-500 font-medium mb-2">Select Project Plan:</label>
+        <label className="mb-2 block font-medium text-orange-500">Select Project Plan:</label>
         <select
           value={selectedProjectPlanId || ''}
           onChange={(e) => setSelectedProjectPlanId(Number(e.target.value))}
           required
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
         >
           <option value="" disabled>Select a project plan</option>
           {projectPlans.map((plan) => (
@@ -127,25 +122,25 @@ const ProjectExecutionForm = ({ addProjectExecution, projectPlans }: Props) => {
       </div>
 
       <div className="mb-4">
-        <label className="block text-orange-500 font-medium mb-2">Upload JSON File:</label>
+        <label className="mb-2 block font-medium text-orange-500">Upload JSON File:</label>
         <input
           type="file"
           accept=".json"
           onChange={handleFileChange}
           required
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
       </div>
 
       {validationError && (
-        <div className="text-red-500 font-medium mb-4">
+        <div className="mb-4 font-medium text-red-500">
           {validationError}
         </div>
       )}
 
       <button
         type="submit"
-        className="bg-orange-500 text-white py-2 px-6 rounded-lg hover:bg-orange-600 transition duration-300 ease-in-out"
+        className="rounded-lg bg-orange-500 px-6 py-2 text-white transition duration-300 ease-in-out hover:bg-orange-600"
       >
         Submit Project Execution
       </button>
