@@ -58,6 +58,7 @@ class Task(Base):
     epic_id = Column(Integer, ForeignKey('epics.id'))
     task_name = Column(String, nullable=False)
 
+    assigned_to = relationship("User", back_populates="tasks")
     epic = relationship("Epic", back_populates="tasks")
     roles_mana_hours = relationship("RoleManaHours", back_populates="task")
 

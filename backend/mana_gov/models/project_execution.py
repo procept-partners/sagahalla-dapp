@@ -1,4 +1,7 @@
-from sqlalchemy import Column, Integer, Float, ForeignKey, String, DateTime, func
+from sqlalchemy import (
+    Column, Integer, Float, String, ForeignKey, DateTime, func
+)
+
 from sqlalchemy.orm import relationship
 from mana_gov.util.database import Base
 

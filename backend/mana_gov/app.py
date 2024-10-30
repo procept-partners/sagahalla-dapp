@@ -11,6 +11,18 @@ from mana_gov.models.proposal import (
     RoleManaHours,
     ProposalBudget
 )
+from mana_gov.models.project_plan import (
+    ProjectPlan,
+    SubProjectPlan,
+    EpicPlan,
+    TaskPlan,
+    TaskRoleManaHours
+)
+from mana_gov.models.project_execution import (
+    ProjectExecution,
+    TaskExecution,
+    TaskFeedback
+)
 
 app = FastAPI()
 

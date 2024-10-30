@@ -2,3 +2,5 @@ __pycache__
 storage
 .env
 output
+mana_gov/models/voting.py.old
+mana_gov/routes/user.py

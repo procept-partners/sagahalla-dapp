@@ -5,6 +5,8 @@ from mana_gov.util.database import Base  # Assuming Base is the declarative base
 
 # User Model
 class User(Base):
+    from .voting import PeerVote
+
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, index=True)
