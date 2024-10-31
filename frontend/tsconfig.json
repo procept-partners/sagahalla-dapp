@@ -31,7 +31,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "app/victory/1551-renaissance/page.mdx", "app/victory/project-overview/page.mdx", "app/victory/norse-allegories/page.mdx", "app/victory/proof-of-utility/page.mdx", "app/victory/token-runes/page.mdx"  ],
   "exclude": [
     "node_modules"
   ]

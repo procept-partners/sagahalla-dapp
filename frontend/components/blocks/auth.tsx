@@ -40,11 +40,11 @@ export const Auth = () => {
             {session ?
 
                 (
-                    <>
+                    <div className="bg-none">
 
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="">
-                                <Avatar>
+                        <DropdownMenu >
+                            <DropdownMenuTrigger className="bg-none">
+                                <Avatar className="">
                                     {/* <AvatarImage src="https://github.com/shadcn.png" /> */}
                                     <AvatarFallback className="bg-black uppercase">{username.charAt(0)}</AvatarFallback>
                                 </Avatar>
@@ -58,7 +58,11 @@ export const Auth = () => {
                                 {/* <DropdownMenuSeparator /> */}
                             </DropdownMenuContent>
                         </DropdownMenu>
-                    </>
+
+
+
+
+                    </div>
 
                 )
                 : <Login />}

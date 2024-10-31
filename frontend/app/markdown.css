@@ -1,79 +1,138 @@
 /* Custom CSS for chat message markdown */
-.custom-markdown ul {
-  list-style-type: disc;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+
+/* Typography */
+* {
+  font-family: 'Helvetica', sans-serif;
+  /* Choose your preferred font family */
+  line-height: 1.6;
 }
 
-.custom-markdown ol {
-  list-style-type: decimal;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+/* Headings */
+/* # */
+h1 {
+  font-size: 2.25rem;
+  /* Reduced size */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
 }
 
-.custom-markdown li {
-  margin-bottom: 5px;
+/* ## */
+h2 {
+  font-size: 1.75rem;
+  /* Reduced size */
+  font-weight: 600;
+  margin-bottom: 1.25rem;
 }
 
-.custom-markdown ol ol {
-  list-style: lower-alpha;
+
+/* ### */
+h3 {
+  font-size: 1.5rem;
+  /* Reduced size */
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 
-.custom-markdown ul ul,
-.custom-markdown ol ol {
-  margin-left: 20px;
+/* #### */
+h4 {
+  font-size: 1.25rem;
+  /* Reduced size */
+  font-weight: 500;
+  margin-bottom: 0.75rem;
 }
 
-.custom-markdown img {
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 10px 0;
+/* ##### */
+h5 {
+  font-size: 1.125rem;
+  /* Reduced size */
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
-.custom-markdown a {
-  text-decoration: underline;
-  color: #007bff;
-}
 
-.custom-markdown h1,
-h2,
-h3,
-h4,
-h5,
+/* Paragraphs */
 h6 {
-  font-weight: bold;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.custom-markdown h6 {
-  font-size: 16px;
+p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  /* Slightly tighter line height */
+  font-size: 0.95rem;
+  /* Slightly smaller font size */
 }
 
-.custom-markdown h5 {
-  font-size: 18px;
+/* Lists */
+ul,
+ol {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.custom-markdown h4 {
-  font-size: 20px;
+li {
+  margin-bottom: 0.5rem;
 }
 
-.custom-markdown h3 {
-  font-size: 22px;
+ul {
+  list-style-type: disc;
 }
 
-.custom-markdown h2 {
-  font-size: 24px;
+ol {
+  list-style-type: decimal;
 }
 
-.custom-markdown h1 {
-  font-size: 26px;
+ol ol {
+  list-style-type: lower-alpha;
 }
 
-.custom-markdown hr {
-  border: 0;
-  border-top: 1px solid #e1e4e8;
-  margin: 20px 0;
+/* Links */
+a {
+  color: #007bff;
+  /* Example link color */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 2rem 0;
+}
+
+/* Code */
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f5f5f5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Blockquotes */
+blockquote {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-left: 4px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+blockquote>p {
+  margin-bottom: 0;
 }
