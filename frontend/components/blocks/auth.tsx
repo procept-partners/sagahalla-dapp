@@ -40,13 +40,13 @@ export const Auth = () => {
             {session ?
 
                 (
-                    <>
+                    <div className="bg-none">
 
-                        <DropdownMenu>
-                            <DropdownMenuTrigger>
-                                <Avatar>
+                        <DropdownMenu >
+                            <DropdownMenuTrigger className="bg-none">
+                                <Avatar className="">
                                     {/* <AvatarImage src="https://github.com/shadcn.png" /> */}
-                                    <AvatarFallback className="uppercase">{username.charAt(0)}</AvatarFallback>
+                                    <AvatarFallback className="bg-black uppercase">{username.charAt(0)}</AvatarFallback>
                                 </Avatar>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-fit">
@@ -62,7 +62,7 @@ export const Auth = () => {
 
 
 
-                    </>
+                    </div>
 
                 )
                 : <Login />}

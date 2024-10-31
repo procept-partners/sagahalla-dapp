@@ -17,7 +17,7 @@ export default function Header({ appName = "SagaHalla" }: { appName?: string }) 
   const { openConnectModal } = useConnectModal(); // Get the modal handler
 
   return (
-    <div className="header flex justify-between items-center bg-[#ce711e] text-white"> {/* Removed padding to minimize overall header space */}
+    <div className="header flex items-center justify-between bg-[#ce711e] text-white"> {/* Removed padding to minimize overall header space */}
       {/* App Logo and Site Name */}
       <div className="logo flex items-center space-x-2 p-2"> {/* Added padding only to the logo section */}
         <Link href="/">
@@ -33,17 +33,17 @@ export default function Header({ appName = "SagaHalla" }: { appName?: string }) 
       <div className="flex items-center space-x-2 p-2"> {/* Added padding only to the wallet and login section */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <div className="rounded-md bg-[#a85a18] px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-[#8f4914]">
+            <div className="cursor-pointer rounded-md bg-[#a85a18] px-2 py-1 font-bold capitalize text-white hover:bg-[#8f4914]">
               Wallets
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-fit rounded-md bg-popover shadow-lg focus:outline-none">
+          <DropdownMenuContent className="w-fit space-y-1 rounded-md bg-popover shadow-lg focus:outline-none">
             <DropdownMenuLabel>Connect to a wallet</DropdownMenuLabel>
             <DropdownMenuSeparator className="bg-border" />
 
             {/* NEAR Wallet */}
             <DropdownMenuItem asChild>
-              <div className="bg-[#a85a18] px-2 py-1 font-bold uppercase text-white cursor-pointer hover:bg-[#8f4914]">
+              <div className="cursor-pointer bg-[#a85a18] px-2 py-1 font-bold uppercase text-white hover:bg-[#8f4914]">
                 <Wallet /> {/* NEAR wallet connect logic */}
               </div>
             </DropdownMenuItem>
@@ -52,7 +52,7 @@ export default function Header({ appName = "SagaHalla" }: { appName?: string }) 
             <DropdownMenuItem asChild>
               <div
                 onClick={openConnectModal}  // Opens EVM wallet modal
-                className="bg-[#a85a18] px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-[#8f4914]"
+                className="cursor-pointer bg-[#a85a18] px-2 py-1 font-bold capitalize text-white hover:bg-[#8f4914]"
               >
                 Connect EVM
               </div>
@@ -61,9 +61,7 @@ export default function Header({ appName = "SagaHalla" }: { appName?: string }) 
         </DropdownMenu>
 
         {/* Auth (Login/Logout) */}
-        <div className="bg-[#a85a18] hover:bg-[#8f4914] text-white font-bold py-1 px-2 rounded cursor-pointer">
-          <Auth /> {/* Handles authentication logic */}
-        </div>
+        <Auth /> {/* Handles authentication logic */}
       </div>
     </div>
   );
