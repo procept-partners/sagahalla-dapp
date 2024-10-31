@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // Use Next.js's navigation hook
 import Link from 'next/link';
 import ProposalList from './components/ProposalList';
-import ProjectList from './components/ProjectList';
-import AssignedTasks from './components/AssignedTasks';
 import Modal from './components/Modal';
 import './globals.css'
 
@@ -19,75 +17,22 @@ export default function ManaDashboard() {
   const [isProjectExecutionModalOpen, setIsProjectExecutionModalOpen] = useState(false);
   const router = useRouter(); // Use Next.js's `useRouter` for navigation
 
-  const loggedInUserId = 123;
+
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
-      let errors: string[] = [];
-      try {
-        await fetchProposals();
-      } catch (err) {
-        errors.push('Error fetching proposals');
-        setProposals([]);
-      }
-      try {
-        await fetchProjects();
-      } catch (err) {
-        errors.push('Error fetching projects');
-        setProjects([]);
-      }
-      try {
-        await fetchTasks();
-      } catch (err) {
-        errors.push('Error fetching tasks');
-        setTasks([]);
-      }
-
-      if (errors.length > 0) {
-        console.error(errors.join(', '));
-        setError('Failed to load some data.');
-      }
-
+      console.log("fetching data")
       setLoading(false);
+
     }
 
     fetchData();
   }, []);
 
-  async function fetchProposals() {
-    const res = await fetch('/api/proposals');
-    if (!res.ok) throw new Error('Failed to fetch proposals');
-    const data = await res.json();
-    setProposals(data);
-  }
 
-  async function fetchProjects() {
-    const res = await fetch('/api/projects');
-    if (!res.ok) throw new Error('Failed to fetch projects');
-    const data = await res.json();
-    setProjects(data);
-  }
 
-  async function fetchTasks() {
-    const res = await fetch('/api/tasks');
-    if (!res.ok) throw new Error('Failed to fetch tasks');
-    const data = await res.json();
-    setTasks(data);
-  }
 
-  // Handle Create Project Plan button click
-  const handleCreateProjectPlanClick = () => {
-    if (proposals.length === 0) {
-      setIsProjectPlanModalOpen(true);
-
-      // Close the modal after 2 seconds
-      setTimeout(() => {
-        setIsProjectPlanModalOpen(false);
-      }, 2000);
-    } else {
-      router.push('/mana_gov/create-project-plan');
-    }
-  };
 
   // Handle Create Project Execution button click
   const handleCreateProjectExecutionClick = () => {
@@ -147,7 +92,7 @@ export default function ManaDashboard() {
           {projects.length === 0 ? (
             <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>
           ) : (
-            <ProjectList projects={projects} userId={loggedInUserId} />
+            "<ProjectList projects={projects} userId={loggedInUserId} />"
           )}
         </section>
 
@@ -161,7 +106,7 @@ export default function ManaDashboard() {
           {tasks.length === 0 ? (
             <p>No tasks assigned to you. Check back later for new tasks!</p>
           ) : (
-            <AssignedTasks tasks={tasks} userId={loggedInUserId} />
+            "<AssignedTasks tasks={tasks} userId={loggedInUserId} />"
           )}
         </section>
 
