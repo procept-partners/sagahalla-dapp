@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // Use Next.js's navigation hook
 import Link from 'next/link';
 import ProposalList from './components/ProposalList';
+import ProjectList from './components/ProjectList';
 import Modal from './components/Modal';
 import './globals.css'
+import { authenticate } from '@/lib/actions';
 
 export default function ManaDashboard() {
   const [proposals, setProposals] = useState([]);
@@ -18,10 +20,15 @@ export default function ManaDashboard() {
   const router = useRouter(); // Use Next.js's `useRouter` for navigation
 
 
-  const [username, setUsername] = useState<string | null>(null);
+  const [username, setUsername] = useState<string>('');
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
+      const result = await authenticate();
+      if (result.success) {
+        setUsername(result?.user?.username || '');
+      }
       console.log("fetching data")
       setLoading(false);
 
@@ -75,10 +82,10 @@ export default function ManaDashboard() {
               Create New Proposal
             </Link>
           </div>
-          {proposals.length === 0 ? (
-            <p>No proposals available. Create a new proposal to get started!</p>
+          {!username ? (
+            <p>Please login to see your proposals</p>
           ) : (
-            <ProposalList proposals={proposals} />
+            <ProposalList username={username} />
           )}
         </section>
 
@@ -89,10 +96,10 @@ export default function ManaDashboard() {
               Develop a Project Plan
             </Link>
           </div>
-          {projects.length === 0 ? (
-            <p>No projects available at the moment. Develop a project plan from an approved proposal!</p>
+          {!username ? (
+            <p>Please login to see your projects</p>
           ) : (
-            "<ProjectList projects={projects} userId={loggedInUserId} />"
+            <ProjectList username={username} />
           )}
         </section>
 
