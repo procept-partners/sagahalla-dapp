@@ -43,10 +43,10 @@ export const Auth = () => {
                     <>
 
                         <DropdownMenu>
-                            <DropdownMenuTrigger>
+                            <DropdownMenuTrigger className="">
                                 <Avatar>
                                     {/* <AvatarImage src="https://github.com/shadcn.png" /> */}
-                                    <AvatarFallback className="uppercase">{username.charAt(0)}</AvatarFallback>
+                                    <AvatarFallback className="bg-black uppercase">{username.charAt(0)}</AvatarFallback>
                                 </Avatar>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-fit">
@@ -58,10 +58,6 @@ export const Auth = () => {
                                 {/* <DropdownMenuSeparator /> */}
                             </DropdownMenuContent>
                         </DropdownMenu>
-
-
-
-
                     </>
 
                 )
