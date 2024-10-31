@@ -99,7 +99,7 @@ export default function Login() {
         <Dialog>
             <DialogTrigger>
                 {/* Adjusted the Login button for consistency */}
-                <Button className="bg-[#ce711e] text-white px-4 py-2 font-bold hover:bg-[#a85a18] flex items-center">
+                <Button className="flex items-center bg-[#ce711e] px-4 py-2 font-bold text-white hover:bg-[#a85a18]">
                     Login
                     <LogIn className="ml-2 h-5 w-5" />
                 </Button>
@@ -125,13 +125,13 @@ export default function Login() {
                                         <CardContent className="space-y-2">
                                             <div className="space-y-1">
                                                 <Label htmlFor="username">Username</Label>
-                                                <Input name="username" id="username" placeholder="Username" required />
+                                                <Input className='bg-white' name="username" id="username" placeholder="Username" required />
                                             </div>
                                             <div className="space-y-1">
                                                 <Label htmlFor="password">Password</Label>
-                                                <Input name="password" id="password" type="password" placeholder="Password" required />
+                                                <Input className='bg-white' name="password" id="password" type="password" placeholder="Password" required />
                                             </div>
-                                            <h3 className='my-3 text-yellow-400'>
+                                            <h3 className='my-3 text-yellow-900'>
                                                 {errorMessage}
                                             </h3>
                                         </CardContent>
@@ -155,21 +155,21 @@ export default function Login() {
                                         <CardContent className="space-y-2">
                                             <div className="space-y-1">
                                                 <Label htmlFor="email">Email</Label>
-                                                <Input name="email" id="email" placeholder="Email" />
+                                                <Input className='bg-white' name="email" id="email" placeholder="Email" />
                                             </div>
                                             <div className="space-y-1">
                                                 <Label htmlFor="username">Username</Label>
-                                                <Input name="username" id="username" placeholder="Username" required />
+                                                <Input className='bg-white' name="username" id="username" placeholder="Username" required />
                                             </div>
                                             <div className="space-y-1">
                                                 <Label htmlFor="password">Password</Label>
-                                                <Input name="password" value={password} required onChange={handlePasswordChange} id="password" type="password" />
+                                                <Input className='bg-white' name="password" value={password} required onChange={handlePasswordChange} id="password" type="password" />
                                             </div>
                                             <div className="space-y-1">
                                                 <Label htmlFor="confirm-password">Confirm Password</Label>
-                                                <Input name="confirm-password" id="confirm-password" value={confirmPassword} onChange={handleConfirmPasswordChange} type="password" required />
+                                                <Input className='bg-white' name="confirm-password" id="confirm-password" value={confirmPassword} onChange={handleConfirmPasswordChange} type="password" required />
                                             </div>
-                                            <h3 className='my-3 text-yellow-400'>
+                                            <h3 className='my-3 text-yellow-900'>
                                                 {errorMessage}
                                             </h3>
                                         </CardContent>

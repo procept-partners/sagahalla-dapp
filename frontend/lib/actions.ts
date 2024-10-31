@@ -168,7 +168,7 @@ export const createProject = async (formData: FormData) => {
   }
 };
 
-
+// Actually fetches the user's projects
 export const fetchUserProposals = async (username: string) => {
   const requesterName = username as string;
 
@@ -254,7 +254,34 @@ export const createSubProject = async (formData: {
 
 
 
-export const fetchUserProposalsWithDetails = async (username: string) => {
+import { Proposal, SubProject, Epic, Task, RolesManaHour } from "@prisma/client"; // Import your Prisma types
+
+// Define nested types to mirror the included data structure
+export type DetailedTask = Task & {
+  rolesManaHours: RolesManaHour[];
+};
+
+export type DetailedEpic = Epic & {
+  tasks: DetailedTask[];
+};
+
+export type DetailedSubProject = SubProject & {
+  epics: DetailedEpic[];
+};
+
+export type DetailedProposal = Proposal & {
+  subProjects: DetailedSubProject[];
+};
+
+
+export type FetchUserProposalsWithDetailsResponse = {
+  success: boolean;
+  message?: string;
+  proposals?: DetailedProposal[];
+};
+
+// Actually fetches the user's proposals with details, that is the sub-projects and tasks
+export const fetchUserProposalsWithDetails = async (username: string): Promise<FetchUserProposalsWithDetailsResponse> => {
   try {
     const userProposals = await prisma.proposal.findMany({
       where: {
@@ -288,6 +315,7 @@ export const fetchUserProposalsWithDetails = async (username: string) => {
     return { success: true, proposals: userProposals };
   } catch (error) {
     console.error('Error fetching user proposals with details:', error);
-    return { success: false, message: 'Unknown error' };
+    return { success: false, message: 'Unknown error', proposals: [] };
   }
 };
+
