@@ -24,6 +24,7 @@ This project contains the frontend for the SagaHalla decentralized application (
 ## Overview
 
 This project is a React/Next.js application that includes two main apps:
+
 - **Mana Gov**: Manages governance operations.
 - **Victory Exchange**: Facilitates exchanges and interactions.
 
@@ -59,11 +60,14 @@ Ensure you have [Node.js](https://nodejs.org/) and [Docker](https://www.docker.c
 ### Steps
 
 1. Clone the repository:
+
     ```bash
     git clone <repository_url>
     cd sagahalla-dapp/frontend
     ```
+  
 2. Install dependencies:
+   
     ```bash
     npm install
     ```
@@ -81,6 +85,7 @@ Ensure you have [Node.js](https://nodejs.org/) and [Docker](https://www.docker.c
 ### Development Mode
 
 To run the application locally in development mode, use:
+
 ```bash
 npm run dev
 ```
@@ -88,6 +93,7 @@ npm run dev
 ### Production Mode
 
 For production builds, use:
+
 ```bash
 npm run build
 npm run start
@@ -96,6 +102,7 @@ npm run start
 ### Docker Support
 
 To build and run the application in a Docker container:
+
 ```bash
 docker build -t sagahalla-frontend .
 docker run -p 3000:3000 sagahalla-frontend
@@ -111,9 +118,10 @@ docker run -p 3000:3000 sagahalla-frontend
 - **Docker**: Containerization for deployment.
 
 ## Contributing
-Feel free to contribute to this project! Please fork the repository and create a pull request for any features or bug fixes.
-Note to Redacted Judges: Front-End may only be partially integrated with the blockchain contracts as of the time of submission.
 
+Feel free to contribute to this project! Please fork the repository and create a pull request for any features or bug fixes.
+
+Note to Redacted Judges: Front-End is not integreated with the blockchain contracts as of the time of submission.  LIkewise proposal submission and voting interfaces are out of sync with with the models as of the latest 2 commits.
 
 ## License
 
