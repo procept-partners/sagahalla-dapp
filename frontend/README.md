@@ -121,7 +121,12 @@ docker run -p 3000:3000 sagahalla-frontend
 
 Feel free to contribute to this project! Please fork the repository and create a pull request for any features or bug fixes.
 
-Note to Redacted Judges: Front-End is not integreated with the blockchain contracts as of the time of submission.  LIkewise proposal submission and voting interfaces are out of sync with the submission forms for validation.
+Note to Redacted Judges: Front-End is not integreated with the blockchain contracts as of the time of submission.  LIkewise proposal submission and voting interfaces are out
+of sync with the submission forms for validation
+
+Our agile model is publically visible at taiga.sagahalla.com.  Our json models dervided from taiga are in /backend/mana_gov/hackathon_proposals.
+Our blobkchain proposals.py models are consistent.  Our front end prisma models are lagging and we should have it fixed but after the submisssion deadline.
+
 
 ## License
 
