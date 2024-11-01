@@ -121,7 +121,7 @@ docker run -p 3000:3000 sagahalla-frontend
 
 Feel free to contribute to this project! Please fork the repository and create a pull request for any features or bug fixes.
 
-Note to Redacted Judges: Front-End is not integreated with the blockchain contracts as of the time of submission.  LIkewise proposal submission and voting interfaces are out of sync with with the models as of the latest 2 commits.
+Note to Redacted Judges: Front-End is not integreated with the blockchain contracts as of the time of submission.  LIkewise proposal submission and voting interfaces are out of sync with the submission forms for validation.
 
 ## License
 

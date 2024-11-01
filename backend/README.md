@@ -1,69 +1,142 @@
-This is a [LlamaIndex](https://www.llamaindex.ai/) multi-agents project using [Workflows](https://docs.llamaindex.ai/en/stable/understanding/workflows/).
+
+# SagaHalla DApp Backend
+
+This is the backend for the SagaHalla decentralized application (DApp), supporting governance, data management, and interaction with various APIs and services.
+
+## Table of Contents
+
+- [SagaHalla DApp Backend](#sagahalla-dapp-backend)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Folder Structure](#folder-structure)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Steps](#steps)
+  - [Configuration](#configuration)
+  - [Database Migration](#database-migration)
+  - [Running the Application](#running-the-application)
+    - [Development Mode](#development-mode)
+    - [Production Mode](#production-mode)
+    - [Docker Support](#docker-support)
+  - [Technologies Used](#technologies-used)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Overview
 
-This example is using three agents to generate a blog post:
+The backend provides API endpoints, agent configurations, and services that power the `mana_gov` governance operations. The backend is built with Python and is structured for easy extensibility and observability.
 
-- a researcher that retrieves content via a RAG pipeline,
-- a writer that specializes in writing blog posts and
-- a reviewer that is reviewing the blog post.
+## Folder Structure
 
-There are three different methods how the agents can interact to reach their goal:
-
-1. [Choreography](./app/examples/choreography.py) - the agents decide themselves to delegate a task to another agent
-1. [Orchestrator](./app/examples/orchestrator.py) - a central orchestrator decides which agent should execute a task
-1. [Explicit Workflow](./app/examples/workflow.py) - a pre-defined workflow specific for the task is used to execute the tasks
-
-## Getting Started
-
-First, setup the environment with poetry:
-
-> **_Note:_** This step is not needed if you are using the dev-container.
-
-```shell
-poetry install
+```plaintext
+.
+├── alembic                # Database migration scripts and configurations
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions           # Auto-generated migration files
+├── app                    # Core backend application files
+│   ├── agents             # Agent-specific configurations
+│   ├── api                # API routes and endpoint logic
+│   ├── app.py             # Main application entry point
+│   ├── config.py          # Configuration settings
+│   ├── engine             # Logic for backend processing
+│   ├── examples           # Example files and templates
+│   ├── llmhub.py          # LLM (Large Language Model) integrations
+│   ├── observability.py   # Observability configurations and monitoring
+│   ├── settings.py        # Environment settings
+│   └── utils.py           # Utility functions
+├── config                 # Additional configuration files
+│   ├── loaders.yaml       # YAML configuration for data loaders
+│   └── tools.yaml         # YAML configuration for tools
+├── mana_gov               # Governance-related modules and settings
+│   ├── app.py
+│   ├── hackathon_proposals # Proposal management
+│   ├── models             # Database models
+│   ├── routes             # API routes
+│   ├── services           # Service layer logic
+│   ├── settings.py
+│   └── util               # Helper functions and utilities
+├── storage                # Storage files (e.g., vector stores, graph stores)
+├── main.py                # Main execution file
+└── Dockerfile             # Docker configuration
 ```
 
-Then check the parameters that have been pre-configured in the `.env` file in this directory. (E.g. you might need to configure an `OPENAI_API_KEY` if you're using OpenAI as model provider).
+## Installation
 
-Second, generate the embeddings of the documents in the `./data` directory:
+### Prerequisites
 
-```shell
-poetry run generate
-```
+- Python 3.11+
+- Docker (for containerization)
 
-Third, run the development server:
+### Steps
 
-```shell
+1. Clone the repository:
+    ```bash
+    git clone <repository_url>
+    cd sagahalla-dapp/backend
+    ```
+2. Install dependencies:
+    ```bash
+    poetry install
+    ```
+
+## Configuration
+
+1. **Environment Variables**:
+   - Copy `.env.example` to `.env`.
+   - Update the `.env` file with relevant environment variables, such as `SQLALCHEMY_DATABASE_URL` and any API keys.
+2. **Docker**:
+   - This project includes a `Dockerfile` for containerized deployment.
+
+## Database Migration
+
+This project uses Alembic for database migrations.
+
+1. **Generate a New Migration**:
+    ```bash
+    alembic revision --autogenerate -m "your migration message"
+    ```
+2. **Apply Migrations**:
+    ```bash
+    alembic upgrade head
+    ```
+
+## Running the Application
+
+### Development Mode
+
+To run the application locally in development mode:
+```bash
 poetry run python main.py
 ```
 
-Per default, the example is using the explicit workflow. You can change the example by setting the `EXAMPLE_TYPE` environment variable to `choreography` or `orchestrator`.
+### Production Mode
 
-The example provides one streaming API endpoint `/api/chat`.
-You can test the endpoint with the following curl request:
-
-```
-curl --location 'localhost:8000/api/chat' \
---header 'Content-Type: application/json' \
---data '{ "messages": [{ "role": "user", "content": "Write a blog post about physical standards for letters" }] }'
+For production, use a process manager like `gunicorn`:
+```bash
+gunicorn main:app --workers 4 --bind 0.0.0.0:8000
 ```
 
-You can start editing the API by modifying `app/api/routers/chat.py` or `app/examples/workflow.py`. The API auto-updates as you save the files.
+### Docker Support
 
-Open [http://localhost:8000/docs](http://localhost:8000/docs) with your browser to see the Swagger UI of the API.
-
-The API allows CORS for all origins to simplify development. You can change this behavior by setting the `ENVIRONMENT` environment variable to `prod`:
-
-```
-ENVIRONMENT=prod poetry run python main.py
+To build and run the application in a Docker container:
+```bash
+docker build -t sagahalla-backend .
+docker run -p 8000:8000 sagahalla-backend
 ```
 
-## Learn More
+## Technologies Used
 
-To learn more about LlamaIndex, take a look at the following resources:
+- **Python**: Core programming language.
+- **FastAPI**: Web framework for API development.
+- **SQLAlchemy**: ORM for database interactions.
+- **Alembic**: Database migration management.
+- **Docker**: Containerization for consistent deployments.
 
-- [LlamaIndex Documentation](https://docs.llamaindex.ai) - learn about LlamaIndex.
-- [Workflows Introduction](https://docs.llamaindex.ai/en/stable/understanding/workflows/) - learn about LlamaIndex workflows.
+## Contributing
 
-You can check out [the LlamaIndex GitHub repository](https://github.com/run-llama/llama_index) - your feedback and contributions are welcome!
+Contributions are welcome! Fork the repository, make your changes, and create a pull request for review.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

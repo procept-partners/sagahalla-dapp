@@ -65,6 +65,7 @@ docker-compose up --build
 ```
 
 Here’s what this command does:
+
 - **Builds the Docker images** based on the Dockerfiles for the backend and frontend.
 - **Starts the containers**, with the backend accessible at \`http://localhost:8000\` and the frontend at \`http://localhost:3000\`.
 
@@ -73,27 +74,35 @@ Here’s what this command does:
 - **Frontend**: Open your browser and go to [http://localhost:3000](http://localhost:3000) to see the frontend.
 
 ### Common Docker Commands:
+
 - **Stop the containers**:
+  
   ```bash
   docker-compose down
   ```
+
   This stops and removes the containers, networks, and volumes created by \`docker-compose up\`.
 
 - **Rebuild the containers** after making changes to the Dockerfiles:
+  
   ```bash
   docker-compose up --build
   ```
+
   This ensures that any updates in your Dockerfiles are included in the build.
 
 - **Check container logs**:
+  
   ```bash
   docker-compose logs
   ```
+
   This shows logs for both the backend and frontend containers, which can help troubleshoot any issues.
 
 ## 4. Common Issues and Troubleshooting
 
 ### 1. Permission Errors
+
 If you encounter any permission errors during file edits, commits, or when switching branches in Git, ensure the correct ownership of files by running:
 
 ```bash
@@ -103,6 +112,7 @@ sudo chown -R $(whoami) .
 This command changes ownership of all files in the current directory to your user.
 
 ### 2. Docker Cache
+
 Sometimes Docker may use cached images instead of rebuilding the containers from scratch. If you suspect this is causing issues, you can force Docker to rebuild the images without using the cache:
 
 ```bash
@@ -110,6 +120,7 @@ docker-compose build --no-cache
 ```
 
 ### 3. Docker Compose Down Issues
+
 If you get stuck or can't stop the containers properly, you can try running:
 
 ```bash
