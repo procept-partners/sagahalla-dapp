@@ -7,11 +7,14 @@ services:
       context: ./backend  # Dockerfile for the FastAPI backend
     volumes:
       - ./backend:/backend  # Bind mount the backend directory
+      - ./backend/mana_gov.db:/backend/mana_gov.db  # Mount the SQLite database file
     ports:
       - "8000:8000"  # Expose port 8000 for the FastAPI backend on both container and host
+    env_file:
+      - ./backend/.env  # Load backend-specific environment variables from .env in backend directory
     environment:
       - PYTHONPATH=/backend
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]  # Start FastAPI for app and mana_gov
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
     networks:
       - app-network
 
@@ -24,12 +27,30 @@ services:
       - /frontend/node_modules  # Exclude node_modules from being overwritten by mounting it as an anonymous volume
     ports:
       - "3000:3000"  # Expose port 3000 for the frontend app
+    env_file:
+      - ./frontend/.env  # Optional: use a dedicated .env file for frontend
+    command: ["npm", "run", "dev"]
+    networks:
+      - app-network
+
+  # Alembic service for database migrations
+  alembic:
+    build:
+      context: ./backend  # Use the backend context to share the same environment
+    volumes:
+      - ./backend:/backend  # Bind mount the backend directory
+      - ./backend/mana_gov.db:/backend/mana_gov.db  # Mount the SQLite database file
+    env_file:
+      - ./backend/.env  # Use the backend-specific .env file for Alembic
     environment:
-      - REACT_APP_API_URL_FASTAPI=http://backend_fastapi:8000  # Updated URL for the FastAPI backend service
-    command: ["npm", "run", "dev"]  # Run Next.js frontend in development mode with live reloading
+      - PYTHONPATH=/backend
+    entrypoint: ["poetry", "run", "alembic"]
+    command: ["upgrade", "head"]
+    depends_on:
+      - backend_fastapi
     networks:
       - app-network
 
 networks:
   app-network:
-    driver: bridge  # Default network driver
+    driver: bridge

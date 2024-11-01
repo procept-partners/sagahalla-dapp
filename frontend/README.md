@@ -1,71 +1,120 @@
-This is a [LlamaIndex](https://www.llamaindex.ai/) project using [Next.js](https://nextjs.org/) bootstrapped with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama).
 
-## Getting Started
+# SagaHalla DApp Frontend
 
-First, install the dependencies:
+This project contains the frontend for the SagaHalla decentralized application (DApp), specifically implementing the `mana_gov` and `victory` apps.
 
+## Table of Contents
+
+- [SagaHalla DApp Frontend](#sagahalla-dapp-frontend)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Folder Structure](#folder-structure)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Steps](#steps)
+  - [Configuration](#configuration)
+  - [Running the Application](#running-the-application)
+    - [Development Mode](#development-mode)
+    - [Production Mode](#production-mode)
+    - [Docker Support](#docker-support)
+  - [Technologies Used](#technologies-used)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## Overview
+
+This project is a React/Next.js application that includes two main apps:
+- **Mana Gov**: Manages governance operations.
+- **Victory Exchange**: Facilitates exchanges and interactions.
+
+## Folder Structure
+
+```plaintext
+.
+├── app
+│   ├── components         # Reusable UI components
+│   ├── mana_gov           # Mana governance app logic
+│   ├── victory            # Victory exchange app logic
+│   ├── saga_gpt           # Additional functionalities for SagaHalla
+│   ├── wallet_components  # Wallet connection and management
+│   ├── wagmi.ts           # Wagmi library configuration for blockchain interaction
+│   └── page.tsx           # Main page layout
+├── components             # Higher-level reusable blocks and UI components
+├── config                 # Configuration files (e.g., `tools.json`)
+├── lib                    # Shared utility functions and modules
+├── public                 # Public assets (e.g., images)
+├── prisma                 # Database schema for backend interaction
+├── sagahalla-wallet       # Wallet configurations for NEAR testnet
+├── tailwind.config.ts     # Tailwind CSS configuration
+├── tsconfig.json          # TypeScript configuration
+└── Dockerfile             # Docker configuration
 ```
-npm install
-```
 
-Second, generate the embeddings of the documents in the `./data` directory (if this folder exists - otherwise, skip this step):
+## Installation
 
-```
-npm run generate
-```
+### Prerequisites
 
-Third, run the development server:
+Ensure you have [Node.js](https://nodejs.org/) and [Docker](https://www.docker.com/) installed.
 
-```
+### Steps
+
+1. Clone the repository:
+    ```bash
+    git clone <repository_url>
+    cd sagahalla-dapp/frontend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+## Configuration
+
+1. **Environment Variables**:
+   - Rename `.env.example` to `.env`.
+   - Configure your environment variables as needed (e.g., `DATABASE_URL`, `MODEL_PROVIDER`).
+2. **Docker**:
+   - This project includes a `Dockerfile` for containerized deployment.
+
+## Running the Application
+
+### Development Mode
+
+To run the application locally in development mode, use:
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Production Mode
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Using Docker
-
-1. Build an image for the Next.js app:
-
-```
-docker build -t <your_app_image_name> .
+For production builds, use:
+```bash
+npm run build
+npm run start
 ```
 
-2. Generate embeddings:
+### Docker Support
 
-Parse the data and generate the vector embeddings if the `./data` folder exists - otherwise, skip this step:
-
-```
-docker run \
-  --rm \
-  -v $(pwd)/.env:/app/.env \ # Use ENV variables and configuration from your file-system
-  -v $(pwd)/config:/app/config \
-  -v $(pwd)/data:/app/data \
-  -v $(pwd)/cache:/app/cache \ # Use your file system to store the vector database
-  <your_app_image_name> \
-  npm run generate
+To build and run the application in a Docker container:
+```bash
+docker build -t sagahalla-frontend .
+docker run -p 3000:3000 sagahalla-frontend
 ```
 
-3. Start the app:
+## Technologies Used
 
-```
-docker run \
-  --rm \
-  -v $(pwd)/.env:/app/.env \ # Use ENV variables and configuration from your file-system
-  -v $(pwd)/config:/app/config \
-  -v $(pwd)/cache:/app/cache \ # Use your file system to store gea vector database
-  -p 3000:3000 \
-  <your_app_image_name>
-```
+- **React** & **Next.js**: Core frontend framework.
+- **TypeScript**: Type-safe JavaScript.
+- **Tailwind CSS**: Utility-first CSS framework.
+- **Wagmi**: Ethereum wallet library for blockchain interactions.
+- **Prisma**: Database ORM.
+- **Docker**: Containerization for deployment.
 
-## Learn More
+## Contributing
+Feel free to contribute to this project! Please fork the repository and create a pull request for any features or bug fixes.
+Note to Redacted Judges: Front-End may only be partially integrated with the blockchain contracts as of the time of submission.
 
-To learn more about LlamaIndex, take a look at the following resources:
 
-- [LlamaIndex Documentation](https://docs.llamaindex.ai) - learn about LlamaIndex (Python features).
-- [LlamaIndexTS Documentation](https://ts.llamaindex.ai) - learn about LlamaIndex (Typescript features).
+## License
 
-You can check out [the LlamaIndexTS GitHub repository](https://github.com/run-llama/LlamaIndexTS) - your feedback and contributions are welcome!
+This project is licensed under the Apache License. See the [LICENSE](LICENSE) file for details.

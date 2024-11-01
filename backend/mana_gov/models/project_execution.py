@@ -8,6 +8,7 @@ from mana_gov.util.database import Base
 # Project Execution Model (with voting relationship)
 class ProjectExecution(Base):
     __tablename__ = 'project_executions'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     project_plan_id = Column(Integer, ForeignKey('project_plans.id'))
@@ -24,6 +25,7 @@ class ProjectExecution(Base):
 # TaskExecution Model (tracks the execution of individual tasks)
 class TaskExecution(Base):
     __tablename__ = 'task_executions'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     project_execution_id = Column(Integer, ForeignKey('project_executions.id'))
@@ -41,6 +43,7 @@ class TaskExecution(Base):
 # TaskFeedback Model (tracks feedback for tasks)
 class TaskFeedback(Base):
     __tablename__ = 'task_feedback'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     task_execution_id = Column(Integer, ForeignKey('task_executions.id'))
@@ -59,6 +62,7 @@ class TaskFeedback(Base):
 # Add relationship in TaskPlan to link to TaskExecution
 class TaskPlan(Base):
     __tablename__ = 'task_plans'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     # Other fields...
@@ -70,6 +74,7 @@ class TaskPlan(Base):
 # Add relationship in ProjectPlan to link to ProjectExecution
 class ProjectPlan(Base):
     __tablename__ = 'project_plans'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     # Other fields...
@@ -81,6 +86,7 @@ class ProjectPlan(Base):
 # Add PeerVote model (as an assumption since peer voting was referenced)
 class PeerVote(Base):
     __tablename__ = 'peer_votes'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     project_execution_id = Column(Integer, ForeignKey('project_executions.id'))
@@ -97,6 +103,7 @@ class PeerVote(Base):
 # Add User model relationship to track feedback and peer voting
 class User(Base):
     __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     # Other fields...

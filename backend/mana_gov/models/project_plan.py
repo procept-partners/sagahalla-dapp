@@ -5,6 +5,7 @@ from mana_gov.util.database import Base  # Assuming Base is the declarative base
 
 class ProjectPlan(Base):
     __tablename__ = 'project_plans'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     proposal_id = Column(Integer, ForeignKey('proposals.id'))
@@ -27,6 +28,7 @@ class ProjectPlan(Base):
 
 class SubProjectPlan(Base):
     __tablename__ = 'sub_project_plans'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     project_plan_id = Column(Integer, ForeignKey('project_plans.id'))
@@ -38,6 +40,7 @@ class SubProjectPlan(Base):
 
 class EpicPlan(Base):
     __tablename__ = 'epic_plans'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     sub_project_plan_id = Column(Integer, ForeignKey('sub_project_plans.id'))
@@ -49,6 +52,7 @@ class EpicPlan(Base):
 
 class TaskPlan(Base):
     __tablename__ = 'task_plans'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     epic_plan_id = Column(Integer, ForeignKey('epic_plans.id'))
@@ -64,6 +68,7 @@ class TaskPlan(Base):
 
 class TaskRoleManaHours(Base):
     __tablename__ = 'task_role_mana_hours'
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     task_plan_id = Column(Integer, ForeignKey('task_plans.id'))

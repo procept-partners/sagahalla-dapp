@@ -6,9 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_NAME = "mana_gov.db"
-
-SQLALCHEMY_DATABASE_URL = f"sqlite:///./{DATABASE_NAME}"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///./mana_gov.db"
 
 # Create the database engine
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args=({"check_same_thread": False}))

@@ -13,10 +13,11 @@ python = ">=3.11,<3.13"
 
 # Updated dependencies
 fastapi = "^0.115.0"  # Upgraded FastAPI
-uvicorn = { extras = ["standard"], version = "^0.31.0" }  # Upgraded Uvicorn
+uvicorn = { extras = ["standard"], version = "^0.31.0" }  
 
 # Missing dependencies added
 databases = "^0.9.0"  # Asynchronous database management
+
 
 # Your existing dependencies
 llama-index-agent-openai = ">=0.3.0,<0.4.0"
@@ -28,6 +29,7 @@ llama-index-readers-web = "^0.2.2"
 openpyxl = "^3.1.5"
 pandas = "^2.2.3"
 docx2txt = "^0.8"
+alembic = "^1.13.3"
 
 [build-system]
 requires = [ "poetry-core" ]
